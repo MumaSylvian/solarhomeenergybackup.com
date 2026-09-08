@@ -5,6 +5,8 @@ import { useMemo, useState } from 'react';
 import { ArrowRight, Battery, Check, ChevronRight, CircleHelp, Menu, Minus, Plus, ShieldCheck, ShoppingBag, Sun, X, Zap } from 'lucide-react';
 import { approvedCatalog } from '@/lib/catalog/products';
 
+const money = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+
 const categories = [
   ['Whole-home backup', 'Inverters, batteries and complete systems for the loads that matter.', Battery],
   ['Portable power', 'High-output stations for outages, job sites, RVs and beyond.', Zap],
@@ -40,7 +42,7 @@ export function Storefront() {
 
     <section className="section"><div className="section-heading"><div><p className="eyebrow">Shop by need</p><h2>Start with the way you live.</h2></div><Link href="/shop" className="inline-link">View all equipment <ArrowRight size={16}/></Link></div><div className="category-grid">{categories.map(([title, copy, Icon]) => <Link href={`/shop?category=${encodeURIComponent(title)}`} className="category-card" key={title}><span><Icon size={22}/></span><h3>{title}</h3><p>{copy}</p><b>Explore <ChevronRight size={16}/></b></Link>)}</div></section>
 
-    <section className="featured"><div className="section featured-head"><div><p className="eyebrow">Selected systems</p><h2>Strong starting points.<br/>Room to grow.</h2></div><p>Every product starts as a sourced catalog record. Only approved products appear here; pricing is set independently of supplier listings.</p></div><div className="product-row">{approvedCatalog.map((product) => <ProductCard key={product.id} id={product.id} name={product.name} brand={product.brand} category={product.category} output={product.continuousOutputWatts} capacity={product.batteryCapacityWh} voltage={product.acVoltage} add={add}/>)}</div></section>
+    <section className="featured"><div className="section featured-head"><div><p className="eyebrow">Selected systems</p><h2>Strong starting points.<br/>Room to grow.</h2></div><p>Approved product records with source pricing last checked on September 8, 2026. Listed prices are calculated at 20% below the linked public source price.</p></div><div className="product-row">{approvedCatalog.map((product) => <ProductCard key={product.id} id={product.id} name={product.name} brand={product.brand} category={product.category} output={product.continuousOutputWatts} capacity={product.batteryCapacityWh} voltage={product.acVoltage} sourcePrice={product.sourcePrice} retailPrice={product.retailPrice} add={add}/>)}</div></section>
 
     <section className="section planner"><div><p className="eyebrow">A sensible place to begin</p><h2>Not sure how much backup you need?</h2><p>Tell us what you need to keep running, for how long, and whether you have high-demand 240V loads. We’ll recommend an appropriate direction—not a guessed configuration.</p><Link href="/system-finder" className="button dark">Use the System Finder <ArrowRight size={17}/></Link></div><div className="planner-scale"><div><strong>2kW+</strong><span> essentials</span></div><div><strong>6kW+</strong><span> heavy loads</span></div><div><strong>10kWh+</strong><span> longer runtime</span></div><div><strong>240V</strong><span> home circuits</span></div></div></section>
 
@@ -51,8 +53,8 @@ export function Storefront() {
   </main>;
 }
 
-export function ProductCard({ id, name, brand, category, output, capacity, voltage, add }: { id: string; name: string; brand: string; category: string; output?: number | null; capacity?: number | null; voltage?: string | null; add?: (id: string) => void }) {
-  return <article className="product-card"><div className="product-art"><div className="product-device"><span/><span/><span/></div><p>{category}</p></div><div className="product-content"><p className="product-brand">{brand}</p><h3>{name}</h3><div className="product-stats"><span>{output ? `${(output / 1000).toFixed(output % 1000 ? 1 : 0)}kW output` : 'Output not provided'}</span><span>{capacity ? `${(capacity / 1000).toFixed(2).replace(/\.00$/, '')}kWh battery` : 'Battery configuration varies'}</span><span>{voltage ?? 'Voltage not provided'}</span></div><div className="product-bottom"><Link href={`/products/${id}`}>View details <ArrowRight size={16}/></Link>{add && <button onClick={() => add(id)}>Add to cart</button>}</div></div></article>;
+export function ProductCard({ id, name, brand, category, output, capacity, voltage, sourcePrice, retailPrice, add }: { id: string; name: string; brand: string; category: string; output?: number | null; capacity?: number | null; voltage?: string | null; sourcePrice?: number | null; retailPrice?: number | null; add?: (id: string) => void }) {
+  return <article className="product-card"><div className="product-art"><div className="product-device"><span/><span/><span/></div><p>{category}</p></div><div className="product-content"><p className="product-brand">{brand}</p><h3>{name}</h3>{retailPrice && <p className="product-price"><span>{money.format(retailPrice)}</span>{sourcePrice && <del>{money.format(sourcePrice)}</del>}<small>20% below source</small></p>}<div className="product-stats"><span>{output ? `${(output / 1000).toFixed(output % 1000 ? 1 : 0)}kW output` : 'Output not provided'}</span><span>{capacity ? `${(capacity / 1000).toFixed(2).replace(/\.00$/, '')}kWh battery` : 'Battery configuration varies'}</span><span>{voltage ?? 'Voltage not provided'}</span></div><div className="product-bottom"><Link href={`/products/${id}`}>View details <ArrowRight size={16}/></Link>{add && <button onClick={() => add(id)}>Add to cart</button>}</div></div></article>;
 }
 
 function Cart({ items, cart, close, change }: { items: typeof approvedCatalog; cart: Record<string, number>; close: () => void; change: (id: string, amount: number) => void }) {

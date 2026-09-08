@@ -23,6 +23,8 @@ export type CatalogProduct = {
   specifications: Record<string, string>;
   rawSpecifications: string;
   supplierOffers: SupplierOffer[];
+  sourcePrice?: number | null;
+  retailPrice?: number | null;
   imageUsageApproved: boolean;
   sourceImageUrl?: string | null;
 };
