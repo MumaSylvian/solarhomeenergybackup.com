@@ -2,8 +2,9 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Voltway Energy | Backup power that fits your life',
-  description: 'Whole-home battery backup, solar generators, expandable power stations and solar energy systems.',
+  title: 'Gridwell | Backup Power Built for Real Life',
+  description: 'Whole-home batteries, solar generators, expandable power stations and energy systems with source-attributed specifications.',
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
