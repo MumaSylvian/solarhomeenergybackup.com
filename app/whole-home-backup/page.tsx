@@ -1,2 +1,2 @@
 import { redirect } from 'next/navigation';
-export default function WholeHomeBackupPage() { redirect('/shop'); }
+export default function WholeHomeBackupPage() { redirect('/shop?category=Whole-home%20backup'); }
