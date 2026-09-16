@@ -7,7 +7,7 @@ export type CatalogProduct = {
   brand: string;
   model: string;
   sku?: string | null;
-  category: 'Whole-home backup' | 'Portable power' | 'Batteries' | 'Solar panels' | 'Home integration' | 'Accessories';
+  category: 'Whole-home backup' | 'Portable power' | 'Batteries' | 'Solar panels' | 'Home integration' | 'EV chargers' | 'Accessories';
   shortDescription: string;
   status: ProductStatus;
   wholeHomeCapable: boolean;
@@ -27,6 +27,8 @@ export type CatalogProduct = {
   retailPrice?: number | null;
   imageUsageApproved: boolean;
   sourceImageUrl?: string | null;
+  sourceDetailImageUrl?: string | null;
+  galleryImageUrls?: string[];
 };
 
 export type SupplierOffer = {

@@ -1,62 +1,59 @@
 'use client';
+/* oxlint-disable next(no-img-element) -- this static export deliberately uses catalog-approved image URLs. */
 
 import Link from 'next/link';
-import { useMemo, useState } from 'react';
-import { ArrowRight, Battery, Check, ChevronRight, CircleHelp, Menu, Minus, Plus, ShieldCheck, ShoppingBag, Sun, X, Zap } from 'lucide-react';
-import { approvedCatalog } from '@/lib/catalog/products';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import { ArrowRight, Battery, Check, ChevronLeft, ChevronRight, CircleHelp, Globe2, ShieldCheck } from 'lucide-react';
+import { useLocale } from '@/components/locale-provider';
+import { hasCompleteProductFrame } from '@/lib/product-image-quality';
 
 const money = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
 
-const categories = [
-  ['Whole-home backup', 'Inverters, batteries and complete systems for the loads that matter.', Battery],
-  ['Portable power', 'High-output stations for outages, job sites, RVs and beyond.', Zap],
-  ['Batteries', 'Build capacity around your household and expand on your terms.', Battery],
-  ['Solar panels', 'Portable and rigid solar options for renewable charging.', Sun],
-  ['Home integration', 'Transfer equipment, smart panels and critical-load controls.', ShieldCheck],
-  ['Accessories', 'The compatible cables, protection and hardware that complete a system.', CircleHelp],
-] as const;
+export type ProductPreview = {
+  id: string; slug: string; name: string; brand: string; category: string;
+  continuousOutputWatts?: number | null; batteryCapacityWh?: number | null; acVoltage?: string | null;
+  shortDescription?: string; sourcePrice?: number | null; retailPrice?: number | null; imageUrl?: string | null; sourceImageUrl?: string | null; galleryImageUrls?: string[];
+};
+
+const slides = [
+  { title: <>Keep home<br/><em>moving.</em></>, copy: 'Backup power built around the appliances and circuits you rely on.', action: 'Explore whole-home systems', href: '/whole-home-backup', focus: 'center 45%', image: 'https://images.pexels.com/photos/9875417/pexels-photo-9875417.jpeg?auto=compress&cs=tinysrgb&w=1800', alt: 'Solar installer carrying a panel at a residence' },
+  { title: <>Save daylight<br/><em>for later.</em></>, copy: 'Solar charging, expandable storage, and equipment selected for compatible system builds.', action: 'Browse solar equipment', href: '/solar-panels', focus: 'center 45%', image: 'https://images.pexels.com/photos/29206488/pexels-photo-29206488.jpeg?auto=compress&cs=tinysrgb&w=1800', alt: 'Solar technician installing panels on a residential rooftop' },
+  { title: <>Power that<br/><em>comes with you.</em></>, copy: 'Portable backup for outages, work sites, RVs, and weekends off-grid.', action: 'Shop portable power', href: '/portable-power', focus: 'center 50%', image: 'https://images.pexels.com/photos/9212502/pexels-photo-9212502.jpeg?auto=compress&cs=tinysrgb&w=1800', alt: 'Family spending time together outdoors while camping' },
+];
 
 export function Storefront() {
-  const [cart, setCart] = useState<Record<string, number>>({});
-  const [cartOpen, setCartOpen] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const items = useMemo(() => approvedCatalog.filter((product) => cart[product.id]), [cart]);
-  const add = (id: string) => { setCart((current) => ({ ...current, [id]: (current[id] ?? 0) + 1 })); setCartOpen(true); };
-  const change = (id: string, amount: number) => setCart((current) => {
-    const next = Math.max(0, (current[id] ?? 0) + amount); const copy = { ...current };
-    if (next) copy[id] = next; else delete copy[id]; return copy;
-  });
-  const count = Object.values(cart).reduce((total, quantity) => total + quantity, 0);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const slide = slides[activeSlide];
+
+  useEffect(() => {
+    const timer = window.setInterval(() => setActiveSlide((current) => (current + 1) % slides.length), 6500);
+    return () => window.clearInterval(timer);
+  }, []);
+  const moveSlide = (direction: -1 | 1) => setActiveSlide((current) => (current + direction + slides.length) % slides.length);
 
   return <main>
-    <div className="utility-bar">Planning a larger system? <Link href="/system-finder">Start with the System Finder</Link></div>
-    <header className="site-header"><Link href="/" className="brand" aria-label="Gridwell home"><span className="brand-mark"><Zap size={18} fill="currentColor" /></span><span>GRIDWELL</span></Link>
-      <nav className="desktop-nav" aria-label="Primary navigation"><Link href="/shop">Shop</Link><Link href="/whole-home-backup">Whole-home backup</Link><Link href="/portable-power">Portable power</Link><Link href="/solar-panels">Solar</Link><Link href="/system-finder">System Finder</Link></nav>
-      <div className="header-actions"><Link href="/compare" className="text-link">Compare</Link><button className="bag-button" onClick={() => setCartOpen(true)} aria-label="Open cart"><ShoppingBag size={19}/>{count > 0 && <span>{count}</span>}</button><button className="mobile-menu" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu"><Menu size={22}/></button></div>
-    </header>
-    {mobileOpen && <nav className="mobile-nav"><Link href="/shop">Shop equipment</Link><Link href="/whole-home-backup">Whole-home backup</Link><Link href="/portable-power">Portable power</Link><Link href="/solar-panels">Solar</Link><Link href="/system-finder">System Finder</Link><Link href="/compare">Compare products</Link></nav>}
+    <section className="hero-slider" aria-label="Featured energy solutions">
+      <Image className="hero-photo" src={slide.image} style={{ objectPosition: slide.focus }} alt={slide.alt} fill priority={activeSlide === 0} sizes="100vw" unoptimized/><div className="hero-shade"/>
+      <div className="hero-copy" key={activeSlide}><h1>{slide.title}</h1><p>{slide.copy}</p><div className="hero-actions"><Link href={slide.href} className="button primary">{slide.action}<ArrowRight size={17}/></Link><Link href="/system-finder" className="button secondary">Find my setup</Link></div><div className="hero-notes"><span><Check size={15}/> Planning guidance</span><span><Check size={15}/> Clear technical education</span></div></div>
+      <div className="hero-controls"><button onClick={() => moveSlide(-1)} aria-label="Previous slide"><ChevronLeft size={19}/></button><div aria-label={`Slide ${activeSlide + 1} of ${slides.length}`}>{slides.map((_, index) => <button key={index} className={index === activeSlide ? 'active' : ''} onClick={() => setActiveSlide(index)} aria-label={`Show slide ${index + 1}`}/>)}</div><button onClick={() => moveSlide(1)} aria-label="Next slide"><ChevronRight size={19}/></button></div>
+      <aside className="hero-status"><span>POWER HUB</span><strong>Plan. Select. Build your reserve.</strong><Link href="/shop">Open the dashboard <ArrowRight size={15}/></Link></aside>
+    </section>
 
-    <section className="hero eco-hero"><img className="hero-photo" src="/solar-backup-hero.png" alt="Solar backup equipment outside a modern home at sunset"/><div className="hero-shade"/><div className="hero-copy"><p className="eyebrow light"><Sun size={15}/> Independent energy starts here</p><h1>Power through<br/><em>every moment.</em></h1><p>Build a backup system around the life you actually live—from a single essential circuit to a fully connected home.</p><div className="hero-actions"><Link href="/shop" className="button primary">Explore energy systems <ArrowRight size={17}/></Link><Link href="/system-finder" className="button secondary">Find my setup</Link></div><div className="hero-notes"><span><Check size={15}/> Whole-home ready</span><span><Check size={15}/> Portable when you need it</span><span><Check size={15}/> Solar compatible</span></div></div><div className="hero-status"><span>Gridwell energy guide</span><strong>Find power that fits your home.</strong><Link href="/system-finder">Start planning <ArrowRight size={15}/></Link></div></section>
-
-    <section className="trust-strip"><span><ShieldCheck size={20}/> Source-linked product records</span><span><Battery size={20}/> Flexible storage and expansion</span><span><CircleHelp size={20}/> Guidance before you commit</span></section>
-
-    <section className="section"><div className="section-heading"><div><p className="eyebrow">Find your power path</p><h2>Made for the way<br/>you use energy.</h2></div><p className="section-intro">Start with the setup you need today, then scale with confidence as your needs grow.</p></div><div className="category-grid">{categories.map(([title, copy, Icon], index) => <Link href={`/shop?category=${encodeURIComponent(title)}`} className="category-card" key={title}><span className="category-number">0{index + 1}</span><span className="category-icon"><Icon size={22}/></span><h3>{title}</h3><p>{copy}</p><b>Explore <ChevronRight size={16}/></b></Link>)}</div></section>
-
-    <section className="featured"><div className="section featured-head"><div><p className="eyebrow">Selected systems</p><h2>Strong starting points.<br/>Room to grow.</h2></div><p>Approved catalog records. Every listed price is calculated at 20% below the source price in the imported supplier CSV.</p></div><div className="product-row">{approvedCatalog.filter((product) => product.retailPrice !== null).slice(0, 3).map((product) => <ProductCard key={product.id} id={product.id} slug={product.slug} name={product.name} brand={product.brand} category={product.category} output={product.continuousOutputWatts} capacity={product.batteryCapacityWh} voltage={product.acVoltage} sourcePrice={product.sourcePrice} retailPrice={product.retailPrice} add={add}/>)}</div></section>
-
-    <section className="section planner"><div><p className="eyebrow">A smarter starting point</p><h2>Choose power with a plan.</h2><p>Tell us what you need to keep running, for how long, and whether you have high-demand 240V loads. We’ll point you toward a practical direction—not a guessed configuration.</p><Link href="/system-finder" className="button dark">Build my power plan <ArrowRight size={17}/></Link></div><div className="planner-scale"><div><strong>2kW+</strong><span>Keep daily essentials running</span></div><div><strong>6kW+</strong><span>Support higher-demand loads</span></div><div><strong>10kWh+</strong><span>Extend backup time</span></div><div><strong>240V</strong><span>Prepare for home circuits</span></div></div></section>
-
-    <section className="section resource"><p className="eyebrow">Plan with confidence</p><div className="resource-grid"><article><span>01</span><h3>Understand output</h3><p>Watts describe the equipment you can run at once. Starting and surge power can matter for motors and compressors.</p></article><article><span>02</span><h3>Size battery storage</h3><p>Watt-hours tell you how much energy you have. Your loads and desired backup duration determine the right range.</p></article><article><span>03</span><h3>Plan the connection</h3><p>Home integration can require appropriately rated transfer equipment and qualified installation.</p></article></div></section>
-    <footer><div><Link href="/" className="brand"><span className="brand-mark"><Zap size={18} fill="currentColor"/></span>GRIDWELL</Link><p>Energy equipment selected for practical, resilient power planning.</p></div><div><h3>Shop</h3><Link href="/whole-home-backup">Whole-home backup</Link><Link href="/portable-power">Portable power</Link><Link href="/solar-panels">Solar panels</Link></div><div><h3>Planning</h3><Link href="/system-finder">System Finder</Link><Link href="/compare">Product comparison</Link><Link href="/invoice">Request an invoice</Link></div><small>Product data is source-attributed and reviewed before publication. Specifications may change; confirm details before purchase.</small></footer>
-
-    {cartOpen && <Cart items={items} cart={cart} close={() => setCartOpen(false)} change={change}/>} 
+    <section className="trust-strip" aria-label="Store assurances"><div className="assurance-badge"><ShieldCheck size={19}/><span><b>Secure order review</b><small>Confirmation before payment</small></span></div><div className="assurance-badge"><Battery size={19}/><span><b>6-month warranty</b><small>Eligible purchases</small></span></div><div className="assurance-badge"><CircleHelp size={19}/><span><b>Practical support</b><small>Mon–Sat, 9 AM–5 PM PT</small></span></div></section>
+    <section className="brands-strip" aria-label="Recognized energy brands"><span className="brands-icon"><Globe2 size={23}/></span><div><b>Recognized energy brands</b><p>Shop EcoFlow, BLUETTI, Victron Energy, Anker SOLIX, EG4, and more across the current catalog.</p></div></section>
+    <section className="section planning-panel"><div><p className="eyebrow">Start with your loads</p><h2>Plan for what must stay on.</h2><p>List the circuits you need, your backup time, and any high-demand equipment. The System Finder gives you a sensible starting range, not an installation plan.</p><Link href="/system-finder" className="button primary">Build my power plan <ArrowRight size={17}/></Link></div><div className="planning-list"><div><strong>01</strong><span><b>Essential loads</b><small>Keep the basics running when the grid does not.</small></span></div><div><strong>02</strong><span><b>More capacity</b><small>Add battery reserve as your backup time grows.</small></span></div><div><strong>03</strong><span><b>Home connection</b><small>Prepare for compatible transfer and control equipment.</small></span></div></div></section>
+    <section className="section resource"><p className="eyebrow">Learn before you buy</p><div className="resource-grid"><article><span>01</span><h3>Know your output</h3><p>Watts describe what you can run at one time. Motors and compressors can need additional starting power.</p></article><article><span>02</span><h3>Size the reserve</h3><p>Watt-hours describe how long your power lasts. Your loads and desired run time guide the right range.</p></article><article><span>03</span><h3>Connect safely</h3><p>Home integration may require rated equipment and qualified installation. Confirm documentation before purchase.</p></article></div></section>
   </main>;
 }
 
-export function ProductCard({ id, slug, name, brand, category, output, capacity, voltage, sourcePrice, retailPrice, add }: { id: string; slug: string; name: string; brand: string; category: string; output?: number | null; capacity?: number | null; voltage?: string | null; sourcePrice?: number | null; retailPrice?: number | null; add?: (id: string) => void }) {
-  return <article className="product-card"><div className="product-art"><div className="product-device"><span/><span/><span/></div><p>{category}</p></div><div className="product-content"><p className="product-brand">{brand}</p><h3>{name}</h3>{retailPrice ? <p className="product-price"><span>{money.format(retailPrice)}</span>{sourcePrice && <del>{money.format(sourcePrice)}</del>}<small>20% below source</small></p> : <p className="product-price unavailable"><span>Request pricing</span><small>Source price not listed in CSV</small></p>}<div className="product-stats"><span>{output ? `${(output / 1000).toFixed(output % 1000 ? 1 : 0)}kW output` : 'Output not provided'}</span><span>{capacity ? `${(capacity / 1000).toFixed(2).replace(/\.00$/, '')}kWh battery` : 'Battery configuration varies'}</span><span>{voltage ?? 'Voltage not provided'}</span></div><div className="product-bottom"><Link href={`/product?slug=${encodeURIComponent(slug)}`}>View details <ArrowRight size={16}/></Link>{add && <button onClick={() => add(id)}>Add to cart</button>}</div></div></article>;
-}
-
-function Cart({ items, cart, close, change }: { items: typeof approvedCatalog; cart: Record<string, number>; close: () => void; change: (id: string, amount: number) => void }) {
-  return <div className="cart-shell"><button className="cart-backdrop" onClick={close} aria-label="Close cart"/><dialog className="cart" open aria-label="Shopping cart"><div className="cart-head"><div><p className="eyebrow">Your selection</p><h2>Cart</h2></div><button onClick={close} aria-label="Close cart"><X/></button></div>{items.length ? <div className="cart-items">{items.map((item) => <div className="cart-item" key={item.id}><div className="tiny-device"/><div><b>{item.name}</b><small>{item.brand} · pricing on request</small><div><button onClick={() => change(item.id, -1)} aria-label="Remove one"><Minus size={14}/></button><span>{cart[item.id]}</span><button onClick={() => change(item.id, 1)} aria-label="Add one"><Plus size={14}/></button></div></div></div>)}</div> : <div className="cart-empty"><ShoppingBag size={30}/><p>Your cart is ready when you are.</p></div>}<div className="cart-foot"><p>Final pricing, delivery, tax and availability are confirmed during checkout.</p><Link className="button dark full" href="/invoice" onClick={close}>Request invoice <ArrowRight size={16}/></Link><Link className="text-checkout" href="/checkout" onClick={close}>Continue to checkout</Link></div></dialog></div>;
+export function ProductCard({ id, slug, name, brand, category, output, capacity, voltage, shortDescription, sourcePrice, retailPrice, imageUrl, sourceImageUrl, galleryImageUrls, add, priority = false, continuousOutputWatts, batteryCapacityWh, acVoltage }: ProductPreview & { output?: number | null; capacity?: number | null; voltage?: string | null; priority?: boolean; add?: (product: ProductPreview) => void }) {
+  const { t } = useLocale();
+  const [imageFrame, setImageFrame] = useState<'checking' | 'approved' | 'rejected'>('checking');
+  const resolvedImageUrl = imageUrl ?? sourceImageUrl;
+  const displayBrand = brand === 'SolarHome Reserve' ? 'SolarHome Energy Backup' : brand;
+  const product: ProductPreview = { id, slug, name, brand, category, shortDescription, sourcePrice, retailPrice, imageUrl: resolvedImageUrl, sourceImageUrl, galleryImageUrls, continuousOutputWatts: continuousOutputWatts ?? output, batteryCapacityWh: batteryCapacityWh ?? capacity, acVoltage: acVoltage ?? voltage };
+  if (!resolvedImageUrl || imageFrame === 'rejected') return null;
+  if (imageFrame === 'checking') return <span className="product-image-probe" aria-hidden="true"><Image src={resolvedImageUrl} alt="" width={1} height={1} unoptimized priority={priority} loading="eager" onLoad={(event) => setImageFrame(hasCompleteProductFrame(event.currentTarget) ? 'approved' : 'rejected')} onError={() => setImageFrame('rejected')}/></span>;
+  return <article className="product-card"><Link href={`/product?slug=${encodeURIComponent(slug)}`} className="product-art" aria-label={`View ${name}`}><Image src={resolvedImageUrl} alt={name} fill sizes="(max-width: 850px) 310px, 33vw" unoptimized priority={priority} loading="eager"/></Link><div className="product-content"><div className="product-meta"><p className="product-category">{category}</p><p className="availability-line"><Check size={13}/> {t('inStock')}</p></div><p className="product-brand">{displayBrand}</p><h3>{name}</h3>{shortDescription && <p className="product-summary">{shortDescription}</p>}{retailPrice !== null && retailPrice !== undefined ? <p className="product-price"><span>{money.format(retailPrice)}</span>{sourcePrice !== null && sourcePrice !== undefined && <del>{money.format(sourcePrice)}</del>}<small>{t('save20')}</small></p> : <p className="product-price unavailable"><span>{t('requestPricing')}</span><small>{t('currentPrice')}</small></p>}<div className="product-bottom"><Link href={`/product?slug=${encodeURIComponent(slug)}`}>{t('viewDetails')} <ArrowRight size={16}/></Link>{add && <button onClick={() => add(product)}>{t('addToCart')}</button>}</div></div></article>;
 }

@@ -1,2 +1,2 @@
-import { redirect } from 'next/navigation';
-export default function PortablePowerPage() { redirect('/shop?category=Portable%20power'); }
+import { CategoryPage } from '@/components/category-page';
+export default function PortablePowerPage() { return <CategoryPage category="Portable power" eyebrow="Portable power" title="Reliable energy that moves with you." copy="Find portable stations for outage readiness, travel, remote work, and everyday power where an outlet is not an option." planning="Match the station to the devices you actually use." useCases={['Add the running watts of the equipment you expect to power at the same time.', 'Use battery capacity to estimate your desired runtime, allowing room for real-world losses.', 'Check the required plugs, charging inputs, and weight before choosing a portable setup.']}/>; }
