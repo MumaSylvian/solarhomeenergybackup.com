@@ -1,5 +1,18 @@
 import { csvCatalog } from './catalog.generated';
 
+/**
+ * Product photos are stored in Git LFS. The connected Vercel deployment
+ * currently serves LFS pointer files from /public/catalog rather than the
+ * original binary images, so those paths decode as broken images in browsers.
+ * GitHub's media endpoint serves the corresponding LFS binaries directly.
+ */
+const catalogMediaBaseUrl = 'https://media.githubusercontent.com/media/MumaSylvian/solarhomeenergybackup.com/main/public/catalog/';
+
+const resolveCatalogImageUrl = (imageUrl: string | null | undefined) =>
+  imageUrl?.startsWith('/catalog/')
+    ? `${catalogMediaBaseUrl}${imageUrl.slice('/catalog/'.length)}`
+    : imageUrl ?? null;
+
 /** The catalog is generated from the product archives supplied for SolarHome Energy Backup. */
 /**
  * A small number of supplied primary PNGs contain only a thin slice of the
@@ -36,7 +49,9 @@ const unusablePrimaryImageIds = new Set([
 export const catalog = csvCatalog
   .filter((product) => !unusablePrimaryImageIds.has(product.id))
   .map((product) => {
-    const primaryImage = clearGalleryPrimary[product.id] ?? product.sourceImageUrl ?? product.sourceDetailImageUrl ?? null;
+    const primaryImage = resolveCatalogImageUrl(
+      clearGalleryPrimary[product.id] ?? product.sourceImageUrl ?? product.sourceDetailImageUrl,
+    );
 
     /**
      * Gallery attachments in the supplied archives include brand lockups,
