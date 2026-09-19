@@ -1,5 +1,5 @@
+/* oxlint-disable next/no-html-link-for-pages -- category cards provide dependable native navigation. */
 import Image from 'next/image';
-import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { approvedCatalog } from '@/lib/catalog/products';
 import type { CatalogProduct } from '@/lib/catalog/types';
@@ -38,5 +38,5 @@ export function CategoryShowcase() {
     return { ...spotlight, count: products.length, product: preferredProduct ?? products[0] };
   }).filter((entry) => entry.product);
 
-  return <section className="section"><div className="section-heading"><div><p className="eyebrow">Choose your path</p><h2>Power for the way<br/>you use it.</h2></div><p className="section-intro">Start with the job at hand, then choose from equipment in the current catalog.</p></div><div className="category-grid catalog-category-grid">{entries.map((entry, index) => <Link href={entry.href} className="category-card catalog-category-card" key={entry.title}><Image src={entry.product!.sourceImageUrl!} alt={entry.product!.name} fill sizes="(max-width: 520px) 100vw, (max-width: 850px) 50vw, 33vw" unoptimized/><div className="category-card-content"><span className="category-number">{String(index + 1).padStart(2, '0')} · {entry.count} products</span><h3>{entry.title}</h3><p>{entry.copy}</p><b>Explore <ArrowRight size={15}/></b></div></Link>)}</div></section>;
+  return <section className="section"><div className="section-heading"><div><p className="eyebrow">Choose your path</p><h2>Power for the way<br/>you use it.</h2></div><p className="section-intro">Start with the job at hand, then choose from equipment in the current catalog.</p></div><div className="category-grid catalog-category-grid">{entries.map((entry, index) => <a href={entry.href} className="category-card catalog-category-card" key={entry.title}><Image src={entry.product!.sourceImageUrl!} alt={entry.product!.name} fill sizes="(max-width: 520px) 100vw, (max-width: 850px) 50vw, 33vw" unoptimized/><div className="category-card-content"><span className="category-number">{String(index + 1).padStart(2, '0')} · {entry.count} products</span><h3>{entry.title}</h3><p>{entry.copy}</p><b>Explore <ArrowRight size={15}/></b></div></a>)}</div></section>;
 }
