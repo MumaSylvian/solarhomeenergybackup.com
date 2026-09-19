@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { Check, MessageCircle, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { WHATSAPP_PHONE_DISPLAY, whatsappUrl } from '@/lib/commerce';
 
 const updates = [
   { title: 'SolarHome order review', text: 'Availability, delivery timing, and your final total are confirmed before payment.', href: '/invoice' },
@@ -24,6 +25,6 @@ export function StoreUpdates() {
   const update = updates[index];
   return <>
     {visible && <aside className="store-update" aria-live="polite"><span className="update-check"><Check size={20}/></span><div><b>{update.title}</b><p>{update.text}</p><Link href={update.href}>Learn more</Link></div><button type="button" onClick={() => setVisible(false)} aria-label="Dismiss update"><X size={17}/></button></aside>}
-    <Link className="whatsapp-contact" href="/support" aria-label="Contact SolarHome support; add a WhatsApp business number to activate direct chat"><MessageCircle size={22}/><span>WhatsApp chat</span></Link>
+    <a className="whatsapp-contact" href={whatsappUrl('Hello SolarHome Energy Backup, I need help with my order or system plan.')} target="_blank" rel="noreferrer" aria-label={`Chat with SolarHome support on WhatsApp at ${WHATSAPP_PHONE_DISPLAY}`}><MessageCircle size={22}/><span>WhatsApp chat</span></a>
   </>;
 }

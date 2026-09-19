@@ -1,5 +1,11 @@
 export const SUPPORT_HOURS = 'Monday–Saturday, 9:00 AM–5:00 PM Pacific Time';
 export const WARRANTY_TERM = '6-month limited warranty';
+export const WHATSAPP_PHONE_DISPLAY = '+1 (938) 263-4728';
+export const WHATSAPP_URL = 'https://wa.me/19382634728';
+
+export function whatsappUrl(message: string) {
+  return `${WHATSAPP_URL}?text=${encodeURIComponent(message)}`;
+}
 
 export const deliveryOptions = {
   priority: { label: 'Priority delivery', window: '2–3 business days' },
