@@ -1,6 +1,7 @@
 'use client';
 /* oxlint-disable next/no-html-link-for-pages -- product navigation remains available even if client routing is delayed. */
 
+import { useSyncExternalStore } from 'react';
 import { Check, ChevronLeft, ShieldCheck, ShoppingCart } from 'lucide-react';
 import { addToCart } from '@/lib/cart';
 import { approvedCatalog } from '@/lib/catalog/products';
@@ -9,9 +10,17 @@ import { ProductGallery } from '@/components/product-gallery';
 
 const money = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
 
+const subscribeToLocation = (notify: () => void) => {
+  window.addEventListener('popstate', notify);
+  return () => window.removeEventListener('popstate', notify);
+};
+const getLocationSearch = () => window.location.search;
+const getServerSearch = () => '';
+
 export default function ProductPage() {
   const { t } = useLocale();
-  const slug = typeof window === 'undefined' ? '' : new URLSearchParams(window.location.search).get('slug') ?? '';
+  const search = useSyncExternalStore(subscribeToLocation, getLocationSearch, getServerSearch);
+  const slug = new URLSearchParams(search).get('slug') ?? '';
   if (!slug) return <main className="page-shell loading-page"><p>Loading product details…</p></main>;
   const product = approvedCatalog.find((candidate) => candidate.slug === slug);
   if (!product) return <main className="page-shell"><a href="/shop" className="back-link"><ChevronLeft size={16}/>Back to catalog</a><p className="eyebrow">Product details</p><h1>This product is not available.</h1><p>This link does not match a product in the current catalog.</p><a className="button primary" href="/shop">Browse the catalog</a></main>;
