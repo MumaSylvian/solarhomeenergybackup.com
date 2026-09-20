@@ -6,11 +6,17 @@ import { LocaleProvider } from '@/components/locale-provider';
 import { SiteFooter } from '@/components/site-footer';
 
 export const metadata: Metadata = {
-  title: 'SolarHome Energy Backup | Power Today. A Brighter Tomorrow.',
-  description: 'Solar and backup equipment with clear specifications, practical planning tools, and direct product paths.',
+  metadataBase: new URL('https://www.solarhomeenergybackup.com'),
+  title: { default: 'SolarHome Energy Backup | Solar, Battery & Backup Power', template: '%s | SolarHome Energy Backup' },
+  description: 'Shop solar panels, batteries, portable power, and whole-home backup equipment with clear specifications and practical planning support.',
+  keywords: ['solar battery backup', 'portable power station', 'home backup power', 'solar panels', 'inverter', 'energy storage'],
+  alternates: { canonical: '/' },
+  openGraph: { type: 'website', url: 'https://www.solarhomeenergybackup.com', siteName: 'SolarHome Energy Backup', title: 'SolarHome Energy Backup | Solar, Battery & Backup Power', description: 'Solar and backup equipment with clear specifications and practical planning support.' },
+  twitter: { card: 'summary_large_image', title: 'SolarHome Energy Backup', description: 'Solar and backup equipment with clear specifications and practical planning support.' },
   robots: { index: true, follow: true },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body><LocaleProvider><SiteHeader/>{children}<SiteFooter/><StoreUpdates/></LocaleProvider></body></html>;
+  const siteSchema = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'SolarHome Energy Backup', url: 'https://www.solarhomeenergybackup.com', potentialAction: { '@type': 'SearchAction', target: 'https://www.solarhomeenergybackup.com/shop?search={search_term_string}', 'query-input': 'required name=search_term_string' } };
+  return <html lang="en"><body><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema) }}/><LocaleProvider><SiteHeader/>{children}<SiteFooter/><StoreUpdates/></LocaleProvider></body></html>;
 }

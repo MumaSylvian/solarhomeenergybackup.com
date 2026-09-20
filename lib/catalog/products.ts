@@ -52,19 +52,17 @@ export const catalog = csvCatalog
     const primaryImage = resolveCatalogImageUrl(
       clearGalleryPrimary[product.id] ?? product.sourceImageUrl ?? product.sourceDetailImageUrl,
     );
+    const galleryImages = [...new Set([
+      primaryImage,
+      ...(product.galleryImageUrls ?? []).map(resolveCatalogImageUrl),
+    ].filter((image): image is string => Boolean(image)))];
 
-    /**
-     * Gallery attachments in the supplied archives include brand lockups,
-     * awards, promotional banners, compatibility labels, and other
-     * non-equipment graphics. Customer pages intentionally show only the
-     * approved primary equipment image. The original files remain untouched
-     * in the local catalog archive for future review.
-     */
+    /** Keep the supplied, product-specific gallery together with its clear primary image. */
     return {
       ...product,
       sourceImageUrl: primaryImage,
       sourceDetailImageUrl: primaryImage,
-      galleryImageUrls: primaryImage ? [primaryImage] : [],
+      galleryImageUrls: galleryImages,
     };
   });
 
