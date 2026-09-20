@@ -1,6 +1,6 @@
 'use client';
+/* oxlint-disable next/no-html-link-for-pages -- notification links must work without the client router. */
 
-import Link from 'next/link';
 import { Check, MessageCircle, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { WHATSAPP_PHONE_DISPLAY, whatsappUrl } from '@/lib/commerce';
@@ -24,7 +24,7 @@ export function StoreUpdates() {
   }, []);
   const update = updates[index];
   return <>
-    {visible && <aside className="store-update" aria-live="polite"><span className="update-check"><Check size={20}/></span><div><b>{update.title}</b><p>{update.text}</p><Link href={update.href}>Learn more</Link></div><button type="button" onClick={() => setVisible(false)} aria-label="Dismiss update"><X size={17}/></button></aside>}
+    {visible && <aside className="store-update" aria-live="polite"><span className="update-check"><Check size={20}/></span><div><b>{update.title}</b><p>{update.text}</p><a href={update.href}>Learn more</a></div><button type="button" onClick={() => setVisible(false)} aria-label="Dismiss update"><X size={17}/></button></aside>}
     <a className="whatsapp-contact" href={whatsappUrl('Hello SolarHome Energy Backup, I need help with my order or system plan.')} target="_blank" rel="noreferrer" aria-label={`Chat with SolarHome support on WhatsApp at ${WHATSAPP_PHONE_DISPLAY}`}><MessageCircle size={22}/><span>WhatsApp chat</span></a>
   </>;
 }
