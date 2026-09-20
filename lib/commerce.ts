@@ -15,12 +15,55 @@ export const deliveryOptions = {
 export type DeliveryOption = keyof typeof deliveryOptions;
 
 export const paymentOptions = [
-  { id: 'zelle', label: 'Zelle', detail: 'Payment details are sent after the order is confirmed.' },
-  { id: 'apple-pay', label: 'Apple Pay', detail: 'Available after Apple Pay merchant verification is completed.' },
-  { id: 'bank-transfer', label: 'Bank transfer', detail: 'Secure bank instructions are sent after order confirmation.' },
-  { id: 'bitcoin', label: 'Bitcoin', detail: 'A wallet address and payment amount are sent after order confirmation.' },
+  {
+    id: 'zelle',
+    label: 'Zelle',
+    detail: 'Payment details are sent after the order is confirmed.',
+  },
+  {
+    id: 'apple-pay',
+    label: 'Apple Pay',
+    detail: 'Available after Apple Pay merchant verification is completed.',
+  },
+  {
+    id: 'bank-transfer',
+    label: 'Bank transfer',
+    detail: 'Secure bank instructions are sent after order confirmation.',
+  },
+  {
+    id: 'bitcoin',
+    label: 'Bitcoin',
+    detail:
+      'A wallet address and payment amount are sent after order confirmation.',
+  },
 ] as const;
 
+/** Price rules are kept here so listing, cart, checkout, and invoice totals agree. */
+export function discountPercentFor(sourcePrice: number | null | undefined) {
+  if (sourcePrice === null || sourcePrice === undefined || sourcePrice < 0)
+    return 0;
+  if (sourcePrice <= 500) return 10;
+  if (sourcePrice <= 1000) return 15;
+  if (sourcePrice <= 5000) return 20;
+  return 25;
+}
+
+export function discountedPriceFor(sourcePrice: number | null | undefined) {
+  if (sourcePrice === null || sourcePrice === undefined || sourcePrice < 0)
+    return null;
+  return (
+    Math.round(
+      sourcePrice * (1 - discountPercentFor(sourcePrice) / 100) * 100,
+    ) / 100
+  );
+}
+
 export function shippingFor(subtotal: number) {
-  return subtotal >= 1000 ? 0 : Math.round(subtotal * 0.2 * 100) / 100;
+  return subtotal >= 2000 ? 0 : Math.round(subtotal * 0.1 * 100) / 100;
+}
+
+export function shippingPolicyFor(subtotal: number) {
+  return subtotal >= 2000
+    ? 'Free shipping on this order.'
+    : 'Shipping is 10% of the merchandise subtotal. Orders of $2,000 or more ship free.';
 }
