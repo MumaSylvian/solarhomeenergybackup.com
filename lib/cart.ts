@@ -11,7 +11,8 @@ export type StoredCart = Record<
   string,
   { product: CartProduct; quantity: number }
 >;
-const cartKey = 'solarhome-reserve-cart-v1';
+// A new key prevents pre-policy browser carts from showing an outdated sale price.
+const cartKey = 'solarhome-reserve-cart-v2';
 
 export function readCart(): StoredCart {
   if (typeof window === 'undefined') return {};
