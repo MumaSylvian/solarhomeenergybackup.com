@@ -172,7 +172,7 @@ const audit = {
   ),
   categories: Object.fromEntries(
     [...new Set(catalog.map((product) => product.category))]
-      .sort()
+      .sort((left, right) => left.localeCompare(right))
       .map((category) => [
         category,
         catalog.filter((product) => product.category === category).length,
