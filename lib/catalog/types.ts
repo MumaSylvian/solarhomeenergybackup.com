@@ -7,7 +7,18 @@ export type CatalogProduct = {
   brand: string;
   model: string;
   sku?: string | null;
-  category: 'Whole-home backup' | 'Portable power' | 'Batteries' | 'Solar panels' | 'Home integration' | 'EV chargers' | 'Accessories';
+  category:
+    | 'Whole-home backup'
+    | 'Portable power'
+    | 'Batteries'
+    | 'Solar panels'
+    | 'Home integration'
+    | 'EV chargers'
+    | 'Accessories'
+    | 'Dishwashers'
+    | 'Freezers'
+    | 'Refrigerators'
+    | 'Washers & Dryers';
   shortDescription: string;
   status: ProductStatus;
   wholeHomeCapable: boolean;
@@ -32,7 +43,13 @@ export type CatalogProduct = {
 };
 
 export type SupplierOffer = {
-  supplier: 'Signature Solar' | 'Current Connected' | 'EcoFlow' | 'Anker SOLIX' | 'BLUETTI';
+  supplier:
+    | 'Signature Solar'
+    | 'Current Connected'
+    | 'EcoFlow'
+    | 'Anker SOLIX'
+    | 'BLUETTI'
+    | 'The Home Depot';
   supplierUrl: string;
   supplierSku?: string | null;
   supplierPrice?: number | null;
