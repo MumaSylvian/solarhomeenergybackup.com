@@ -171,18 +171,23 @@ export const catalog = csvCatalog
   });
 
 /** One storefront product per normalized model; alternate suppliers remain supplier offers. */
-export const uniqueCatalog = catalog.filter(
-  (product, index, products) =>
+export const uniqueCatalog = catalog.filter((product, index, products) => {
+  // Every supplied CSV SKU is a distinct storefront record. Keep the older
+  // solar catalog's model-level deduplication for alternate supplier rows.
+  if (product.id.startsWith('csv-home-depot-')) return true;
+  return (
     products.findIndex(
       (candidate) =>
+        !candidate.id.startsWith('csv-home-depot-') &&
         `${candidate.brand}:${candidate.model}`
           .replace(/[^a-z0-9]/gi, '')
           .toLowerCase() ===
-        `${product.brand}:${product.model}`
-          .replace(/[^a-z0-9]/gi, '')
-          .toLowerCase(),
-    ) === index,
-);
+          `${product.brand}:${product.model}`
+            .replace(/[^a-z0-9]/gi, '')
+            .toLowerCase(),
+    ) === index
+  );
+});
 
 export const approvedCatalog = uniqueCatalog.filter(
   (product) => product.status === 'APPROVED',
