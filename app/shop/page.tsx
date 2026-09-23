@@ -1,4 +1,5 @@
 'use client';
+/* oxlint-disable react-compiler -- URL query changes must reset the hydrated catalog controls. */
 
 import { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
@@ -33,6 +34,14 @@ export default function ShopPage() {
   const categories = [
     ...new Set(catalog.map((product) => product.category)),
   ].sort();
+  const categoryParam = searchParams.get('category') ?? '';
+  const searchParam = searchParams.get('search') ?? '';
+
+  useEffect(() => {
+    setCategory(categoryParam);
+    setQuery(searchParam);
+    setShown(pageSize);
+  }, [categoryParam, searchParam]);
   const products = catalog
     .filter((product) => {
       const haystack =
@@ -88,8 +97,8 @@ export default function ShopPage() {
           <h1>Equipment organized around the way you power.</h1>
           <p>
             Browse {catalog.length.toLocaleString()} products from{' '}
-            {brands.length} recognized brands. Savings of 10%, 15%, 20%, or
-            25% are automatically based on each product’s supplied price.
+            {brands.length} recognized brands. Savings of 10%, 15%, 20%, or 25%
+            are automatically based on each product’s supplied price.
           </p>
         </div>
         <div className="hub-stats" aria-label="Catalog commitments">
