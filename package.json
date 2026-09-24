@@ -6,9 +6,8 @@
     "node": ">=22.13.0"
   },
   "scripts": {
-    "prebuild": "node scripts/generate-sitemap.mjs",
     "dev": "vinext dev",
-    "build": "vinext build",
+    "build": "vinext build && node scripts/generate-sitemap.mjs",
     "start": "wrangler dev --config dist/server/wrangler.json",
     "lint": "oxlint",
     "format": "oxfmt"

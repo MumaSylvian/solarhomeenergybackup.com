@@ -8,6 +8,14 @@
       "maxDuration": 10
     }
   },
+  "redirects": [
+    {
+      "source": "/product",
+      "has": [{ "type": "query", "key": "slug", "value": "(?<slug>[a-z0-9-]+)" }],
+      "destination": "/products/:slug",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/catalog/(.*)",

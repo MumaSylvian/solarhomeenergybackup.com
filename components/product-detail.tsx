@@ -1,8 +1,10 @@
 'use client';
 /* oxlint-disable next/no-html-link-for-pages -- native links preserve product navigation when client routing is delayed. */
 
-import { Check, ChevronLeft, ShieldCheck, ShoppingCart } from 'lucide-react';
+import { useState } from 'react';
+import { Check, ShieldCheck, ShoppingCart } from 'lucide-react';
 import { addToCart } from '@/lib/cart';
+import { storefrontCategories } from '@/lib/catalog/categories';
 import type { CatalogProduct } from '@/lib/catalog/types';
 import { useLocale } from '@/components/locale-provider';
 import { ProductGallery } from '@/components/product-gallery';
@@ -15,7 +17,10 @@ const money = new Intl.NumberFormat('en-US', {
 
 export function ProductDetail({ product }: { product: CatalogProduct }) {
   const { t } = useLocale();
-  const add = () =>
+  // Counts adds on this page so repeated clicks are visibly acknowledged.
+  const [addedCount, setAddedCount] = useState(0);
+  const add = () => {
+    setAddedCount((count) => count + 1);
     addToCart({
       id: product.id,
       slug: product.slug,
@@ -25,14 +30,30 @@ export function ProductDetail({ product }: { product: CatalogProduct }) {
       sourcePrice: product.sourcePrice,
       retailPrice: product.retailPrice,
     });
+  };
   const discount = discountPercentFor(product.sourcePrice);
+  const category = storefrontCategories.find(
+    (item) => item.label === product.category,
+  );
 
   return (
     <main className="page-shell product-page">
-      <a href="/shop" className="back-link">
-        <ChevronLeft size={16} />
-        Back to catalog
-      </a>
+      <nav aria-label="Breadcrumb" className="breadcrumb">
+        <ol>
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/shop">Shop</a>
+          </li>
+          {category && (
+            <li>
+              <a href={category.href}>{category.label}</a>
+            </li>
+          )}
+          <li aria-current="page">{product.name}</li>
+        </ol>
+      </nav>
       <div className="details-grid">
         <ProductGallery
           key={product.id}
@@ -84,6 +105,17 @@ export function ProductDetail({ product }: { product: CatalogProduct }) {
             <ShoppingCart size={16} />
             {t('addToCart')}
           </button>
+          <output className="added-message">
+            {addedCount > 0 && (
+              <>
+                <Check size={15} />
+                {addedCount === 1
+                  ? 'Added to your cart.'
+                  : `Added to your cart (${addedCount} in this visit).`}{' '}
+                <a href="/checkout">View cart</a>
+              </>
+            )}
+          </output>
         </div>
       </div>
       <div className="detail-sections">

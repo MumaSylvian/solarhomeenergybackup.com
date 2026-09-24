@@ -3,20 +3,32 @@ import { ArrowRight } from 'lucide-react';
 import { ProductCard } from '@/components/storefront';
 import { approvedCatalog } from '@/lib/catalog/products';
 
+/**
+ * Homepage picks: one whole-home system, one home-backup power station, and one
+ * entry-level unit. Edit these IDs to change the featured products.
+ */
+const featuredIds = ['catalog-413', 'catalog-697', 'catalog-822'];
+const powerCategories = new Set(['Whole-home backup', 'Portable power', 'Batteries']);
+
 export function HomeFeatured() {
-  const products = approvedCatalog
-    .slice()
-    .sort(
-      (left, right) =>
-        left.brand.localeCompare(right.brand) ||
-        left.name.localeCompare(right.name),
-    )
-    .slice(0, 3);
+  const picks = featuredIds
+    .map((id) => approvedCatalog.find((product) => product.id === id))
+    .filter((product) => product !== undefined);
+  // If a pick leaves the catalog, fill the row with other priced power products.
+  const products = [
+    ...picks,
+    ...approvedCatalog.filter(
+      (product) =>
+        powerCategories.has(product.category) &&
+        product.retailPrice &&
+        !picks.includes(product),
+    ),
+  ].slice(0, 3);
   return (
     <section className="featured">
       <div className="section featured-head">
         <div>
-          <p className="eyebrow">Featured brands</p>
+          <p className="eyebrow">Featured backup power</p>
           <h2>
             Current equipment.
             <br />

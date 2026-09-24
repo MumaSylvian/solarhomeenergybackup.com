@@ -25,9 +25,42 @@ export function readCart(): StoredCart {
   }
 }
 
+const cartChangeEvent = 'solarhome-cart-change';
+
 export function saveCart(cart: StoredCart) {
-  if (typeof window !== 'undefined')
-    window.localStorage.setItem(cartKey, JSON.stringify(cart));
+  if (typeof window === 'undefined') return;
+  window.localStorage.setItem(cartKey, JSON.stringify(cart));
+  window.dispatchEvent(new Event(cartChangeEvent));
+}
+
+/** Notifies on cart changes in this tab and in other open tabs. */
+export function subscribeToCart(onChange: () => void) {
+  const onStorage = (event: StorageEvent) => {
+    if (event.key === cartKey) onChange();
+  };
+  window.addEventListener(cartChangeEvent, onChange);
+  window.addEventListener('storage', onStorage);
+  return () => {
+    window.removeEventListener(cartChangeEvent, onChange);
+    window.removeEventListener('storage', onStorage);
+  };
+}
+
+export function cartItemCount() {
+  return Object.values(readCart()).reduce(
+    (total, item) => total + item.quantity,
+    0,
+  );
+}
+
+/** Sets a line's quantity; zero or less removes the line. */
+export function setCartQuantity(id: string, quantity: number) {
+  const cart = readCart();
+  if (!cart[id]) return cart;
+  if (quantity <= 0) delete cart[id];
+  else cart[id] = { ...cart[id], quantity: Math.min(quantity, 99) };
+  saveCart(cart);
+  return cart;
 }
 
 export function addToCart(product: CartProduct) {

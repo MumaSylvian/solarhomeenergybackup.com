@@ -2,12 +2,18 @@
 /* oxlint-disable next/no-html-link-for-pages -- these primary links must retain native browser navigation if hydration is delayed. */
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useSyncExternalStore } from 'react';
 import { ChevronDown, Globe2, Menu, Search, ShoppingCart } from 'lucide-react';
 import { languages, useLocale } from '@/components/locale-provider';
+import { cartItemCount, subscribeToCart } from '@/lib/cart';
 import { storefrontCategories } from '@/lib/catalog/categories';
 
 export function SiteHeader() {
+  const cartCount = useSyncExternalStore(
+    subscribeToCart,
+    cartItemCount,
+    () => 0,
+  );
   const [languageOpen, setLanguageOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const { code, setCode, t } = useLocale();
@@ -72,9 +78,18 @@ export function SiteHeader() {
           <a
             href="/checkout"
             className="cart-button"
-            aria-label="Open shopping cart"
+            aria-label={
+              cartCount
+                ? `Open shopping cart, ${cartCount} ${cartCount === 1 ? 'item' : 'items'}`
+                : 'Open shopping cart'
+            }
           >
             <ShoppingCart size={20} />
+            {cartCount > 0 && (
+              <span className="cart-count" aria-hidden="true">
+                {cartCount > 99 ? '99+' : cartCount}
+              </span>
+            )}
           </a>
           <div className="language-picker">
             <button

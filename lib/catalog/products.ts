@@ -142,8 +142,19 @@ const unusablePrimaryImageIds = new Set([
   'catalog-881',
 ]);
 
+/**
+ * Supplied records with bad data that should not be sold until corrected:
+ * catalog-724 is a Bluetooth speaker filed under Portable power at a
+ * $9,999,999.99 placeholder price.
+ */
+const excludedProductIds = new Set(['catalog-724']);
+
 export const catalog = csvCatalog
-  .filter((product) => !unusablePrimaryImageIds.has(product.id))
+  .filter(
+    (product) =>
+      !unusablePrimaryImageIds.has(product.id) &&
+      !excludedProductIds.has(product.id),
+  )
   .map((product) => {
     const primaryImage = resolveCatalogImageUrl(
       clearGalleryPrimary[product.id] ??

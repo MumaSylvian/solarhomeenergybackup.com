@@ -3,7 +3,7 @@
 /* oxlint-disable next/no-html-link-for-pages -- storefront links retain native navigation if client routing is unavailable. */
 
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import {
   ArrowRight,
   Battery,
@@ -12,6 +12,8 @@ import {
   ChevronRight,
   CircleHelp,
   Globe2,
+  Pause,
+  Play,
   ShieldCheck,
 } from 'lucide-react';
 import { useLocale } from '@/components/locale-provider';
@@ -90,17 +92,58 @@ const slides = [
   },
 ];
 
+const reducedMotionQuery = '(prefers-reduced-motion: reduce)';
+
+function subscribeReducedMotion(onChange: () => void) {
+  const query = window.matchMedia(reducedMotionQuery);
+  query.addEventListener('change', onChange);
+  return () => query.removeEventListener('change', onChange);
+}
+
 export function Storefront() {
   const [activeSlide, setActiveSlide] = useState(0);
+  // An explicit play/pause choice wins; otherwise reduced-motion visitors start
+  // paused. `interacting` holds the slide while the hero is hovered or focused.
+  const [playChoice, setPlayChoice] = useState<'play' | 'pause' | null>(null);
+  const [interacting, setInteracting] = useState(false);
+  const prefersReducedMotion = useSyncExternalStore(
+    subscribeReducedMotion,
+    () => window.matchMedia(reducedMotionQuery).matches,
+    () => false,
+  );
+  const paused = playChoice ? playChoice === 'pause' : prefersReducedMotion;
+  const heroRef = useRef<HTMLElement>(null);
   const slide = slides[activeSlide];
 
   useEffect(() => {
+    const hero = heroRef.current;
+    if (!hero) return;
+    const hold = () => setInteracting(true);
+    const release = (event: Event) => {
+      const next = (event as FocusEvent).relatedTarget as Node | null;
+      if (event.type === 'mouseleave' || !hero.contains(next))
+        setInteracting(false);
+    };
+    hero.addEventListener('mouseenter', hold);
+    hero.addEventListener('mouseleave', release);
+    hero.addEventListener('focusin', hold);
+    hero.addEventListener('focusout', release);
+    return () => {
+      hero.removeEventListener('mouseenter', hold);
+      hero.removeEventListener('mouseleave', release);
+      hero.removeEventListener('focusin', hold);
+      hero.removeEventListener('focusout', release);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (paused || interacting) return;
     const timer = window.setInterval(
       () => setActiveSlide((current) => (current + 1) % slides.length),
       6500,
     );
     return () => window.clearInterval(timer);
-  }, []);
+  }, [paused, interacting]);
   const moveSlide = (direction: -1 | 1) =>
     setActiveSlide(
       (current) => (current + direction + slides.length) % slides.length,
@@ -108,7 +151,12 @@ export function Storefront() {
 
   return (
     <main>
-      <section className="hero-slider" aria-label="Featured energy solutions">
+      <section
+        className="hero-slider"
+        aria-label="Featured energy solutions"
+        aria-roledescription="carousel"
+        ref={heroRef}
+      >
         <Image
           className="hero-photo"
           src={slide.image}
@@ -152,11 +200,19 @@ export function Storefront() {
                 className={index === activeSlide ? 'active' : ''}
                 onClick={() => setActiveSlide(index)}
                 aria-label={`Show slide ${index + 1}`}
+                aria-current={index === activeSlide ? 'true' : undefined}
               />
             ))}
           </div>
           <button onClick={() => moveSlide(1)} aria-label="Next slide">
             <ChevronRight size={19} />
+          </button>
+          <button
+            onClick={() => setPlayChoice(paused ? 'play' : 'pause')}
+            aria-label={paused ? 'Play slideshow' : 'Pause slideshow'}
+            aria-pressed={paused}
+          >
+            {paused ? <Play size={17} /> : <Pause size={17} />}
           </button>
         </div>
         <aside className="hero-status">
@@ -330,7 +386,7 @@ export function ProductCard({
     batteryCapacityWh: batteryCapacityWh ?? capacity,
     acVoltage: acVoltage ?? voltage,
   };
-  const productHref = `/product?slug=${encodeURIComponent(slug)}`;
+  const productHref = `/products/${encodeURIComponent(slug)}`;
   const discount = discountPercentFor(sourcePrice);
   return (
     <article className="product-card">

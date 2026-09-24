@@ -3,8 +3,20 @@
 /* oxlint-disable next/no-html-link-for-pages -- checkout navigation must remain available without client routing. */
 
 import { useEffect, useMemo, useState } from 'react';
-import { CircleHelp, ShoppingCart, ShieldCheck, X } from 'lucide-react';
-import { readCart, saveCart, type StoredCart } from '@/lib/cart';
+import {
+  CircleHelp,
+  Minus,
+  Plus,
+  ShoppingCart,
+  ShieldCheck,
+  X,
+} from 'lucide-react';
+import {
+  readCart,
+  saveCart,
+  setCartQuantity,
+  type StoredCart,
+} from '@/lib/cart';
 import { shippingFor, shippingPolicyFor } from '@/lib/commerce';
 
 const money = new Intl.NumberFormat('en-US', {
@@ -32,6 +44,8 @@ export default function CheckoutPage() {
     setCart(next);
     saveCart(next);
   };
+  const changeQuantity = (id: string, quantity: number) =>
+    setCart({ ...setCartQuantity(id, quantity) });
   return (
     <main className="page-shell">
       <header>
@@ -49,11 +63,36 @@ export default function CheckoutPage() {
             <div className="order-lines">
               {entries.map(({ product, quantity }) => (
                 <div key={product.id}>
-                  <span>
+                  <div className="order-line-info">
                     <b>{product.name}</b>
                     <br />
-                    {product.brand} · Qty {quantity}
-                  </span>
+                    {product.brand}
+                    <fieldset
+                      className="qty-stepper"
+                      aria-label={`Quantity for ${product.name}`}
+                    >
+                      <button
+                        type="button"
+                        onClick={() => changeQuantity(product.id, quantity - 1)}
+                        aria-label={
+                          quantity === 1
+                            ? `Remove ${product.name}`
+                            : `Decrease quantity of ${product.name}`
+                        }
+                      >
+                        <Minus size={14} />
+                      </button>
+                      <output aria-live="polite">{quantity}</output>
+                      <button
+                        type="button"
+                        onClick={() => changeQuantity(product.id, quantity + 1)}
+                        aria-label={`Increase quantity of ${product.name}`}
+                        disabled={quantity >= 99}
+                      >
+                        <Plus size={14} />
+                      </button>
+                    </fieldset>
+                  </div>
                   <span>
                     {money.format((product.retailPrice ?? 0) * quantity)}{' '}
                     <button

@@ -18,5 +18,5 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const siteSchema = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'SolarHome Energy Backup', url: 'https://www.solarhomeenergybackup.com', potentialAction: { '@type': 'SearchAction', target: 'https://www.solarhomeenergybackup.com/shop?search={search_term_string}', 'query-input': 'required name=search_term_string' } };
-  return <html lang="en"><body><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema) }}/><LocaleProvider><SiteHeader/>{children}<SiteFooter/><StoreUpdates/></LocaleProvider></body></html>;
+  return <html lang="en"><body><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema) }}/><a className="skip-link" href="#main-content">Skip to main content</a><LocaleProvider><SiteHeader/><div id="main-content" tabIndex={-1}>{children}</div><SiteFooter/><StoreUpdates/></LocaleProvider></body></html>;
 }
