@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { ProductDetail } from '@/components/product-detail';
 import { approvedCatalog, bySlug } from '@/lib/catalog/products';
 import { storefrontCategories } from '@/lib/catalog/categories';
+import { conditionOf, isInStock, schemaCondition } from '@/lib/catalog/offer';
 
 const siteUrl = 'https://www.solarhomeenergybackup.com';
 
@@ -45,6 +46,11 @@ export default async function ProductPage({ params }: Params) {
   if (!product) notFound();
 
   const url = `${siteUrl}/products/${product.slug}`;
+  // Condition and availability come from data, never constants: a "new" or
+  // "in stock" claim that contradicts the listing is a Merchant Center
+  // misrepresentation risk.
+  const condition = schemaCondition[conditionOf(product)];
+  const inStock = isInStock(product);
   const category = storefrontCategories.find(
     (item) => item.label === product.category,
   );
@@ -61,6 +67,7 @@ export default async function ProductPage({ params }: Params) {
       mpn: product.model || undefined,
       category: product.category,
       brand: { '@type': 'Brand', name: product.brand },
+      itemCondition: condition,
       offers:
         product.retailPrice !== null && product.retailPrice !== undefined
           ? {
@@ -68,8 +75,9 @@ export default async function ProductPage({ params }: Params) {
               url,
               price: product.retailPrice.toFixed(2),
               priceCurrency: 'USD',
-              availability: 'https://schema.org/InStock',
-              itemCondition: 'https://schema.org/NewCondition',
+              availability: inStock ? 'https://schema.org/InStock' : undefined,
+              itemCondition: condition,
+              seller: { '@id': `${siteUrl}/#organization` },
             }
           : undefined,
     },

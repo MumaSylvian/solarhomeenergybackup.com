@@ -2,6 +2,7 @@
 import { ArrowRight } from 'lucide-react';
 import { ProductCard } from '@/components/storefront';
 import { approvedCatalog } from '@/lib/catalog/products';
+import { isInStock } from '@/lib/catalog/offer';
 
 /**
  * Homepage picks: one whole-home system, one home-backup power station, and one
@@ -59,6 +60,7 @@ export function HomeFeatured() {
             capacity={product.batteryCapacityWh}
             voltage={product.acVoltage}
             priority={index < 3}
+            inStock={isInStock(product)}
           />
         ))}
       </div>

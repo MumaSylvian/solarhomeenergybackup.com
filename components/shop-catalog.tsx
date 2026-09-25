@@ -240,6 +240,7 @@ export function ShopCatalog({ catalog }: { catalog: ShopItem[] }) {
                 output={product.continuousOutputWatts}
                 capacity={product.batteryCapacityWh}
                 voltage={product.acVoltage}
+                inStock={product.inStock}
                 add={add}
                 priority={index < 6}
               />

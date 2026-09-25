@@ -1,4 +1,5 @@
 import { TrustPage } from '@/components/trust-page';
+import { SHIPPING_POLICY } from '@/lib/commerce';
 import { pageMetadata } from '@/lib/seo';
 
 export const metadata = pageMetadata({
@@ -8,4 +9,6 @@ export const metadata = pageMetadata({
   path: '/shipping-delivery',
 });
 
-export default function ShippingDeliveryPage() { return <TrustPage eyebrow="Shipping & delivery" title="Delivery terms, clearly stated." intro="Every product listing is shown as in stock. Delivery timing and delivery address are confirmed during order review before payment instructions are issued." sections={[{ title: 'Delivery choices', body: 'Priority delivery is estimated at 2–3 business days. Express delivery is estimated at 4–7 business days. These estimates begin after an order is confirmed and payment is verified.' }, { title: 'Shipping cost', body: 'For an order subtotal below $1,000, shipping is 20% of the product value. Orders worth $1,000 or more qualify for free shipping. Taxes, if applicable, are presented during order review.' }, { title: 'Order confirmation', body: 'We verify product configuration, delivery address, and final availability before scheduling fulfillment. Delivery estimates are not a guarantee and may change for remote locations, carrier disruptions, or installation-related equipment.' }]}/>; }
+// Shipping cost text comes from lib/commerce.ts, the same values checkout
+// charges. Do not restate the rate or threshold here by hand.
+export default function ShippingDeliveryPage() { return <TrustPage eyebrow="Shipping & delivery" title="Delivery terms, clearly stated." intro="Availability, delivery timing, and the delivery address are confirmed during order review, before payment instructions are issued. Product pages show “In stock at supplier” only where current supplier data confirms stock." sections={[{ title: 'Delivery choices', body: 'Priority delivery is estimated at 2–3 business days. Express delivery is estimated at 4–7 business days. These estimates begin after an order is confirmed and payment is verified.' }, { title: 'Shipping cost', body: `${SHIPPING_POLICY} Taxes, if applicable, are presented during order review.` }, { title: 'Order confirmation', body: 'We verify product configuration, delivery address, and final availability before scheduling fulfillment. Delivery estimates are not a guarantee and may change for remote locations, carrier disruptions, or installation-related equipment.' }]}/>; }

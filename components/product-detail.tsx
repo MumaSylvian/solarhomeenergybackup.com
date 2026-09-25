@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { Check, ShieldCheck, ShoppingCart } from 'lucide-react';
 import { addToCart } from '@/lib/cart';
 import { storefrontCategories } from '@/lib/catalog/categories';
+import { isInStock } from '@/lib/catalog/offer';
 import type { CatalogProduct } from '@/lib/catalog/types';
 import { useLocale } from '@/components/locale-provider';
 import { ProductGallery } from '@/components/product-gallery';
@@ -32,6 +33,7 @@ export function ProductDetail({ product }: { product: CatalogProduct }) {
     });
   };
   const discount = discountPercentFor(product.sourcePrice);
+  const inStock = isInStock(product);
   const category = storefrontCategories.find(
     (item) => item.label === product.category,
   );
@@ -64,10 +66,16 @@ export function ProductDetail({ product }: { product: CatalogProduct }) {
         <div className="detail-info">
           <div className="product-meta">
             <p className="product-category">{product.category}</p>
-            <p className="availability-line">
-              <Check size={13} />
-              {t('inStock')}
-            </p>
+            {inStock ? (
+              <p className="availability-line">
+                <Check size={13} />
+                {t('inStock')}
+              </p>
+            ) : (
+              <p className="availability-line pending">
+                {t('confirmAvailability')}
+              </p>
+            )}
           </div>
           <p className="product-brand">{product.brand}</p>
           <h1>{product.name}</h1>
@@ -87,8 +95,8 @@ export function ProductDetail({ product }: { product: CatalogProduct }) {
           <div className="fulfillment-strip">
             <span>
               <Check size={16} />
-              <b>In stock</b>
-              <small>Availability confirmed before payment</small>
+              <b>{inStock ? 'In stock at supplier' : 'Availability'}</b>
+              <small>Confirmed at order review, before payment</small>
             </span>
             <span>
               <ShieldCheck size={16} />
@@ -97,8 +105,11 @@ export function ProductDetail({ product }: { product: CatalogProduct }) {
             </span>
             <span>
               <ShoppingCart size={16} />
-              <b>Delivery review</b>
-              <small>Priority 2–3 business days</small>
+              <b>Delivery estimate</b>
+              <small>
+                Priority 2–3 business days, starting after order confirmation
+                and payment
+              </small>
             </span>
           </div>
           <button className="button primary" type="button" onClick={add}>

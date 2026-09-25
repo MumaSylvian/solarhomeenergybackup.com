@@ -1,4 +1,5 @@
 import { approvedCatalog } from './products';
+import { isInStock } from './offer';
 import type { CatalogProduct } from './types';
 
 /**
@@ -23,6 +24,8 @@ export type ShopItem = {
   batteryCapacityWh: number | null;
   acVoltage: string | null;
   wholeHomeCapable: boolean;
+  /** Supplier-confirmed stock; see lib/catalog/offer.ts. */
+  inStock: boolean;
   /** Lower-cased name, brand, category, model and SKU for search. */
   searchText: string;
 };
@@ -52,6 +55,7 @@ export function toShopItem(product: CatalogProduct): ShopItem {
     batteryCapacityWh: product.batteryCapacityWh ?? null,
     acVoltage: product.acVoltage ?? null,
     wholeHomeCapable: product.wholeHomeCapable,
+    inStock: isInStock(product),
     searchText:
       `${product.name} ${product.brand} ${product.category} ${product.model} ${product.sku ?? ''}`.toLowerCase(),
   };

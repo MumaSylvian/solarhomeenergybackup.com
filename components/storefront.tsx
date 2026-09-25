@@ -351,11 +351,14 @@ export function ProductCard({
   continuousOutputWatts,
   batteryCapacityWh,
   acVoltage,
+  inStock = false,
 }: ProductPreview & {
   output?: number | null;
   capacity?: number | null;
   voltage?: string | null;
   priority?: boolean;
+  /** True only when supplier data confirms stock (lib/catalog/offer.ts). */
+  inStock?: boolean;
   add?: (product: ProductPreview) => void;
 }) {
   const { t } = useLocale();
@@ -411,9 +414,15 @@ export function ProductCard({
       <div className="product-content">
         <div className="product-meta">
           <p className="product-category">{category}</p>
-          <p className="availability-line">
-            <Check size={13} /> {t('inStock')}
-          </p>
+          {inStock ? (
+            <p className="availability-line">
+              <Check size={13} /> {t('inStock')}
+            </p>
+          ) : (
+            <p className="availability-line pending">
+              {t('confirmAvailability')}
+            </p>
+          )}
         </div>
         <p className="product-brand">{displayBrand}</p>
         <h3>{name}</h3>

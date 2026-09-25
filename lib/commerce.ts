@@ -58,12 +58,25 @@ export function discountedPriceFor(sourcePrice: number | null | undefined) {
   );
 }
 
+/**
+ * Shipping terms. Checkout charges from these values and every page that
+ * describes shipping reads them, so the published policy and the amount
+ * charged cannot drift apart.
+ */
+export const FREE_SHIPPING_THRESHOLD = 2000;
+export const SHIPPING_RATE = 0.1;
+const thresholdText = `$${FREE_SHIPPING_THRESHOLD.toLocaleString('en-US')}`;
+const rateText = `${Math.round(SHIPPING_RATE * 100)}%`;
+export const SHIPPING_POLICY = `Shipping is ${rateText} of the merchandise subtotal for orders below ${thresholdText}. Orders of ${thresholdText} or more ship free.`;
+
 export function shippingFor(subtotal: number) {
-  return subtotal >= 2000 ? 0 : Math.round(subtotal * 0.1 * 100) / 100;
+  return subtotal >= FREE_SHIPPING_THRESHOLD
+    ? 0
+    : Math.round(subtotal * SHIPPING_RATE * 100) / 100;
 }
 
 export function shippingPolicyFor(subtotal: number) {
-  return subtotal >= 2000
+  return subtotal >= FREE_SHIPPING_THRESHOLD
     ? 'Free shipping on this order.'
-    : 'Shipping is 10% of the merchandise subtotal. Orders of $2,000 or more ship free.';
+    : SHIPPING_POLICY;
 }
