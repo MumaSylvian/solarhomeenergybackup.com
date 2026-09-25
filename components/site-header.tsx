@@ -59,6 +59,7 @@ export function SiteHeader() {
               ))}
             </div>
           </details>
+          <a href="/blog">Guides</a>
           <a href="/support">Support</a>
           <a href="/system-finder">{t('planSystem')}</a>
           <a href="/invoice">Invoice</a>
@@ -155,6 +156,7 @@ export function SiteHeader() {
                 {category.label}
               </a>
             ))}
+            <a href="/blog">Backup power guides</a>
             <strong>Help & ordering</strong>
             <a href="/support">Customer support</a>
             <a href="/invoice">Request an invoice</a>

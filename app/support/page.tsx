@@ -1,6 +1,15 @@
 /* oxlint-disable next/no-html-link-for-pages -- support-to-invoice navigation must remain available without client routing. */
 import { ArrowRight, MessageCircle } from 'lucide-react';
 import { SUPPORT_HOURS, WHATSAPP_PHONE_DISPLAY, whatsappUrl } from '@/lib/commerce';
+import { pageMetadata } from '@/lib/seo';
+
+export const metadata = pageMetadata({
+  title: "Customer Support",
+  description:
+    "Get help with product compatibility, system planning, invoices, and order updates. Chat with SolarHome Energy Backup on WhatsApp.",
+  path: '/support',
+});
+
 
 export default function SupportPage() {
   return <main className="page-shell trust-page"><header><p className="eyebrow">Customer support</p><h1>Help for planning, orders, and product questions.</h1><p>Support is available {SUPPORT_HOURS}. Chat directly with our team on WhatsApp for planning help, order updates, invoice questions, and product compatibility.</p></header><div className="trust-layout"><section><article className="trust-section"><h2>Before ordering</h2><p>Use the System Finder for a starting point, then review the listed product specifications and compatibility details. Home integration should be reviewed with a qualified installer.</p></article><article className="trust-section"><h2>After ordering</h2><p>Your order review confirms availability, payment instructions, and a delivery schedule. Keep your submitted reference for any support follow-up.</p></article><article className="trust-section"><h2>Coverage and documentation</h2><p>Your purchase includes a 6-month limited warranty. Use the exact product model and order reference when requesting technical or warranty support.</p></article></section><aside className="aside-card"><MessageCircle size={25}/><h2>Chat on WhatsApp</h2><p>Send a message for customer support, product questions, or invoice help.</p><a className="button primary" href={whatsappUrl('Hello SolarHome Energy Backup, I need customer support.')} target="_blank" rel="noreferrer">WhatsApp {WHATSAPP_PHONE_DISPLAY} <ArrowRight size={16}/></a><a href="/invoice">Request an invoice <ArrowRight size={15}/></a></aside></div></main>;

@@ -1,0 +1,32 @@
+# SolarHome Energy Backup
+
+> Online store for solar panels, home batteries, portable power stations, whole-home backup systems, and EV chargers, with 2,013 product pages and planning guides for home outages. Orders are reviewed before payment; support is by WhatsApp, Monday to Saturday, 9 AM to 5 PM Pacific.
+
+## Guides
+
+- [How to charge a portable power station with solar panels](https://www.solarhomeenergybackup.com/blog/charge-a-power-station-with-solar-panels): Match solar panels to your power station’s input limits, wire them safely in series or parallel, and estimate how long a full solar recharge will take.
+- [How long will a portable power station run a refrigerator?](https://www.solarhomeenergybackup.com/blog/how-long-will-a-power-station-run-a-refrigerator): Estimate how many hours a portable power station can run your refrigerator using its EnergyGuide label, with runtimes for 1,152 Wh, 2,000 Wh, and 3,840 Wh units.
+- [How to size a battery backup system for your home](https://www.solarhomeenergybackup.com/blog/how-to-size-a-home-battery-backup): Work out the inverter watts and battery watt-hours your home needs during an outage, with a worked example you can copy for your own appliances.
+- [LiFePO4 vs. NMC batteries: which chemistry is better for backup power?](https://www.solarhomeenergybackup.com/blog/lifepo4-vs-nmc-batteries-for-backup-power): LiFePO4 and NMC lithium batteries differ in cycle life, weight, and heat tolerance. Learn which chemistry fits home backup, portable power, and travel use.
+- [Portable power station vs. gas generator for home backup](https://www.solarhomeenergybackup.com/blog/portable-power-station-vs-gas-generator): Battery power station or gas generator? See how they differ on indoor safety and runtime, and which one fits your home outage plan.
+
+## Shop
+
+- [Shop solar, battery & backup power equipment](https://www.solarhomeenergybackup.com/shop): Browse portable power stations, batteries, solar panels, inverters, and whole-home backup equipment with clear specifications and automatic savings.
+- [Whole-Home Backup Power Systems](https://www.solarhomeenergybackup.com/whole-home-backup): Compare whole-home backup systems: inverters, battery banks, and power kits sized for essential circuits or full-home coverage during outages.
+- [Portable Power Stations](https://www.solarhomeenergybackup.com/portable-power): Portable power stations from EcoFlow, Anker SOLIX, BLUETTI, and more for outages, RVs, job sites, and camping. Compare capacity and output.
+- [Solar Panels for Home & Portable Power](https://www.solarhomeenergybackup.com/solar-panels): Solar panels and charging equipment for portable power stations, home battery storage, and fixed rooftop or ground-mount solar systems.
+- [Home EV Chargers (Level 2)](https://www.solarhomeenergybackup.com/ev-chargers): Level 2 home EV chargers and compatible home-energy equipment, with guidance on circuits, installation, and pairing with solar and batteries.
+- [Backup Power System Finder](https://www.solarhomeenergybackup.com/system-finder): Answer a few questions about your outage needs, loads, and solar goals to get a starting checklist for a backup power system.
+
+## Policies
+
+- [Shipping & Delivery](https://www.solarhomeenergybackup.com/shipping-delivery): Delivery options, timing, and shipping costs: priority delivery in 2–3 business days, express in 4–7, and free shipping on orders of $2,000+.
+- [Returns & Refunds](https://www.solarhomeenergybackup.com/returns): Unopened, unused merchandise may be returned within 30 days of delivery. Read how return authorization, inspection, and refunds work.
+- [Warranty](https://www.solarhomeenergybackup.com/warranty): SolarHome Energy Backup provides a 6-month limited seller warranty on eligible purchases. See what is covered and how to make a claim.
+- [Payment Options](https://www.solarhomeenergybackup.com/payment-options): Pay by Zelle, bank transfer, Apple Pay, or Bitcoin after your order is reviewed. Payment is never collected in the browser.
+- [Customer Support](https://www.solarhomeenergybackup.com/support): Get help with product compatibility, system planning, invoices, and order updates. Chat with SolarHome Energy Backup on WhatsApp.
+
+## Optional
+
+- [Sitemap](https://www.solarhomeenergybackup.com/sitemap.xml): every product page

@@ -1,2 +1,11 @@
 import { CategoryPage } from '@/components/category-page';
+import { pageMetadata } from '@/lib/seo';
+
+export const metadata = pageMetadata({
+  title: "Whole-Home Backup Power Systems",
+  description:
+    "Compare whole-home backup systems: inverters, battery banks, and power kits sized for essential circuits or full-home coverage during outages.",
+  path: '/whole-home-backup',
+});
+
 export default function WholeHomeBackupPage() { return <CategoryPage category="Whole-home backup" eyebrow="Whole-home backup" title="Reserve power for the home you live in." copy="Explore capable systems for essential circuits, expanded home coverage, and a more deliberate path to resilient energy." planning="Start with critical loads—not a generic package." useCases={['List the circuits that must stay on during an outage, then estimate their combined running watts.', 'Choose the backup duration that works for your household and size battery capacity around that target.', 'Confirm compatible transfer equipment, voltage, and a qualified installation plan before purchase.']}/>; }

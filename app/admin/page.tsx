@@ -1,4 +1,14 @@
 import { approvedCatalog as catalog } from '@/lib/catalog/products';
+import { pageMetadata } from '@/lib/seo';
+
+export const metadata = pageMetadata({
+  title: "Catalog Admin",
+  description:
+    "Internal catalog review workspace.",
+  path: '/admin',
+  noindex: true,
+});
+
 
 export default function AdminPage() {
   const pending = catalog.filter(

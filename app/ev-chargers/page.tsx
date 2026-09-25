@@ -1,4 +1,13 @@
 import { CategoryPage } from '@/components/category-page';
+import { pageMetadata } from '@/lib/seo';
+
+export const metadata = pageMetadata({
+  title: "Home EV Chargers (Level 2)",
+  description:
+    "Level 2 home EV chargers and compatible home-energy equipment, with guidance on circuits, installation, and pairing with solar and batteries.",
+  path: '/ev-chargers',
+});
+
 
 export default function EvChargersPage() {
   return <CategoryPage
