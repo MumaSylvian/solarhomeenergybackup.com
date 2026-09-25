@@ -4,27 +4,35 @@ import { ProductDetail } from '@/components/product-detail';
 import { approvedCatalog, bySlug } from '@/lib/catalog/products';
 import { storefrontCategories } from '@/lib/catalog/categories';
 import { conditionOf, isInStock, schemaCondition } from '@/lib/catalog/offer';
+import { overviewFor, productMetaDescription } from '@/lib/catalog/overview';
+import { postsForCategory } from '@/lib/blog/posts';
 
 const siteUrl = 'https://www.solarhomeenergybackup.com';
 
 type Params = { params: Promise<{ slug: string }> };
 
+/** Supplier records stay on the server; the page only needs the product. */
+const withoutSupplierData = <T extends { supplierOffers?: unknown }>({
+  supplierOffers: _supplierOffers,
+  ...product
+}: T) => product;
+
 export const dynamicParams = false;
+
+/** Title and link only; the full guide text would bloat every product page. */
+const guideFor = (category: string) => {
+  const post = postsForCategory(category)[0];
+  return post ? { slug: post.slug, title: post.title } : undefined;
+};
 
 export function generateStaticParams() {
   return approvedCatalog.map((product) => ({ slug: product.slug }));
 }
 
-const describe = (text: string) =>
-  text.length > 155 ? `${text.slice(0, 155).replace(/\s+\S*$/, '')}…` : text;
-
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const product = bySlug((await params).slug);
   if (!product) return {};
-  const description = describe(
-    product.shortDescription ||
-      `${product.brand} ${product.name} — ${product.category} from SolarHome Energy Backup.`,
-  );
+  const description = productMetaDescription(product);
   const image = product.galleryImageUrls?.[0];
   return {
     title: product.name,
@@ -59,14 +67,16 @@ export default async function ProductPage({ params }: Params) {
       '@context': 'https://schema.org',
       '@type': 'Product',
       name: product.name,
-      description: product.shortDescription || undefined,
+      description: overviewFor(product),
       image: product.galleryImageUrls?.length
         ? product.galleryImageUrls
         : undefined,
       sku: product.sku || product.model || undefined,
       mpn: product.model || undefined,
       category: product.category,
-      brand: { '@type': 'Brand', name: product.brand },
+      brand: product.brand
+        ? { '@type': 'Brand', name: product.brand }
+        : undefined,
       itemCondition: condition,
       offers:
         product.retailPrice !== null && product.retailPrice !== undefined
@@ -109,7 +119,12 @@ export default async function ProductPage({ params }: Params) {
           __html: JSON.stringify(structuredData).replace(/</g, '\\u003c'),
         }}
       />
-      <ProductDetail product={product} />
+      <ProductDetail
+        product={withoutSupplierData(product)}
+        inStock={inStock}
+        overview={overviewFor(product)}
+        guide={guideFor(product.category)}
+      />
     </>
   );
 }

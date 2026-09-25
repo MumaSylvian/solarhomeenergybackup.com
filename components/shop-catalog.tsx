@@ -37,7 +37,9 @@ export function ShopCatalog({ catalog }: { catalog: ShopItem[] }) {
   const [shown, setShown] = useState(pageSize);
   const [addedName, setAddedName] = useState('');
   const sentinel = useRef<HTMLDivElement>(null);
-  const brands = [...new Set(catalog.map((product) => product.brand))].sort();
+  const brands = [
+    ...new Set(catalog.map((product) => product.brand).filter(Boolean)),
+  ].sort();
   const categories = [
     ...new Set(catalog.map((product) => product.category)),
   ].sort();

@@ -5,18 +5,32 @@ import { useState } from 'react';
 import { Check, ShieldCheck, ShoppingCart } from 'lucide-react';
 import { addToCart } from '@/lib/cart';
 import { storefrontCategories } from '@/lib/catalog/categories';
-import { isInStock } from '@/lib/catalog/offer';
 import type { CatalogProduct } from '@/lib/catalog/types';
 import { useLocale } from '@/components/locale-provider';
 import { ProductGallery } from '@/components/product-gallery';
-import { discountPercentFor } from '@/lib/commerce';
+import { discountPercentFor, whatsappUrl } from '@/lib/commerce';
 
 const money = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
 });
 
-export function ProductDetail({ product }: { product: CatalogProduct }) {
+/**
+ * Receives the product without supplier records (they would be serialized
+ * into the page); stock status is computed on the server and passed in.
+ */
+export function ProductDetail({
+  product,
+  inStock,
+  overview,
+  guide,
+}: {
+  product: Omit<CatalogProduct, 'supplierOffers'>;
+  inStock: boolean;
+  /** Our overview, written on the server from verified fields (lib/catalog/overview.ts). */
+  overview: string;
+  guide?: { slug: string; title: string };
+}) {
   const { t } = useLocale();
   // Counts adds on this page so repeated clicks are visibly acknowledged.
   const [addedCount, setAddedCount] = useState(0);
@@ -33,7 +47,6 @@ export function ProductDetail({ product }: { product: CatalogProduct }) {
     });
   };
   const discount = discountPercentFor(product.sourcePrice);
-  const inStock = isInStock(product);
   const category = storefrontCategories.find(
     (item) => item.label === product.category,
   );
@@ -77,7 +90,7 @@ export function ProductDetail({ product }: { product: CatalogProduct }) {
               </p>
             )}
           </div>
-          <p className="product-brand">{product.brand}</p>
+          {product.brand && <p className="product-brand">{product.brand}</p>}
           <h1>{product.name}</h1>
           <p>{product.shortDescription}</p>
           <div className="detail-price">
@@ -131,26 +144,56 @@ export function ProductDetail({ product }: { product: CatalogProduct }) {
       </div>
       <div className="detail-sections">
         <section>
-          <h2>Product information</h2>
-          <p>{product.rawSpecifications || product.shortDescription}</p>
+          <h2>Overview</h2>
+          <p>{overview}</p>
+          {guide && (
+            <p>
+              Planning a system? Read our guide:{' '}
+              <a href={`/blog/${guide.slug}`}>{guide.title}</a>.
+            </p>
+          )}
         </section>
         <section>
           <h2>Key specifications</h2>
           <dl>
-            {Object.entries(product.specifications).map(([label, value]) => (
-              <div key={label}>
-                <dt>{label}</dt>
-                <dd>{value}</dd>
-              </div>
-            ))}
+            {Object.entries(product.specifications)
+              .filter(([label]) => label !== 'Gallery images')
+              .map(([label, value]) => (
+                <div key={label}>
+                  <dt>{label}</dt>
+                  <dd>{value}</dd>
+                </div>
+              ))}
           </dl>
         </section>
+        {(product.rawSpecifications || product.shortDescription) && (
+          <section>
+            <h2>From the manufacturer</h2>
+            <p>{product.rawSpecifications || product.shortDescription}</p>
+            <p className="warranty-note">
+              Warranty terms mentioned in this description are the
+              manufacturer’s. Our own coverage is the{' '}
+              <a href="/warranty">6-month limited warranty</a>.
+            </p>
+          </section>
+        )}
         <section>
           <h2>Before you order</h2>
           <p>
-            Confirm compatibility, installation requirements, and delivery
-            details during order review. Home electrical work may require a
-            qualified installer.
+            We confirm compatibility, installation requirements, and delivery
+            details with you during order review, before any payment. Home
+            electrical work may require a qualified installer.
+          </p>
+          <p>
+            Questions about this product?{' '}
+            <a
+              href={whatsappUrl(`Hello SolarHome Energy Backup, I have a question about ${product.name}.`)}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Message our team on WhatsApp
+            </a>
+            .
           </p>
         </section>
       </div>

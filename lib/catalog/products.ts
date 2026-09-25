@@ -1,6 +1,7 @@
 import { csvCatalog } from './catalog.generated';
 import { discountedPriceFor } from '@/lib/commerce';
 import { correctRatings } from './spec-fix';
+import { cleanProductContent } from './content-clean';
 
 /**
  * Product photos are stored in Git LFS. The connected Vercel deployment
@@ -146,9 +147,18 @@ const unusablePrimaryImageIds = new Set([
 /**
  * Supplied records with bad data that should not be sold until corrected:
  * catalog-724 is a Bluetooth speaker filed under Portable power at a
- * $9,999,999.99 placeholder price.
+ * $9,999,999.99 placeholder price. The installation-service listings are
+ * services performed by the manufacturer's own certified partners, which this
+ * store cannot sell or fulfil.
  */
-const excludedProductIds = new Set(['catalog-724']);
+const excludedProductIds = new Set([
+  'catalog-724',
+  'catalog-548', // Turnkey Installation Service
+  'catalog-585', // 2x F3800 Plus + Smart Home Power Kit + Installation Service
+  'catalog-655', // F3800 Plus + Smart Home Power Kit + Installation Service
+  'catalog-721', // Power Dock Installation Service
+  'catalog-723', // Smart Inlet Box Installation Service
+]);
 
 export const catalog = csvCatalog
   .filter(
@@ -158,6 +168,8 @@ export const catalog = csvCatalog
   )
   // Repair importer rating errors before anything reads the specs.
   .map(correctRatings)
+  // Remove other businesses' names, contacts, promotions, and policies.
+  .map(cleanProductContent)
   .map((product) => {
     const primaryImage = resolveCatalogImageUrl(
       clearGalleryPrimary[product.id] ??
@@ -203,8 +215,13 @@ export const uniqueCatalog = catalog.filter((product, index, products) => {
   );
 });
 
-export const approvedCatalog = uniqueCatalog.filter(
-  (product) => product.status === 'APPROVED',
-);
+export const approvedCatalog = uniqueCatalog
+  .filter((product) => product.status === 'APPROVED')
+  // Public IDs reach the browser (cart, page payloads); keep the import
+  // source out of them. Internal matching above uses the original IDs.
+  .map((product) => ({
+    ...product,
+    id: product.id.replace(/^csv-home-depot-/, 'item-'),
+  }));
 export const bySlug = (slug: string) =>
   approvedCatalog.find((product) => product.slug === slug);

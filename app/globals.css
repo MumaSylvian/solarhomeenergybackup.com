@@ -135,3 +135,4 @@ footer{display:grid;grid-template-columns:2fr 1fr 1fr;gap:42px;padding:58px max(
 .desktop-nav>a,.desktop-nav summary{display:inline-flex;align-items:center;min-height:44px}.global-search input{align-self:stretch}
 footer>div>a{display:block;padding-block:6px}
 .availability-line.pending{color:var(--muted);font-weight:700;white-space:normal;text-align:right}
+.warranty-note{margin-top:12px;padding:12px 14px;border-left:3px solid var(--line);background:var(--surface-soft);color:var(--muted);font-size:14px}.warranty-note a{color:var(--blue);font-weight:750;text-decoration:underline}
