@@ -89,13 +89,15 @@ function categoryFor(name, description) {
   return 'Portable power';
 }
 
+// Numbers may use thousands separators ("1,800W"); the lookbehind stops a match
+// from starting after a comma, which previously turned 1,800 W into 800 W.
 function titleFacts(name, description) {
   const text = `${name} ${description}`;
   const voltage = text.match(/\b(\d{1,3}(?:\s*\/\s*\d{1,3})?\s*V(?:AC|DC)?)\b/i)?.[1]?.replace(/\s+/g, '') ?? null;
-  const kwh = text.match(/\b(\d+(?:\.\d+)?)\s*kWh\b/i)?.[1] ?? null;
-  const watts = text.match(/\b(\d+(?:\.\d+)?)\s*(kW|W)\b/i);
-  const capacityWh = kwh ? Math.round(Number(kwh) * 1000) : null;
-  const powerWatts = watts ? Math.round(Number(watts[1]) * (watts[2].toLowerCase() === 'kw' ? 1000 : 1)) : null;
+  const kwh = text.match(/(?<![\d.,])(\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d+(?:\.\d+)?)\s*kWh\b/i)?.[1] ?? null;
+  const watts = text.match(/(?<![\d.,])(\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d+(?:\.\d+)?)\s*(kW|W)(?!h)\b/i);
+  const capacityWh = kwh ? Math.round(Number(kwh.replace(/,/g, '')) * 1000) : null;
+  const powerWatts = watts ? Math.round(Number(watts[1].replace(/,/g, '')) * (watts[2].toLowerCase() === 'kw' ? 1000 : 1)) : null;
   return { voltage, capacityWh, powerWatts };
 }
 

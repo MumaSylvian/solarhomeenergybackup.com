@@ -51,7 +51,7 @@ const score = (left, right) => {
 };
 const numberFrom = (text, expression, multiplier = 1) => {
   const match = text.match(expression);
-  return match ? Math.round(Number(match[1].replace(',', '')) * multiplier) : null;
+  return match ? Math.round(Number(match[1].replace(/,/g, '')) * multiplier) : null;
 };
 const voltageFrom = (text) => text.match(/(?<![\d,])(?:\d{1,2}(?:,\d{3})|\d{1,4})(?:\s*\/\s*\d{1,4})?\s*V(?:AC|DC)?\b/i)?.[0]?.replace(/[\s,]/g, '') ?? null;
 const detailImageFrom = (image) => image?.srcset?.match(/(https?:[^,\s]+-1024x[^,\s]+)\s+1024w/i)?.[1] ?? image?.src ?? null;
@@ -59,17 +59,19 @@ const fallbackDescription = (name, category) => {
   const label = category === 'Solar panels' ? 'solar array component' : category === 'Batteries' ? 'energy-storage component' : category === 'Accessories' ? 'compatible system accessory' : 'backup-power component';
   return `${name} is a ${label}; review the listed electrical ratings, fit, and installation requirements before choosing a configuration.`;
 };
+// Numbers may use thousands separators ("1,800W"); the lookbehind stops a match
+// from starting after a comma, which previously turned 1,800 W into 800 W.
 const titleFacts = (name, category) => {
   const text = plainText(name);
   const voltage = voltageFrom(text);
-  const kwh = text.match(/\b(\d+(?:\.\d+)?)\s*kWh\b/i)?.[1];
+  const kwh = text.match(/(?<![\d.,])(\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d+(?:\.\d+)?)\s*kWh\b/i)?.[1];
   const ah = text.match(/\b(\d+(?:\.\d+)?)\s*Ah\b/i)?.[1];
-  const watts = text.match(/\b(\d+(?:\.\d+)?)\s*(kW|W)\b/i);
+  const watts = text.match(/(?<![\d.,])(\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d+(?:\.\d+)?)\s*(kW|W)(?!h)\b/i);
   const kva = text.match(/\b(\d+(?:\.\d+)?)\s*kVA\b/i)?.[1];
-  const wattValue = watts ? Math.round(Number(watts[1]) * (watts[2].toLowerCase() === 'kw' ? 1000 : 1)) : null;
+  const wattValue = watts ? Math.round(Number(watts[1].replace(/,/g, '')) * (watts[2].toLowerCase() === 'kw' ? 1000 : 1)) : null;
   return {
     voltage,
-    capacityWh: kwh ? Math.round(Number(kwh) * 1000) : null,
+    capacityWh: kwh ? Math.round(Number(kwh.replace(/,/g, '')) * 1000) : null,
     outputWatts: category === 'Solar panels' ? null : wattValue,
     specs: {
       ...(voltage ? { Voltage: voltage } : {}),

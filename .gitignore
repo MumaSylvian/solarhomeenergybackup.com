@@ -37,3 +37,6 @@ next-env.d.ts
 /outputs/
 /work/
 /.setup-logs/
+
+# TypeScript incremental build cache
+*.tsbuildinfo

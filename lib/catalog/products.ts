@@ -1,5 +1,6 @@
 import { csvCatalog } from './catalog.generated';
 import { discountedPriceFor } from '@/lib/commerce';
+import { correctRatings } from './spec-fix';
 
 /**
  * Product photos are stored in Git LFS. The connected Vercel deployment
@@ -155,6 +156,8 @@ export const catalog = csvCatalog
       !unusablePrimaryImageIds.has(product.id) &&
       !excludedProductIds.has(product.id),
   )
+  // Repair importer rating errors before anything reads the specs.
+  .map(correctRatings)
   .map((product) => {
     const primaryImage = resolveCatalogImageUrl(
       clearGalleryPrimary[product.id] ??
