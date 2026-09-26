@@ -1,5 +1,5 @@
 import type { CatalogProduct } from './types';
-import { warehouseStock } from './warehouse-stock';
+import { ALL_LISTED_IN_STOCK, warehouseStock } from './warehouse-stock';
 
 /**
  * One source of truth for the condition and availability a product may claim.
@@ -30,6 +30,7 @@ type StockInput = Pick<CatalogProduct, 'supplierOffers' | 'sku' | 'model'>;
  *  - null:        not confirmed; must not be shown or submitted as in stock
  */
 export function stockSource(product: StockInput): 'warehouse' | 'supplier' | null {
+  if (ALL_LISTED_IN_STOCK) return 'warehouse';
   const sku = product.sku ?? product.model;
   if (sku && (warehouseStock[sku] ?? 0) > 0) return 'warehouse';
   if (product.supplierOffers?.some((offer) => offer.availability === 'IN_STOCK')) return 'supplier';

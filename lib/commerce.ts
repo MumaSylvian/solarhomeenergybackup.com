@@ -1,4 +1,5 @@
-export const SUPPORT_HOURS = 'Monday–Saturday, 9:00 AM–5:00 PM Pacific Time';
+/** Confirmed by the owner on 2026-09-26: Central Time, matching the Baton Rouge address. */
+export const SUPPORT_HOURS = 'Monday–Saturday, 9:00 AM–5:00 PM Central Time';
 /** From the Warranty Policy (effective September 26, 2026). */
 export const WARRANTY_TERM = '30-day limited warranty';
 export const WARRANTY_SHORT = '30-day warranty';

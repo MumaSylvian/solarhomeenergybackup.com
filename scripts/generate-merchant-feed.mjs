@@ -49,17 +49,66 @@ function findProduct(html) {
   return null;
 }
 
+
+/**
+ * google_product_category from Google's product taxonomy (IDs verified against
+ * taxonomy-with-ids.en-US.txt, version 2021-09-21). Title keywords first,
+ * then the store category as a fallback.
+ */
+const googleCategoryRules = [
+  // Appliances first: their titles contain words like "mount", "rack",
+  // "all-in-one", or "inverter" that the power-equipment rules would catch.
+  [/dishwasher/i, 680],
+  [/freezer(?!.*refrigerator)/i, 681],
+  [/refrigerator|fridge/i, 686],
+  [/laundry center|washer.*dryer combo|washtower/i, 2849], // Laundry Combo Units
+  [/dryer/i, 2612],
+  [/washer|washing machine/i, 2549],
+  [/air conditioner/i, 605], // Climate Control Appliances > Air Conditioners
+  [/(solar|panel).*(kit|bundle)|(kit|bundle).*solar panel|\+.*\d+\s?w\b.*(solar|panel)/i, 4715], // Solar Energy Kits
+  [/power station|solar generator/i, 1218], // Generators
+  [/generator(?!.*(cover|cord|adapter|input|cable|kit))/i, 1218], // Generators
+  [/charge controller|\bmppt\b/i, 6817], // Battery Charge Controllers
+  // Switches and panels often list an included cable in the title.
+  [/transfer switch|interlock/i, 6459], // Electrical Switches
+  [/breaker|load (?:center|controller)|smart (?:home )?panel|power hub/i, 6807], // Circuit Breaker Panels
+  // Cables named after what they connect ("Battery to Inverter Cables") before inverters.
+  [/\bawg\b|\bcables?\s*(?:$|[|,(])|\bpv wire\b|\bcable kit\b/i, 2345], // Electrical Wires & Cable
+  [/inverter|all-in-one|multiplus|quattro/i, 5142], // Power Inverters
+  [/transformer/i, 505318], // Voltage Transformers & Regulators
+  [/\binlet\b/i, 499966], // Power Inlets
+  [/ev charger|level 2|\bevse\b/i, 7414], // Vehicle Battery Chargers
+  [/cable|\bwire\b|\bawg\b|\bmc4\b|\bcord\b/i, 2345], // Electrical Wires & Cable
+  [/solar panel|\bmodule\b|bifacial|monocrystalline/i, 4714], // Solar Panels
+  [/battery|lifepo4|\blfp\b/i, 276], // Batteries
+  [/bracket|mount|rack/i, 2006], // Electrical Mount Boxes & Brackets
+];
+const googleCategoryByStoreCategory = {
+  'Portable power': 1218, 'Whole-home backup': 5142, Batteries: 276, 'Solar panels': 4714,
+  'Home integration': 127, 'EV chargers': 7414, Accessories: 127, Dishwashers: 680,
+  Freezers: 681, Refrigerators: 686, 'Washers & Dryers': 2706,
+};
+const googleCategoryFor = (title, storeCategory) =>
+  googleCategoryRules.find(([pattern]) => pattern.test(title))?.[1] ?? googleCategoryByStoreCategory[storeCategory] ?? 127;
+
+/** Up to 10 highlights from the page's verified "Key features" list (150 chars max each). */
+const highlightsFrom = (html) => {
+  const list = html.match(/<h2>Key features<\/h2><ul>(.*?)<\/ul>/s)?.[1] ?? '';
+  return [...list.matchAll(/<li>(.*?)<\/li>/gs)].map(([, item]) => decode(item.replace(/<[^>]+>/g, '')).trim()).filter((item) => item && item.length <= 150).slice(0, 10);
+};
+
 const conditionName = (url = '') =>
   url.endsWith('RefurbishedCondition') ? 'refurbished' : url.endsWith('UsedCondition') ? 'used' : 'new';
 const clean = (value) => String(value ?? '').replace(/[\t\r\n]+/g, ' ').replace(/\s{2,}/g, ' ').trim();
 
-const columns = ['id', 'title', 'description', 'link', 'image_link', 'additional_image_link', 'availability', 'price', 'brand', 'mpn', 'identifier_exists', 'condition', 'product_type'];
+const columns = ['id', 'title', 'description', 'link', 'image_link', 'additional_image_link', 'availability', 'price', 'brand', 'mpn', 'identifier_exists', 'condition', 'product_type', 'google_product_category', 'product_highlight'];
 const rows = [];
 const excluded = { noPrice: 0, noImage: 0, notInStock: 0, noBrand: 0, noProduct: 0 };
 
 for (const file of fs.readdirSync(productDir).filter((name) => name.endsWith('.html')).sort()) {
   const slug = file.slice(0, -'.html'.length);
-  const product = findProduct(fs.readFileSync(new URL(file, productDir), 'utf8'));
+  const html = fs.readFileSync(new URL(file, productDir), 'utf8');
+  const product = findProduct(html);
   if (!product) { excluded.noProduct++; continue; }
   const offer = Array.isArray(product.offers) ? product.offers[0] : product.offers;
   const images = (Array.isArray(product.image) ? product.image : [product.image]).filter(Boolean);
@@ -86,6 +135,9 @@ for (const file of fs.readdirSync(productDir).filter((name) => name.endsWith('.h
     mpn && product.brand?.name ? '' : 'no',
     conditionName(offer.itemCondition || product.itemCondition),
     clean(product.category),
+    String(googleCategoryFor(product.name, product.category)),
+    // Multiple highlights are comma-separated; commas inside one become semicolons.
+    highlightsFrom(html).map((item) => item.replace(/,/g, ';')).join(','),
   ].map(clean).join('\t'));
 }
 

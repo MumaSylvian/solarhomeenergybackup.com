@@ -11,6 +11,15 @@
  * Example:
  *   'AC180-US-GY-BL-SPFUS': 12,
  */
+/**
+ * Owner confirmation, 2026-09-26: every product listed on the site is on hand
+ * in the Baton Rouge, LA warehouse. While this is true, all listed products
+ * are shown and submitted as in stock. Set to false and fill in
+ * warehouseStock below if some products stop being on hand; an in-stock claim
+ * must always match what the warehouse can ship.
+ */
+export const ALL_LISTED_IN_STOCK = true;
+
 export const warehouseStock: Record<string, number> = {
   // Waiting for the warehouse inventory list.
 };

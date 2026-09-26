@@ -17,7 +17,10 @@ export default function ShippingDeliveryPage() {
     <TrustPage
       eyebrow="Shipping & delivery policy · Effective Date: September 26, 2026 · Last Updated: September 26, 2026"
       title="Shipping & Delivery Policy"
-      intro="This Shipping & Delivery Policy explains how Solar Home Energy Backup processes and delivers customer orders."
+      intro={[
+        'This Shipping & Delivery Policy explains how Solar Home Energy Backup processes and delivers customer orders.',
+        `Orders ship from our warehouse in ${business.shipsFrom}.`,
+      ]}
       sections={[
         {
           title: '1. U.S. shipping',

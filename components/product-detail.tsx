@@ -7,6 +7,7 @@ import { addToCart } from '@/lib/cart';
 import { storefrontCategories } from '@/lib/catalog/categories';
 import type { CatalogProduct } from '@/lib/catalog/types';
 import type { ProductCopy } from '@/lib/catalog/product-copy';
+import { business } from '@/lib/business';
 import { useLocale } from '@/components/locale-provider';
 import { ProductGallery } from '@/components/product-gallery';
 import {
@@ -134,7 +135,7 @@ export function ProductDetail({
               </b>
               <small>
                 {stock === 'warehouse'
-                  ? 'Ships from our warehouse'
+                  ? `Ships from ${business.shipsFrom}`
                   : 'Confirmed at order review, before payment'}
               </small>
             </span>

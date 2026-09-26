@@ -2,6 +2,7 @@ import { csvCatalog } from './catalog.generated';
 import { WARRANTY_TERM, discountedPriceFor } from '@/lib/commerce';
 import { correctRatings } from './spec-fix';
 import { cleanProductContent } from './content-clean';
+import { correctCategory } from './category-fix';
 
 /**
  * Product photos are stored in Git LFS. The connected Vercel deployment
@@ -170,6 +171,8 @@ export const catalog = csvCatalog
   .map(correctRatings)
   // Remove other businesses' names, contacts, promotions, and policies.
   .map(cleanProductContent)
+  // Fix categories the importer took from supplier breadcrumbs.
+  .map(correctCategory)
   .map((product) => {
     const primaryImage = resolveCatalogImageUrl(
       clearGalleryPrimary[product.id] ??
