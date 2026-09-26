@@ -1,5 +1,38 @@
 # Google Merchant Center readiness: solarhomeenergybackup.com
 
+## Fix run, 2026-09-26 (owner answers applied)
+
+```
+MERCHANT CENTER READINESS: NOT READY
+
+Tier 0-A (egregious — permanent ban):  4 found, 3 fixed, 1 outstanding (candidate needing merchant confirmation)
+Tier 0-B (suspension, 7-day warning):  2 found, 2 fixed, 0 outstanding
+Tier 1  (item disapproval):            5 found, 2 fixed, 3 outstanding
+Tier 2  (guideline breach):            1 found, 0 fixed, 1 outstanding
+Tier 3  (optimisation):                4 found, 3 addressed
+
+Sampled: 22 of 1,996 feed items across 11 categories (0 mismatches: price, stock,
+         condition, brand, no reference price); images: 748 local + 64 via GitHub
+         media measured ≥500 px; 1,201 CDN images are 600×600 (8 downloaded)
+Applied directly: yes, local project files (committed locally, not deployed)
+SUBMIT? NO. One Tier 0-A candidate and three Tier 1 items remain.
+```
+
+Fixed this run, on the owner's answers:
+- **Operating-region mismatch:** support hours now Central Time, matching Baton Rouge.
+- **Ship-from:** "Orders ship from our warehouse in Baton Rouge, LA" on the Shipping page; "Ships from Baton Rouge, LA" on product pages.
+- **Availability:** the owner confirmed every listed product is on hand in the warehouse (`ALL_LISTED_IN_STOCK` in `lib/catalog/warehouse-stock.ts`). All pages, schema, and the feed now show in stock. This is the owner's representation; turn the flag off and list SKUs if it stops being true.
+- **Images:** every primary image meets 500×500.
+- **Feed:** google_product_category (Google taxonomy 2021-09-21) on all 1,996 items; product_highlight on 768; 158 store categories corrected.
+
+Outstanding:
+- **0-A:** below-supplier pricing combined with only irreversible payment rails matches the policy's "discount retailer that does not deliver" example. The merchant must be able to evidence sourcing and fulfilment; nothing on the site can resolve it.
+- **Tier 1:** shipping rates Merchant Center can express (delivery is quoted per destination today); return policy entered in Merchant Center; GTINs.
+- **Tier 2:** no card or pay-on-delivery option.
+- **Tier 3:** a few category assignments remain imperfect (e.g. accessories that inherit a store category).
+
+---
+
 ## Re-audit, 2026-09-26 (after policies were published)
 
 ```
