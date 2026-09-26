@@ -51,10 +51,9 @@ export default function ShippingDeliveryPage() {
         {
           title: '4. Delivery fees',
           body: [
-            'Shipping and delivery are not necessarily free.',
-            'Delivery charges are calculated based on the destination.',
-            'The applicable delivery charge will be disclosed before the customer completes payment.',
-            'Factors affecting delivery charges may include:',
+            'Delivery within the United States is a flat $45 per order.',
+            'International delivery charges are calculated based on the destination and disclosed before the customer completes payment.',
+            'Factors affecting international delivery charges may include:',
           ],
           items: ['Destination.', 'Product size.', 'Product weight.', 'Freight requirements.', 'Accessibility.', 'International transportation requirements.'],
         },

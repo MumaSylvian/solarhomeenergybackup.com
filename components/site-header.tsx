@@ -27,7 +27,7 @@ export function SiteHeader() {
     <>
       <div className="utility-bar notranslate">
         <span>Ships to all 50 states</span>
-        <span className="utility-detail">Delivery fees calculated by destination</span>
+        <span className="utility-detail">Flat $45 delivery per order</span>
         <a href="/support">Customer support</a>
         <a href="/system-finder">{t('utilityAction')}</a>
       </div>

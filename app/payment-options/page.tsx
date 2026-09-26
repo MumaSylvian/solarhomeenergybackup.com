@@ -64,8 +64,8 @@ export default function PaymentOptionsPage() {
         {
           title: '8. Delivery fees',
           body: [
-            "Delivery fees apply and are calculated based on the customer's destination.",
-            'The applicable delivery charge will be disclosed before payment is completed.',
+            'Delivery within the United States is a flat $45 per order.',
+            "International delivery fees are calculated based on the customer's destination and disclosed before payment is completed.",
           ],
         },
         {

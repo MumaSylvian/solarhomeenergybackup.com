@@ -50,6 +50,7 @@ export const organizationSchema = {
   // from delivery, customer pays standard return shipping, no restocking fee.
   hasMerchantReturnPolicy: {
     '@type': 'MerchantReturnPolicy',
+    '@id': `${siteUrl}/#return-policy`,
     applicableCountry: 'US',
     returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
     merchantReturnDays: 30,

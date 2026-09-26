@@ -7,7 +7,7 @@ import { invoiceRequestSchema } from '@/lib/validations';
 import { readCart, type StoredCart } from '@/lib/cart';
 import {
   WHATSAPP_PHONE_DISPLAY,
-  DELIVERY_FEE_POLICY,
+  deliveryFeeFor,
   DELIVERY_SUMMARY,
   whatsappUrl,
 } from '@/lib/commerce';
@@ -80,7 +80,8 @@ export default function InvoicePage() {
         ? [
             '',
             `Merchandise subtotal: ${money.format(subtotal)}`,
-            `Delivery: calculated for my destination (${DELIVERY_FEE_POLICY})`,
+            `Delivery (flat, US): ${money.format(deliveryFeeFor(cartItems.length))}`,
+            `Total before tax: ${money.format(subtotal + deliveryFeeFor(cartItems.length))}`,
           ]
         : []),
     ]
@@ -190,11 +191,11 @@ export default function InvoicePage() {
                 </div>
                 <div>
                   <dt>Delivery</dt>
-                  <dd>Calculated for your destination</dd>
+                  <dd>{money.format(deliveryFeeFor(items.length))}</dd>
                 </div>
                 <div className="total">
-                  <dt>Merchandise subtotal</dt>
-                  <dd>{money.format(subtotal)}</dd>
+                  <dt>Total before tax</dt>
+                  <dd>{money.format(subtotal + deliveryFeeFor(items.length))}</dd>
                 </div>
               </dl>
               <p className="notice">{DELIVERY_SUMMARY}</p>

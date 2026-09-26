@@ -7,6 +7,7 @@ import { conditionOf, schemaCondition, stockSource } from '@/lib/catalog/offer';
 import { overviewFor, productMetaDescription } from '@/lib/catalog/overview';
 import { postsForCategory } from '@/lib/blog/posts';
 import { copyFor } from '@/lib/catalog/product-copy';
+import { FLAT_DELIVERY_FEE } from '@/lib/commerce';
 
 const siteUrl = 'https://www.solarhomeenergybackup.com';
 
@@ -95,6 +96,25 @@ export default async function ProductPage({ params }: Params) {
               availability: inStock ? 'https://schema.org/InStock' : undefined,
               itemCondition: condition,
               seller: { '@id': `${siteUrl}/#organization` },
+              // From the Shipping & Delivery Policy and the owner's flat US rate.
+              shippingDetails: {
+                '@type': 'OfferShippingDetails',
+                shippingRate: {
+                  '@type': 'MonetaryAmount',
+                  value: FLAT_DELIVERY_FEE.toFixed(2),
+                  currency: 'USD',
+                },
+                shippingDestination: {
+                  '@type': 'DefinedRegion',
+                  addressCountry: 'US',
+                },
+                deliveryTime: {
+                  '@type': 'ShippingDeliveryTime',
+                  handlingTime: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 3, unitCode: 'DAY' },
+                  transitTime: { '@type': 'QuantitativeValue', minValue: 5, maxValue: 7, unitCode: 'DAY' },
+                },
+              },
+              hasMerchantReturnPolicy: { '@id': `${siteUrl}/#return-policy` },
             }
           : undefined,
     },

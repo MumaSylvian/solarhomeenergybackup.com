@@ -12,6 +12,7 @@ import { useLocale } from '@/components/locale-provider';
 import { ProductGallery } from '@/components/product-gallery';
 import {
   DELIVERY_ESTIMATE,
+  FLAT_DELIVERY_FEE,
   SHOW_REFERENCE_PRICES,
   PROCESSING_TIME,
   WARRANTY_SHORT,
@@ -146,7 +147,7 @@ export function ProductDetail({
             </span>
             <span>
               <ShoppingCart size={16} />
-              <b>Delivery estimate</b>
+              <b>Flat ${FLAT_DELIVERY_FEE} US delivery</b>
               <small>
                 Processing {PROCESSING_TIME}; delivery {DELIVERY_ESTIMATE}
               </small>

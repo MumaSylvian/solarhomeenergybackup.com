@@ -101,7 +101,7 @@ const conditionName = (url = '') =>
   url.endsWith('RefurbishedCondition') ? 'refurbished' : url.endsWith('UsedCondition') ? 'used' : 'new';
 const clean = (value) => String(value ?? '').replace(/[\t\r\n]+/g, ' ').replace(/\s{2,}/g, ' ').trim();
 
-const columns = ['id', 'title', 'description', 'link', 'image_link', 'additional_image_link', 'availability', 'price', 'brand', 'mpn', 'identifier_exists', 'condition', 'product_type', 'google_product_category', 'product_highlight'];
+const columns = ['id', 'title', 'description', 'link', 'image_link', 'additional_image_link', 'availability', 'price', 'brand', 'mpn', 'identifier_exists', 'condition', 'product_type', 'google_product_category', 'product_highlight', 'shipping'];
 const rows = [];
 const excluded = { noPrice: 0, noImage: 0, notInStock: 0, noBrand: 0, noProduct: 0 };
 
@@ -138,6 +138,8 @@ for (const file of fs.readdirSync(productDir).filter((name) => name.endsWith('.h
     String(googleCategoryFor(product.name, product.category)),
     // Multiple highlights are comma-separated; commas inside one become semicolons.
     highlightsFrom(html).map((item) => item.replace(/,/g, ';')).join(','),
+    // Flat US delivery from the Offer's shippingDetails (country:region:service:price).
+    offer.shippingDetails?.shippingRate?.value ? `US:::${offer.shippingDetails.shippingRate.value} USD` : '',
   ].map(clean).join('\t'));
 }
 

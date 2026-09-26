@@ -89,8 +89,8 @@ export default function TermsPage() {
         {
           title: '9. Delivery fees',
           body: [
-            'Shipping and delivery charges are calculated based on the destination.',
-            'Applicable delivery charges will be disclosed before payment.',
+            'Delivery within the United States is a flat $45 per order.',
+            'International delivery charges are calculated based on the destination and will be disclosed before payment.',
           ],
         },
         {

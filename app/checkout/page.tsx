@@ -17,7 +17,11 @@ import {
   setCartQuantity,
   type StoredCart,
 } from '@/lib/cart';
-import { DELIVERY_SUMMARY, PAYMENT_METHODS } from '@/lib/commerce';
+import {
+  DELIVERY_SUMMARY,
+  PAYMENT_METHODS,
+  deliveryFeeFor,
+} from '@/lib/commerce';
 
 const money = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -119,11 +123,11 @@ export default function CheckoutPage() {
               </div>
               <div>
                 <dt>Delivery</dt>
-                <dd>Calculated for your destination</dd>
+                <dd>{money.format(deliveryFeeFor(entries.length))}</dd>
               </div>
               <div className="total">
-                <dt>Merchandise subtotal</dt>
-                <dd>{money.format(subtotal)}</dd>
+                <dt>Total before tax</dt>
+                <dd>{money.format(subtotal + deliveryFeeFor(entries.length))}</dd>
               </div>
             </dl>
             <a href="/invoice" className="button primary">

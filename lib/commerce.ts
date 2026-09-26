@@ -17,8 +17,13 @@ export function whatsappUrl(message: string) {
  */
 export const PROCESSING_TIME = '1–3 business days after payment';
 export const DELIVERY_ESTIMATE = 'about 5–7 business days after dispatch';
+/** Owner-confirmed on 2026-09-26: flat $45 delivery per order within the United States. */
+export const FLAT_DELIVERY_FEE = 45;
 export const DELIVERY_FEE_POLICY =
-  'Delivery charges are calculated for your destination and disclosed before you complete payment.';
+  'Delivery within the United States is a flat $45 per order. International delivery is quoted separately.';
+
+/** Delivery charge for a US order; zero for an empty cart. */
+export const deliveryFeeFor = (itemCount: number) => (itemCount > 0 ? FLAT_DELIVERY_FEE : 0);
 export const DELIVERY_SUMMARY = `Orders are generally processed within ${PROCESSING_TIME}; typical delivery is ${DELIVERY_ESTIMATE}. ${DELIVERY_FEE_POLICY}`;
 
 /** Accepted methods from the Payment & Billing Policy (effective September 26, 2026). */
