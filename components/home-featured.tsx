@@ -3,6 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import { ProductCard } from '@/components/storefront';
 import { approvedCatalog } from '@/lib/catalog/products';
 import { isInStock } from '@/lib/catalog/offer';
+import { copyFor } from '@/lib/catalog/product-copy';
 
 /**
  * Homepage picks: one whole-home system, one home-backup power station, and one
@@ -50,7 +51,7 @@ export function HomeFeatured() {
             name={product.name}
             brand={product.brand}
             category={product.category}
-            shortDescription={product.shortDescription}
+            shortDescription={copyFor(product.id)?.intro ?? product.shortDescription}
             sourcePrice={product.sourcePrice}
             retailPrice={product.retailPrice}
             imageUrl={product.sourceImageUrl}

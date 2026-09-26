@@ -1,4 +1,5 @@
 import type { CatalogProduct } from './types';
+import { warehouseStock } from './warehouse-stock';
 
 /**
  * One source of truth for the condition and availability a product may claim.
@@ -16,12 +17,23 @@ export function conditionOf(product: Pick<CatalogProduct, 'name' | 'shortDescrip
   return 'new';
 }
 
+type StockInput = Pick<CatalogProduct, 'supplierOffers' | 'sku' | 'model'>;
+
 /**
- * Only the supplier's own "in stock" status supports an in-stock claim.
- * Anything else (including UNKNOWN) must not be shown or submitted as in stock.
+ * Where an in-stock claim comes from:
+ *  - 'warehouse': listed with quantity > 0 in lib/catalog/warehouse-stock.ts
+ *  - 'supplier':  the supplier's own status is IN_STOCK
+ *  - null:        not confirmed; must not be shown or submitted as in stock
  */
-export function isInStock(product: Pick<CatalogProduct, 'supplierOffers'>) {
-  return product.supplierOffers?.some((offer) => offer.availability === 'IN_STOCK') ?? false;
+export function stockSource(product: StockInput): 'warehouse' | 'supplier' | null {
+  const sku = product.sku ?? product.model;
+  if (sku && (warehouseStock[sku] ?? 0) > 0) return 'warehouse';
+  if (product.supplierOffers?.some((offer) => offer.availability === 'IN_STOCK')) return 'supplier';
+  return null;
+}
+
+export function isInStock(product: StockInput) {
+  return stockSource(product) !== null;
 }
 
 export const schemaCondition: Record<Condition, string> = {

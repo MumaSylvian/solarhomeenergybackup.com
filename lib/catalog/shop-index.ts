@@ -1,5 +1,6 @@
 import { approvedCatalog } from './products';
 import { isInStock } from './offer';
+import { copyFor } from './product-copy';
 import type { CatalogProduct } from './types';
 
 /**
@@ -46,7 +47,7 @@ export function toShopItem(product: CatalogProduct): ShopItem {
     name: product.name,
     brand: product.brand,
     category: product.category,
-    shortDescription: clamp(product.shortDescription ?? ''),
+    shortDescription: clamp(copyFor(product.id)?.intro ?? product.shortDescription ?? ''),
     sourcePrice: product.sourcePrice ?? null,
     retailPrice: product.retailPrice ?? null,
     imageUrl: product.sourceImageUrl ?? primary,

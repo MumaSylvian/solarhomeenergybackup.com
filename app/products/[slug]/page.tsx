@@ -3,9 +3,10 @@ import { notFound } from 'next/navigation';
 import { ProductDetail } from '@/components/product-detail';
 import { approvedCatalog, bySlug } from '@/lib/catalog/products';
 import { storefrontCategories } from '@/lib/catalog/categories';
-import { conditionOf, isInStock, schemaCondition } from '@/lib/catalog/offer';
+import { conditionOf, schemaCondition, stockSource } from '@/lib/catalog/offer';
 import { overviewFor, productMetaDescription } from '@/lib/catalog/overview';
 import { postsForCategory } from '@/lib/blog/posts';
+import { copyFor } from '@/lib/catalog/product-copy';
 
 const siteUrl = 'https://www.solarhomeenergybackup.com';
 
@@ -32,7 +33,12 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const product = bySlug((await params).slug);
   if (!product) return {};
-  const description = productMetaDescription(product);
+  const written = copyFor(product.id)?.intro;
+  const description = written
+    ? written.length > 155
+      ? `${written.slice(0, 155).replace(/s+S*$/, '')}…`
+      : written
+    : productMetaDescription(product);
   const image = product.galleryImageUrls?.[0];
   return {
     title: product.name,
@@ -58,7 +64,8 @@ export default async function ProductPage({ params }: Params) {
   // "in stock" claim that contradicts the listing is a Merchant Center
   // misrepresentation risk.
   const condition = schemaCondition[conditionOf(product)];
-  const inStock = isInStock(product);
+  const stock = stockSource(product);
+  const inStock = stock !== null;
   const category = storefrontCategories.find(
     (item) => item.label === product.category,
   );
@@ -67,7 +74,7 @@ export default async function ProductPage({ params }: Params) {
       '@context': 'https://schema.org',
       '@type': 'Product',
       name: product.name,
-      description: overviewFor(product),
+      description: copyFor(product.id)?.intro ?? overviewFor(product),
       image: product.galleryImageUrls?.length
         ? product.galleryImageUrls
         : undefined,
@@ -122,7 +129,9 @@ export default async function ProductPage({ params }: Params) {
       <ProductDetail
         product={withoutSupplierData(product)}
         inStock={inStock}
+        stock={stock}
         overview={overviewFor(product)}
+        copy={copyFor(product.id)}
         guide={guideFor(product.category)}
       />
     </>

@@ -6,6 +6,7 @@ import { Check, ShieldCheck, ShoppingCart } from 'lucide-react';
 import { addToCart } from '@/lib/cart';
 import { storefrontCategories } from '@/lib/catalog/categories';
 import type { CatalogProduct } from '@/lib/catalog/types';
+import type { ProductCopy } from '@/lib/catalog/product-copy';
 import { useLocale } from '@/components/locale-provider';
 import { ProductGallery } from '@/components/product-gallery';
 import { discountPercentFor, whatsappUrl } from '@/lib/commerce';
@@ -22,13 +23,19 @@ const money = new Intl.NumberFormat('en-US', {
 export function ProductDetail({
   product,
   inStock,
+  stock,
   overview,
+  copy,
   guide,
 }: {
   product: Omit<CatalogProduct, 'supplierOffers'>;
   inStock: boolean;
+  /** Where the stock claim comes from (lib/catalog/offer.ts). */
+  stock: 'warehouse' | 'supplier' | null;
   /** Our overview, written on the server from verified fields (lib/catalog/overview.ts). */
   overview: string;
+  /** Verified rewrite for this product, when one exists (lib/catalog/product-copy.ts). */
+  copy?: ProductCopy;
   guide?: { slug: string; title: string };
 }) {
   const { t } = useLocale();
@@ -108,8 +115,18 @@ export function ProductDetail({
           <div className="fulfillment-strip">
             <span>
               <Check size={16} />
-              <b>{inStock ? 'In stock at supplier' : 'Availability'}</b>
-              <small>Confirmed at order review, before payment</small>
+              <b>
+                {stock === 'warehouse'
+                  ? 'In stock'
+                  : stock === 'supplier'
+                    ? 'In stock at supplier'
+                    : 'Availability'}
+              </b>
+              <small>
+                {stock === 'warehouse'
+                  ? 'Ships from our warehouse'
+                  : 'Confirmed at order review, before payment'}
+              </small>
             </span>
             <span>
               <ShieldCheck size={16} />
@@ -145,7 +162,7 @@ export function ProductDetail({
       <div className="detail-sections">
         <section>
           <h2>Overview</h2>
-          <p>{overview}</p>
+          <p>{copy?.intro ?? overview}</p>
           {guide && (
             <p>
               Planning a system? Read our guide:{' '}
@@ -153,6 +170,42 @@ export function ProductDetail({
             </p>
           )}
         </section>
+        {copy && copy.benefits.length > 0 && (
+          <section>
+            <h2>Key benefits</h2>
+            <ul>
+              {copy.benefits.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </section>
+        )}
+        {copy && copy.features.length > 0 && (
+          <section>
+            <h2>Key features</h2>
+            <ul>
+              {copy.features.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </section>
+        )}
+        {copy?.idealUse && (
+          <section>
+            <h2>Ideal use</h2>
+            <p>{copy.idealUse}</p>
+          </section>
+        )}
+        {copy && copy.included.length > 0 && (
+          <section>
+            <h2>What is included</h2>
+            <ul>
+              {copy.included.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </section>
+        )}
         <section>
           <h2>Key specifications</h2>
           <dl>
@@ -185,7 +238,7 @@ export function ProductDetail({
             electrical work may require a qualified installer.
           </p>
           <p>
-            Questions about this product?{' '}
+            {copy ? `${copy.cta} ` : 'Questions about this product? '}
             <a
               href={whatsappUrl(`Hello SolarHome Energy Backup, I have a question about ${product.name}.`)}
               target="_blank"
