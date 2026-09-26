@@ -1,5 +1,45 @@
 # Google Merchant Center readiness: solarhomeenergybackup.com
 
+## Re-audit, 2026-09-26 (after policies were published)
+
+```
+MERCHANT CENTER READINESS: NOT READY
+
+Tier 0-A (egregious — permanent ban):  4 found, 1 fixed, 3 outstanding (candidates needing merchant confirmation)
+Tier 0-B (suspension, 7-day warning):  2 found, 1 fixed, 1 outstanding
+Tier 1  (item disapproval):            5 found, 1 fixed, 4 outstanding
+Tier 2  (guideline breach):            1 found, 0 fixed, 1 outstanding
+Tier 3  (optimisation):                4 found
+
+Sampled: 16 of 795 feed items across 7 categories; all 2,009 product pages scanned
+         for reference prices; all 2,035 pages scanned for identity details
+Applied directly: yes, local project files (committed locally, not deployed)
+Verified after fix: 0 struck prices / "Save %"; 0 false used/refurbished; 0 feed items
+         without brand; 16/16 sampled items match feed = page = schema
+
+SUBMIT? NO. Three Tier 0-A candidates remain open.
+```
+
+Identity is now consistent sitewide (one address, phone, and email on all 2,035 pages and in schema). The merchant must confirm 218 Springfield Road is the real operating address.
+
+| Tier | Finding | Status |
+|---|---|---|
+| 0-A | Support hours stated in Pacific Time while the business is in Baton Rouge, LA (Central) | Outstanding: confirm; an operating-region mismatch is a concealed-location signal |
+| 0-A | Ship-from location not disclosed anywhere | Outstanding: state the warehouse location on the Shipping page |
+| 0-A | Crossed-out supplier price shown as "Save X%" | **Fixed**: `SHOW_REFERENCE_PRICES = false`; savings claims removed |
+| 0-A | Below-supplier pricing with only irreversible payment rails (transfers, Zelle, Cash App, Chime, Bitcoin) | Outstanding: merchant must be able to evidence sourcing and fulfilment |
+| 0-B | Condition: five new items marked "used" by a description keyword | **Fixed**: title-only detection; copy corrected |
+| 0-B | "In stock" comes from supplier data last checked 2026-09-12, while the business says it ships from its own warehouse | Outstanding: supply the warehouse stock list |
+| 1 | Missing brand on 21 feed items | **Fixed**: 8 resolved, 13 excluded from the feed |
+| 1 | Shipping cost: quoted per destination after ordering, so it cannot be configured as is | Outstanding: define rates Merchant Center can express |
+| 1 | Return policy not configured in Merchant Center (the site and schema now carry it) | Outstanding: account setting |
+| 1 | No GTINs | Outstanding: get them from supplier data |
+| 1 | 64 feed images not measurable locally (Git LFS) | Outstanding: verify on the live site |
+| 2 | No conventional payment method (card, debit, or pay on delivery) | Outstanding |
+| 3 | No google_product_category; ~347 miscategorised items; no product_highlight; no dimensions or weight | Optimisation |
+
+---
+
 ## Update, 2026-09-26: published policies
 
 The owner supplied Privacy, Return & Refund, Shipping & Delivery, Payment & Billing, Warranty, Cookie & Tracking, and Terms documents; they are published verbatim and every other page now reads the same terms (`lib/business.ts`, `lib/commerce.ts`).
