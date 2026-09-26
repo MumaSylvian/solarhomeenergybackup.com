@@ -23,6 +23,14 @@ export const DELIVERY_SUMMARY = `Orders are generally processed within ${PROCESS
 /** Accepted methods from the Payment & Billing Policy (effective September 26, 2026). */
 export const PAYMENT_METHODS = ['Bank transfer', 'Wire transfer', 'Zelle', 'Cash App', 'Chime', 'Apple Pay', 'Bitcoin'] as const;
 
+/**
+ * Crossed-out "was" prices and "Save X%" labels. Off: the struck price is the
+ * supplier's price, not a price this store charged, which Google Merchant
+ * Center treats as a misleading reference price. Turn on only if the struck
+ * price is one we genuinely charged.
+ */
+export const SHOW_REFERENCE_PRICES = false;
+
 /** Price rules are kept here so listing, cart, checkout, and invoice totals agree. */
 export function discountPercentFor(sourcePrice: number | null | undefined) {
   if (sourcePrice === null || sourcePrice === undefined || sourcePrice < 0)

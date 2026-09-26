@@ -5,7 +5,7 @@ import { shopIndex } from '@/lib/catalog/shop-index';
 export const metadata: Metadata = {
   title: 'Shop solar, battery & backup power equipment',
   description:
-    'Browse portable power stations, batteries, solar panels, inverters, and whole-home backup equipment with clear specifications and automatic savings.',
+    'Browse portable power stations, batteries, solar panels, inverters, and whole-home backup equipment with clear specifications and US dollar pricing.',
   alternates: { canonical: '/shop' },
 };
 

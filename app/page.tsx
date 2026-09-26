@@ -7,7 +7,7 @@ export const metadata = {
   ...pageMetadata({
   title: "Solar, Battery & Home Backup Power Equipment",
   description:
-    "Shop solar panels, home batteries, portable power stations, and whole-home backup systems with clear specs, tiered savings, and planning support.",
+    "Shop solar panels, home batteries, portable power stations, and whole-home backup systems with clear specifications and planning support.",
   path: '/',
   }),
   // The homepage carries the full brand title instead of the page template.

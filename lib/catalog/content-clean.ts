@@ -113,6 +113,7 @@ const knownBrands = [
   'Hyundai', 'Sirius', 'MidNite', 'Duracell', 'GoodWe', 'Eneramp', 'Eaton', 'IMO', 'Trina',
   'SunEarth', 'NEP', 'ABB', 'ChikoUSA', 'Chiko', 'Indepwr', 'Mission', 'Lion', 'Renon',
   'Axitec', 'Burndy', 'Victron', 'EG4', 'Sol-Ark', 'Tigo', 'Fortress', 'Canadian Solar',
+  'Champion', 'Lumina', 'Peimar', 'Satic', 'SunPro', 'MNP',
 ].sort((a, b) => b.length - a.length);
 
 const distributorBrands = /^(signature solar|current connected|the home depot)$/i;

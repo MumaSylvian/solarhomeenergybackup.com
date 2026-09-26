@@ -55,7 +55,7 @@ const clean = (value) => String(value ?? '').replace(/[\t\r\n]+/g, ' ').replace(
 
 const columns = ['id', 'title', 'description', 'link', 'image_link', 'additional_image_link', 'availability', 'price', 'brand', 'mpn', 'identifier_exists', 'condition', 'product_type'];
 const rows = [];
-const excluded = { noPrice: 0, noImage: 0, notInStock: 0, noProduct: 0 };
+const excluded = { noPrice: 0, noImage: 0, notInStock: 0, noBrand: 0, noProduct: 0 };
 
 for (const file of fs.readdirSync(productDir).filter((name) => name.endsWith('.html')).sort()) {
   const slug = file.slice(0, -'.html'.length);
@@ -66,6 +66,8 @@ for (const file of fs.readdirSync(productDir).filter((name) => name.endsWith('.h
   if (!offer?.price) { excluded.noPrice++; continue; }
   if (!images.length) { excluded.noImage++; continue; }
   if (offer.availability !== 'https://schema.org/InStock') { excluded.notInStock++; continue; }
+  // Brand is required for new items; never substitute the store name.
+  if (!product.brand?.name) { excluded.noBrand++; continue; }
 
   const mpn = clean(product.mpn);
   rows.push([

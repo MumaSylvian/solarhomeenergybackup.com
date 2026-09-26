@@ -9,11 +9,15 @@ import { warehouseStock } from './warehouse-stock';
 
 export type Condition = 'new' | 'refurbished' | 'used';
 
-/** Condition from the supplied title/description; never a hardcoded "new". */
+/**
+ * Condition from the product title, where the supplier states it
+ * ("(Refurbished)", "Used", "Open Box"); never a hardcoded "new". Descriptions
+ * are not used: ordinary phrases such as "can be used with" would mark new
+ * items as used.
+ */
 export function conditionOf(product: Pick<CatalogProduct, 'name' | 'shortDescription'>): Condition {
-  const text = `${product.name} ${product.shortDescription ?? ''}`;
-  if (/\b(refurbished|renewed|reconditioned|certified pre-?owned)\b/i.test(text)) return 'refurbished';
-  if (/\b(used|pre-?owned|open[- ]box)\b/i.test(text)) return 'used';
+  if (/\b(refurbished|renewed|reconditioned|certified pre-?owned)\b/i.test(product.name)) return 'refurbished';
+  if (/\((?:used|pre-?owned|open[- ]box)\)|\b(?:pre-?owned|open[- ]box)\b|^used\b/i.test(product.name)) return 'used';
   return 'new';
 }
 

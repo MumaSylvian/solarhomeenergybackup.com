@@ -197,7 +197,7 @@ export const productCopy: Record<string, ProductCopy> = {
   "cta": "Ask our team whether this 36-panel pallet is the right quantity for your roof and inverter."
  },
  "catalog-340": {
-  "intro": "This is a used MNP MN15-12KW-AIO hybrid all-in-one inverter for 48V battery systems. It combines three MPPT charge controllers, battery inverter and generator control in one unit for homes and commercial sites.",
+  "intro": "This is the MNP MN15-12KW-AIO hybrid all-in-one inverter for 48V battery systems. It combines three MPPT charge controllers, battery inverter and generator control in one unit for homes and commercial sites.",
   "benefits": [
    "Transfer time under 10ms lets it act as a UPS for important loads.",
    "Three 120/240V programmable outputs handle load shedding without an external programmable distribution box.",
@@ -214,7 +214,7 @@ export const productCopy: Record<string, ProductCopy> = {
   ],
   "idealUse": "Residential or commercial solar-plus-storage systems with larger arrays, where the owner wants UPS-style backup and generator integration.",
   "included": [],
-  "cta": "Contact our team to discuss this used unit's condition and whether it fits your battery bank and array."
+  "cta": "Contact our team to discuss whether it fits your battery bank and array."
  },
  "catalog-341": {
   "intro": "The MNPowerflo16 is a 48V, 16.08kWh LiFePO4 battery that mounts on the wall or floor. With IP65 all-weather rating and self-heating, it suits residential, commercial and off-grid storage systems.",
@@ -5083,7 +5083,7 @@ export const productCopy: Record<string, ProductCopy> = {
   "cta": "Our team can confirm whether this EMS is what your EnergyPro 13K setup needs."
  },
  "catalog-893": {
-  "intro": "This Fusion Box is a used unit. It connects two BLUETTI power stations to double the rated power, voltage or capacity, and the listing names the EP500, EP500Pro, AC300 and AC500.",
+  "intro": "The Fusion Box connects two BLUETTI power stations to double the rated power, voltage or capacity, and the listing names the EP500, EP500Pro, AC300 and AC500.",
   "benefits": [
    "Linking two power stations doubles rated power, voltage or capacity (not current)."
   ],
@@ -5093,7 +5093,7 @@ export const productCopy: Record<string, ProductCopy> = {
   ],
   "idealUse": "Owners of two compatible BLUETTI power stations who want to combine them for larger loads.",
   "included": [],
-  "cta": "Ask our team about the condition of this used Fusion Box and its compatibility with your units."
+  "cta": "Ask our team about this Fusion Box and its compatibility with your units."
  },
  "catalog-894": {
   "intro": "This home integration kit connects the BLUETTI EP900 energy storage system to a home's main panel. It is compatible with the EP900 and EP800.",
@@ -9730,7 +9730,7 @@ export const productCopy: Record<string, ProductCopy> = {
   "cta": "Our team can help you size the 9K mini-split for your room and solar system."
  },
  "catalog-300": {
-  "intro": "This is a used EG4 BOSSBox Cable Kit, the power and communication cables that connect EG4 WallMount 280Ah batteries inside a BOSSBox enclosure to an EG4 hybrid inverter. Factory-specified lengths remove guesswork.",
+  "intro": "This is the EG4 BOSSBox Cable Kit, the power and communication cables that connect EG4 WallMount 280Ah batteries inside a BOSSBox enclosure to an EG4 hybrid inverter. Factory-specified lengths remove guesswork.",
   "benefits": [
    "Degson quick-connect ends push onto the battery without special tools and resist vibration.",
    "Raw ends connect to most compatible inverters, with lugs added where needed.",
@@ -9749,7 +9749,7 @@ export const productCopy: Record<string, ProductCopy> = {
    "Two black 2/0 AWG power cables",
    "Communication cable"
   ],
-  "cta": "Ask our team about the condition of this used cable kit and whether it fits your BOSSBox."
+  "cta": "Ask our team whether this cable kit fits your BOSSBox."
  },
  "catalog-69": {
   "intro": "Generator charging without inverter trouble is what the EG4 Chargeverter GC provides. This 48V, 100A AC charger outputs up to 5120W and accepts 240V or 120V input.",
@@ -10572,7 +10572,7 @@ export const productCopy: Record<string, ProductCopy> = {
   "cta": "Our team can help confirm the IQ Gateway setup for your Enphase system."
  },
  "catalog-111": {
-  "intro": "This is a used Enphase IQ Load Controller. Paired with the IQ System Controller, it controls up to two 240 VAC loads or sheds up to two solar circuits when the Enphase Energy System runs off-grid.",
+  "intro": "This is the Enphase IQ Load Controller. Paired with the IQ System Controller, it controls up to two 240 VAC loads or sheds up to two solar circuits when the Enphase Energy System runs off-grid.",
   "benefits": [
    "Helps prioritize essential appliances during a grid outage to prolong battery life.",
    "Choose from three load control modes or control loads manually from the Enphase App.",
@@ -10587,7 +10587,7 @@ export const productCopy: Record<string, ProductCopy> = {
   ],
   "idealUse": "Enphase systems with an IQ System Controller that need load management during off-grid operation.",
   "included": [],
-  "cta": "Ask our team about the condition of this used IQ Load Controller and whether it suits your system."
+  "cta": "Ask our team whether this IQ Load Controller suits your system."
  },
  "catalog-112": {
   "intro": "Sitting between the grid, IQ Battery, and solar PV, the Enphase IQ System Controller 3 detects a grid failure and moves the home to backup power automatically. It consolidates interconnection equipment into one pre-wired enclosure for residential systems.",
@@ -13675,7 +13675,7 @@ export const productCopy: Record<string, ProductCopy> = {
   "cta": "Ask our team whether the VDI-32 galvanic isolator suits your boat's shore power setup."
  },
  "catalog-392": {
-  "intro": "This is a used Victron Lithium NG 51.2V 100Ah LiFePO4 battery with 5.12kWh of storage. It is designed for stationary installations such as tiny homes and cabins, and is also used in RVs and other mobile systems.",
+  "intro": "This is the Victron Lithium NG 51.2V 100Ah LiFePO4 battery with 5.12kWh of storage. It is designed for stationary installations such as tiny homes and cabins, and is also used in RVs and other mobile systems.",
   "benefits": [
    "Scales with your system: up to 25 batteries can be wired in parallel for a total of 128kWh.",
    "Built-in BTV (balancing, temperature, and voltage control) monitors and balances individual cells.",
@@ -13691,7 +13691,7 @@ export const productCopy: Record<string, ProductCopy> = {
   ],
   "idealUse": "A good fit for 48V tiny home, cabin, RV, and boat systems built around Victron equipment, as long as a compatible Victron BMS is part of the design.",
   "included": [],
-  "cta": "Ask our team to confirm BMS compatibility before adding this used Lithium NG battery to your system."
+  "cta": "Ask our team to confirm BMS compatibility before adding this Lithium NG battery to your system."
  },
  "catalog-231": {
   "intro": "Part of the modular Lynx distribution system, the Victron Lynx Distributor (M10) is a DC busbar with four monitored MEGA fuse positions. It is rated to 1000A on 12V, 24V, or 48V systems and suits high-power inverter, battery, and charging setups.",

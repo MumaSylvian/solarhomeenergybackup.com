@@ -38,8 +38,8 @@ export function HomeFeatured() {
           </h2>
         </div>
         <p>
-          Every product has its supplied image, product name, brand, category,
-          and a price that follows the current tiered savings policy.
+          Every product has product photography, its name, brand, category,
+          and a current price in US dollars.
         </p>
       </div>
       <div className="product-row">

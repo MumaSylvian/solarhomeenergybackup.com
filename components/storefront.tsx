@@ -17,7 +17,11 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 import { useLocale } from '@/components/locale-provider';
-import { WARRANTY_SHORT, discountPercentFor } from '@/lib/commerce';
+import {
+  SHOW_REFERENCE_PRICES,
+  WARRANTY_SHORT,
+  discountPercentFor,
+} from '@/lib/commerce';
 
 const money = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -432,10 +436,12 @@ export function ProductCard({
         {retailPrice !== null && retailPrice !== undefined ? (
           <p className="product-price">
             <span>{money.format(retailPrice)}</span>
-            {sourcePrice !== null && sourcePrice !== undefined && (
-              <del>{money.format(sourcePrice)}</del>
+            {SHOW_REFERENCE_PRICES &&
+              sourcePrice !== null &&
+              sourcePrice !== undefined && <del>{money.format(sourcePrice)}</del>}
+            {SHOW_REFERENCE_PRICES && discount > 0 && (
+              <small>Save {discount}%</small>
             )}
-            {discount > 0 && <small>Save {discount}%</small>}
           </p>
         ) : (
           <p className="product-price unavailable">

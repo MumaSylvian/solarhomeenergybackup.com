@@ -11,6 +11,7 @@ import { useLocale } from '@/components/locale-provider';
 import { ProductGallery } from '@/components/product-gallery';
 import {
   DELIVERY_ESTIMATE,
+  SHOW_REFERENCE_PRICES,
   PROCESSING_TIME,
   WARRANTY_SHORT,
   WARRANTY_TERM,
@@ -112,11 +113,14 @@ export function ProductDetail({
                 ? money.format(product.retailPrice)
                 : t('requestPricing')}
             </strong>
-            {product.sourcePrice !== null &&
+            {SHOW_REFERENCE_PRICES &&
+              product.sourcePrice !== null &&
               product.sourcePrice !== undefined && (
                 <del>{money.format(product.sourcePrice)}</del>
               )}
-            {discount > 0 && <small>Save {discount}%</small>}
+            {SHOW_REFERENCE_PRICES && discount > 0 && (
+              <small>Save {discount}%</small>
+            )}
           </div>
           <div className="fulfillment-strip">
             <span>
