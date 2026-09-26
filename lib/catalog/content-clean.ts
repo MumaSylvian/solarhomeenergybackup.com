@@ -40,6 +40,8 @@ const boilerplate: RegExp[] = [
   /If you have any questions before or during installation[^.]{0,200}?contact us at\s+\S+/gi,
   /We are confident you will love your purchase\.\s*If for any reason you are not completely satisfied, we offer a \d+-day money back guarantee\.(?:\s*See [^.]*?for more details\.)?/gi,
   /\bSee\s+\S+\.com\/\S+ for more details\.?/gi,
+  // Seller warranty promises; the store's own warranty is set by its policy.
+  /Your purchase is backed by an? [\w-]+ warranty\.?/gi,
   /Have questions or need assistance\?\s*Our support team is here to help!?/gi,
   /\bProduct (?:Image|Information)\b/g,
   /NOTE:\s*The Installation Service excluded from [^.]*?promotion/gi,

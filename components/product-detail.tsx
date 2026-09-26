@@ -9,7 +9,14 @@ import type { CatalogProduct } from '@/lib/catalog/types';
 import type { ProductCopy } from '@/lib/catalog/product-copy';
 import { useLocale } from '@/components/locale-provider';
 import { ProductGallery } from '@/components/product-gallery';
-import { discountPercentFor, whatsappUrl } from '@/lib/commerce';
+import {
+  DELIVERY_ESTIMATE,
+  PROCESSING_TIME,
+  WARRANTY_SHORT,
+  WARRANTY_TERM,
+  discountPercentFor,
+  whatsappUrl,
+} from '@/lib/commerce';
 
 const money = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -99,7 +106,6 @@ export function ProductDetail({
           </div>
           {product.brand && <p className="product-brand">{product.brand}</p>}
           <h1>{product.name}</h1>
-          <p>{product.shortDescription}</p>
           <div className="detail-price">
             <strong>
               {product.retailPrice !== null && product.retailPrice !== undefined
@@ -130,15 +136,14 @@ export function ProductDetail({
             </span>
             <span>
               <ShieldCheck size={16} />
-              <b>6-month warranty</b>
-              <small>Eligible purchases</small>
+              <b>{WARRANTY_SHORT}</b>
+              <small>From delivery, on eligible products</small>
             </span>
             <span>
               <ShoppingCart size={16} />
               <b>Delivery estimate</b>
               <small>
-                Priority 2–3 business days, starting after order confirmation
-                and payment
+                Processing {PROCESSING_TIME}; delivery {DELIVERY_ESTIMATE}
               </small>
             </span>
           </div>
@@ -226,7 +231,7 @@ export function ProductDetail({
             <p className="warranty-note">
               Warranty terms mentioned in this description are the
               manufacturer’s. Our own coverage is the{' '}
-              <a href="/warranty">6-month limited warranty</a>.
+              <a href="/warranty">{WARRANTY_TERM}</a>.
             </p>
           </section>
         )}

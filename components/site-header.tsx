@@ -26,8 +26,8 @@ export function SiteHeader() {
   return (
     <>
       <div className="utility-bar notranslate">
-        <span>Free shipping on orders $2,000+</span>
-        <span className="utility-detail">10% shipping below $2,000</span>
+        <span>Ships to all 50 states</span>
+        <span className="utility-detail">Delivery fees calculated by destination</span>
         <a href="/support">Customer support</a>
         <a href="/system-finder">{t('utilityAction')}</a>
       </div>

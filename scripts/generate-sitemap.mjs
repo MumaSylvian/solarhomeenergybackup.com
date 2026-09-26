@@ -10,7 +10,7 @@ import fs from 'node:fs';
  */
 const siteUrl = 'https://www.solarhomeenergybackup.com';
 const dist = new URL('../dist/client/', import.meta.url);
-const pages = ['/', '/shop', '/blog', '/whole-home-backup', '/portable-power', '/solar-panels', '/ev-chargers', '/system-finder', '/shipping-delivery', '/returns', '/warranty', '/privacy', '/terms', '/payment-options', '/support'];
+const pages = ['/', '/shop', '/blog', '/whole-home-backup', '/portable-power', '/solar-panels', '/ev-chargers', '/system-finder', '/shipping-delivery', '/returns', '/warranty', '/privacy', '/terms', '/payment-options', '/cookies', '/support'];
 
 const htmlFiles = (dir) => {
   const url = new URL(dir, dist);
@@ -76,7 +76,9 @@ ${[
   ['/shipping-delivery', 'Shipping & delivery'],
   ['/returns', 'Returns & refunds'],
   ['/warranty', 'Warranty'],
-  ['/payment-options', 'Payment options'],
+  ['/payment-options', 'Payment & billing'],
+  ['/privacy', 'Privacy policy'],
+  ['/terms', 'Terms & conditions'],
   ['/support', 'Customer support'],
 ].map(([path, title]) => link(path, title)).join('\n')}
 

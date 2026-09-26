@@ -7,8 +7,8 @@ import { invoiceRequestSchema } from '@/lib/validations';
 import { readCart, type StoredCart } from '@/lib/cart';
 import {
   WHATSAPP_PHONE_DISPLAY,
-  shippingFor,
-  shippingPolicyFor,
+  DELIVERY_FEE_POLICY,
+  DELIVERY_SUMMARY,
   whatsappUrl,
 } from '@/lib/commerce';
 
@@ -54,7 +54,6 @@ export default function InvoicePage() {
         total + (product.retailPrice ?? 0) * quantity,
       0,
     );
-    const shipping = shippingFor(subtotal);
     const items = cartItems.map(
       ({ product, quantity }) =>
         `• ${product.name} (${product.brand}) × ${quantity}${product.retailPrice ? ` — $${product.retailPrice.toFixed(2)} each` : ''}`,
@@ -81,8 +80,7 @@ export default function InvoicePage() {
         ? [
             '',
             `Merchandise subtotal: ${money.format(subtotal)}`,
-            `Shipping: ${shipping === 0 ? 'Free' : money.format(shipping)}`,
-            `Estimated total: ${money.format(subtotal + shipping)}`,
+            `Delivery: calculated for my destination (${DELIVERY_FEE_POLICY})`,
           ]
         : []),
     ]
@@ -98,7 +96,6 @@ export default function InvoicePage() {
       total + (product.retailPrice ?? 0) * quantity,
     0,
   );
-  const shipping = shippingFor(subtotal);
   return (
     <main className="page-shell">
       <header>
@@ -192,15 +189,15 @@ export default function InvoicePage() {
                   <dd>{money.format(subtotal)}</dd>
                 </div>
                 <div>
-                  <dt>Shipping</dt>
-                  <dd>{shipping === 0 ? 'Free' : money.format(shipping)}</dd>
+                  <dt>Delivery</dt>
+                  <dd>Calculated for your destination</dd>
                 </div>
                 <div className="total">
-                  <dt>Estimated total</dt>
-                  <dd>{money.format(subtotal + shipping)}</dd>
+                  <dt>Merchandise subtotal</dt>
+                  <dd>{money.format(subtotal)}</dd>
                 </div>
               </dl>
-              <p className="notice">{shippingPolicyFor(subtotal)}</p>
+              <p className="notice">{DELIVERY_SUMMARY}</p>
             </>
           ) : (
             <p>

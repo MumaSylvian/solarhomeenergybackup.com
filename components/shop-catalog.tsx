@@ -121,8 +121,8 @@ export function ShopCatalog({ catalog }: { catalog: ShopItem[] }) {
           </div>
           <div>
             <CircleHelp size={19} />
-            <strong>6 mo.</strong>
-            <span>limited warranty coverage</span>
+            <strong>30 days</strong>
+            <span>limited warranty from delivery</span>
           </div>
         </div>
       </header>

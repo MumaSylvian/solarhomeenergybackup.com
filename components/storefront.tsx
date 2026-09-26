@@ -17,7 +17,7 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 import { useLocale } from '@/components/locale-provider';
-import { discountPercentFor } from '@/lib/commerce';
+import { WARRANTY_SHORT, discountPercentFor } from '@/lib/commerce';
 
 const money = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -235,8 +235,8 @@ export function Storefront() {
         <div className="assurance-badge">
           <Battery size={19} />
           <span>
-            <b>6-month warranty</b>
-            <small>Eligible purchases</small>
+            <b>{WARRANTY_SHORT}</b>
+            <small>From delivery, on eligible products</small>
           </span>
         </div>
         <div className="assurance-badge">

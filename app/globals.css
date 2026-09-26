@@ -137,3 +137,4 @@ footer>div>a{display:block;padding-block:6px}
 .availability-line.pending{color:var(--muted);font-weight:700;white-space:normal;text-align:right}
 .warranty-note{margin-top:12px;padding:12px 14px;border-left:3px solid var(--line);background:var(--surface-soft);color:var(--muted);font-size:14px}.warranty-note a{color:var(--blue);font-weight:750;text-decoration:underline}
 .detail-sections ul{margin:0;padding-left:20px;color:var(--muted);font-size:14px;line-height:1.65}.detail-sections li{margin-bottom:6px}.detail-sections p a{color:var(--blue);font-weight:750;text-decoration:underline}
+.footer-contact{display:grid;gap:4px;margin-top:14px;font-style:normal;font-size:14px;line-height:1.5;color:#cfdded}.footer-contact strong{color:#fff}.footer-contact a{color:#9ed0ff}.trust-section ul{margin:0 0 12px;padding-left:20px;color:var(--muted);line-height:1.6}.trust-section li{margin-bottom:4px}.trust-section p a{color:var(--blue);font-weight:750;text-decoration:underline}

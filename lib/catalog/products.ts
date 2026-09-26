@@ -1,5 +1,5 @@
 import { csvCatalog } from './catalog.generated';
-import { discountedPriceFor } from '@/lib/commerce';
+import { WARRANTY_TERM, discountedPriceFor } from '@/lib/commerce';
 import { correctRatings } from './spec-fix';
 import { cleanProductContent } from './content-clean';
 
@@ -222,6 +222,8 @@ export const approvedCatalog = uniqueCatalog
   .map((product) => ({
     ...product,
     id: product.id.replace(/^csv-home-depot-/, 'item-'),
+    // The store's own warranty comes from the Warranty Policy, not import data.
+    warranty: WARRANTY_TERM,
   }));
 export const bySlug = (slug: string) =>
   approvedCatalog.find((product) => product.slug === slug);

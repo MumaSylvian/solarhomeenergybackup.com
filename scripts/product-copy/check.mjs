@@ -12,7 +12,7 @@ const banned = /\b(delve|unlock|elevate|game[- ]changer|revolutionary|cutting[- 
 const numberRe = /\d[\d,]*(?:\.\d+)?/g;
 const norm = (n) => n.replace(/,/g, '').replace(/\.0+$/, '');
 
-let totals = { products: 0, ok: 0, failed: 0, flagged: 0 };
+const totals = { products: 0, ok: 0, failed: 0, flagged: 0 };
 const failures = [];
 const intros = new Map();
 

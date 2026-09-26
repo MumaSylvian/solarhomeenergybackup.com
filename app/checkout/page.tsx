@@ -17,7 +17,7 @@ import {
   setCartQuantity,
   type StoredCart,
 } from '@/lib/cart';
-import { shippingFor, shippingPolicyFor } from '@/lib/commerce';
+import { DELIVERY_SUMMARY, PAYMENT_METHODS } from '@/lib/commerce';
 
 const money = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -37,7 +37,6 @@ export default function CheckoutPage() {
       ),
     [entries],
   );
-  const shipping = shippingFor(subtotal);
   const remove = (id: string) => {
     const next = { ...cart };
     delete next[id];
@@ -108,8 +107,7 @@ export default function CheckoutPage() {
               ))}
             </div>
             <p className="notice">
-              Priority delivery is 2–3 business days. Express delivery is 4–7
-              business days. {shippingPolicyFor(subtotal)}
+              {DELIVERY_SUMMARY}
             </p>
           </section>
           <aside className="form-card order-summary">
@@ -120,20 +118,20 @@ export default function CheckoutPage() {
                 <dd>{money.format(subtotal)}</dd>
               </div>
               <div>
-                <dt>Shipping</dt>
-                <dd>{shipping === 0 ? 'Free' : money.format(shipping)}</dd>
+                <dt>Delivery</dt>
+                <dd>Calculated for your destination</dd>
               </div>
               <div className="total">
-                <dt>Estimated total</dt>
-                <dd>{money.format(subtotal + shipping)}</dd>
+                <dt>Merchandise subtotal</dt>
+                <dd>{money.format(subtotal)}</dd>
               </div>
             </dl>
             <a href="/invoice" className="button primary">
               <ShieldCheck size={16} /> Continue with invoice
             </a>
             <p className="summary-note">
-              <CircleHelp size={15} /> Zelle, Apple Pay, bank transfer, and
-              Bitcoin instructions are confirmed after review.
+              <CircleHelp size={15} /> Accepted: {PAYMENT_METHODS.join(', ')}.
+              Payment instructions are sent after your order is confirmed.
             </p>
           </aside>
         </div>

@@ -1,5 +1,28 @@
 # Google Merchant Center readiness: solarhomeenergybackup.com
 
+## Update, 2026-09-26: published policies
+
+The owner supplied Privacy, Return & Refund, Shipping & Delivery, Payment & Billing, Warranty, Cookie & Tracking, and Terms documents; they are published verbatim and every other page now reads the same terms (`lib/business.ts`, `lib/commerce.ts`).
+
+| Earlier finding | Status now |
+|---|---|
+| 0-A #1 No business identity | **Resolved on site.** SolarHome Energy Backup LLC, 218 Springfield Road, Baton Rouge, LA 70807, info@solarhomeenergybackup.com, shown in footer, Support, every policy, and Organization schema. Merchant must confirm this is the real operating address, not a virtual office, and use identical details in Merchant Center. |
+| 0-A #5 Return fees after purchase | **Resolved.** No restocking fee; customer pays standard return shipping; store pays for verified damaged/defective/incorrect items; window starts at delivery. Store-level `MerchantReturnPolicy` added to schema. |
+| 0-A #6 Shipping contradiction | **Resolved.** The fixed 10%/$2,000 rule is gone everywhere; all pages state destination-based delivery charges disclosed before payment, 1–3 business days processing, ~5–7 business days delivery after dispatch. |
+| 0-B #3 No working checkout | **Corrected.** The invoice form does not use the webhook; it opens WhatsApp with the order details. Orders can be placed by any customer with WhatsApp (or by email/phone). |
+| Tier 2 Contact information | **Resolved.** Email, phone, and address published. |
+| Tier 2 Internal drafting notes | **Resolved.** Final Terms and Privacy replace the drafts. |
+
+Still open:
+- **0-A #2 Ship-from location.** The policies do not say where orders ship from. The owner reports holding stock in a warehouse; state its location (or that it ships from Baton Rouge, if true) on the Shipping page.
+- **0-A #3 / #4 Reference pricing and the discount-retailer pattern.** Unchanged: "Save X%" compares against the supplier's price, and payment remains transfer, P2P apps, and Bitcoin only.
+- **Tier 1 Shipping in Merchant Center.** Delivery is quoted per destination after the order. Merchant Center needs an actual shipping cost (flat, table, or carrier-calculated) per item or account; a quote-later model cannot be submitted as-is. Define rates Merchant Center can express before submitting.
+- **Warehouse stock list** to drive per-product "In stock" (see `lib/catalog/warehouse-stock.ts`).
+
+Verdict unchanged: **NOT READY** until 0-A #2–#4 and the Merchant Center shipping setup are settled.
+
+---
+
 Date: 2026-09-25 · Track: **Shopping** (physical goods). Promotions and agentic checkout not in scope.
 Access: local project files (edited and rebuilt); nothing deployed.
 Policy basis: Merchant Center Misrepresentation (answer 17234184), Shopping ads policies, Product data specification, as bundled in the readiness skill (retrieved 17–23 Sep 2026).

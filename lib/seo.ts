@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { business } from './business';
 
 export const siteUrl = 'https://www.solarhomeenergybackup.com';
 export const siteName = 'SolarHome Energy Backup';
@@ -15,7 +16,19 @@ export const organizationSchema = {
   '@type': 'OnlineStore',
   '@id': `${siteUrl}/#organization`,
   name: siteName,
+  legalName: business.legalName,
+  alternateName: business.tradingName,
   url: siteUrl,
+  email: business.email,
+  telephone: business.phoneE164,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: business.streetAddress,
+    addressLocality: business.locality,
+    addressRegion: business.region,
+    postalCode: business.postalCode,
+    addressCountry: business.country,
+  },
   logo: `${siteUrl}/solarhome-energy-backup-logo.png`,
   image: `${siteUrl}/og-default.jpg`,
   description:
@@ -23,7 +36,8 @@ export const organizationSchema = {
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'customer support',
-    telephone: '+1-938-263-4728',
+    telephone: business.phoneE164,
+    email: business.email,
     availableLanguage: ['English'],
     hoursAvailable: {
       '@type': 'OpeningHoursSpecification',
@@ -31,6 +45,17 @@ export const organizationSchema = {
       opens: '09:00',
       closes: '17:00',
     },
+  },
+  // From the Return & Refund Policy (effective September 26, 2026): 30 days
+  // from delivery, customer pays standard return shipping, no restocking fee.
+  hasMerchantReturnPolicy: {
+    '@type': 'MerchantReturnPolicy',
+    applicableCountry: 'US',
+    returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+    merchantReturnDays: 30,
+    returnMethod: 'https://schema.org/ReturnByMail',
+    returnFees: 'https://schema.org/ReturnFeesCustomerResponsibility',
+    merchantReturnLink: `${siteUrl}/returns`,
   },
 };
 
