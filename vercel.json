@@ -22,78 +22,660 @@
       "permanent": true
     },
     {
+      "source": "/shop",
+      "has": [
+        {
+          "type": "query",
+          "key": "category",
+          "value": "Whole-home backup"
+        }
+      ],
+      "destination": "/whole-home-backup",
+      "permanent": true
+    },
+    {
+      "source": "/shop",
+      "has": [
+        {
+          "type": "query",
+          "key": "category",
+          "value": "Portable power"
+        }
+      ],
+      "destination": "/portable-power",
+      "permanent": true
+    },
+    {
+      "source": "/shop",
+      "has": [
+        {
+          "type": "query",
+          "key": "category",
+          "value": "Batteries"
+        }
+      ],
+      "destination": "/batteries",
+      "permanent": true
+    },
+    {
+      "source": "/shop",
+      "has": [
+        {
+          "type": "query",
+          "key": "category",
+          "value": "Solar panels"
+        }
+      ],
+      "destination": "/solar-panels",
+      "permanent": true
+    },
+    {
+      "source": "/shop",
+      "has": [
+        {
+          "type": "query",
+          "key": "category",
+          "value": "Home integration"
+        }
+      ],
+      "destination": "/home-integration",
+      "permanent": true
+    },
+    {
+      "source": "/shop",
+      "has": [
+        {
+          "type": "query",
+          "key": "category",
+          "value": "EV chargers"
+        }
+      ],
+      "destination": "/ev-chargers",
+      "permanent": true
+    },
+    {
+      "source": "/shop",
+      "has": [
+        {
+          "type": "query",
+          "key": "category",
+          "value": "Accessories"
+        }
+      ],
+      "destination": "/accessories",
+      "permanent": true
+    },
+    {
+      "source": "/shop",
+      "has": [
+        {
+          "type": "query",
+          "key": "category",
+          "value": "Refrigerators"
+        }
+      ],
+      "destination": "/refrigerators",
+      "permanent": true
+    },
+    {
+      "source": "/shop",
+      "has": [
+        {
+          "type": "query",
+          "key": "category",
+          "value": "Freezers"
+        }
+      ],
+      "destination": "/freezers",
+      "permanent": true
+    },
+    {
+      "source": "/shop",
+      "has": [
+        {
+          "type": "query",
+          "key": "category",
+          "value": "Dishwashers"
+        }
+      ],
+      "destination": "/dishwashers",
+      "permanent": true
+    },
+    {
+      "source": "/shop",
+      "has": [
+        {
+          "type": "query",
+          "key": "category",
+          "value": "Washers & Dryers"
+        }
+      ],
+      "destination": "/washers-dryers",
+      "permanent": true
+    },
+    {
       "source": "/products/anker-solix-anker-521-powerhouse-256wh-200w-refurbished-592",
-      "destination": "/products/anker-solix-anker-521-powerhouse-256wh-200w-592",
+      "destination": "/products/anker-521-powerhouse-256wh-200w-592",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-535-powerhouse-512wh-500w-593",
+      "destination": "/products/anker-535-powerhouse-512wh-500w-593",
       "permanent": true
     },
     {
       "source": "/products/anker-solix-anker-535-powerhouse-512wh-500w-refurbished-594",
-      "destination": "/products/anker-solix-anker-535-powerhouse-512wh-500w-593",
+      "destination": "/products/anker-535-powerhouse-512wh-500w-593",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-555-powerhouse-1024wh-1000w-596",
+      "destination": "/products/anker-555-powerhouse-1024wh-1000w-596",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-everfrost-dual-zone-portable-cooler-50-with-new-299wh-battery-powered-by-ac-dc-solar-597",
+      "destination": "/products/anker-everfrost-dual-zone-portable-cooler-50-with-new-299wh-battery-powered-by-ac-dc-solar-597",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-everfrost-portable-cooler-30-with-new-299wh-battery-powered-by-ac-dc-solar-665",
+      "destination": "/products/anker-everfrost-portable-cooler-30-with-new-299wh-battery-powered-by-ac-dc-solar-665",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-powerhouse-522-299wh-300w-683",
+      "destination": "/products/anker-powerhouse-522-299wh-300w-683",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-100w-foldable-solar-panel-8",
+      "destination": "/products/anker-solix-100w-foldable-solar-panel-8",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-bp1000-expansion-battery-1056wh-lfp-for-c1000-682",
+      "destination": "/products/anker-solix-bp1000-expansion-battery-1056wh-lfp-for-c1000-682",
       "permanent": true
     },
     {
       "source": "/products/anker-solix-anker-solix-bp1000-expansion-battery-1056wh-lfp-for-c1000-refurbished-748",
-      "destination": "/products/anker-solix-anker-solix-bp1000-expansion-battery-1056wh-lfp-for-c1000-682",
+      "destination": "/products/anker-solix-bp1000-expansion-battery-1056wh-lfp-for-c1000-682",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-bp1000-expansion-battery-1056wh-lfp-for-solix-c1000-a1761b-12",
+      "destination": "/products/anker-solix-bp1000-expansion-battery-1056wh-lfp-for-solix-c1000-a1761b-12",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-bp2000-expansion-battery-2-048wh-lfp-for-f2000-f2600-686",
+      "destination": "/products/anker-solix-bp2000-expansion-battery-2-048wh-lfp-for-f2000-f2600-686",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-bp2600-expansion-battery-2048wh-lfp-for-solix-2600-a1781111-85-13",
+      "destination": "/products/anker-solix-bp2600-expansion-battery-2048wh-lfp-for-solix-2600-a1781111-85-13",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-bp2600-expansion-battery-2560wh-lfp-for-f2000-f2600-601",
+      "destination": "/products/anker-solix-bp2600-expansion-battery-2560wh-lfp-for-f2000-f2600-601",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-bp3000-expansion-battery-3-072wh-for-f3000-c2000-gen-2-602",
+      "destination": "/products/anker-solix-bp3000-expansion-battery-3-072wh-for-f3000-c2000-gen-2-602",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-bp3000-expansion-battery-3072wh-lfp-for-solix-f3000-14",
+      "destination": "/products/anker-solix-bp3000-expansion-battery-3072wh-lfp-for-solix-f3000-14",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-bp3800-expansion-battery-3840wh-lfp-for-f3800-and-f3800-plus-678",
+      "destination": "/products/anker-solix-bp3800-expansion-battery-3840wh-lfp-for-f3800-and-f3800-plus-678",
       "permanent": true
     },
     {
       "source": "/products/anker-solix-anker-solix-bp3800-expansion-battery-3840wh-lfp-refurbished-745",
-      "destination": "/products/anker-solix-anker-solix-bp3800-expansion-battery-3840wh-lfp-745",
+      "destination": "/products/anker-solix-bp3800-expansion-battery-3840wh-lfp-745",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-c1000-alternator-charger-603",
+      "destination": "/products/anker-solix-c1000-alternator-charger-603",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-c1000-everfrost-2-58l-electric-cooler-604",
+      "destination": "/products/anker-solix-c1000-everfrost-2-58l-electric-cooler-604",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-c1000-expansion-battery-2112wh-1800w-606",
+      "destination": "/products/anker-solix-c1000-expansion-battery-2112wh-1800w-606",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-c1000-gen-2-alternator-charger-607",
+      "destination": "/products/anker-solix-c1000-gen-2-alternator-charger-607",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-c1000-gen-2-portable-power-station-with-100w-bifacial-solar-panel-608",
+      "destination": "/products/anker-solix-c1000-gen-2-portable-power-station-with-100w-bifacial-solar-panel-608",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-c1000-gen-2-portable-power-station-with-200w-bifacial-solar-panel-609",
+      "destination": "/products/anker-solix-c1000-gen-2-portable-power-station-with-200w-bifacial-solar-panel-609",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-c1000-portable-power-station-1056wh-1800w-689",
+      "destination": "/products/anker-solix-c1000-portable-power-station-1056wh-1800w-689",
       "permanent": true
     },
     {
       "source": "/products/anker-solix-anker-solix-c1000-portable-power-station-1056wh-1800w-refurbished-713",
-      "destination": "/products/anker-solix-anker-solix-c1000-portable-power-station-1056wh-1800w-689",
+      "destination": "/products/anker-solix-c1000-portable-power-station-1056wh-1800w-689",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-c1000-with-200w-bifacial-solar-panel-611",
+      "destination": "/products/anker-solix-c1000-with-200w-bifacial-solar-panel-611",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-c1000x-portable-power-station-1056wh-1800w-613",
+      "destination": "/products/anker-solix-c1000x-portable-power-station-1056wh-1800w-613",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-c200-dc-solar-generator-60w-solar-panel-688",
+      "destination": "/products/anker-solix-c200-dc-solar-generator-60w-solar-panel-688",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-c2000-gen-2-400w-solar-panel-718",
+      "destination": "/products/anker-solix-c2000-gen-2-400w-solar-panel-718",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-c2000-gen-2-alternator-charger-614",
+      "destination": "/products/anker-solix-c2000-gen-2-alternator-charger-614",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-c2000-gen-2-expansion-battery-2-400w-solar-panel-616",
+      "destination": "/products/anker-solix-c2000-gen-2-expansion-battery-2-400w-solar-panel-616",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-c2000-gen-2-expansion-battery-400w-solar-panel-617",
+      "destination": "/products/anker-solix-c2000-gen-2-expansion-battery-400w-solar-panel-617",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-c2000-gen-2-expansion-battery-615",
+      "destination": "/products/anker-solix-c2000-gen-2-expansion-battery-615",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-c2000-gen-2-expansion-battery-alternator-charger-618",
+      "destination": "/products/anker-solix-c2000-gen-2-expansion-battery-alternator-charger-618",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-c2000-gen-2-portable-power-station-2-048wh-2-400w-717",
+      "destination": "/products/anker-solix-c2000-gen-2-portable-power-station-2-048wh-2-400w-717",
       "permanent": true
     },
     {
       "source": "/products/anker-solix-anker-solix-c2000-gen-2-portable-power-station-2-048wh-2-400w-refurbished-750",
-      "destination": "/products/anker-solix-anker-solix-c2000-gen-2-portable-power-station-2-048wh-2-400w-717",
+      "destination": "/products/anker-solix-c2000-gen-2-portable-power-station-2-048wh-2-400w-717",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-c2000-gen-2-with-200w-bifacial-solar-panel-736",
+      "destination": "/products/anker-solix-c2000-gen-2-with-200w-bifacial-solar-panel-736",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-c200x-portable-power-station-661",
+      "destination": "/products/anker-solix-c200x-portable-power-station-661",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-c300-dc-solar-generator-60w-solar-panel-669",
+      "destination": "/products/anker-solix-c300-dc-solar-generator-60w-solar-panel-669",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-c300-portable-power-station-288wh-300w-667",
+      "destination": "/products/anker-solix-c300-portable-power-station-288wh-300w-667",
       "permanent": true
     },
     {
       "source": "/products/anker-solix-anker-solix-c300-portable-power-station-288wh-300w-refurbished-716",
-      "destination": "/products/anker-solix-anker-solix-c300-portable-power-station-288wh-300w-667",
+      "destination": "/products/anker-solix-c300-portable-power-station-288wh-300w-667",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-c300-portable-power-station-c300-dc-portable-power-station-699",
+      "destination": "/products/anker-solix-c300-portable-power-station-c300-dc-portable-power-station-699",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-c300-solar-generator-60w-solar-panel-664",
+      "destination": "/products/anker-solix-c300-solar-generator-60w-solar-panel-664",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-c300x-portable-power-station-288wh-300w-752",
+      "destination": "/products/anker-solix-c300x-portable-power-station-288wh-300w-752",
       "permanent": true
     },
     {
       "source": "/products/anker-solix-anker-solix-c300x-portable-power-station-288wh-300w-refurbished-744",
-      "destination": "/products/anker-solix-anker-solix-c300x-portable-power-station-288wh-300w-752",
+      "destination": "/products/anker-solix-c300x-portable-power-station-288wh-300w-752",
       "permanent": true
     },
     {
       "source": "/products/anker-solix-anker-solix-c800-portable-power-station-768wh-1200w-refurbished-747",
-      "destination": "/products/anker-solix-anker-solix-c800-portable-power-station-768wh-1200w-747",
+      "destination": "/products/anker-solix-c800-portable-power-station-768wh-1200w-747",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-e10-1-power-module-2-battery-power-dock-619",
+      "destination": "/products/anker-solix-e10-1-power-module-2-battery-power-dock-619",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-e10-battery-module-b6000-620",
+      "destination": "/products/anker-solix-e10-battery-module-b6000-620",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-e10-trolley-621",
+      "destination": "/products/anker-solix-e10-trolley-621",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-e10-whole-home-backup-ul9540-9540a-certified-722",
+      "destination": "/products/anker-solix-e10-whole-home-backup-ul9540-9540a-certified-722",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-everfrost-2-23l-electric-cooler-24qt-623",
+      "destination": "/products/anker-solix-everfrost-2-23l-electric-cooler-24qt-623",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-everfrost-2-23l-electric-cooler-removable-battery-624",
+      "destination": "/products/anker-solix-everfrost-2-23l-electric-cooler-removable-battery-624",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-everfrost-2-40l-electric-cooler-removable-battery-701",
+      "destination": "/products/anker-solix-everfrost-2-40l-electric-cooler-removable-battery-701",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f1500-portable-power-station-1536wh-1800w-a1772111-9",
+      "destination": "/products/anker-solix-f1500-portable-power-station-1536wh-1800w-a1772111-9",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f2600-6-circuit-manual-transfer-switch-670",
+      "destination": "/products/anker-solix-f2600-6-circuit-manual-transfer-switch-670",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f2600-bp2000-expansion-battery-4608wh-2400w-680",
+      "destination": "/products/anker-solix-f2600-bp2000-expansion-battery-4608wh-2400w-680",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f2600-portable-power-station-2560wh-2400w-685",
+      "destination": "/products/anker-solix-f2600-portable-power-station-2560wh-2400w-685",
       "permanent": true
     },
     {
       "source": "/products/anker-solix-anker-solix-f2600-portable-power-station-2560wh-2400w-refurbished-712",
-      "destination": "/products/anker-solix-anker-solix-f2600-portable-power-station-2560wh-2400w-685",
+      "destination": "/products/anker-solix-f2600-portable-power-station-2560wh-2400w-685",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3000-everfrost-2-58l-electric-cooler-630",
+      "destination": "/products/anker-solix-f3000-everfrost-2-58l-electric-cooler-630",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3000-portable-power-station-ul9540-certificated-710",
+      "destination": "/products/anker-solix-f3000-portable-power-station-ul9540-certificated-710",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3000-ul9540-certificated-120v-generator-input-adaptor-ev-charger-adapter-634",
+      "destination": "/products/anker-solix-f3000-ul9540-certificated-120v-generator-input-adaptor-ev-charger-adapter-634",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3000-ul9540-certificated-4-440w-rigid-solar-panel-636",
+      "destination": "/products/anker-solix-f3000-ul9540-certificated-4-440w-rigid-solar-panel-636",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3000-ul9540-certificated-6-circuit-manual-transfer-switch-637",
+      "destination": "/products/anker-solix-f3000-ul9540-certificated-6-circuit-manual-transfer-switch-637",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3000-ul9540-certificated-alternator-charger-638",
+      "destination": "/products/anker-solix-f3000-ul9540-certificated-alternator-charger-638",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3000-ul9540-certificated-expansion-battery-4-440w-rigid-solar-panel-640",
+      "destination": "/products/anker-solix-f3000-ul9540-certificated-expansion-battery-4-440w-rigid-solar-panel-640",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3000-ul9540-certificated-expansion-battery-400w-solar-panel-639",
+      "destination": "/products/anker-solix-f3000-ul9540-certificated-expansion-battery-400w-solar-panel-639",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3000-ul9540-certificated-expansion-battery-6-circuit-manual-transfer-switch-641",
+      "destination": "/products/anker-solix-f3000-ul9540-certificated-expansion-battery-6-circuit-manual-transfer-switch-641",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3000-ul9540-certificated-expansion-battery-power-saver-kit-6-circuit-manual-transfer-switch--642",
+      "destination": "/products/anker-solix-f3000-ul9540-certificated-expansion-battery-power-saver-kit-6-circuit-manual-transfer-switch--642",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3000-ul9540-certificated-power-saver-kit-4-440w-rigid-solar-panel-644",
+      "destination": "/products/anker-solix-f3000-ul9540-certificated-power-saver-kit-4-440w-rigid-solar-panel-644",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3000-ul9540-certificated-power-saver-kit-643",
+      "destination": "/products/anker-solix-f3000-ul9540-certificated-power-saver-kit-643",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3000-ul9540-certificated-power-saver-kit-transfer-switch-645",
+      "destination": "/products/anker-solix-f3000-ul9540-certificated-power-saver-kit-transfer-switch-645",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3000-ul9540-certificated-water-resistant-bag-646",
+      "destination": "/products/anker-solix-f3000-ul9540-certificated-water-resistant-bag-646",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3000-ul9540-certificated-with-400w-bifacial-solar-panel-647",
+      "destination": "/products/anker-solix-f3000-ul9540-certificated-with-400w-bifacial-solar-panel-647",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3800-2-expansion-battery-668",
+      "destination": "/products/anker-solix-f3800-2-expansion-battery-668",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3800-expansion-battery-10-circuit-manual-transfer-switch-677",
+      "destination": "/products/anker-solix-f3800-expansion-battery-10-circuit-manual-transfer-switch-677",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3800-expansion-battery-400w-solar-panel-662",
+      "destination": "/products/anker-solix-f3800-expansion-battery-400w-solar-panel-662",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3800-expansion-battery-7680wh-6000w-684",
+      "destination": "/products/anker-solix-f3800-expansion-battery-7680wh-6000w-684",
       "permanent": true
     },
     {
       "source": "/products/anker-solix-anker-solix-f3800-expansion-battery-refurbished-753",
-      "destination": "/products/anker-solix-anker-solix-f3800-expansion-battery-753",
+      "destination": "/products/anker-solix-f3800-expansion-battery-753",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3800-expansion-battery-smart-home-power-kit-679",
+      "destination": "/products/anker-solix-f3800-expansion-battery-smart-home-power-kit-679",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3800-plus-2-400w-portable-solar-panel-648",
+      "destination": "/products/anker-solix-f3800-plus-2-400w-portable-solar-panel-648",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3800-plus-240v-generator-input-adapter-10",
+      "destination": "/products/anker-solix-f3800-plus-240v-generator-input-adapter-10",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3800-plus-6-440w-rigid-solar-panel-650",
+      "destination": "/products/anker-solix-f3800-plus-6-440w-rigid-solar-panel-650",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3800-plus-expansion-battery-400w-solar-panel-653",
+      "destination": "/products/anker-solix-f3800-plus-expansion-battery-400w-solar-panel-653",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3800-plus-expansion-battery-693",
+      "destination": "/products/anker-solix-f3800-plus-expansion-battery-693",
       "permanent": true
     },
     {
       "source": "/products/anker-solix-anker-solix-f3800-plus-expansion-battery-refurbished-754",
-      "destination": "/products/anker-solix-anker-solix-f3800-plus-expansion-battery-693",
+      "destination": "/products/anker-solix-f3800-plus-expansion-battery-693",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3800-plus-expansion-battery-smart-home-power-kit-695",
+      "destination": "/products/anker-solix-f3800-plus-expansion-battery-smart-home-power-kit-695",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3800-plus-generator-input-adapter-654",
+      "destination": "/products/anker-solix-f3800-plus-generator-input-adapter-654",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3800-plus-portable-power-station-697",
+      "destination": "/products/anker-solix-f3800-plus-portable-power-station-697",
       "permanent": true
     },
     {
       "source": "/products/anker-solix-anker-solix-f3800-plus-portable-power-station-refurbished-746",
-      "destination": "/products/anker-solix-anker-solix-f3800-plus-portable-power-station-697",
+      "destination": "/products/anker-solix-f3800-plus-portable-power-station-697",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3800-plus-smart-home-power-kit-692",
+      "destination": "/products/anker-solix-f3800-plus-smart-home-power-kit-692",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3800-plus-with-400w-bifacial-solar-panel-656",
+      "destination": "/products/anker-solix-f3800-plus-with-400w-bifacial-solar-panel-656",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3800-portable-power-station-3840wh-6000w-a1790111-11",
+      "destination": "/products/anker-solix-f3800-portable-power-station-3840wh-6000w-a1790111-11",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3800-smart-home-power-kit-673",
+      "destination": "/products/anker-solix-f3800-smart-home-power-kit-673",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3800-solar-generator-2-400w-solar-panel-666",
+      "destination": "/products/anker-solix-f3800-solar-generator-2-400w-solar-panel-666",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3800-with-400w-bifacial-solar-panel-737",
+      "destination": "/products/anker-solix-f3800-with-400w-bifacial-solar-panel-737",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-ps100-bifacial-portable-solar-panel-733",
+      "destination": "/products/anker-solix-ps100-bifacial-portable-solar-panel-733",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-ps200-bifacial-portable-solar-panel-734",
+      "destination": "/products/anker-solix-ps200-bifacial-portable-solar-panel-734",
       "permanent": true
     },
     {
       "source": "/products/anker-solix-anker-solix-ps200-portable-solar-panel-200w-refurbished-715",
-      "destination": "/products/anker-solix-anker-solix-ps200-portable-solar-panel-200w-715",
+      "destination": "/products/anker-solix-ps200-portable-solar-panel-200w-715",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-ps400-bifacial-portable-solar-panel-735",
+      "destination": "/products/anker-solix-ps400-bifacial-portable-solar-panel-735",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-ps400-portable-solar-panel-400w-687",
+      "destination": "/products/anker-solix-ps400-portable-solar-panel-400w-687",
       "permanent": true
     },
     {
       "source": "/products/anker-solix-anker-solix-ps400-portable-solar-panel-refurbished-714",
-      "destination": "/products/anker-solix-anker-solix-ps400-portable-solar-panel-714",
+      "destination": "/products/anker-solix-ps400-portable-solar-panel-714",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-s2000-portable-power-station-738",
+      "destination": "/products/anker-solix-s2000-portable-power-station-738",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-smart-generator-5500-tri-fuel-720",
+      "destination": "/products/anker-solix-smart-generator-5500-tri-fuel-720",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-smart-home-power-kit-smart-home-panel-subpanel-circuit-breaker-ground-bar-681",
+      "destination": "/products/anker-solix-smart-home-power-kit-smart-home-panel-subpanel-circuit-breaker-ground-bar-681",
       "permanent": true
     },
     {
@@ -102,218 +684,1823 @@
       "permanent": true
     },
     {
+      "source": "/products/bluetti-bluetti-120w-solar-panel-120w-810",
+      "destination": "/products/bluetti-120w-solar-panel-120w-810",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-2-ac300-2-b300-1-p030a-home-battery-backup-811",
+      "destination": "/products/bluetti-2-ac300-2-b300-1-p030a-home-battery-backup-811",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-2-ac300-2-b300k-p030a-home-battery-backup-813",
+      "destination": "/products/bluetti-2-ac300-2-b300k-p030a-home-battery-backup-813",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-2-ac300-4-b300k-home-battery-backup-814",
+      "destination": "/products/bluetti-2-ac300-4-b300k-home-battery-backup-814",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-200w-portable-solar-panel-815",
+      "destination": "/products/bluetti-200w-portable-solar-panel-815",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-350w-solar-panel-2-700w-817",
+      "destination": "/products/bluetti-350w-solar-panel-2-700w-817",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-350w-solar-panel-3-1050w-818",
+      "destination": "/products/bluetti-350w-solar-panel-3-1050w-818",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-350w-solar-panel-816",
+      "destination": "/products/bluetti-350w-solar-panel-816",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-500w-solar-panel-819",
+      "destination": "/products/bluetti-500w-solar-panel-819",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-500w-x-2-solar-panel-820",
+      "destination": "/products/bluetti-500w-x-2-solar-panel-820",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-ac180-solar-generator-1-800w-1-152wh-821",
+      "destination": "/products/bluetti-ac180-solar-generator-1-800w-1-152wh-821",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-ac180-solar-portable-power-station-1-800w-1-152wh-822",
+      "destination": "/products/bluetti-ac180-solar-portable-power-station-1-800w-1-152wh-822",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-ac180p-portable-power-station-1-800w-1-440wh-823",
+      "destination": "/products/bluetti-ac180p-portable-power-station-1-800w-1-440wh-823",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-ac200l-portable-power-station-2-400w-2-048wh-824",
+      "destination": "/products/bluetti-ac200l-portable-power-station-2-400w-2-048wh-824",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-ac200max-expandable-power-station-825",
+      "destination": "/products/bluetti-ac200max-expandable-power-station-825",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-ac200p-l-portable-power-station-2-400w-2-304wh-826",
+      "destination": "/products/bluetti-ac200p-l-portable-power-station-2-400w-2-304wh-826",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-ac200p-portable-power-station-2-000w-2-000wh-827",
+      "destination": "/products/bluetti-ac200p-portable-power-station-2-000w-2-000wh-827",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-ac300-2-b300-home-battery-backup-828",
+      "destination": "/products/bluetti-ac300-2-b300-home-battery-backup-828",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-ac300-2-b300-home-integration-kit-120v-home-battery-backup-833",
+      "destination": "/products/bluetti-ac300-2-b300-home-integration-kit-120v-home-battery-backup-833",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-ac300-2-b300-trolley-home-battery-backup-834",
+      "destination": "/products/bluetti-ac300-2-b300-trolley-home-battery-backup-834",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-ac300-2-b300k-3-350w-solar-rv-cable-home-battery-backup-835",
+      "destination": "/products/bluetti-ac300-2-b300k-3-350w-solar-rv-cable-home-battery-backup-835",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-ac300-2-b300k-trolley-home-battery-backup-836",
+      "destination": "/products/bluetti-ac300-2-b300k-trolley-home-battery-backup-836",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-ac300-3-b300k-home-battery-backup-837",
+      "destination": "/products/bluetti-ac300-3-b300k-home-battery-backup-837",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-ac300-4-b300-home-battery-backup-829",
+      "destination": "/products/bluetti-ac300-4-b300-home-battery-backup-829",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-ac300-4-b300k-home-battery-backup-838",
+      "destination": "/products/bluetti-ac300-4-b300k-home-battery-backup-838",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-ac300-b300-2-pv200d-home-battery-backup-839",
+      "destination": "/products/bluetti-ac300-b300-2-pv200d-home-battery-backup-839",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-ac300-b300-2-pv350-home-battery-backup-841",
+      "destination": "/products/bluetti-ac300-b300-2-pv350-home-battery-backup-841",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-ac300-b300-3-pv200d-home-battery-backup-842",
+      "destination": "/products/bluetti-ac300-b300-3-pv200d-home-battery-backup-842",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-ac300-b300-3-pv350-home-battery-backup-843",
+      "destination": "/products/bluetti-ac300-b300-3-pv350-home-battery-backup-843",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-ac300-b300-home-battery-backup-830",
+      "destination": "/products/bluetti-ac300-b300-home-battery-backup-830",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-ac300-b300-home-integration-kit-120v-844",
+      "destination": "/products/bluetti-ac300-b300-home-integration-kit-120v-844",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-ac300-b300-pv350-home-battery-backup-845",
+      "destination": "/products/bluetti-ac300-b300-pv350-home-battery-backup-845",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-ac300-b300k-2-200w-solar-rv-cable-home-battery-backup-846",
+      "destination": "/products/bluetti-ac300-b300k-2-200w-solar-rv-cable-home-battery-backup-846",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-ac300-b300k-2-350w-solar-home-battery-backup-847",
+      "destination": "/products/bluetti-ac300-b300k-2-350w-solar-home-battery-backup-847",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-ac300-b300k-200w-solar-home-battery-backup-848",
+      "destination": "/products/bluetti-ac300-b300k-200w-solar-home-battery-backup-848",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-ac300-b300k-3-200w-solar-home-battery-backup-849",
+      "destination": "/products/bluetti-ac300-b300k-3-200w-solar-home-battery-backup-849",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-ac300-b300k-3-350w-solar-home-battery-backup-850",
+      "destination": "/products/bluetti-ac300-b300k-3-350w-solar-home-battery-backup-850",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-ac300-b300k-home-integration-kit-120v-home-battery-backup-851",
+      "destination": "/products/bluetti-ac300-b300k-home-integration-kit-120v-home-battery-backup-851",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-ac300-inverter-module-generator-3-000w-requires-the-b300-b300k-to-work-831",
+      "destination": "/products/bluetti-ac300-inverter-module-generator-3-000w-requires-the-b300-b300k-to-work-831",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-ac60-sp100l-solar-generator-600w-403wh-852",
+      "destination": "/products/bluetti-ac60-sp100l-solar-generator-600w-403wh-852",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-b1210-lifepo-battery-12-8-v-100-ah-853",
+      "destination": "/products/bluetti-b1210-lifepo-battery-12-8-v-100-ah-853",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-b1232-lifepo-battery-12-8-v-314-ah-854",
+      "destination": "/products/bluetti-b1232-lifepo-battery-12-8-v-314-ah-854",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-b230-expansion-battery-2-048wh-855",
+      "destination": "/products/bluetti-b230-expansion-battery-2-048wh-855",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-b300-expansion-battery-3-072wh-856",
+      "destination": "/products/bluetti-b300-expansion-battery-3-072wh-856",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-b300s-expansion-battery-3-072wh-857",
+      "destination": "/products/bluetti-b300s-expansion-battery-3-072wh-857",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-b80-b80p-expansion-battery-806wh-860",
+      "destination": "/products/bluetti-b80-b80p-expansion-battery-806wh-860",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-charger-1-861",
+      "destination": "/products/bluetti-charger-1-861",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-eb70s-portable-power-station-800w-716wh-862",
+      "destination": "/products/bluetti-eb70s-portable-power-station-800w-716wh-862",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-elite-100-v2-portable-power-station-1-800w-1-024wh-863",
+      "destination": "/products/bluetti-elite-100-v2-portable-power-station-1-800w-1-024wh-863",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-elite-200-v2-portable-power-station-2-600w-2-073-6wh-864",
+      "destination": "/products/bluetti-elite-200-v2-portable-power-station-2-600w-2-073-6wh-864",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-elite-30-v2-light-sand-grey-100w-866",
+      "destination": "/products/bluetti-elite-30-v2-light-sand-grey-100w-866",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-elite-30-v2-portable-power-station-600w-288wh-867",
+      "destination": "/products/bluetti-elite-30-v2-portable-power-station-600w-288wh-867",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-elite-30-v2-portable-power-station-600w-288wh-blush-pink-868",
+      "destination": "/products/bluetti-elite-30-v2-portable-power-station-600w-288wh-blush-pink-868",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-elite-30-v2-portable-power-station-600w-288wh-light-sand-grey-870",
+      "destination": "/products/bluetti-elite-30-v2-portable-power-station-600w-288wh-light-sand-grey-870",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-elite-30-v2-portable-power-station-600w-288wh-meadow-green-871",
+      "destination": "/products/bluetti-elite-30-v2-portable-power-station-600w-288wh-meadow-green-871",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-elite-30-v2-portable-power-station-600w-288wh-twilight-glow-purple-872",
+      "destination": "/products/bluetti-elite-30-v2-portable-power-station-600w-288wh-twilight-glow-purple-872",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-elite-30-v2-twilight-glow-purple-60w-873",
+      "destination": "/products/bluetti-elite-30-v2-twilight-glow-purple-60w-873",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-ep900-3-b500-home-battery-backup-874",
+      "destination": "/products/bluetti-ep900-3-b500-home-battery-backup-874",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-ep900-4-b500-home-battery-backup-875",
+      "destination": "/products/bluetti-ep900-4-b500-home-battery-backup-875",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-bluetti-pioneer-na-sodium-portable-power-station-1-500w-900wh-876",
+      "destination": "/products/bluetti-pioneer-na-sodium-portable-power-station-1-500w-900wh-876",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-10kwh-power-kits-413",
+      "destination": "/products/ecoflow-10kwh-power-kits-413",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-110w-portable-solar-panel-582",
+      "destination": "/products/ecoflow-110w-portable-solar-panel-582",
+      "permanent": true
+    },
+    {
       "source": "/products/ecoflow-ecoflow-110w-portable-solar-panel-refurbished-2-572",
-      "destination": "/products/ecoflow-ecoflow-110w-portable-solar-panel-2-572",
+      "destination": "/products/ecoflow-110w-portable-solar-panel-2-572",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-125w-bifacial-modular-solar-panel-125w-250w-500w-kits-565",
+      "destination": "/products/ecoflow-125w-bifacial-modular-solar-panel-125w-250w-500w-kits-565",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-15kwh-power-kits-577",
+      "destination": "/products/ecoflow-15kwh-power-kits-577",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-160w-portable-solar-panel-2-568",
+      "destination": "/products/ecoflow-160w-portable-solar-panel-2-568",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-160w-solar-panel-costco-sale-579",
-      "destination": "/products/ecoflow-ecoflow-160w-solar-panel-579",
+      "destination": "/products/ecoflow-160w-solar-panel-579",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-175w-rigid-solar-panel-567",
+      "destination": "/products/ecoflow-175w-rigid-solar-panel-567",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-2-220w-bifacial-solar-panel-app-only-580",
-      "destination": "/products/ecoflow-ecoflow-2-220w-bifacial-solar-panel-580",
+      "destination": "/products/ecoflow-2-220w-bifacial-solar-panel-580",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-2-x-400w-portable-solar-panel-recommended-accessory-558",
+      "destination": "/products/ecoflow-2-x-400w-portable-solar-panel-recommended-accessory-558",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-220w-bifacial-portable-solar-panel-refurbished-574",
-      "destination": "/products/ecoflow-ecoflow-220w-bifacial-portable-solar-panel-574",
+      "destination": "/products/ecoflow-220w-bifacial-portable-solar-panel-574",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-2kwh-power-kits-569",
+      "destination": "/products/ecoflow-2kwh-power-kits-569",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-400w-portable-solar-panel-app-only-562",
-      "destination": "/products/ecoflow-ecoflow-400w-portable-solar-panel-562",
+      "destination": "/products/ecoflow-400w-portable-solar-panel-562",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-400w-portable-solar-panel-refurbished-573",
-      "destination": "/products/ecoflow-ecoflow-400w-portable-solar-panel-562",
+      "destination": "/products/ecoflow-400w-portable-solar-panel-562",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-400w-rigid-solar-panel-rigid-solar-mounting-feet-553",
+      "destination": "/products/ecoflow-400w-rigid-solar-panel-rigid-solar-mounting-feet-553",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-4kwh-power-kits-578",
+      "destination": "/products/ecoflow-4kwh-power-kits-578",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-50-amp-hub-570",
+      "destination": "/products/ecoflow-50-amp-hub-570",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-500w-solar-kit-recommended-accessories-554",
+      "destination": "/products/ecoflow-500w-solar-kit-recommended-accessories-554",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-5kwh-lfp-battery-576",
+      "destination": "/products/ecoflow-5kwh-lfp-battery-576",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-800w-alternator-charger-560",
+      "destination": "/products/ecoflow-800w-alternator-charger-560",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-afci-box-575",
+      "destination": "/products/ecoflow-afci-box-575",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-delta-1000-portable-power-station-refurbished-483",
-      "destination": "/products/ecoflow-ecoflow-delta-1000-portable-power-station-483",
+      "destination": "/products/ecoflow-delta-1000-portable-power-station-483",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-1300-portable-power-station-414",
+      "destination": "/products/ecoflow-delta-1300-portable-power-station-414",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-2-max-2-220w-portable-solar-panel-800w-alternator-charger-415",
+      "destination": "/products/ecoflow-delta-2-max-2-220w-portable-solar-panel-800w-alternator-charger-415",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-2-max-500w-alternator-charger-559",
+      "destination": "/products/ecoflow-delta-2-max-500w-alternator-charger-559",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-2-max-500w-solar-kit-416",
+      "destination": "/products/ecoflow-delta-2-max-500w-solar-kit-416",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-2-max-800w-alternator-charger-hand-truck-417",
+      "destination": "/products/ecoflow-delta-2-max-800w-alternator-charger-hand-truck-417",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-2-max-portable-power-station-551",
+      "destination": "/products/ecoflow-delta-2-max-portable-power-station-551",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-delta-2-max-portable-power-station-refurbished-419",
-      "destination": "/products/ecoflow-ecoflow-delta-2-max-portable-power-station-551",
+      "destination": "/products/ecoflow-delta-2-max-portable-power-station-551",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-2-max-smart-extra-battery-420",
+      "destination": "/products/ecoflow-delta-2-max-smart-extra-battery-420",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-delta-2-max-smart-extra-battery-refurbished-421",
-      "destination": "/products/ecoflow-ecoflow-delta-2-max-smart-extra-battery-420",
+      "destination": "/products/ecoflow-delta-2-max-smart-extra-battery-420",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-2-max-solar-generator-422",
+      "destination": "/products/ecoflow-delta-2-max-solar-generator-422",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-2-max-solar-generator-pv160w-423",
+      "destination": "/products/ecoflow-delta-2-max-solar-generator-pv160w-423",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-2-max-solar-generator-pv220w-424",
+      "destination": "/products/ecoflow-delta-2-max-solar-generator-pv220w-424",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-2-max-solar-generator-pv400w-425",
+      "destination": "/products/ecoflow-delta-2-max-solar-generator-pv400w-425",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-3-1500-solar-generator-427",
+      "destination": "/products/ecoflow-delta-3-1500-solar-generator-427",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-3-800w-alternator-charger-426",
+      "destination": "/products/ecoflow-delta-3-800w-alternator-charger-426",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-3-classic-portable-power-station-1024wh-428",
+      "destination": "/products/ecoflow-delta-3-classic-portable-power-station-1024wh-428",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-delta-3-classic-portable-power-station-1024wh-subscriber-exclusive-552",
-      "destination": "/products/ecoflow-ecoflow-delta-3-classic-portable-power-station-1024wh-428",
+      "destination": "/products/ecoflow-delta-3-classic-portable-power-station-1024wh-428",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-3-classic-solar-generator-429",
+      "destination": "/products/ecoflow-delta-3-classic-solar-generator-429",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-delta-3-max-plus-2048wh-smart-extra-battery-app-only-430",
-      "destination": "/products/ecoflow-ecoflow-delta-3-max-plus-2048wh-smart-extra-battery-430",
+      "destination": "/products/ecoflow-delta-3-max-plus-2048wh-smart-extra-battery-430",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-3-max-plus-portable-power-station-2048wh-431",
+      "destination": "/products/ecoflow-delta-3-max-plus-portable-power-station-2048wh-431",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-3-max-plus-solar-generator-432",
+      "destination": "/products/ecoflow-delta-3-max-plus-solar-generator-432",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-3-max-portable-power-station-2048wh-433",
+      "destination": "/products/ecoflow-delta-3-max-portable-power-station-2048wh-433",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-3-max-series-solar-generator-pv220w-434",
+      "destination": "/products/ecoflow-delta-3-max-series-solar-generator-pv220w-434",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-3-max-solar-generator-435",
+      "destination": "/products/ecoflow-delta-3-max-solar-generator-435",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-3-plus-160w-portable-solar-panel-800w-alternator-charger-436",
+      "destination": "/products/ecoflow-delta-3-plus-160w-portable-solar-panel-800w-alternator-charger-436",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-3-plus-portable-power-station-438",
+      "destination": "/products/ecoflow-delta-3-plus-portable-power-station-438",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-delta-3-plus-portable-power-station-refurbished-439",
-      "destination": "/products/ecoflow-ecoflow-delta-3-plus-portable-power-station-438",
+      "destination": "/products/ecoflow-delta-3-plus-portable-power-station-438",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-3-plus-rapid-magnetic-power-bank-5000mah-437",
+      "destination": "/products/ecoflow-delta-3-plus-rapid-magnetic-power-bank-5000mah-437",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-3-plus-solar-generator-440",
+      "destination": "/products/ecoflow-delta-3-plus-solar-generator-440",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-3-series-smart-extra-battery-recommended-accessory-441",
+      "destination": "/products/ecoflow-delta-3-series-smart-extra-battery-recommended-accessory-441",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-3-series-solar-generator-pv110w-442",
+      "destination": "/products/ecoflow-delta-3-series-solar-generator-pv110w-442",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-3-series-solar-generator-pv400w-443",
+      "destination": "/products/ecoflow-delta-3-series-solar-generator-pv400w-443",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-3-solar-generator-444",
+      "destination": "/products/ecoflow-delta-3-solar-generator-444",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-3-solar-kit-561",
+      "destination": "/products/ecoflow-delta-3-solar-kit-561",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-3-ultra-plus-portable-power-station-3072wh-445",
+      "destination": "/products/ecoflow-delta-3-ultra-plus-portable-power-station-3072wh-445",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-delta-3-ultra-plus-portable-power-station-3072wh-refurbished-446",
-      "destination": "/products/ecoflow-ecoflow-delta-3-ultra-plus-portable-power-station-3072wh-445",
+      "destination": "/products/ecoflow-delta-3-ultra-plus-portable-power-station-3072wh-445",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-3-ultra-plus-solar-generator-3072wh-447",
+      "destination": "/products/ecoflow-delta-3-ultra-plus-solar-generator-3072wh-447",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-3-ultra-portable-power-station-3072wh-448",
+      "destination": "/products/ecoflow-delta-3-ultra-portable-power-station-3072wh-448",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-delta-3-ultra-portable-power-station-3072wh-refurbished-449",
-      "destination": "/products/ecoflow-ecoflow-delta-3-ultra-portable-power-station-3072wh-448",
+      "destination": "/products/ecoflow-delta-3-ultra-portable-power-station-3072wh-448",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-3-ultra-solar-generator-3072wh-450",
+      "destination": "/products/ecoflow-delta-3-ultra-solar-generator-3072wh-450",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-delta-mini-portable-power-station-refurbished-451",
-      "destination": "/products/ecoflow-ecoflow-delta-mini-portable-power-station-451",
+      "destination": "/products/ecoflow-delta-mini-portable-power-station-451",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-delta-mini-portable-power-station-slickdeals-452",
-      "destination": "/products/ecoflow-ecoflow-delta-mini-portable-power-station-451",
+      "destination": "/products/ecoflow-delta-mini-portable-power-station-451",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-delta-portable-power-station-refurbished-453",
-      "destination": "/products/ecoflow-ecoflow-delta-portable-power-station-453",
+      "destination": "/products/ecoflow-delta-portable-power-station-453",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-pro-2-double-voltage-hub-transfer-switch-479",
+      "destination": "/products/ecoflow-delta-pro-2-double-voltage-hub-transfer-switch-479",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-delta-pro-3-portable-power-station-refurbished-455",
-      "destination": "/products/ecoflow-ecoflow-delta-pro-3-portable-power-station-455",
+      "destination": "/products/ecoflow-delta-pro-3-portable-power-station-455",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-pro-3-portable-power-station-ul9540-certificated-456",
+      "destination": "/products/ecoflow-delta-pro-3-portable-power-station-ul9540-certificated-456",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-delta-pro-3-smart-extra-battery-app-only-457",
-      "destination": "/products/ecoflow-ecoflow-delta-pro-3-smart-extra-battery-457",
+      "destination": "/products/ecoflow-delta-pro-3-smart-extra-battery-457",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-delta-pro-3-smart-extra-battery-refurbished-458",
-      "destination": "/products/ecoflow-ecoflow-delta-pro-3-smart-extra-battery-457",
+      "destination": "/products/ecoflow-delta-pro-3-smart-extra-battery-457",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-delta-pro-3-smart-generator-4000-dual-fuel-app-only-454",
-      "destination": "/products/ecoflow-ecoflow-delta-pro-3-smart-generator-4000-dual-fuel-454",
+      "destination": "/products/ecoflow-delta-pro-3-smart-generator-4000-dual-fuel-454",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-pro-3-smart-home-panel-2-566",
+      "destination": "/products/ecoflow-delta-pro-3-smart-home-panel-2-566",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-pro-3-solar-generator-459",
+      "destination": "/products/ecoflow-delta-pro-3-solar-generator-459",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-pro-3-whole-home-power-kit-460",
+      "destination": "/products/ecoflow-delta-pro-3-whole-home-power-kit-460",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-pro-portable-power-station-461",
+      "destination": "/products/ecoflow-delta-pro-portable-power-station-461",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-delta-pro-portable-power-station-refurbished-462",
-      "destination": "/products/ecoflow-ecoflow-delta-pro-portable-power-station-461",
+      "destination": "/products/ecoflow-delta-pro-portable-power-station-461",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-pro-smart-extra-battery-463",
+      "destination": "/products/ecoflow-delta-pro-smart-extra-battery-463",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-delta-pro-smart-extra-battery-refurbished-464",
-      "destination": "/products/ecoflow-ecoflow-delta-pro-smart-extra-battery-463",
+      "destination": "/products/ecoflow-delta-pro-smart-extra-battery-463",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-pro-solar-generator-555",
+      "destination": "/products/ecoflow-delta-pro-solar-generator-555",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-pro-solar-generator-pv400w-465",
+      "destination": "/products/ecoflow-delta-pro-solar-generator-pv400w-465",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-pro-ultra-accessories-special-469",
+      "destination": "/products/ecoflow-delta-pro-ultra-accessories-special-469",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-delta-pro-ultra-battery-refurbished-470",
-      "destination": "/products/ecoflow-ecoflow-delta-pro-ultra-battery-470",
+      "destination": "/products/ecoflow-delta-pro-ultra-battery-470",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-pro-ultra-delta-pro-ultra-extra-battery-1-inverter-2-batteries-466",
+      "destination": "/products/ecoflow-delta-pro-ultra-delta-pro-ultra-extra-battery-1-inverter-2-batteries-466",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-pro-ultra-intelligent-kit-471",
+      "destination": "/products/ecoflow-delta-pro-ultra-intelligent-kit-471",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-pro-ultra-inverter-571",
+      "destination": "/products/ecoflow-delta-pro-ultra-inverter-571",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-pro-ultra-series-smart-extra-battery-473",
+      "destination": "/products/ecoflow-delta-pro-ultra-series-smart-extra-battery-473",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-delta-pro-ultra-series-smart-extra-battery-app-only-474",
-      "destination": "/products/ecoflow-ecoflow-delta-pro-ultra-series-smart-extra-battery-473",
+      "destination": "/products/ecoflow-delta-pro-ultra-series-smart-extra-battery-473",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-delta-pro-ultra-smart-home-panel-2-400w-portable-solar-panel-free-monitor-web-exclusive-468",
-      "destination": "/products/ecoflow-ecoflow-delta-pro-ultra-smart-home-panel-2-400w-portable-solar-panel-467",
+      "destination": "/products/ecoflow-delta-pro-ultra-smart-home-panel-2-400w-portable-solar-panel-467",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-delta-pro-ultra-smart-home-panel-2-400w-portable-solar-panel-web-exclusive-467",
-      "destination": "/products/ecoflow-ecoflow-delta-pro-ultra-smart-home-panel-2-400w-portable-solar-panel-467",
+      "destination": "/products/ecoflow-delta-pro-ultra-smart-home-panel-2-400w-portable-solar-panel-467",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-pro-ultra-solar-generator-pv400w-563",
+      "destination": "/products/ecoflow-delta-pro-ultra-solar-generator-pv400w-563",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-pro-ultra-whole-home-backup-power-special-564",
+      "destination": "/products/ecoflow-delta-pro-ultra-whole-home-backup-power-special-564",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-pro-ultra-whole-home-backup-power-ul-9540-certificated-550",
+      "destination": "/products/ecoflow-delta-pro-ultra-whole-home-backup-power-ul-9540-certificated-550",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-pro-ultra-x-inverter-557",
+      "destination": "/products/ecoflow-delta-pro-ultra-x-inverter-557",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-pro-ultra-x-smart-transfer-kit-476",
+      "destination": "/products/ecoflow-delta-pro-ultra-x-smart-transfer-kit-476",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-pro-ultra-x-solar-generator-477",
+      "destination": "/products/ecoflow-delta-pro-ultra-x-solar-generator-477",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-pro-ultra-x-whole-home-backup-power-478",
+      "destination": "/products/ecoflow-delta-pro-ultra-x-whole-home-backup-power-478",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-solar-generator-pv-160w-480",
+      "destination": "/products/ecoflow-delta-solar-generator-pv-160w-480",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-solar-generator-pv-220w-481",
+      "destination": "/products/ecoflow-delta-solar-generator-pv-220w-481",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-solar-generator-pv110w-482",
+      "destination": "/products/ecoflow-delta-solar-generator-pv110w-482",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-glacier-classic-55l-portable-refrigerator-487",
+      "destination": "/products/ecoflow-glacier-classic-55l-portable-refrigerator-487",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-glacier-classic-portable-fridge-freezer-app-only-488",
-      "destination": "/products/ecoflow-ecoflow-glacier-classic-portable-fridge-freezer-488",
+      "destination": "/products/ecoflow-glacier-classic-portable-fridge-freezer-488",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-glacier-ecoflow-delta-2-max-484",
+      "destination": "/products/ecoflow-glacier-ecoflow-delta-2-max-484",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-glacier-ecoflow-river-2-pro-485",
+      "destination": "/products/ecoflow-glacier-ecoflow-river-2-pro-485",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-glacier-plug-in-battery-detachable-wheels-and-lever-486",
+      "destination": "/products/ecoflow-glacier-plug-in-battery-detachable-wheels-and-lever-486",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-glacier-plug-in-battery-wheels-and-lever-free-bag-app-only-489",
-      "destination": "/products/ecoflow-ecoflow-glacier-plug-in-battery-wheels-and-lever-489",
+      "destination": "/products/ecoflow-glacier-plug-in-battery-wheels-and-lever-489",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-glacier-portable-refrigerator-plug-in-battery-slickdeals-491",
-      "destination": "/products/ecoflow-ecoflow-glacier-portable-refrigerator-plug-in-battery-491",
+      "destination": "/products/ecoflow-glacier-portable-refrigerator-plug-in-battery-491",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-glacier-portable-refrigerator-refurbished-490",
-      "destination": "/products/ecoflow-ecoflow-glacier-portable-refrigerator-490",
+      "destination": "/products/ecoflow-glacier-portable-refrigerator-490",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-heatguard-solar-film-492",
+      "destination": "/products/ecoflow-heatguard-solar-film-492",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-home-backup-kit-transfer-switch-493",
+      "destination": "/products/ecoflow-home-backup-kit-transfer-switch-493",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-nextgen-160w-portable-solar-panel-581",
+      "destination": "/products/ecoflow-nextgen-160w-portable-solar-panel-581",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-nextgen-220w-bifacial-portable-solar-panel-edm-only-494",
+      "destination": "/products/ecoflow-nextgen-220w-bifacial-portable-solar-panel-edm-only-494",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-nextgen-220w-bifacial-portable-solar-panel-refurbished-495",
-      "destination": "/products/ecoflow-ecoflow-nextgen-220w-bifacial-portable-solar-panel-495",
+      "destination": "/products/ecoflow-nextgen-220w-bifacial-portable-solar-panel-495",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-power-kits-496",
+      "destination": "/products/ecoflow-power-kits-496",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-power-kits-power-hub-497",
+      "destination": "/products/ecoflow-power-kits-power-hub-497",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-power-pulse-ev-charger-delta-pro-ultra-battery-498",
+      "destination": "/products/ecoflow-power-pulse-ev-charger-delta-pro-ultra-battery-498",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-powerinsight-2-recommended-accessories-499",
+      "destination": "/products/ecoflow-powerinsight-2-recommended-accessories-499",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-powerinsight-home-energy-manager-recommend-accessory-500",
+      "destination": "/products/ecoflow-powerinsight-home-energy-manager-recommend-accessory-500",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-powerpulse-ev-charger-9-6kw-recommended-accessory-501",
+      "destination": "/products/ecoflow-powerpulse-ev-charger-9-6kw-recommended-accessory-501",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-rapid-pro-power-bank-rapid-mag-qi2-2-power-bank-140w-charger-502",
+      "destination": "/products/ecoflow-rapid-pro-power-bank-rapid-mag-qi2-2-power-bank-140w-charger-502",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-river-2-240-portable-power-station-503",
+      "destination": "/products/ecoflow-river-2-240-portable-power-station-503",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-river-2-max-500-portable-power-station-504",
+      "destination": "/products/ecoflow-river-2-max-500-portable-power-station-504",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-river-2-max-portable-power-station-505",
+      "destination": "/products/ecoflow-river-2-max-portable-power-station-505",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-river-2-max-portable-power-station-refurbished-506",
-      "destination": "/products/ecoflow-ecoflow-river-2-max-portable-power-station-505",
+      "destination": "/products/ecoflow-river-2-max-portable-power-station-505",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-river-2-max-solar-generator-507",
+      "destination": "/products/ecoflow-river-2-max-solar-generator-507",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-river-2-pro-portable-power-station-508",
+      "destination": "/products/ecoflow-river-2-pro-portable-power-station-508",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-river-2-pro-portable-power-station-refurbished-509",
-      "destination": "/products/ecoflow-ecoflow-river-2-pro-portable-power-station-508",
+      "destination": "/products/ecoflow-river-2-pro-portable-power-station-508",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-river-3-plus-portable-power-station-510",
+      "destination": "/products/ecoflow-river-3-plus-portable-power-station-510",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-river-max-plus-portable-power-station-511",
+      "destination": "/products/ecoflow-river-max-plus-portable-power-station-511",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-river-max-portable-power-station-512",
+      "destination": "/products/ecoflow-river-max-portable-power-station-512",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-river-mini-standard-portable-power-station-costco-sale-513",
-      "destination": "/products/ecoflow-ecoflow-river-mini-standard-portable-power-station-513",
+      "destination": "/products/ecoflow-river-mini-standard-portable-power-station-513",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-river-plus-portable-power-station-514",
+      "destination": "/products/ecoflow-river-plus-portable-power-station-514",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-river-portable-power-station-515",
+      "destination": "/products/ecoflow-river-portable-power-station-515",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-river-pro-160w-portable-solar-panel-slickdeals-516",
-      "destination": "/products/ecoflow-ecoflow-river-pro-160w-portable-solar-panel-516",
+      "destination": "/products/ecoflow-river-pro-160w-portable-solar-panel-516",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-river-pro-ecoflow-river-pro-extra-battery-517",
+      "destination": "/products/ecoflow-river-pro-ecoflow-river-pro-extra-battery-517",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-river-pro-extra-battery-518",
+      "destination": "/products/ecoflow-river-pro-extra-battery-518",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-river-pro-portable-power-station-costco-sale-519",
-      "destination": "/products/ecoflow-ecoflow-river-pro-portable-power-station-519",
+      "destination": "/products/ecoflow-river-pro-portable-power-station-519",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-river-pro-portable-power-station-refurbished-520",
-      "destination": "/products/ecoflow-ecoflow-river-pro-portable-power-station-519",
+      "destination": "/products/ecoflow-river-pro-portable-power-station-519",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-smart-gateway-200a-recommended-accessories-521",
+      "destination": "/products/ecoflow-smart-gateway-200a-recommended-accessories-521",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-smart-generator-3000-dual-fuel-523",
+      "destination": "/products/ecoflow-smart-generator-3000-dual-fuel-523",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-smart-generator-4000-dual-fuel-524",
+      "destination": "/products/ecoflow-smart-generator-4000-dual-fuel-524",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-smart-generator-522",
+      "destination": "/products/ecoflow-smart-generator-522",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-smart-home-panel-2-app-only-525",
-      "destination": "/products/ecoflow-ecoflow-smart-home-panel-2-525",
+      "destination": "/products/ecoflow-smart-home-panel-2-525",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-smart-inlet-box-smart-home-panel-2-upgrade-527",
+      "destination": "/products/ecoflow-smart-inlet-box-smart-home-panel-2-upgrade-527",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-stream-microinverter-528",
+      "destination": "/products/ecoflow-stream-microinverter-528",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-stream-ultra-529",
+      "destination": "/products/ecoflow-stream-ultra-529",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-tool-box-530",
+      "destination": "/products/ecoflow-tool-box-530",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-wave-2-add-on-battery-220w-portable-solar-panel-531",
+      "destination": "/products/ecoflow-wave-2-add-on-battery-220w-portable-solar-panel-531",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-wave-2-add-on-battery-app-only-535",
-      "destination": "/products/ecoflow-ecoflow-wave-2-add-on-battery-535",
+      "destination": "/products/ecoflow-wave-2-add-on-battery-535",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-wave-2-add-on-battery-bundle-532",
+      "destination": "/products/ecoflow-wave-2-add-on-battery-bundle-532",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-wave-2-add-on-battery-refurbished-533",
-      "destination": "/products/ecoflow-ecoflow-wave-2-add-on-battery-535",
+      "destination": "/products/ecoflow-wave-2-add-on-battery-535",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-wave-2-add-on-battery-wave-series-bag-534",
+      "destination": "/products/ecoflow-wave-2-add-on-battery-wave-series-bag-534",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-wave-2-portable-air-conditioner-refurbished-536",
-      "destination": "/products/ecoflow-ecoflow-wave-2-portable-air-conditioner-536",
+      "destination": "/products/ecoflow-wave-2-portable-air-conditioner-536",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-wave-2-portable-air-conditioner-with-heater-537",
+      "destination": "/products/ecoflow-wave-2-portable-air-conditioner-with-heater-537",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-wave-3-add-on-battery-recommended-accessory-538",
+      "destination": "/products/ecoflow-wave-3-add-on-battery-recommended-accessory-538",
       "permanent": true
     },
     {
       "source": "/products/ecoflow-ecoflow-wave-3-portable-air-conditioner-app-only-539",
-      "destination": "/products/ecoflow-ecoflow-wave-3-portable-air-conditioner-539",
+      "destination": "/products/ecoflow-wave-3-portable-air-conditioner-539",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-wave-3-portable-air-conditioner-with-heater-540",
+      "destination": "/products/ecoflow-wave-3-portable-air-conditioner-with-heater-540",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-wave-portable-air-conditioner-542",
+      "destination": "/products/ecoflow-wave-portable-air-conditioner-542",
+      "permanent": true
+    },
+    {
+      "source": "/products/pytes-pytes-e-box-48100r-100ah-5-12kwh-server-rack-battery-ul-1973-ul-9540-lithium-battery-343",
+      "destination": "/products/pytes-e-box-48100r-100ah-5-12kwh-server-rack-battery-ul-1973-ul-9540-lithium-battery-343",
+      "permanent": true
+    },
+    {
+      "source": "/products/pytes-pytes-high-voltage-battery-control-unit-hv48100-165",
+      "destination": "/products/pytes-high-voltage-battery-control-unit-hv48100-165",
+      "permanent": true
+    },
+    {
+      "source": "/products/pytes-pytes-high-voltage-battery-control-unit-hv48100-se-200v-870v-166",
+      "destination": "/products/pytes-high-voltage-battery-control-unit-hv48100-se-200v-870v-166",
+      "permanent": true
+    },
+    {
+      "source": "/products/pytes-pytes-high-voltage-hv48100-battery-module-167",
+      "destination": "/products/pytes-high-voltage-hv48100-battery-module-167",
+      "permanent": true
+    },
+    {
+      "source": "/products/pytes-pytes-hv48100-12s-battery-cabinet-13-slot-battery-rack-for-pytes-v5-batteries-and-master-control-ip20-for-344",
+      "destination": "/products/pytes-hv48100-12s-battery-cabinet-13-slot-battery-rack-for-pytes-v5-batteries-and-master-control-ip20-for-344",
+      "permanent": true
+    },
+    {
+      "source": "/products/pytes-pytes-hv48100-se-high-voltage-battery-module-51-2v-100ah-5-12kwh-169",
+      "destination": "/products/pytes-hv48100-se-high-voltage-battery-module-51-2v-100ah-5-12kwh-169",
+      "permanent": true
+    },
+    {
+      "source": "/products/pytes-pytes-v-box-ic-stackable-indoor-3-slot-battery-rack-for-pytes-v5-lithium-batteries-galvanized-steel-345",
+      "destination": "/products/pytes-v-box-ic-stackable-indoor-3-slot-battery-rack-for-pytes-v5-lithium-batteries-galvanized-steel-345",
+      "permanent": true
+    },
+    {
+      "source": "/products/pytes-pytes-v-box-oc-4-slot-outdoor-battery-cabinet-for-pytes-v5-server-rack-lithium-batteries-ip55-galvanized--346",
+      "destination": "/products/pytes-v-box-oc-4-slot-outdoor-battery-cabinet-for-pytes-v5-server-rack-lithium-batteries-ip55-galvanized--346",
+      "permanent": true
+    },
+    {
+      "source": "/products/pytes-pytes-v10-48v-12kwh-9-98kwh-230ah-lifepo4-wall-mounted-battery-corrosion-resistant-ip66-lithium-battery-347",
+      "destination": "/products/pytes-v10-48v-12kwh-9-98kwh-230ah-lifepo4-wall-mounted-battery-corrosion-resistant-ip66-lithium-battery-347",
+      "permanent": true
+    },
+    {
+      "source": "/products/pytes-pytes-v16-48v-lithium-battery-314ah-16kwh-heated-and-corrosion-resistant-lifepo4-battery-for-whole-home-b-348",
+      "destination": "/products/pytes-v16-48v-lithium-battery-314ah-16kwh-heated-and-corrosion-resistant-lifepo4-battery-for-whole-home-b-348",
+      "permanent": true
+    },
+    {
+      "source": "/products/pytes-pytes-v5-48v-100ah-5-12kwh-lifepo4-server-rack-battery-heated-ul-9540-lithium-battery-for-ess-systems-349",
+      "destination": "/products/pytes-v5-48v-100ah-5-12kwh-lifepo4-server-rack-battery-heated-ul-9540-lithium-battery-for-ess-systems-349",
+      "permanent": true
+    },
+    {
+      "source": "/products/pytes-pytes-v5-48v-15-36kwh-indoor-bundle-with-v-box-ic-rack-350",
+      "destination": "/products/pytes-v5-48v-15-36kwh-indoor-bundle-with-v-box-ic-rack-350",
+      "permanent": true
+    },
+    {
+      "source": "/products/pytes-pytes-v5-48v-20-48kwh-outdoor-bundle-with-v-box-oc-rack-351",
+      "destination": "/products/pytes-v5-48v-20-48kwh-outdoor-bundle-with-v-box-oc-rack-351",
+      "permanent": true
+    },
+    {
+      "source": "/products/pytes-pytes-v5-lifepo4-battery-5-12kwh-100ah-lithium-iron-phosphate-171",
+      "destination": "/products/pytes-v5-lifepo4-battery-5-12kwh-100ah-lithium-iron-phosphate-171",
+      "permanent": true
+    },
+    {
+      "source": "/products/pytes-pytes-vr-box-ic-dual-fit-battery-cabinet-for-pytes-v5-and-pytes-e-box-holds-2-pytes-server-rack-batteries-352",
+      "destination": "/products/pytes-vr-box-ic-dual-fit-battery-cabinet-for-pytes-v5-and-pytes-e-box-holds-2-pytes-server-rack-batteries-352",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-1000ft-10-awg-copper-pv-wire-black-and-red-1",
+      "destination": "/products/1000ft-10-awg-copper-pv-wire-black-and-red-1",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-72in-4-0-awg-battery-to-inverter-cables-black-and-red-4",
+      "destination": "/products/72in-4-0-awg-battery-to-inverter-cables-black-and-red-4",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-96in-4-0-awg-battery-to-inverter-cables-black-and-red-5",
+      "destination": "/products/96in-4-0-awg-battery-to-inverter-cables-black-and-red-5",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-abb-reliahome-smart-panel-outdoor-hem2-7",
+      "destination": "/products/abb-reliahome-smart-panel-outdoor-hem2-7",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-bigbattery-24v-30a-battery-charger-20",
+      "destination": "/products/bigbattery-24v-30a-battery-charger-20",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-bigbattery-24v-eagle-2-lifepo4-lithium-battery-1-63kwh-for-boats-motorcycles-21",
+      "destination": "/products/bigbattery-24v-eagle-2-lifepo4-lithium-battery-1-63kwh-for-boats-motorcycles-21",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-bigbattery-24v-husky-2-lifepo4-lithium-battery-5-12kwh-for-rvs-camper-vans-commercial-vehicles-22",
+      "destination": "/products/bigbattery-24v-husky-2-lifepo4-lithium-battery-5-12kwh-for-rvs-camper-vans-commercial-vehicles-22",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-bigbattery-48v-110vac-220v-ac-20a-ip65-blue-charger-57-6v-dc-ring-terminals-23",
+      "destination": "/products/bigbattery-48v-110vac-220v-ac-20a-ip65-blue-charger-57-6v-dc-ring-terminals-23",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-bigbattery-48v-eagle-2-lifepo4-lithium-battery-1-63kwh-for-golf-carts-utility-vehicles-rvs-camper-vans-24",
+      "destination": "/products/bigbattery-48v-eagle-2-lifepo4-lithium-battery-1-63kwh-for-golf-carts-utility-vehicles-rvs-camper-vans-24",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-bigbattery-48v-husky-2-inv-lithium-battery-26",
+      "destination": "/products/bigbattery-48v-husky-2-inv-lithium-battery-26",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-bigbattery-48v-husky-2-lifepo4-lithium-battery-5-12kwh-for-rvs-camper-vans-commercial-vehicles-27",
+      "destination": "/products/bigbattery-48v-husky-2-lifepo4-lithium-battery-5-12kwh-for-rvs-camper-vans-commercial-vehicles-27",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-bigbattery-husky-2-12v-400ah-5-12kwh-lifepo4-battery-29",
+      "destination": "/products/bigbattery-husky-2-12v-400ah-5-12kwh-lifepo4-battery-29",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-briggs-stratton-48v-stackable-battery-simpliphi-6-6-39",
+      "destination": "/products/briggs-stratton-48v-stackable-battery-simpliphi-6-6-39",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-briggs-stratton-energy-trak-gateway-with-outdoor-rated-enclosure-30",
+      "destination": "/products/briggs-stratton-energy-trak-gateway-with-outdoor-rated-enclosure-30",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-briggs-stratton-powerprotect-13-11-5kw-home-standby-generator-120-240v-lp-ng-42",
+      "destination": "/products/briggs-stratton-powerprotect-13-11-5kw-home-standby-generator-120-240v-lp-ng-42",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-briggs-stratton-powerprotect-13-11-5kw-home-standby-generator-bundle-100a-16-circuit-automatic-transfer-s-40",
+      "destination": "/products/briggs-stratton-powerprotect-13-11-5kw-home-standby-generator-bundle-100a-16-circuit-automatic-transfer-s-40",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-briggs-stratton-powerprotect-13-11-5kw-home-standby-generator-bundle-200a-whole-home-automatic-transfer-s-41",
+      "destination": "/products/briggs-stratton-powerprotect-13-11-5kw-home-standby-generator-bundle-200a-whole-home-automatic-transfer-s-41",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-briggs-stratton-pp18-standby-generator-18-18kw-bundle-200-amp-standard-sed-transfer-switch-symphony-choic-31",
+      "destination": "/products/briggs-stratton-pp18-standby-generator-18-18kw-bundle-200-amp-standard-sed-transfer-switch-symphony-choic-31",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-briggs-stratton-pp18-standby-generator-18-18kw-lp-ng-32",
+      "destination": "/products/briggs-stratton-pp18-standby-generator-18-18kw-lp-ng-32",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-briggs-stratton-pp22-standby-generator-22-22kw-bundle-200-amp-standard-sed-transfer-switch-symphony-choic-33",
+      "destination": "/products/briggs-stratton-pp22-standby-generator-22-22kw-bundle-200-amp-standard-sed-transfer-switch-symphony-choic-33",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-briggs-stratton-pp22-standby-generator-22-22kw-bundle-dual-200a-split-400s-symphony-ii-sed-power-manageme-34",
+      "destination": "/products/briggs-stratton-pp22-standby-generator-22-22kw-bundle-dual-200a-split-400s-symphony-ii-sed-power-manageme-34",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-briggs-stratton-pp22-standby-generator-22-22kw-lp-ng-35",
+      "destination": "/products/briggs-stratton-pp22-standby-generator-22-22kw-lp-ng-35",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-briggs-stratton-pp26-standby-generator-26-24kw-bundle-200-amp-standard-sed-transfer-switch-symphony-choic-36",
+      "destination": "/products/briggs-stratton-pp26-standby-generator-26-24kw-bundle-200-amp-standard-sed-transfer-switch-symphony-choic-36",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-briggs-stratton-pp26-standby-generator-26-24kw-lp-ng-37",
+      "destination": "/products/briggs-stratton-pp26-standby-generator-26-24kw-lp-ng-37",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-burndy-rcc1000-ratchet-cable-cutter-cuts-up-to-1000-kcmil-cu-al-max-ins-dia-2-375-43",
+      "destination": "/products/burndy-rcc1000-ratchet-cable-cutter-cuts-up-to-1000-kcmil-cu-al-max-ins-dia-2-375-43",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-champion-8500-watt-dual-fuel-inverter-generator-with-electric-start-49",
+      "destination": "/products/champion-8500-watt-dual-fuel-inverter-generator-with-electric-start-49",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-chiko-maximo-185-steel-solar-carport-gazebo-50",
+      "destination": "/products/chiko-maximo-185-steel-solar-carport-gazebo-50",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-chiko-usa-premier-residential-steel-carport-black-solar-pergola-solar-gazebo-51",
+      "destination": "/products/chiko-usa-premier-residential-steel-carport-black-solar-pergola-solar-gazebo-51",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-chikousa-monster-mount-52",
+      "destination": "/products/chikousa-monster-mount-52",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-cw-energy-450w-pallet-of-monofacial-solar-panels-35-panels-53",
+      "destination": "/products/cw-energy-450w-pallet-of-monofacial-solar-panels-35-panels-53",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-cw-energy-595w-bifacial-solar-panel-54",
+      "destination": "/products/cw-energy-595w-bifacial-solar-panel-54",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-cw-energy-595w-pallet-of-bifacial-solar-panels-31-panels-55",
+      "destination": "/products/cw-energy-595w-pallet-of-bifacial-solar-panels-31-panels-55",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-duracell-power-center-15kw-hybrid-inverter-56",
+      "destination": "/products/duracell-power-center-15kw-hybrid-inverter-56",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-duracell-power-center-communication-gateway-57",
+      "destination": "/products/duracell-power-center-communication-gateway-57",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-duracell-power-center-communication-gateway-consumer-grade-meter-wifi-58",
+      "destination": "/products/duracell-power-center-communication-gateway-consumer-grade-meter-wifi-58",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-eg-star-pallet-of-440w-bifacial-solar-panels-36-panels-59",
+      "destination": "/products/eg-star-pallet-of-440w-bifacial-solar-panels-36-panels-59",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-emp-dc-shield-48v-89",
+      "destination": "/products/emp-dc-shield-48v-89",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-emp-home-lightning-shield-120-240v-90",
+      "destination": "/products/emp-home-lightning-shield-120-240v-90",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-emp-shield-600-volt-dc-for-large-solar-applications-91",
+      "destination": "/products/emp-shield-600-volt-dc-for-large-solar-applications-91",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-emp-shield-dc-220-300v-solar-system-emp-protection-92",
+      "destination": "/products/emp-shield-dc-220-300v-solar-system-emp-protection-92",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-emp-shield-dual-220-300-volt-dc-solar-panel-wind-93",
+      "destination": "/products/emp-shield-dual-220-300-volt-dc-solar-panel-wind-93",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-emp-shield-dual-300-420-volt-dc-solar-wind-94",
+      "destination": "/products/emp-shield-dual-300-420-volt-dc-solar-wind-94",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-emp-shield-dual-dc-max-600v-for-large-solar-applications-95",
+      "destination": "/products/emp-shield-dual-dc-max-600v-for-large-solar-applications-95",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-emp-shield-emp-lightning-protection-for-vehicles-96",
+      "destination": "/products/emp-shield-emp-lightning-protection-for-vehicles-96",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-emp-shield-home-emp-lightning-protection-cme-defense-concealed-model-97",
+      "destination": "/products/emp-shield-home-emp-lightning-protection-cme-defense-concealed-model-97",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-emp-shield-portable-for-rv-s-renters-travel-campers-and-camping-98",
+      "destination": "/products/emp-shield-portable-for-rv-s-renters-travel-campers-and-camping-98",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-emp-shield-single-dc-300-420-volt-solar-wind-emp-protection-99",
+      "destination": "/products/emp-shield-single-dc-300-420-volt-solar-wind-emp-protection-99",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-emp-shield-whole-home-generator-emp-shielding-lightning-protection-100",
+      "destination": "/products/emp-shield-whole-home-generator-emp-shielding-lightning-protection-100",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-emporia-ev-charger-black-nema-14-50-j1772-101",
+      "destination": "/products/emporia-ev-charger-black-nema-14-50-j1772-101",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-emporia-ev-charger-white-hardwire-j1772-102",
+      "destination": "/products/emporia-ev-charger-white-hardwire-j1772-102",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-emporia-ev-charger-white-nema-14-50-j1772-classic-103",
+      "destination": "/products/emporia-ev-charger-white-nema-14-50-j1772-classic-103",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-emporia-pro-level-2-ev-charger-black-hardwire-j1772-104",
+      "destination": "/products/emporia-pro-level-2-ev-charger-black-hardwire-j1772-104",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-emporia-pro-level-2-ev-charger-white-hardwire-j1772-105",
+      "destination": "/products/emporia-pro-level-2-ev-charger-white-hardwire-j1772-105",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-enphase-control-cable-spool-106",
+      "destination": "/products/enphase-control-cable-spool-106",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-enphase-iq-cable-spool-300-meter-108",
+      "destination": "/products/enphase-iq-cable-spool-300-meter-108",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-enphase-iq-combiner-5-109",
+      "destination": "/products/enphase-iq-combiner-5-109",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-enphase-iq-gateway-110",
+      "destination": "/products/enphase-iq-gateway-110",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-enphase-iq-load-controller-111",
+      "destination": "/products/enphase-iq-load-controller-111",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-enphase-iq-system-controller-3-112",
+      "destination": "/products/enphase-iq-system-controller-3-112",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-enphase-iq8ac-microinverter-114",
+      "destination": "/products/enphase-iq8ac-microinverter-114",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-enphase-iq8hc-72-m-dom-us-microinverter-115",
+      "destination": "/products/enphase-iq8hc-72-m-dom-us-microinverter-115",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-enphase-iq8mc-microinverter-116",
+      "destination": "/products/enphase-iq8mc-microinverter-116",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-goodwe-11-4kw-hybrid-inverter-118",
+      "destination": "/products/goodwe-11-4kw-hybrid-inverter-118",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-goodwe-automatic-backup-device-119",
+      "destination": "/products/goodwe-automatic-backup-device-119",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-goodwe-ev-charging-cable-plug-es-us-120",
+      "destination": "/products/goodwe-ev-charging-cable-plug-es-us-120",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-growatt-3kw-stackable-off-grid-inverter-spf-3000tl-lvm-24p-124",
+      "destination": "/products/growatt-3kw-stackable-off-grid-inverter-spf-3000tl-lvm-24p-124",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-growatt-3kw-stackable-off-grid-inverter-spf-3000tl-lvm-48p-wifi-f-125",
+      "destination": "/products/growatt-3kw-stackable-off-grid-inverter-spf-3000tl-lvm-48p-wifi-f-125",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-growatt-5kw-split-phase-transformer-ats-5000t-es-127",
+      "destination": "/products/growatt-5kw-split-phase-transformer-ats-5000t-es-127",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-growatt-charge-controller-sc4880-mpv-131",
+      "destination": "/products/growatt-charge-controller-sc4880-mpv-131",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-hyundai-440w-bifacial-solar-panel-135",
+      "destination": "/products/hyundai-440w-bifacial-solar-panel-135",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-hyundai-440w-pallet-of-bifacial-solar-panels-36-panels-136",
+      "destination": "/products/hyundai-440w-pallet-of-bifacial-solar-panels-36-panels-136",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-hyundai-595w-bifacial-solar-panel-137",
+      "destination": "/products/hyundai-595w-bifacial-solar-panel-137",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-hyundai-595w-pallet-of-bifacial-solar-panels-36-panels-138",
+      "destination": "/products/hyundai-595w-pallet-of-bifacial-solar-panels-36-panels-138",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-imo-dc-disconnect-rooftop-isolator-switch-8-pole-4-string-139",
+      "destination": "/products/imo-dc-disconnect-rooftop-isolator-switch-8-pole-4-string-139",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-indepwr-440w-pallet-of-bifacial-solar-panels-31-panels-140",
+      "destination": "/products/indepwr-440w-pallet-of-bifacial-solar-panels-31-panels-140",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-indepwr-450w-pallet-of-bifacial-solar-panels-36-panels-141",
+      "destination": "/products/indepwr-450w-pallet-of-bifacial-solar-panels-36-panels-141",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-lg-16h-prime-battery-16kwh-400v-high-voltage-146",
+      "destination": "/products/lg-16h-prime-battery-16kwh-400v-high-voltage-146",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-lg-enblock-s-battery-control-unit-144",
+      "destination": "/products/lg-enblock-s-battery-control-unit-144",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-lg-enblock-s-battery-module-145",
+      "destination": "/products/lg-enblock-s-battery-module-145",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-lumina-solarspace-405w-pallet-of-monofacial-solar-panel-pallet-36-panels-149",
+      "destination": "/products/lumina-solarspace-405w-pallet-of-monofacial-solar-panel-pallet-36-panels-149",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-mission-solar-435w-monofacial-solar-panel-domestic-content-150",
+      "destination": "/products/mission-solar-435w-monofacial-solar-panel-domestic-content-150",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-nep-30kw-neptune-30kw-3-phase-string-inverter-208-vac-152",
+      "destination": "/products/nep-30kw-neptune-30kw-3-phase-string-inverter-208-vac-152",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-outback-power-bms-junction-box-154",
+      "destination": "/products/outback-power-bms-junction-box-154",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-outback-power-energycell-5-battery-48v-100ah-155",
+      "destination": "/products/outback-power-energycell-5-battery-48v-100ah-155",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-outback-power-energycell-5-battery-base-156",
+      "destination": "/products/outback-power-energycell-5-battery-base-156",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-outback-power-flexmax-100a-mppt-charge-controller-157",
+      "destination": "/products/outback-power-flexmax-100a-mppt-charge-controller-157",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-outback-power-flexmax-80a-mppt-charge-controller-158",
+      "destination": "/products/outback-power-flexmax-80a-mppt-charge-controller-158",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-outback-power-fxr-a-series-3-6kw-inverter-charger-45a-159",
+      "destination": "/products/outback-power-fxr-a-series-3-6kw-inverter-charger-45a-159",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-outback-power-hub-system-communications-manager-160",
+      "destination": "/products/outback-power-hub-system-communications-manager-160",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-outback-power-mate3s-series-system-display-and-controller-161",
+      "destination": "/products/outback-power-mate3s-series-system-display-and-controller-161",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-outback-power-radian-load-center-162",
+      "destination": "/products/outback-power-radian-load-center-162",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-peimar-450w-pallet-of-mono-perc-solar-panels-31-panels-163",
+      "destination": "/products/peimar-450w-pallet-of-mono-perc-solar-panels-31-panels-163",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-satic-shield-gen-lll-sd-power-perfect-173",
+      "destination": "/products/satic-shield-gen-lll-sd-power-perfect-173",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-sirius-pv-450w-monofacial-solar-panel-domestic-content-175",
+      "destination": "/products/sirius-pv-450w-monofacial-solar-panel-domestic-content-175",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-sirius-pv-450w-pallet-of-monofacial-solar-panels-domestic-content-31-panels-176",
+      "destination": "/products/sirius-pv-450w-pallet-of-monofacial-solar-panels-domestic-content-31-panels-176",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-sirius-pv-630w-bifacial-solar-panel-177",
+      "destination": "/products/sirius-pv-630w-bifacial-solar-panel-177",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-sirius-pv-pallet-of-630w-bifacial-solar-panels-36-panels-178",
+      "destination": "/products/sirius-pv-pallet-of-630w-bifacial-solar-panels-36-panels-178",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-softstartusa-softstart-well-pump-179",
+      "destination": "/products/softstartusa-softstart-well-pump-179",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-softstartusa-softstarthome-6-181",
+      "destination": "/products/softstartusa-softstarthome-6-181",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-softstartusa-softstartrv-182",
+      "destination": "/products/softstartusa-softstartrv-182",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-softstartusa-softstartup-w-30a-power-adapter-183",
+      "destination": "/products/softstartusa-softstartup-w-30a-power-adapter-183",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-solatrim-solar-panel-pest-abatement-barrier-4-5-100-ft-25-panels-184",
+      "destination": "/products/solatrim-solar-panel-pest-abatement-barrier-4-5-100-ft-25-panels-184",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-solatrim-solar-panel-pest-abatement-barrier-5-5-100-ft-25-panels-185",
+      "destination": "/products/solatrim-solar-panel-pest-abatement-barrier-5-5-100-ft-25-panels-185",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-solatrim-solember-and-pest-abatement-barrier-5-5-100-ft-25-panels-186",
+      "destination": "/products/solatrim-solember-and-pest-abatement-barrier-5-5-100-ft-25-panels-186",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-solis-100kw-three-phase-inverter-ten-mppt-w-afci-w-fan-192",
+      "destination": "/products/solis-100kw-three-phase-inverter-ten-mppt-w-afci-w-fan-192",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-solis-30kw-three-phase-inverter-three-mppt-w-afci-w-fan-193",
+      "destination": "/products/solis-30kw-three-phase-inverter-three-mppt-w-afci-w-fan-193",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-solis-60kw-three-phase-inverter-194",
+      "destination": "/products/solis-60kw-three-phase-inverter-194",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-solis-60kw-three-phase-inverter-four-mppt-w-afci-w-fan-195",
+      "destination": "/products/solis-60kw-three-phase-inverter-four-mppt-w-afci-w-fan-195",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-solis-s6-11-4kw-high-voltage-hybrid-inverter-rss-model-187",
+      "destination": "/products/solis-s6-11-4kw-high-voltage-hybrid-inverter-rss-model-187",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-solis-s6-11-4kw-single-phase-high-voltage-energy-storage-hybrid-inverter-s6-eh1p11-4k-h-us-rss-rgm-188",
+      "destination": "/products/solis-s6-11-4kw-single-phase-high-voltage-energy-storage-hybrid-inverter-s6-eh1p11-4k-h-us-rss-rgm-188",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-solis-s6-7-6kw-high-voltage-hybrid-inverter-rss-model-189",
+      "destination": "/products/solis-s6-7-6kw-high-voltage-hybrid-inverter-rss-model-189",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-solis-s6-7-6kw-single-phase-high-voltage-energy-storage-hybrid-inverter-s6-eh1p7-6k-h-us-rss-rgm-190",
+      "destination": "/products/solis-s6-7-6kw-single-phase-high-voltage-energy-storage-hybrid-inverter-s6-eh1p7-6k-h-us-rss-rgm-190",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-sunearth-cascade-2-solar-water-heating-system-120-gallon-w-4-tr-20-196",
+      "destination": "/products/sunearth-cascade-2-solar-water-heating-system-120-gallon-w-4-tr-20-196",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-sunearth-cascade-2-solar-water-heating-system-80-gallon-w-3-tr-20-197",
+      "destination": "/products/sunearth-cascade-2-solar-water-heating-system-80-gallon-w-3-tr-20-197",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-sunpro-440w-pallet-of-bifacial-solar-panels-36-panels-198",
+      "destination": "/products/sunpro-440w-pallet-of-bifacial-solar-panels-36-panels-198",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-talesun-450w-pallet-of-bifacial-solar-panels-36-panels-199",
+      "destination": "/products/talesun-450w-pallet-of-bifacial-solar-panels-36-panels-199",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-trina-vertex-pallet-of-420w-bifacial-solar-panels-36-panels-211",
+      "destination": "/products/trina-vertex-pallet-of-420w-bifacial-solar-panels-36-panels-211",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-tucker-30-water-fed-pole-bare-212",
+      "destination": "/products/tucker-30-water-fed-pole-bare-212",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-tucker-alpha-glide-213",
+      "destination": "/products/tucker-alpha-glide-213",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-tucker-alpha-premium-boar-bristle-water-fed-brush-214",
+      "destination": "/products/tucker-alpha-premium-boar-bristle-water-fed-brush-214",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-tucker-alpha-solar-20-honey-badger-215",
+      "destination": "/products/tucker-alpha-solar-20-honey-badger-215",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-tucker-hand-carry-hose-reel-216",
+      "destination": "/products/tucker-hand-carry-hose-reel-216",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-waaree-540w-pallet-of-bifacial-solar-panels-31-panels-254",
+      "destination": "/products/waaree-540w-pallet-of-bifacial-solar-panels-31-panels-254",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-wattnode-wide-range-modbus-meter-with-accu-ct-split-core-cts-255",
+      "destination": "/products/wattnode-wide-range-modbus-meter-with-accu-ct-split-core-cts-255",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-wiren-server-rack-battery-48v-100ah-u5-256",
+      "destination": "/products/wiren-server-rack-battery-48v-100ah-u5-256",
+      "permanent": true
+    },
+    {
+      "source": "/products/signature-solar-znshine-440w-pallet-of-bifacial-solar-panels-36-panels-257",
+      "destination": "/products/znshine-440w-pallet-of-bifacial-solar-panels-36-panels-257",
+      "permanent": true
+    },
+    {
+      "source": "/products/wera-wera-2go-shk-1-tool-set-for-plumbing-and-hvac-applications-30-pieces-with-carrying-container-includes-kni-395",
+      "destination": "/products/wera-2go-shk-1-tool-set-for-plumbing-and-hvac-applications-30-pieces-with-carrying-container-includes-kni-395",
+      "permanent": true
+    },
+    {
+      "source": "/products/wera-wera-6000-joker-11-set-1-dual-ended-ratcheting-combination-wrenches-set-integrated-limit-stop-for-holding-396",
+      "destination": "/products/wera-6000-joker-11-set-1-dual-ended-ratcheting-combination-wrenches-set-integrated-limit-stop-for-holding-396",
+      "permanent": true
+    },
+    {
+      "source": "/products/wera-wera-7440-41-42-kraftform-torque-screwdriver-set-0-3-6-0nm-3x-torque-screwdrivers-and-24x-bits-plastic-ca-397",
+      "destination": "/products/wera-7440-41-42-kraftform-torque-screwdriver-set-0-3-6-0nm-3x-torque-screwdrivers-and-24x-bits-plastic-ca-397",
+      "permanent": true
+    },
+    {
+      "source": "/products/wera-wera-9524-photovoltaic-mounting-tool-set-1-for-installing-solar-connectors-7-piece-set-398",
+      "destination": "/products/wera-9524-photovoltaic-mounting-tool-set-1-for-installing-solar-connectors-7-piece-set-398",
+      "permanent": true
+    },
+    {
+      "source": "/products/wera-wera-kraftform-kompakt-vde-17-extra-slim-2-tool-set-17-piece-insulated-tool-set-with-racheting-handle-and-400",
+      "destination": "/products/wera-kraftform-kompakt-vde-17-extra-slim-2-tool-set-17-piece-insulated-tool-set-with-racheting-handle-and-400",
+      "permanent": true
+    },
+    {
+      "source": "/products/wera-wera-kraftform-kompakt-vde-24-allrounder-set-1-insulated-tool-set-with-t-handle-adapter-and-interchangeab-401",
+      "destination": "/products/wera-kraftform-kompakt-vde-24-allrounder-set-1-insulated-tool-set-with-t-handle-adapter-and-interchangeab-401",
       "permanent": true
     }
   ],

@@ -1,6 +1,7 @@
 /* oxlint-disable next/no-html-link-for-pages -- footer navigation must remain usable without client routing. */
 import Image from 'next/image';
 import { addressLines, business } from '@/lib/business';
+import { categoryGroups } from '@/lib/catalog/categories';
 
 export function SiteFooter() {
   return <footer className="site-footer">
@@ -16,8 +17,15 @@ export function SiteFooter() {
         <a href={`tel:${business.phoneE164}`}>{business.phoneDisplay}</a>
       </address>
     </div>
-    <div><h3>Explore</h3><a href="/shop">Power Hub</a><a href="/whole-home-backup">Whole-home backup</a><a href="/portable-power">Portable power</a><a href="/solar-panels">Solar panels</a><a href="/ev-chargers">EV chargers</a><a href="/blog">Backup power guides</a></div>
-    <div><h3>Support & policies</h3><a href="/support">Customer support</a><a href="/shipping-delivery">Shipping & delivery</a><a href="/returns">Returns & refunds</a><a href="/warranty">Warranty</a><a href="/payment-options">Payment & billing</a><a href="/privacy">Privacy</a><a href="/cookies">Cookies & tracking</a><a href="/terms">Terms & conditions</a><a href="/invoice">Request an invoice</a></div>
+    {categoryGroups.map(({ group, categories }) => (
+      <div key={group}>
+        <h3>{group}</h3>
+        {categories.map((category) => <a key={category.slug} href={category.href}>{category.label}</a>)}
+        {group === 'Backup power' && <a href="/shop">Shop all products</a>}
+      </div>
+    ))}
+    <div><h3>Help</h3><a href="/support">Customer support</a><a href="/system-finder">System Finder</a><a href="/blog">Backup power guides</a><a href="/shipping-delivery">Shipping & delivery</a><a href="/returns">Returns & refunds</a><a href="/warranty">Warranty</a><a href="/payment-options">Payment & billing</a><a href="/invoice">Request an invoice</a></div>
+    <div><h3>Company</h3><a href="/about">About us</a><a href="/privacy">Privacy</a><a href="/terms">Terms & conditions</a><a href="/cookies">Cookies & tracking</a></div>
     <small>© 2026 {business.legalName}, trading as {business.tradingName}. Delivery charges and taxes are disclosed before payment.</small>
   </footer>;
 }

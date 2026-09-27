@@ -63,7 +63,7 @@ export const posts: BlogPost[] = [
     categories: ['Whole-home backup', 'Batteries', 'Portable power'],
     shopLinks: [
       { label: 'Whole-home backup systems', href: '/whole-home-backup' },
-      { label: 'Batteries', href: '/shop?category=Batteries' },
+      { label: 'Batteries', href: '/batteries' },
       { label: 'Portable power stations', href: '/portable-power' },
     ],
     blocks: [
@@ -239,7 +239,7 @@ export const posts: BlogPost[] = [
     categories: ['Portable power', 'Refrigerators', 'Freezers'],
     shopLinks: [
       { label: 'Portable power stations', href: '/portable-power' },
-      { label: 'Batteries and expansion packs', href: '/shop?category=Batteries' },
+      { label: 'Batteries and expansion packs', href: '/batteries' },
     ],
     blocks: [
       { type: 'h2', id: 'formula', text: 'What is the formula?' },
@@ -405,7 +405,7 @@ export const posts: BlogPost[] = [
     updated: '2026-09-25',
     categories: ['Batteries', 'Portable power', 'Whole-home backup'],
     shopLinks: [
-      { label: 'Batteries', href: '/shop?category=Batteries' },
+      { label: 'Batteries', href: '/batteries' },
       { label: 'Portable power stations', href: '/portable-power' },
       { label: 'Whole-home backup systems', href: '/whole-home-backup' },
     ],

@@ -6,7 +6,7 @@ import { useEffect, useRef, useState, useSyncExternalStore, type RefObject } fro
 import { ChevronDown, Globe2, Menu, Search, ShoppingCart } from 'lucide-react';
 import { languages, useLocale } from '@/components/locale-provider';
 import { cartItemCount, subscribeToCart } from '@/lib/cart';
-import { storefrontCategories } from '@/lib/catalog/categories';
+import { categoryGroups } from '@/lib/catalog/categories';
 
 /**
  * Closes an open header menu on a click outside it or Escape (focus returns
@@ -134,7 +134,7 @@ export function SiteHeader() {
           />
         </a>
         <nav className="desktop-nav" aria-label="Primary navigation">
-          <a href="/shop">{t('powerHub')}</a>
+          <a href="/shop">Shop all</a>
           <details
             className="category-nav"
             ref={categoriesRef}
@@ -145,17 +145,23 @@ export function SiteHeader() {
               Categories <ChevronDown size={14} />
             </summary>
             <div className="category-nav-menu">
-              {storefrontCategories.map((category) => (
-                <a key={category.label} href={category.href} onClick={closeCategories}>
-                  {category.label}
-                </a>
+              {categoryGroups.map(({ group, categories }) => (
+                <div key={group} className="category-nav-group">
+                  <strong>{group}</strong>
+                  {categories.map((category) => (
+                    <a key={category.slug} href={category.href} onClick={closeCategories}>
+                      {category.label}
+                    </a>
+                  ))}
+                </div>
               ))}
             </div>
           </details>
           <a href="/blog">Guides</a>
           <a href="/support">Support</a>
-          <a href="/system-finder">{t('planSystem')}</a>
-          <a href="/invoice">Invoice</a>
+          <a href="/system-finder" className="nav-cta">
+            {t('planSystem')}
+          </a>
         </nav>
         <form className="global-search" action="/shop">
           <Search size={16} />
@@ -247,21 +253,27 @@ export function SiteHeader() {
               className="mobile-nav"
               aria-label="Mobile navigation"
             >
-              <a href="/shop">All products</a>
-              <strong>Categories</strong>
-              <div className="mobile-nav-categories">
-                {storefrontCategories.map((category) => (
-                  <a key={category.label} href={category.href}>
-                    {category.label}
-                  </a>
-                ))}
-              </div>
+              <a href="/shop">Shop all products</a>
+              {categoryGroups.map(({ group, categories }) => (
+                <div key={group} className="mobile-nav-group">
+                  <strong>{group}</strong>
+                  <div className="mobile-nav-categories">
+                    {categories.map((category) => (
+                      <a key={category.slug} href={category.href}>
+                        {category.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              ))}
               <a href="/blog">Backup power guides</a>
+              <a href="/system-finder">{t('planSystem')}</a>
               <strong>Help & ordering</strong>
               <a href="/support">Customer support</a>
               <a href="/invoice">Request an invoice</a>
               <a href="/shipping-delivery">Shipping & delivery</a>
-              <a href="/system-finder">{t('planSystem')}</a>
+              <a href="/returns">Returns & refunds</a>
+              <a href="/about">About us</a>
             </nav>
           </div>
         )}

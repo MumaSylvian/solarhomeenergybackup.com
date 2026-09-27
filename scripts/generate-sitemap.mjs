@@ -10,7 +10,14 @@ import fs from 'node:fs';
  */
 const siteUrl = 'https://www.solarhomeenergybackup.com';
 const dist = new URL('../dist/client/', import.meta.url);
-const pages = ['/', '/shop', '/blog', '/whole-home-backup', '/portable-power', '/solar-panels', '/ev-chargers', '/system-finder', '/shipping-delivery', '/returns', '/warranty', '/privacy', '/terms', '/payment-options', '/cookies', '/support'];
+// Category pages (keep in step with lib/catalog/categories.ts).
+const categories = [
+  ['whole-home-backup', 'Whole-home backup'], ['portable-power', 'Portable power stations'], ['batteries', 'Batteries'],
+  ['solar-panels', 'Solar panels'], ['home-integration', 'Home integration'], ['ev-chargers', 'EV chargers'],
+  ['accessories', 'Accessories'], ['refrigerators', 'Refrigerators'], ['freezers', 'Freezers'],
+  ['dishwashers', 'Dishwashers'], ['washers-dryers', 'Washers & dryers'],
+];
+const pages = ['/', '/shop', '/blog', ...categories.map(([slug]) => `/${slug}`), '/about', '/system-finder', '/shipping-delivery', '/returns', '/warranty', '/privacy', '/terms', '/payment-options', '/cookies', '/support'];
 
 const htmlFiles = (dir) => {
   const url = new URL(dir, dist);
@@ -31,12 +38,20 @@ const guides = htmlFiles('blog/').map((file) => {
   const html = readPage(path);
   return { path, title: titleOf(html), description: descriptionOf(html), lastmod: modifiedOf(html) };
 });
+// Pages 2+ of each category, as emitted by the build.
+const categoryPagePaths = categories.flatMap(([slug]) =>
+  htmlFiles(`${slug}/page/`)
+    .map((file) => Number(file.slice(0, -'.html'.length)))
+    .sort((a, b) => a - b)
+    .map((number) => `/${slug}/page/${number}`),
+);
 const productPaths = htmlFiles('products/').map((file) => `/products/${file.slice(0, -'.html'.length)}`);
 
 // --- sitemap.xml -----------------------------------------------------------
 const escape = (value) => value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const entries = [
   ...pages.map((path) => ({ path })),
+  ...categoryPagePaths.map((path) => ({ path })),
   ...guides.map(({ path, lastmod }) => ({ path, lastmod })),
   ...productPaths.map((path) => ({ path })),
 ];
@@ -53,7 +68,7 @@ const link = (path, fallbackTitle) => {
 };
 const llms = `# SolarHome Energy Backup
 
-> Online store for solar panels, home batteries, portable power stations, whole-home backup systems, and EV chargers, with ${productPaths.length.toLocaleString('en-US')} product pages and planning guides for home outages. Orders are reviewed before payment; support is by WhatsApp, Monday to Saturday, 9 AM to 5 PM Pacific.
+> Online store for solar panels, home batteries, portable power stations, whole-home backup systems, EV chargers, and home appliances (refrigerators, freezers, dishwashers, washers and dryers), with ${productPaths.length.toLocaleString('en-US')} product pages and planning guides for home outages. Orders are reviewed before payment; support is by WhatsApp, Monday to Saturday, 9 AM to 5 PM Central. Orders ship from Baton Rouge, Louisiana, with flat $45 delivery in the United States.
 
 ## Guides
 
@@ -63,11 +78,9 @@ ${guides.map(({ path, title, description }) => `- [${title}](${siteUrl}${path})$
 
 ${[
   ['/shop', 'Shop all products'],
-  ['/whole-home-backup', 'Whole-home backup'],
-  ['/portable-power', 'Portable power stations'],
-  ['/solar-panels', 'Solar panels'],
-  ['/ev-chargers', 'EV chargers'],
+  ...categories.map(([slug, title]) => [`/${slug}`, title]),
   ['/system-finder', 'System Finder'],
+  ['/about', 'About us'],
 ].map(([path, title]) => link(path, title)).join('\n')}
 
 ## Policies

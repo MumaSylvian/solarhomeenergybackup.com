@@ -1,6 +1,6 @@
 # SolarHome Energy Backup
 
-> Online store for solar panels, home batteries, portable power stations, whole-home backup systems, and EV chargers, with 1,983 product pages and planning guides for home outages. Orders are reviewed before payment; support is by WhatsApp, Monday to Saturday, 9 AM to 5 PM Pacific.
+> Online store for solar panels, home batteries, portable power stations, whole-home backup systems, EV chargers, and home appliances (refrigerators, freezers, dishwashers, washers and dryers), with 1,983 product pages and planning guides for home outages. Orders are reviewed before payment; support is by WhatsApp, Monday to Saturday, 9 AM to 5 PM Central. Orders ship from Baton Rouge, Louisiana, with flat $45 delivery in the United States.
 
 ## Guides
 
@@ -15,9 +15,17 @@
 - [Shop solar, battery & backup power equipment](https://www.solarhomeenergybackup.com/shop): Browse portable power stations, batteries, solar panels, inverters, and whole-home backup equipment with clear specifications and US dollar pricing.
 - [Whole-Home Backup Power Systems](https://www.solarhomeenergybackup.com/whole-home-backup): Compare whole-home backup systems: inverters, battery banks, and power kits sized for essential circuits or full-home coverage during outages.
 - [Portable Power Stations](https://www.solarhomeenergybackup.com/portable-power): Portable power stations from EcoFlow, Anker SOLIX, BLUETTI, and more for outages, RVs, job sites, and camping. Compare capacity and output.
+- [Home Batteries & Expansion Batteries](https://www.solarhomeenergybackup.com/batteries): LiFePO4 home batteries, rack batteries, and expansion packs for power stations and hybrid inverters. Compare capacity and voltage.
 - [Solar Panels for Home & Portable Power](https://www.solarhomeenergybackup.com/solar-panels): Solar panels and charging equipment for portable power stations, home battery storage, and fixed rooftop or ground-mount solar systems.
+- [Transfer Switches, Smart Panels & Home Integration](https://www.solarhomeenergybackup.com/home-integration): Transfer switches, smart home panels, inlet boxes, and load controllers for connecting backup power to your home safely.
 - [Home EV Chargers (Level 2)](https://www.solarhomeenergybackup.com/ev-chargers): Level 2 home EV chargers and compatible home-energy equipment, with guidance on circuits, installation, and pairing with solar and batteries.
+- [Solar & Backup Power Accessories](https://www.solarhomeenergybackup.com/accessories): Cables, connectors, mounts, covers, and system accessories for solar and backup power setups.
+- [Refrigerators](https://www.solarhomeenergybackup.com/refrigerators): French-door, side-by-side, top- and bottom-freezer, and compact refrigerators from leading brands, with flat $45 US delivery.
+- [Chest & Upright Freezers](https://www.solarhomeenergybackup.com/freezers): Chest, upright, and portable freezers for dependable cold storage, with flat $45 US delivery.
+- [Dishwashers](https://www.solarhomeenergybackup.com/dishwashers): Built-in, panel-ready, portable, and compact dishwashers from leading brands, with flat $45 US delivery.
+- [Washers & Dryers](https://www.solarhomeenergybackup.com/washers-dryers): Top-load and front-load washers, electric and gas dryers, and laundry centers, with flat $45 US delivery.
 - [Backup Power System Finder](https://www.solarhomeenergybackup.com/system-finder): Answer a few questions about your outage needs, loads, and solar goals to get a starting checklist for a backup power system.
+- [About Us](https://www.solarhomeenergybackup.com/about): SolarHome Energy Backup LLC sells backup power equipment and home appliances from its warehouse in Baton Rouge, Louisiana, shipping to all 50 states.
 
 ## Policies
 

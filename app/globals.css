@@ -175,3 +175,27 @@ html.menu-open{overflow:hidden}
 .carousel-pause{display:none}
 @media(max-width:640px){.carousel-pause{display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:8px 14px;min-height:40px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);font:inherit;font-size:13px;font-weight:750}}
 .gallery-dialog:not([open]){display:none}
+/* Category pages (app/[category]): breadcrumb above the hero, shorter header on pages 2+, page numbers, related categories. */
+.category-breadcrumb{max-width:1240px;margin:0 auto;padding:6px 24px 0}
+.category-breadcrumb.breadcrumb{margin-bottom:10px}
+.category-hero-compact{min-height:0;padding:42px clamp(25px,7vw,90px);grid-template-columns:1fr}
+.category-hero-compact h1{margin:0;font-size:clamp(30px,4vw,46px)}
+.category-page-number{color:#b9dcff;font-weight:500}
+.pagination{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;margin-top:36px}
+.pagination ol{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:0;padding:0;list-style:none}
+.pagination a,.pagination span{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-width:44px;min-height:44px;padding:0 12px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);font-weight:750}
+.pagination a:hover{border-color:#a8d5ff;color:var(--blue)}
+.pagination span[aria-current]{border-color:var(--blue);background:var(--blue);color:#fff}
+.related-categories{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))!important}
+.category-guides+.category-guides{padding-top:0}
+@media(max-width:640px){.category-breadcrumb{padding:4px 16px 0}.category-hero-compact{padding:30px 16px}}
+/* Header categories menu: two labelled groups. */
+.category-nav-menu{grid-template-columns:1fr 1fr;width:440px;gap:4px 14px}
+.category-nav-group{display:grid;align-content:start;gap:2px}
+.category-nav-group strong{padding:6px 11px 4px;color:var(--blue);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.nav-cta{padding:8px 14px;border:1px solid var(--blue);border-radius:999px;color:var(--blue)!important}
+.nav-cta:hover{background:var(--blue);color:#fff!important}
+.mobile-nav-group{display:grid}
+/* Footer: brand and contact, then Backup power, Home appliances, Help, Company. */
+footer{grid-template-columns:1.6fr repeat(4,1fr);gap:32px}
+@media(max-width:1000px){footer{grid-template-columns:repeat(2,1fr)}}

@@ -297,6 +297,19 @@ export const uniqueCatalog = catalog
   );
 });
 
+/**
+ * Product URL slugs without import artefacts: a supplier's name
+ * ("signature-solar-…"), Anker's doubled prefix ("anker-solix-anker-…"), or a
+ * doubled brand ("ecoflow-ecoflow-…"). The trailing catalog number stays, so
+ * slugs remain unique. Old URLs redirect in vercel.json.
+ */
+export const cleanProductSlug = (slug: string) =>
+  slug
+    .replace(/^signature-solar-/, '')
+    .replace(/^anker-solix-anker-solix-/, 'anker-solix-')
+    .replace(/^anker-solix-anker-/, 'anker-')
+    .replace(/^([a-z]+)-\1-/, '$1-');
+
 export const approvedCatalog = uniqueCatalog
   .filter((product) => product.status === 'APPROVED')
   // Public IDs reach the browser (cart, page payloads); keep the import
@@ -304,6 +317,7 @@ export const approvedCatalog = uniqueCatalog
   .map((product) => ({
     ...product,
     id: product.id.replace(/^csv-home-depot-/, 'item-'),
+    slug: cleanProductSlug(product.slug),
     // The store's own warranty comes from the Warranty Policy, not import data.
     warranty: WARRANTY_TERM,
   }));

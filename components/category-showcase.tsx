@@ -29,7 +29,7 @@ const spotlights: CategorySpotlight[] = [
     category: 'Batteries',
     title: 'Batteries',
     copy: 'Battery storage and expansion options for more backup capacity.',
-    href: '/shop?category=Batteries',
+    href: '/batteries',
   },
   {
     category: 'Solar panels',
@@ -41,7 +41,7 @@ const spotlights: CategorySpotlight[] = [
     category: 'Home integration',
     title: 'Home integration',
     copy: 'Transfer, distribution, and control equipment for home backup.',
-    href: '/shop?category=Home%20integration',
+    href: '/home-integration',
   },
   {
     category: 'EV chargers',
@@ -53,31 +53,31 @@ const spotlights: CategorySpotlight[] = [
     category: 'Accessories',
     title: 'Accessories',
     copy: 'Cables, connectors, mounting, and compatible system essentials.',
-    href: '/shop?category=Accessories',
+    href: '/accessories',
   },
   {
     category: 'Refrigerators',
     title: 'Refrigerators',
     copy: 'Full-size and compact refrigeration for kitchens, bars, workshops, and backup planning.',
-    href: '/shop?category=Refrigerators',
+    href: '/refrigerators',
   },
   {
     category: 'Freezers',
     title: 'Freezers',
     copy: 'Chest and upright freezer options for dependable cold storage.',
-    href: '/shop?category=Freezers',
+    href: '/freezers',
   },
   {
     category: 'Dishwashers',
     title: 'Dishwashers',
     copy: 'Built-in, portable, and compact dishwashers for everyday kitchens.',
-    href: '/shop?category=Dishwashers',
+    href: '/dishwashers',
   },
   {
     category: 'Washers & Dryers',
     title: 'Washers & Dryers',
     copy: 'Laundry equipment for apartments, utility rooms, and larger homes.',
-    href: '/shop?category=Washers%20%26%20Dryers',
+    href: '/washers-dryers',
   },
 ];
 

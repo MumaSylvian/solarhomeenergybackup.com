@@ -75,12 +75,13 @@ export function ProductDetail({
           <li>
             <a href="/">Home</a>
           </li>
-          <li>
-            <a href="/shop">Shop</a>
-          </li>
-          {category && (
+          {category ? (
             <li>
               <a href={category.href}>{category.label}</a>
+            </li>
+          ) : (
+            <li>
+              <a href="/shop">Shop</a>
             </li>
           )}
           <li aria-current="page">{product.name}</li>
