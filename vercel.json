@@ -11,13 +11,309 @@
   "redirects": [
     {
       "source": "/product",
-      "has": [{ "type": "query", "key": "slug", "value": "(?<slug>[a-z0-9-]+)" }],
+      "has": [
+        {
+          "type": "query",
+          "key": "slug",
+          "value": "(?<slug>[a-z0-9-]+)"
+        }
+      ],
       "destination": "/products/:slug",
       "permanent": true
     },
     {
-      "source": "/products/:base(.+)-costco-sale-:n(\\d+)",
-      "destination": "/products/:base-:n",
+      "source": "/products/anker-solix-anker-521-powerhouse-256wh-200w-refurbished-592",
+      "destination": "/products/anker-solix-anker-521-powerhouse-256wh-200w-592",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-535-powerhouse-512wh-500w-refurbished-594",
+      "destination": "/products/anker-solix-anker-535-powerhouse-512wh-500w-593",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-bp1000-expansion-battery-1056wh-lfp-for-c1000-refurbished-748",
+      "destination": "/products/anker-solix-anker-solix-bp1000-expansion-battery-1056wh-lfp-for-c1000-682",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-bp3800-expansion-battery-3840wh-lfp-refurbished-745",
+      "destination": "/products/anker-solix-anker-solix-bp3800-expansion-battery-3840wh-lfp-745",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-c1000-portable-power-station-1056wh-1800w-refurbished-713",
+      "destination": "/products/anker-solix-anker-solix-c1000-portable-power-station-1056wh-1800w-689",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-c2000-gen-2-portable-power-station-2-048wh-2-400w-refurbished-750",
+      "destination": "/products/anker-solix-anker-solix-c2000-gen-2-portable-power-station-2-048wh-2-400w-717",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-c300-portable-power-station-288wh-300w-refurbished-716",
+      "destination": "/products/anker-solix-anker-solix-c300-portable-power-station-288wh-300w-667",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-c300x-portable-power-station-288wh-300w-refurbished-744",
+      "destination": "/products/anker-solix-anker-solix-c300x-portable-power-station-288wh-300w-752",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-c800-portable-power-station-768wh-1200w-refurbished-747",
+      "destination": "/products/anker-solix-anker-solix-c800-portable-power-station-768wh-1200w-747",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f2600-portable-power-station-2560wh-2400w-refurbished-712",
+      "destination": "/products/anker-solix-anker-solix-f2600-portable-power-station-2560wh-2400w-685",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3800-expansion-battery-refurbished-753",
+      "destination": "/products/anker-solix-anker-solix-f3800-expansion-battery-753",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3800-plus-expansion-battery-refurbished-754",
+      "destination": "/products/anker-solix-anker-solix-f3800-plus-expansion-battery-693",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-f3800-plus-portable-power-station-refurbished-746",
+      "destination": "/products/anker-solix-anker-solix-f3800-plus-portable-power-station-697",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-ps200-portable-solar-panel-200w-refurbished-715",
+      "destination": "/products/anker-solix-anker-solix-ps200-portable-solar-panel-200w-715",
+      "permanent": true
+    },
+    {
+      "source": "/products/anker-solix-anker-solix-ps400-portable-solar-panel-refurbished-714",
+      "destination": "/products/anker-solix-anker-solix-ps400-portable-solar-panel-714",
+      "permanent": true
+    },
+    {
+      "source": "/products/bluetti-ac300-b300k-4-200w-get-free-trolley-779",
+      "destination": "/products/bluetti-ac300-b300k-4-200w-779",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-110w-portable-solar-panel-refurbished-2-572",
+      "destination": "/products/ecoflow-ecoflow-110w-portable-solar-panel-2-572",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-160w-solar-panel-costco-sale-579",
+      "destination": "/products/ecoflow-ecoflow-160w-solar-panel-579",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-2-220w-bifacial-solar-panel-app-only-580",
+      "destination": "/products/ecoflow-ecoflow-2-220w-bifacial-solar-panel-580",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-220w-bifacial-portable-solar-panel-refurbished-574",
+      "destination": "/products/ecoflow-ecoflow-220w-bifacial-portable-solar-panel-574",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-400w-portable-solar-panel-app-only-562",
+      "destination": "/products/ecoflow-ecoflow-400w-portable-solar-panel-562",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-400w-portable-solar-panel-refurbished-573",
+      "destination": "/products/ecoflow-ecoflow-400w-portable-solar-panel-562",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-1000-portable-power-station-refurbished-483",
+      "destination": "/products/ecoflow-ecoflow-delta-1000-portable-power-station-483",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-2-max-portable-power-station-refurbished-419",
+      "destination": "/products/ecoflow-ecoflow-delta-2-max-portable-power-station-551",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-2-max-smart-extra-battery-refurbished-421",
+      "destination": "/products/ecoflow-ecoflow-delta-2-max-smart-extra-battery-420",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-3-classic-portable-power-station-1024wh-subscriber-exclusive-552",
+      "destination": "/products/ecoflow-ecoflow-delta-3-classic-portable-power-station-1024wh-428",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-3-max-plus-2048wh-smart-extra-battery-app-only-430",
+      "destination": "/products/ecoflow-ecoflow-delta-3-max-plus-2048wh-smart-extra-battery-430",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-3-plus-portable-power-station-refurbished-439",
+      "destination": "/products/ecoflow-ecoflow-delta-3-plus-portable-power-station-438",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-3-ultra-plus-portable-power-station-3072wh-refurbished-446",
+      "destination": "/products/ecoflow-ecoflow-delta-3-ultra-plus-portable-power-station-3072wh-445",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-3-ultra-portable-power-station-3072wh-refurbished-449",
+      "destination": "/products/ecoflow-ecoflow-delta-3-ultra-portable-power-station-3072wh-448",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-mini-portable-power-station-refurbished-451",
+      "destination": "/products/ecoflow-ecoflow-delta-mini-portable-power-station-451",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-mini-portable-power-station-slickdeals-452",
+      "destination": "/products/ecoflow-ecoflow-delta-mini-portable-power-station-451",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-portable-power-station-refurbished-453",
+      "destination": "/products/ecoflow-ecoflow-delta-portable-power-station-453",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-pro-3-portable-power-station-refurbished-455",
+      "destination": "/products/ecoflow-ecoflow-delta-pro-3-portable-power-station-455",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-pro-3-smart-extra-battery-app-only-457",
+      "destination": "/products/ecoflow-ecoflow-delta-pro-3-smart-extra-battery-457",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-pro-3-smart-extra-battery-refurbished-458",
+      "destination": "/products/ecoflow-ecoflow-delta-pro-3-smart-extra-battery-457",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-pro-3-smart-generator-4000-dual-fuel-app-only-454",
+      "destination": "/products/ecoflow-ecoflow-delta-pro-3-smart-generator-4000-dual-fuel-454",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-pro-portable-power-station-refurbished-462",
+      "destination": "/products/ecoflow-ecoflow-delta-pro-portable-power-station-461",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-pro-smart-extra-battery-refurbished-464",
+      "destination": "/products/ecoflow-ecoflow-delta-pro-smart-extra-battery-463",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-pro-ultra-battery-refurbished-470",
+      "destination": "/products/ecoflow-ecoflow-delta-pro-ultra-battery-470",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-pro-ultra-series-smart-extra-battery-app-only-474",
+      "destination": "/products/ecoflow-ecoflow-delta-pro-ultra-series-smart-extra-battery-473",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-pro-ultra-smart-home-panel-2-400w-portable-solar-panel-free-monitor-web-exclusive-468",
+      "destination": "/products/ecoflow-ecoflow-delta-pro-ultra-smart-home-panel-2-400w-portable-solar-panel-467",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-delta-pro-ultra-smart-home-panel-2-400w-portable-solar-panel-web-exclusive-467",
+      "destination": "/products/ecoflow-ecoflow-delta-pro-ultra-smart-home-panel-2-400w-portable-solar-panel-467",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-glacier-classic-portable-fridge-freezer-app-only-488",
+      "destination": "/products/ecoflow-ecoflow-glacier-classic-portable-fridge-freezer-488",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-glacier-plug-in-battery-wheels-and-lever-free-bag-app-only-489",
+      "destination": "/products/ecoflow-ecoflow-glacier-plug-in-battery-wheels-and-lever-489",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-glacier-portable-refrigerator-plug-in-battery-slickdeals-491",
+      "destination": "/products/ecoflow-ecoflow-glacier-portable-refrigerator-plug-in-battery-491",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-glacier-portable-refrigerator-refurbished-490",
+      "destination": "/products/ecoflow-ecoflow-glacier-portable-refrigerator-490",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-nextgen-220w-bifacial-portable-solar-panel-refurbished-495",
+      "destination": "/products/ecoflow-ecoflow-nextgen-220w-bifacial-portable-solar-panel-495",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-river-2-max-portable-power-station-refurbished-506",
+      "destination": "/products/ecoflow-ecoflow-river-2-max-portable-power-station-505",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-river-2-pro-portable-power-station-refurbished-509",
+      "destination": "/products/ecoflow-ecoflow-river-2-pro-portable-power-station-508",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-river-mini-standard-portable-power-station-costco-sale-513",
+      "destination": "/products/ecoflow-ecoflow-river-mini-standard-portable-power-station-513",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-river-pro-160w-portable-solar-panel-slickdeals-516",
+      "destination": "/products/ecoflow-ecoflow-river-pro-160w-portable-solar-panel-516",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-river-pro-portable-power-station-costco-sale-519",
+      "destination": "/products/ecoflow-ecoflow-river-pro-portable-power-station-519",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-river-pro-portable-power-station-refurbished-520",
+      "destination": "/products/ecoflow-ecoflow-river-pro-portable-power-station-519",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-smart-home-panel-2-app-only-525",
+      "destination": "/products/ecoflow-ecoflow-smart-home-panel-2-525",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-wave-2-add-on-battery-app-only-535",
+      "destination": "/products/ecoflow-ecoflow-wave-2-add-on-battery-535",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-wave-2-add-on-battery-refurbished-533",
+      "destination": "/products/ecoflow-ecoflow-wave-2-add-on-battery-535",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-wave-2-portable-air-conditioner-refurbished-536",
+      "destination": "/products/ecoflow-ecoflow-wave-2-portable-air-conditioner-536",
+      "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-ecoflow-wave-3-portable-air-conditioner-app-only-539",
+      "destination": "/products/ecoflow-ecoflow-wave-3-portable-air-conditioner-539",
       "permanent": true
     }
   ],

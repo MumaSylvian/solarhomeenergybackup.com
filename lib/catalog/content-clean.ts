@@ -140,9 +140,20 @@ const brandAliases: Record<string, string> = {
   Chiko: 'ChikoUSA',
 };
 
-/** Retailer promotion tags left in source titles, e.g. "(Costco Sale)". */
-const retailerTag = /\s*\((?:costco|home depot|lowe'?s|walmart|amazon|best buy|sam'?s club)\b[^)]*\)/gi;
-const retailerSlugTag = /-(?:costco|home-depot|lowes|walmart|amazon|best-buy|sams-club)-sale(?=-\d+$)/;
+/** Retailer and deal-site tags left in source titles, e.g. "(Costco Sale)", "(Slickdeals)". */
+const retailerTag = /\s*\((?:costco|home depot|lowe'?s|walmart|amazon|best buy|sam'?s club|slickdeals)\b[^)]*\)/gi;
+const retailerSlugTag = /-(?:(?:costco|home-depot|lowes|walmart|amazon|best-buy|sams-club)-sale|slickdeals)(?=-\d+$)/;
+/**
+ * The manufacturer store's channel tags ("App Only", "Web Exclusive") and
+ * freebie promotions ("Get Free Trolley", "+ FREE Bag") describe that store's
+ * offer, not this one, and are promotional text Merchant Center disallows in
+ * titles. Removing a freebie only under-claims what ships.
+ */
+const channelTag = /\s*[-–]?\s*\(?\b(?:app only|web exclusive|subscriber exclusive)\b\)?/gi;
+const freebieTag = /\s*\(get free [^)]*\)|\s*\+\s*free\s+\w+(?=\s*$)/gi;
+const channelSlugTag = /-(?:app-only|web-exclusive|subscriber-exclusive|get-free-trolley|free-monitor|free-bag)(?=-)/g;
+const cleanName = (name: string) =>
+  name.replace(retailerTag, '').replace(channelTag, '').replace(freebieTag, '').trim();
 
 export function cleanProductContent<T extends CatalogProduct>(product: T): T {
   const brand = brandFor(product);
@@ -151,8 +162,8 @@ export function cleanProductContent<T extends CatalogProduct>(product: T): T {
   else delete specifications.Brand;
   return {
     ...product,
-    name: product.name.replace(retailerTag, '').trim(),
-    slug: product.slug.replace(retailerSlugTag, ''),
+    name: cleanName(product.name),
+    slug: product.slug.replace(retailerSlugTag, '').replace(channelSlugTag, ''),
     brand: brand ?? '',
     shortDescription: cleanCopy(product.shortDescription),
     rawSpecifications: cleanCopy(product.rawSpecifications),

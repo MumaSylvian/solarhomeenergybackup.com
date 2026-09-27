@@ -1,5 +1,22 @@
 # Google Merchant Center readiness: solarhomeenergybackup.com
 
+## Fix run, 2026-09-27 (owner answers: refurbished listings, photos)
+
+- **Condition:** the owner confirmed the 38 "(Refurbished)" listings are new, sealed units. 19 were relabelled
+  new; 19 duplicated an existing listing and were merged into it at the lower price (owner's choice), so no new
+  item is offered at two prices. "(Refurbished)" was also removed from their manufacturer text and product copy.
+  This is the owner's representation; keep the liquidation paperwork that shows these units as new.
+- **Promotional title text:** removed the manufacturer store's channel tags ("App Only", "Web Exclusive",
+  "Subscriber Exclusive"), deal-site tags ("Slickdeals"), and freebie claims ("Get Free Trolley", "+ Free
+  Monitor", "+ FREE Bag"). Removing a freebie only under-claims what ships. Listings that ended up with the same
+  name were merged at the lowest price.
+- **Images:** 1,199 of 1,201 primary photos are now served from this domain (`public/media/products/`, 14 MB,
+  outside Git LFS). Same files, byte for byte. 2 failed to download and keep their original link. Gallery
+  images are unchanged.
+- **URLs:** 59 old product URLs 301 to their new or merged listing (`vercel.json`).
+- Feed after the run: 1,970 items, all `new`, 0 retailer, refurbished, channel, or freebie text in any title
+  or page; 34 remaining same-title pairs are appliance variants with different model numbers.
+
 ## Live re-audit, 2026-09-27 (deployed commit 088fe31)
 
 ```

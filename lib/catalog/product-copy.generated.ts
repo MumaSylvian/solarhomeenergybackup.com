@@ -794,9 +794,9 @@ export const productCopy: Record<string, ProductCopy> = {
   "cta": "Our team can help you work out how many BP3000 units suit your F3000 setup."
  },
  "catalog-592": {
-  "intro": "This is a refurbished Anker 521 PowerHouse, a compact portable power station with 256Wh of capacity and 200W of output. It uses LiFePO4 batteries with Anker's InfiniPower technology for a long service life.",
+  "intro": "The Anker 521 PowerHouse is a compact portable power station with 256Wh of capacity and 200W of output. It uses LiFePO4 batteries with Anker's InfiniPower technology for a long service life.",
   "benefits": [
-   "Refurbished units offer the same 256Wh and 200W platform as the original model.",
+   "256Wh and 200W in a compact unit for small loads.",
    "InfiniPower technology with LiFePO4 batteries is designed for a 10-year lifespan."
   ],
   "features": [
@@ -806,7 +806,7 @@ export const productCopy: Record<string, ProductCopy> = {
   ],
   "idealUse": "Small loads such as phones, laptops, and lights on camping trips or short outages.",
   "included": [],
-  "cta": "Contact our team with any questions about this refurbished 521 PowerHouse."
+  "cta": "Contact our team with any questions about this 521 PowerHouse."
  },
  "catalog-593": {
   "intro": "The Anker 535 PowerHouse is a portable power station with 512Wh of capacity and 500W of output. It is built around LiFePO4 batteries and InfiniPower technology for long service life.",
@@ -1008,7 +1008,7 @@ export const productCopy: Record<string, ProductCopy> = {
   "cta": "Talk to our team about sizing BP3800 expansion for your F3800 system."
  },
  "catalog-745": {
-  "intro": "This is a refurbished BP3800 expansion battery, adding 3,840Wh of LFP storage to an Anker SOLIX F3800. It gives F3800 owners more runtime from a refurbished unit.",
+  "intro": "The BP3800 expansion battery adds 3,840Wh of LFP storage to an Anker SOLIX F3800. It gives F3800 owners more runtime from the same system.",
   "benefits": [
    "Adds 3,840Wh to an F3800 for longer backup.",
    "LFP chemistry is built for long-lasting use."
@@ -1019,7 +1019,7 @@ export const productCopy: Record<string, ProductCopy> = {
   ],
   "idealUse": "Extending home backup runtime on an existing F3800.",
   "included": [],
-  "cta": "Contact our team to confirm this refurbished BP3800 works with your system."
+  "cta": "Contact our team to confirm this BP3800 works with your system."
  },
  "catalog-603": {
   "intro": "This bundle pairs the Anker SOLIX C1000 with an Alternator Charger. The C1000 recharges quickly and can be expanded with an extra 1,056Wh.",
@@ -1461,7 +1461,7 @@ export const productCopy: Record<string, ProductCopy> = {
   "cta": "Contact our team with questions about this refurbished C300X."
  },
  "catalog-747": {
-  "intro": "This refurbished Anker SOLIX C800 provides 768Wh of capacity and 1200W of rated power. It recharges in 58 minutes and accepts up to 300W of solar input.",
+  "intro": "The Anker SOLIX C800 provides 768Wh of capacity and 1200W of rated power. It recharges in 58 minutes and accepts up to 300W of solar input.",
   "benefits": [
    "1200W rated power runs a good range of household and outdoor appliances.",
    "Recharging takes just 58 minutes.",
@@ -1475,7 +1475,7 @@ export const productCopy: Record<string, ProductCopy> = {
   ],
   "idealUse": "Camping, RV trips, and home backup for essentials.",
   "included": [],
-  "cta": "Ask our team any questions about this refurbished C800."
+  "cta": "Ask our team any questions about this C800."
  },
  "catalog-619": {
   "intro": "The Anker SOLIX E10 is a home backup system, supplied here with 1 power module, 2 batteries, and a Power Dock. It offers 10kW Turbo Output and switches over in 20ms or less when the grid fails.",
@@ -1946,22 +1946,21 @@ export const productCopy: Record<string, ProductCopy> = {
   "cta": "Ask our team whether 7680Wh covers your outage needs and we will help you size the system."
  },
  "catalog-753": {
-  "intro": "This refurbished bundle pairs the Anker SOLIX F3800 with an expansion battery. The F3800 starts at 3.84kWh (6kW) and accepts up to 2,400W of solar charging through dual 60V inputs.",
+  "intro": "This bundle pairs the Anker SOLIX F3800 with an expansion battery. The F3800 starts at 3.84kWh (6kW) and accepts up to 2,400W of solar charging through dual 60V inputs.",
   "benefits": [
-   "A refurbished F3800 and expansion battery bundle.",
+   "An F3800 and expansion battery in one order.",
    "Up to 2,400W of solar charging.",
    "Can fully charge in under 2 hours in optimal sunlight."
   ],
   "features": [
-   "Refurbished condition",
    "Up to 2,400W solar input (dual 60V)",
    "Full charge in under 2 hours in optimal sunlight",
    "Starts at 3.84kWh (6kW) and is expandable",
    "Expansion battery (per product name)"
   ],
-  "idealUse": "Home backup for buyers who want F3800 capacity with an expansion battery and are comfortable with refurbished equipment.",
+  "idealUse": "Home backup for buyers who want F3800 capacity with an expansion battery.",
   "included": [],
-  "cta": "Ask our team about the condition of this refurbished F3800 bundle and we will answer your questions."
+  "cta": "Ask our team about this F3800 bundle and we will answer your questions."
  },
  "catalog-677": {
   "intro": "Designed for home integration, this bundle combines the F3800, an expansion battery and a 10-circuit manual transfer switch. The F3800 starts at 3.84kWh (6kW) and accepts up to 2,400W of solar charging.",
@@ -2322,19 +2321,18 @@ export const productCopy: Record<string, ProductCopy> = {
   "cta": "Ask us whether the PS200 bifacial panel pairs well with your power station."
  },
  "catalog-715": {
-  "intro": "This is a refurbished Anker SOLIX PS200 portable solar panel rated at 200W. Its adjustable stand lets you tilt it toward the sun as the season and time of day change.",
+  "intro": "The Anker SOLIX PS200 is a portable solar panel rated at 200W. Its adjustable stand lets you tilt it toward the sun as the season and time of day change.",
   "benefits": [
-   "A refurbished unit of a 200W portable panel.",
+   "200W of portable solar charging.",
    "Adjustable angles help you catch more sunlight through the day."
   ],
   "features": [
-   "Refurbished condition",
    "200W panel",
    "4 set angles for sunlight absorption"
   ],
   "idealUse": "Portable solar charging for a power station while camping or during short power cuts.",
   "included": [],
-  "cta": "Questions about this refurbished PS200 are welcome; our team can help you check fit with your power station."
+  "cta": "Questions about this PS200 are welcome; our team can help you check fit with your power station."
  },
  "catalog-735": {
   "intro": "Big panels are usually heavy, but Anker states the PS400 bifacial weighs 22 lb including the stand. That makes it a practical choice for owners of larger power stations who still want to move their solar by hand.",
@@ -2368,20 +2366,19 @@ export const productCopy: Record<string, ProductCopy> = {
   "cta": "Ask us which Anker power stations pair best with the PS400."
  },
  "catalog-714": {
-  "intro": "This listing is a refurbished Anker SOLIX PS400 portable solar panel. Anker describes the PS400 as a 400W panel built to charge its portable power stations quickly.",
+  "intro": "The Anker SOLIX PS400 is a portable solar panel. Anker describes the PS400 as a 400W panel built to charge its portable power stations quickly.",
   "benefits": [
-   "A refurbished unit of Anker's high-output portable panel.",
+   "High-output portable solar from Anker.",
    "Suits owners of Anker power stations who want fast solar charging."
   ],
   "features": [
-   "Refurbished condition",
    "400W of solar power, per Anker",
    "Up to 23% conversion efficiency",
    "Designed for quick charging of Anker portable power stations"
   ],
   "idealUse": "Solar charging for an Anker power station on the road, at camp, or at home.",
   "included": [],
-  "cta": "Our team can answer questions about this refurbished PS400 and its fit with your power station."
+  "cta": "Our team can answer questions about this PS400 and its fit with your power station."
  },
  "catalog-738": {
   "intro": "Anker calls the SOLIX S2000 its smallest and lightest 2kWh power station. It is built on an LFP battery and aimed at households that want to keep a fridge and other essentials running through an outage.",
@@ -6268,7 +6265,7 @@ export const productCopy: Record<string, ProductCopy> = {
   "cta": "Our team can confirm this 110W panel will charge your power station."
  },
  "catalog-572": {
-  "intro": "This is a refurbished 2-pack of EcoFlow 110W portable solar panels. Built from monocrystalline cells, they recharge DELTA and RIVER series power stations for off-grid use.",
+  "intro": "This is a 2-pack of EcoFlow 110W portable solar panels. Built from monocrystalline cells, they recharge DELTA and RIVER series power stations for off-grid use.",
   "benefits": [
    "Panels can be chained in parallel for more input to a power station.",
    "The kickstand adjusts from 0 to 180 degrees to follow the sun.",
@@ -6283,7 +6280,7 @@ export const productCopy: Record<string, ProductCopy> = {
   ],
   "idealUse": "Useful for camping and outdoor trips with an EcoFlow DELTA or RIVER power station.",
   "included": [],
-  "cta": "Ask our team about the condition of these refurbished panels or how to chain them."
+  "cta": "Ask our team how to chain these panels with your power station."
  },
  "catalog-565": {
   "intro": "Modular by design, EcoFlow's 125W bifacial panel is offered here in 125W, 250W, and 500W kit sizes. TOPCon cells help it perform in low light and high temperatures.",
@@ -6411,7 +6408,7 @@ export const productCopy: Record<string, ProductCopy> = {
   "cta": "Our team can help you connect this pair of bifacial panels to your power station."
  },
  "catalog-574": {
-  "intro": "A refurbished EcoFlow 220W bifacial portable panel, built with tempered glass and a two-sided design. It is for users who want bifacial collection in a portable, self-supporting panel.",
+  "intro": "The EcoFlow 220W bifacial portable panel is built with tempered glass and a two-sided design. It is for users who want bifacial collection in a portable, self-supporting panel.",
   "benefits": [
    "Collects light on both sides for more energy.",
    "Self-supporting with an adjustable angle.",
@@ -6425,7 +6422,7 @@ export const productCopy: Record<string, ProductCopy> = {
   ],
   "idealUse": "Suited to camping and portable power station charging outdoors.",
   "included": [],
-  "cta": "Ask our team about the condition of this refurbished panel."
+  "cta": "Ask our team whether this panel suits your power station."
  },
  "catalog-569": {
   "intro": "The smallest of the EcoFlow Power Kits, this 2kWh version uses the same 48V all-in-one inverter hub and stackable battery design. It suits smaller vans and RVs.",
@@ -6465,7 +6462,7 @@ export const productCopy: Record<string, ProductCopy> = {
   "cta": "Our team can confirm this 400W panel works with your power station."
  },
  "catalog-573": {
-  "intro": "This listing is a refurbished EcoFlow 400W portable solar panel. It folds in one piece and stands on its own at an adjustable angle.",
+  "intro": "The EcoFlow 400W portable solar panel folds in one piece and stands on its own at an adjustable angle.",
   "benefits": [
    "High 400W solar input.",
    "Self-supporting with an adjustable angle.",
@@ -6480,7 +6477,7 @@ export const productCopy: Record<string, ProductCopy> = {
   ],
   "idealUse": "Suited to charging a larger power station outdoors or during outages.",
   "included": [],
-  "cta": "Ask our team about the condition of this refurbished 400W panel."
+  "cta": "Ask our team whether this 400W panel suits your power station."
  },
  "catalog-553": {
   "intro": "Listed with rigid solar mounting feet, this EcoFlow 400W rigid panel has an all-black design that suits most house styles. It is meant for fixed installations.",
@@ -7318,7 +7315,7 @@ export const productCopy: Record<string, ProductCopy> = {
   "cta": "Ask our team which panels are included with this DELTA 3 Ultra solar generator."
  },
  "catalog-451": {
-  "intro": "This is a refurbished EcoFlow DELTA mini, the lightest DELTA model, with 882Wh of capacity and 1400W of output. It suits campers and small households who want portable backup in refurbished condition.",
+  "intro": "The EcoFlow DELTA mini is the lightest DELTA model, with 882Wh of capacity and 1400W of output. It suits campers and small households who want portable backup.",
   "benefits": [
    "The lightest DELTA model, designed for portability.",
    "Powers up to 12 devices at once.",
@@ -7331,10 +7328,10 @@ export const productCopy: Record<string, ProductCopy> = {
   ],
   "idealUse": "Good for camping, tailgating and short outages at home.",
   "included": [],
-  "cta": "Ask our team about the condition of this refurbished DELTA mini and what it can run."
+  "cta": "Ask our team what this DELTA mini can run."
  },
  "catalog-452": {
-  "intro": "This EcoFlow DELTA mini listing is not the refurbished unit. It is the lightest DELTA model, offering 882Wh of capacity and 1400W of output for portable power.",
+  "intro": "The EcoFlow DELTA mini is the lightest DELTA model, offering 882Wh of capacity and 1400W of output for portable power.",
   "benefits": [
    "New-condition DELTA mini.",
    "Powers up to 12 devices at once.",
@@ -7350,7 +7347,7 @@ export const productCopy: Record<string, ProductCopy> = {
   "cta": "Ask our team whether the DELTA mini has enough capacity for your trips or backup needs."
  },
  "catalog-453": {
-  "intro": "This refurbished EcoFlow DELTA pairs 1260Wh of capacity with six AC outlets totalling 1800W. It is a capable portable power station for home appliances and DIY tools, offered in refurbished condition.",
+  "intro": "The EcoFlow DELTA pairs 1260Wh of capacity with six AC outlets totalling 1800W. It is a capable portable power station for home appliances and DIY tools.",
   "benefits": [
    "Charges from 0 to 80% within 1 hour using X-Stream technology.",
    "Pure sine wave output with 3300W surge.",
@@ -7364,7 +7361,7 @@ export const productCopy: Record<string, ProductCopy> = {
   ],
   "idealUse": "Suited to home appliances and heavy-duty DIY tools under 1800W, as well as camping and vehicle-based trips.",
   "included": [],
-  "cta": "Ask our team about the condition of this refurbished DELTA and whether it suits your tools or appliances."
+  "cta": "Ask our team whether this DELTA suits your tools or appliances."
  },
  "catalog-454": {
   "intro": "This bundle pairs the EcoFlow DELTA Pro 3 with the Smart Generator 4000 (Dual Fuel), which runs on LPG or gasoline. The generator adds a fuel-based recharge option for extended outages.",
@@ -7399,7 +7396,7 @@ export const productCopy: Record<string, ProductCopy> = {
   "cta": "Ask our team whether the Smart Home Panel 2 suits your home's electrical layout."
  },
  "catalog-455": {
-  "intro": "This is a refurbished EcoFlow DELTA Pro 3, a home battery that provides both 120V and 240V output with up to 4000W from a single unit. Capacity expands from 4 to 48kWh, from a day to a week of home power during outages.",
+  "intro": "The EcoFlow DELTA Pro 3 is a home battery that provides both 120V and 240V output with up to 4000W from a single unit. Capacity expands from 4 to 48kWh, from a day to a week of home power during outages.",
   "benefits": [
    "Capable of powering a 3-ton central AC along with essential appliances.",
    "X-Boost provides up to 6000W when needed.",
@@ -7416,7 +7413,7 @@ export const productCopy: Record<string, ProductCopy> = {
   ],
   "idealUse": "Best for home backup covering central AC and major appliances, and for RVs or off-grid property.",
   "included": [],
-  "cta": "Ask our team about the condition of this refurbished DELTA Pro 3 and how to expand it."
+  "cta": "Ask our team how to expand this DELTA Pro 3."
  },
  "catalog-456": {
   "intro": "This listing is the UL9540 certificated version of the EcoFlow DELTA Pro 3, as named by the product title. It provides 120V and 240V output with up to 4000W and expands from 4 to 48kWh for extended home backup.",
@@ -7438,7 +7435,7 @@ export const productCopy: Record<string, ProductCopy> = {
   "cta": "Ask our team to confirm UL9540 documentation for this DELTA Pro 3 listing."
  },
  "catalog-458": {
-  "intro": "This is a refurbished EcoFlow DELTA Pro 3 Smart Extra Battery, a stackable LFP pack that adds capacity to a DELTA Pro 3. It helps scale a system up to 12kWh for home or indoor backup.",
+  "intro": "The EcoFlow DELTA Pro 3 Smart Extra Battery is a stackable LFP pack that adds capacity to a DELTA Pro 3. It helps scale a system up to 12kWh for home or indoor backup.",
   "benefits": [
    "Adds capacity to a DELTA Pro 3.",
    "Stackable design for home or indoor backup.",
@@ -7451,7 +7448,7 @@ export const productCopy: Record<string, ProductCopy> = {
   ],
   "idealUse": "Best for DELTA Pro 3 owners who need longer runtime during outages.",
   "included": [],
-  "cta": "Ask our team to confirm this refurbished extra battery pairs with your DELTA Pro 3."
+  "cta": "Ask our team to confirm this extra battery pairs with your DELTA Pro 3."
  },
  "catalog-459": {
   "intro": "Built on the DELTA Pro 3, this solar generator provides 120V and 240V output with up to 4000W and expands from 4 to 48kWh. It is aimed at homeowners planning solar-backed backup for outages lasting days.",
@@ -7674,9 +7671,9 @@ export const productCopy: Record<string, ProductCopy> = {
   "cta": "Ask our team to confirm what this special accessories listing contains before you add it to your DELTA Pro Ultra."
  },
  "catalog-470": {
-  "intro": "A refurbished DELTA Pro Ultra Battery, this pack adds 6kWh to an existing DELTA Pro Ultra system. It fits owners who want more backup time at the refurbished tier.",
+  "intro": "The DELTA Pro Ultra Battery adds 6kWh to an existing DELTA Pro Ultra system. It fits owners who want more backup time.",
   "benefits": [
-   "Refurbished option for expanding DELTA Pro Ultra capacity.",
+   "Expands DELTA Pro Ultra capacity.",
    "6kWh is rated by the manufacturer for up to two days of backup.",
    "Stacks with the rest of the system to keep the footprint tidy."
   ],
@@ -7690,7 +7687,7 @@ export const productCopy: Record<string, ProductCopy> = {
   ],
   "idealUse": "Adding capacity to a DELTA Pro Ultra home backup setup.",
   "included": [],
-  "cta": "Our team can confirm this refurbished battery will work with your DELTA Pro Ultra Inverter."
+  "cta": "Our team can confirm this battery will work with your DELTA Pro Ultra Inverter."
  },
  "catalog-471": {
   "intro": "EcoFlow's DELTA Pro Ultra Intelligent Kit is a whole-home backup package built around the DELTA Pro Ultra and Smart Home Panel 2. It is intended for homeowners planning a permanent, panel-connected battery system.",
@@ -7964,9 +7961,9 @@ export const productCopy: Record<string, ProductCopy> = {
   "cta": "Our team can confirm what comes with this DELTA PV110W listing before you decide."
  },
  "catalog-483": {
-  "intro": "This refurbished EcoFlow DELTA portable power station offers 1260Wh of capacity and six AC outlets totalling 1800W. It is a fit for home appliances, DIY tools, and trips where many devices need power.",
+  "intro": "The EcoFlow DELTA portable power station offers 1260Wh of capacity and six AC outlets totalling 1800W. It is a fit for home appliances, DIY tools, and trips where many devices need power.",
   "benefits": [
-   "Refurbished option with 0 to 80% recharge within one hour.",
+   "0 to 80% recharge within one hour.",
    "Handles tools and appliances under 1800W with 3300W surge.",
    "Recharges fully from solar in about 4 hours, or through a 12/24V car port.",
    "Powers 13 devices at once."
@@ -7980,7 +7977,7 @@ export const productCopy: Record<string, ProductCopy> = {
   ],
   "idealUse": "Short outages, job sites, and camping where appliances and tools need AC power.",
   "included": [],
-  "cta": "Ask our team whether this refurbished DELTA can handle the appliances you plan to run."
+  "cta": "Ask our team whether this DELTA can handle the appliances you plan to run."
  },
  "catalog-484": {
   "intro": "Pairing the GLACIER portable refrigerator with the DELTA 2 Max power station, this bundle keeps food cold for extended trips or outages. EcoFlow rates the pair for up to 7 days of cooling.",
@@ -8083,9 +8080,9 @@ export const productCopy: Record<string, ProductCopy> = {
   "cta": "Ask our team to confirm this battery and wheels kit matches your GLACIER model."
  },
  "catalog-490": {
-  "intro": "This is a refurbished EcoFlow GLACIER portable refrigerator with an integrated ice maker and two independently controlled zones. It suits campers and RV owners who want a fridge and ice maker in one.",
+  "intro": "The EcoFlow GLACIER is a portable refrigerator with an integrated ice maker and two independently controlled zones. It suits campers and RV owners who want a fridge and ice maker in one.",
   "benefits": [
-   "Refurbished GLACIER with a built-in ice maker.",
+   "Built-in ice maker.",
    "Dual zones for keeping fresh and frozen food apart.",
    "Up to 40 hours of cooling on battery power with the plug-in battery."
   ],
@@ -8099,7 +8096,7 @@ export const productCopy: Record<string, ProductCopy> = {
   ],
   "idealUse": "Camping, tailgating, and RV travel where ice and cold storage are both needed.",
   "included": [],
-  "cta": "Our team can tell you which accessories to pair with this refurbished GLACIER."
+  "cta": "Our team can tell you which accessories to pair with this GLACIER."
  },
  "catalog-491": {
   "intro": "Named as a GLACIER portable refrigerator with the Plug-in Battery, this listing covers EcoFlow's fridge with an integrated ice maker and dual zones. It fits campers and road trippers.",
@@ -8199,9 +8196,9 @@ export const productCopy: Record<string, ProductCopy> = {
   "cta": "Ask our team whether this 220W bifacial panel matches your power station."
  },
  "catalog-495": {
-  "intro": "This is a refurbished NextGen 220W Bifacial Portable Solar Panel, which uses both faces to collect up to 25% more energy. It suits campers and backup users who want a bifacial panel at the refurbished tier.",
+  "intro": "The NextGen 220W Bifacial Portable Solar Panel uses both faces to collect up to 25% more energy. It suits campers and backup users who want a bifacial panel.",
   "benefits": [
-   "Refurbished bifacial panel with the same two-sided design.",
+   "Two-sided bifacial design.",
    "Tempered glass and ETFE coating.",
    "Lightweight and compact for carrying."
   ],
@@ -8216,7 +8213,7 @@ export const productCopy: Record<string, ProductCopy> = {
   "included": [
    "Solar to XT60 charging cable"
   ],
-  "cta": "Our team can confirm this refurbished 220W panel works with your power station."
+  "cta": "Our team can confirm this 220W panel works with your power station."
  },
  "catalog-496": {
   "intro": "Built around the EcoFlow Power Hub, Power Kits are a 48V modular power system for RVs, vans, and off-grid builds. The plug-and-play design makes it easier to expand and customise the kit.",
@@ -8866,7 +8863,7 @@ export const productCopy: Record<string, ProductCopy> = {
   "cta": "Ask our team to confirm this Add-on Battery matches your WAVE unit."
  },
  "catalog-533": {
-  "intro": "This is a refurbished WAVE 2 Add-on Battery with 1159Wh of capacity. It works with both WAVE 2 and WAVE 3.",
+  "intro": "The WAVE 2 Add-on Battery has 1159Wh of capacity. It works with both WAVE 2 and WAVE 3.",
   "benefits": [
    "One battery covers both WAVE 2 and WAVE 3 units."
   ],
@@ -8878,7 +8875,7 @@ export const productCopy: Record<string, ProductCopy> = {
   ],
   "idealUse": "Suited to WAVE owners who want cordless cooling or heating at a campsite or in a vehicle.",
   "included": [],
-  "cta": "Our team can answer questions about this refurbished battery's condition and compatibility."
+  "cta": "Our team can answer questions about this battery's compatibility."
  },
  "catalog-534": {
   "intro": "The WAVE 2 Add-on Battery in this listing is paired with a WAVE Series Bag. The battery holds 1159Wh and fits both WAVE 2 and WAVE 3.",
@@ -8896,7 +8893,7 @@ export const productCopy: Record<string, ProductCopy> = {
   "cta": "Ask our team about the battery and bag in this WAVE listing."
  },
  "catalog-536": {
-  "intro": "This refurbished WAVE 2 is a portable air conditioner that also heats. It needs no installation and fits into most compact spaces.",
+  "intro": "The WAVE 2 is a portable air conditioner that also heats. It needs no installation and fits into most compact spaces.",
   "benefits": [
    "At 44dB, it is quiet enough for sleeping.",
    "With the Add-on Battery, it can run for up to 8 hours."
@@ -8911,7 +8908,7 @@ export const productCopy: Record<string, ProductCopy> = {
   ],
   "idealUse": "Well suited to tents, campervans, and small rooms.",
   "included": [],
-  "cta": "Our team can answer questions about this refurbished WAVE 2."
+  "cta": "Our team can answer questions about this WAVE 2."
  },
  "catalog-537": {
   "intro": "Offering both cooling and heating, the WAVE 2 is a portable air conditioner for compact spaces that needs no installation. EcoFlow notes a compatible battery may be needed for best use, sold separately.",

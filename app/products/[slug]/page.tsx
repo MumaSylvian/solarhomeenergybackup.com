@@ -76,8 +76,9 @@ export default async function ProductPage({ params }: Params) {
       '@type': 'Product',
       name: product.name,
       description: copyFor(product.id)?.intro ?? overviewFor(product),
+      // Self-hosted photos are site-relative; structured data needs absolute URLs.
       image: product.galleryImageUrls?.length
-        ? product.galleryImageUrls
+        ? product.galleryImageUrls.map((image) => new URL(image, siteUrl).href)
         : undefined,
       sku: product.sku || product.model || undefined,
       mpn: product.model || undefined,

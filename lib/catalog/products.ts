@@ -3,6 +3,7 @@ import { WARRANTY_TERM, discountedPriceFor } from '@/lib/commerce';
 import { correctRatings } from './spec-fix';
 import { cleanProductContent } from './content-clean';
 import { correctCategory } from './category-fix';
+import { selfHostedImages } from './self-hosted-images.generated';
 
 /**
  * Product photos are stored in Git LFS. The connected Vercel deployment
@@ -13,10 +14,41 @@ import { correctCategory } from './category-fix';
 const catalogMediaBaseUrl =
   'https://media.githubusercontent.com/media/MumaSylvian/solarhomeenergybackup.com/main/public/catalog/';
 
+/**
+ * Primary photos that were hotlinked from a supplier CDN are served from this
+ * domain (public/media/products/, outside Git LFS). Same photos; see
+ * scripts/self-host-primary-images.mjs. Gallery images keep their URLs.
+ */
 const resolveCatalogImageUrl = (imageUrl: string | null | undefined) =>
   imageUrl?.startsWith('/catalog/')
     ? `${catalogMediaBaseUrl}${imageUrl.slice('/catalog/'.length)}`
-    : (imageUrl ?? null);
+    : imageUrl && selfHostedImages[imageUrl]
+      ? `/media/products/${selfHostedImages[imageUrl]}`
+      : (imageUrl ?? null);
+
+/**
+ * Owner-confirmed on 2026-09-27: the listings the supplier titled
+ * "(Refurbished)" are new, sealed units. The tag is dropped, so conditionOf()
+ * reads them as new. Removing this and other title tags (see content-clean.ts)
+ * can leave two listings with the same name; those are merged below.
+ */
+const refurbishedTag = /\s*\((?:refurbished|renewed|reconditioned)\)/i;
+const relabelAsNew = <
+  T extends { name: string; slug: string; shortDescription: string; rawSpecifications: string },
+>(
+  product: T,
+): T => {
+  if (!refurbishedTag.test(product.name)) return product;
+  // The manufacturer text repeats the supplier title, e.g. "EcoFlow DELTA (Refurbished) can…".
+  const untag = (text: string) => text.replace(new RegExp(refurbishedTag.source, 'gi'), '');
+  return {
+    ...product,
+    name: product.name.replace(refurbishedTag, '').replace(/\*(\d+)$/, ' (Pack of $1)').trim(),
+    slug: product.slug.replace(/-refurbished(?=-)/, ''),
+    shortDescription: untag(product.shortDescription),
+    rawSpecifications: untag(product.rawSpecifications),
+  };
+};
 
 /** The catalog is generated from the product archives supplied for SolarHome Energy Backup. */
 /**
@@ -171,6 +203,7 @@ export const catalog = csvCatalog
   .map(correctRatings)
   // Remove other businesses' names, contacts, promotions, and policies.
   .map(cleanProductContent)
+  .map(relabelAsNew)
   // Fix categories the importer took from supplier breadcrumbs.
   .map(correctCategory)
   .map((product) => {
@@ -199,8 +232,54 @@ export const catalog = csvCatalog
     };
   });
 
+/**
+ * Listings whose title lost a tag (refurbished, retailer, channel, freebie)
+ * may now share a name with another listing of the same product. Each such
+ * group becomes one listing: the untagged one if it exists, at the group's
+ * lowest price, so one new item is never offered at two prices. Groups where
+ * no title changed are left alone (appliances can share a title across
+ * distinct models). Old URLs redirect in vercel.json.
+ */
+const sourceName = new Map(csvCatalog.map((product) => [product.id, product.name]));
+const wasRetitled = (product: { id: string; name: string }) => sourceName.get(product.id) !== product.name;
+const listingKey = (product: { brand: string; name: string }) =>
+  `${product.brand}|${product.name}`.toLowerCase();
+const sameNameGroups = new Map<string, (typeof catalog)[number][]>();
+for (const product of catalog) {
+  const group = sameNameGroups.get(listingKey(product)) ?? [];
+  group.push(product);
+  sameNameGroups.set(listingKey(product), group);
+}
+/** Kept listing id → lowest-priced member of its merged group. */
+const mergedPrice = new Map<string, (typeof catalog)[number]>();
+const mergedAway = new Map<string, string>(); // removed slug → kept slug
+for (const group of sameNameGroups.values()) {
+  if (group.length < 2 || !group.some(wasRetitled)) continue;
+  const kept = group.find((product) => !wasRetitled(product)) ?? group[0];
+  const cheapest = group
+    .filter((product) => product.retailPrice != null)
+    .reduce<(typeof catalog)[number] | undefined>(
+      (best, product) => (!best || product.retailPrice! < best.retailPrice! ? product : best),
+      undefined,
+    );
+  if (cheapest) mergedPrice.set(kept.id, cheapest);
+  for (const product of group) if (product !== kept) mergedAway.set(product.slug, kept.slug);
+}
+const mergedAwayIds = new Set(
+  catalog.filter((product) => mergedAway.has(product.slug)).map((product) => product.id),
+);
+export const mergedListingRedirects = mergedAway;
+
 /** One storefront product per normalized model; alternate suppliers remain supplier offers. */
-export const uniqueCatalog = catalog.filter((product, index, products) => {
+export const uniqueCatalog = catalog
+  .filter((product) => !mergedAwayIds.has(product.id))
+  .map((product) => {
+    const cheapest = mergedPrice.get(product.id);
+    return cheapest && cheapest !== product
+      ? { ...product, sourcePrice: cheapest.sourcePrice, retailPrice: cheapest.retailPrice }
+      : product;
+  })
+  .filter((product, index, products) => {
   // Every supplied CSV SKU is a distinct storefront record. Keep the older
   // solar catalog's model-level deduplication for alternate supplier rows.
   if (product.id.startsWith('csv-home-depot-')) return true;
