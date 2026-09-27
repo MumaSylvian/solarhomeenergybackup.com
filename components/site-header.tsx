@@ -2,7 +2,7 @@
 /* oxlint-disable next/no-html-link-for-pages -- these primary links must retain native browser navigation if hydration is delayed. */
 
 import Image from 'next/image';
-import { useState, useSyncExternalStore } from 'react';
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { ChevronDown, Globe2, Menu, Search, ShoppingCart } from 'lucide-react';
 import { languages, useLocale } from '@/components/locale-provider';
 import { cartItemCount, subscribeToCart } from '@/lib/cart';
@@ -18,6 +18,25 @@ export function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { code, setCode, t } = useLocale();
   const language = languages.find((item) => item.code === code) ?? languages[0];
+  const pickerRef = useRef<HTMLDivElement>(null);
+  // Close the language menu on an outside click or Escape.
+  useEffect(() => {
+    if (!languageOpen) return;
+    const onPointer = (event: PointerEvent) => {
+      if (!pickerRef.current?.contains(event.target as Node)) setLanguageOpen(false);
+    };
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') return;
+      setLanguageOpen(false);
+      pickerRef.current?.querySelector<HTMLButtonElement>('.language-trigger')?.focus();
+    };
+    document.addEventListener('pointerdown', onPointer);
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('pointerdown', onPointer);
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [languageOpen]);
   const chooseLanguage = (nextCode: (typeof languages)[number]['code']) => {
     setCode(nextCode);
     setLanguageOpen(false);
@@ -25,13 +44,13 @@ export function SiteHeader() {
 
   return (
     <>
-      <div className="utility-bar notranslate">
+      <div className="utility-bar">
         <span>Ships to all 50 states</span>
         <span className="utility-detail">Flat $45 delivery per order</span>
         <a href="/support">Customer support</a>
         <a href="/system-finder">{t('utilityAction')}</a>
       </div>
-      <header className="site-header notranslate">
+      <header className="site-header">
         <a
           href="/"
           className="brand brand-logo"
@@ -87,12 +106,12 @@ export function SiteHeader() {
           >
             <ShoppingCart size={20} />
             {cartCount > 0 && (
-              <span className="cart-count" aria-hidden="true">
+              <span className="cart-count notranslate" aria-hidden="true">
                 {cartCount > 99 ? '99+' : cartCount}
               </span>
             )}
           </a>
-          <div className="language-picker">
+          <div className="language-picker notranslate" translate="no" ref={pickerRef}>
             <button
               className="language-trigger"
               type="button"
@@ -146,7 +165,7 @@ export function SiteHeader() {
             <button type="submit">Search</button>
           </form>
           <nav
-            className="mobile-nav notranslate"
+            className="mobile-nav"
             aria-label="Mobile navigation"
           >
             <a href="/shop">All products</a>

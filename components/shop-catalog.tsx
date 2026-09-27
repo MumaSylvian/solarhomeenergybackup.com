@@ -213,10 +213,13 @@ export function ShopCatalog({ catalog }: { catalog: ShopItem[] }) {
         </aside>
         <section className="catalog-area" aria-live="polite">
           <p className="catalog-count">
-            Showing {visibleProducts.length.toLocaleString()} /{' '}
-            {products.length.toLocaleString()} products
-            {brand ? ` · ${brand}` : ''}
-            {category ? ` · ${category}` : ''}
+            {/* Counts change as filters do; translate="no" keeps Google's translator from freezing them. */}
+            Showing <span translate="no">{visibleProducts.length.toLocaleString()}</span> /{' '}
+            <span translate="no">{products.length.toLocaleString()}</span> products
+            <span translate="no">
+              {brand ? ` · ${brand}` : ''}
+              {category ? ` · ${category}` : ''}
+            </span>
           </p>
           {addedName && (
             <p className="added-message">

@@ -14,7 +14,7 @@ export const metadata = pageMetadata({
 export default function CookiesPage() {
   return (
     <TrustPage
-      eyebrow="Cookie & tracking notice · Effective Date: September 26, 2026 · Last Updated: September 26, 2026"
+      eyebrow="Cookie & tracking notice · Effective Date: September 26, 2026 · Last Updated: September 27, 2026"
       title="Cookie & Tracking Notice"
       intro="This Cookie & Tracking Notice explains the current use of cookies and similar technologies on https://www.solarhomeenergybackup.com/."
       sections={[
@@ -54,9 +54,17 @@ export default function CookiesPage() {
             'Where required by applicable law, appropriate consent controls will be implemented.',
           ],
         },
-        { title: '7. Privacy', body: 'For additional information regarding personal information, review our Privacy Policy.' },
         {
-          title: '8. Contact',
+          title: '7. Website translation',
+          body: [
+            'The website is shown in English by default, and nothing is loaded from Google while it is.',
+            'If you choose another language from the language menu, the page is translated by Google’s website translation service. Your browser then loads a script from Google, the page text is sent to Google for translation, and a cookie named "googtrans" stores your language choice. Your choice is also saved in your browser’s local storage.',
+            'Choosing English again removes the cookie. Machine translations may contain errors; the English version governs prices, product information, and our policies.',
+          ],
+        },
+        { title: '8. Privacy', body: 'For additional information regarding personal information, review our Privacy Policy.' },
+        {
+          title: '9. Contact',
           body: [
             business.legalName,
             `Trading as ${business.tradingName}`,

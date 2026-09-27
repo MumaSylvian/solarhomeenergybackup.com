@@ -166,7 +166,7 @@ export default function InvoicePage() {
             Request invoice on WhatsApp
           </button>
           {message && (
-            <p className="notice" style={{ marginTop: 18 }}>
+            <p className="notice" style={{ marginTop: 18 }} key={message}>
               {message}
             </p>
           )}
@@ -180,22 +180,22 @@ export default function InvoicePage() {
                 {items.map(({ product, quantity }) => (
                   <div key={product.id}>
                     <span>{product.name}</span>
-                    <b>Qty {quantity}</b>
+                    <b>Qty <span translate="no">{quantity}</span></b>
                   </div>
                 ))}
               </div>
               <dl className="invoice-summary">
                 <div>
-                  <dt>Subtotal</dt>
-                  <dd>{money.format(subtotal)}</dd>
+                  <dt>Items subtotal</dt>
+                  <dd translate="no">{money.format(subtotal)}</dd>
                 </div>
                 <div>
                   <dt>Delivery</dt>
-                  <dd>{money.format(deliveryFeeFor(items.length))}</dd>
+                  <dd translate="no">{money.format(deliveryFeeFor(items.length))}</dd>
                 </div>
                 <div className="total">
                   <dt>Total before tax</dt>
-                  <dd>{money.format(subtotal + deliveryFeeFor(items.length))}</dd>
+                  <dd translate="no">{money.format(subtotal + deliveryFeeFor(items.length))}</dd>
                 </div>
               </dl>
               <p className="notice">{DELIVERY_SUMMARY}</p>

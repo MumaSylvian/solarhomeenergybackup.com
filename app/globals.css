@@ -138,3 +138,13 @@ footer>div>a{display:block;padding-block:6px}
 .warranty-note{margin-top:12px;padding:12px 14px;border-left:3px solid var(--line);background:var(--surface-soft);color:var(--muted);font-size:14px}.warranty-note a{color:var(--blue);font-weight:750;text-decoration:underline}
 .detail-sections ul{margin:0;padding-left:20px;color:var(--muted);font-size:14px;line-height:1.65}.detail-sections li{margin-bottom:6px}.detail-sections p a{color:var(--blue);font-weight:750;text-decoration:underline}
 .footer-contact{display:grid;gap:4px;margin-top:14px;font-style:normal;font-size:14px;line-height:1.5;color:#cfdded}.footer-contact strong{color:#fff}.footer-contact a{color:#9ed0ff}.trust-section ul{margin:0 0 12px;padding-left:20px;color:var(--muted);line-height:1.6}.trust-section li{margin-bottom:4px}.trust-section p a{color:var(--blue);font-weight:750;text-decoration:underline}
+
+/* Google website translator (lib/translate.ts): keep its toolbar, tooltips, and highlights hidden; the header language menu drives it. */
+iframe.skiptranslate,.goog-te-banner-frame,#goog-gt-tt,.goog-te-balloon-frame,.VIpgJd-ZVi9od-ORHb-OEVmcd,.VIpgJd-ZVi9od-aZ2wEe-wOHMyf{display:none!important}
+body{top:0!important;position:static!important}
+.goog-text-highlight,font[style]{background:none!important;box-shadow:none!important}
+.translation-notice{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 14px;padding:9px 16px;background:var(--surface-tint);border-bottom:1px solid var(--line);color:var(--ink);font-size:13px;line-height:1.45;text-align:center}
+.translation-notice button{border:1px solid var(--blue);border-radius:999px;background:transparent;color:var(--blue);font:inherit;font-weight:750;padding:4px 12px;cursor:pointer}
+.translation-notice button:hover{background:var(--blue);color:#fff}
+/* Google wraps translated text in <font> elements; inside flex and grid rows each wrapper became its own column. Let the text flow as it does in English. */
+html.translated-ltr font,html.translated-rtl font{display:contents}

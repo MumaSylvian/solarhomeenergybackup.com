@@ -85,7 +85,7 @@ export default function CheckoutPage() {
                       >
                         <Minus size={14} />
                       </button>
-                      <output aria-live="polite">{quantity}</output>
+                      <output aria-live="polite" translate="no">{quantity}</output>
                       <button
                         type="button"
                         onClick={() => changeQuantity(product.id, quantity + 1)}
@@ -96,7 +96,7 @@ export default function CheckoutPage() {
                       </button>
                     </fieldset>
                   </div>
-                  <span>
+                  <span translate="no">
                     {money.format((product.retailPrice ?? 0) * quantity)}{' '}
                     <button
                       className="restart-button"
@@ -118,16 +118,16 @@ export default function CheckoutPage() {
             <h2>Order summary</h2>
             <dl>
               <div>
-                <dt>Subtotal</dt>
-                <dd>{money.format(subtotal)}</dd>
+                <dt>Items subtotal</dt>
+                <dd translate="no">{money.format(subtotal)}</dd>
               </div>
               <div>
                 <dt>Delivery</dt>
-                <dd>{money.format(deliveryFeeFor(entries.length))}</dd>
+                <dd translate="no">{money.format(deliveryFeeFor(entries.length))}</dd>
               </div>
               <div className="total">
                 <dt>Total before tax</dt>
-                <dd>{money.format(subtotal + deliveryFeeFor(entries.length))}</dd>
+                <dd translate="no">{money.format(subtotal + deliveryFeeFor(entries.length))}</dd>
               </div>
             </dl>
             <a href="/invoice" className="button primary">

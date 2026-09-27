@@ -157,7 +157,7 @@ export function ProductDetail({
             <ShoppingCart size={16} />
             {t('addToCart')}
           </button>
-          <output className="added-message">
+          <output className="added-message" key={addedCount}>
             {addedCount > 0 && (
               <>
                 <Check size={15} />
