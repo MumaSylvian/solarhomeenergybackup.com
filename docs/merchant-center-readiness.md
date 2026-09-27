@@ -1,5 +1,51 @@
 # Google Merchant Center readiness: solarhomeenergybackup.com
 
+## Live re-audit, 2026-09-27 (deployed commit 088fe31)
+
+```
+MERCHANT CENTER READINESS: NOT READY
+
+Tier 0-A (egregious — permanent ban):  2 found, 1 fixed, 1 outstanding (candidate needing merchant confirmation)
+Tier 0-B (suspension, 7-day warning):  2 found, 0 fixed, 2 outstanding
+Tier 1  (item disapproval):            4 found, 1 fixed, 3 outstanding
+Tier 2  (guideline breach):            1 found, 0 fixed, 1 outstanding
+Tier 3  (optimisation):                3 found
+
+Sampled: 25 of 1,996 live feed items across all 11 categories (24 clean; 1 flag
+         was a false positive: "lowest repair rate" matched a retailer pattern)
+Applied directly: yes, local project files (committed locally, not yet deployed)
+Verified after fix: local build — no "PM PT" on any page, no retailer tag in any
+         title, slug, or feed row; feed still 1,996 items
+SUBMIT? NO. The bare domain shows a parked page, and one Tier 0-A candidate remains.
+```
+
+Verified live: feed at /feeds/google-merchant-products.tsv returns 200 with 1,996 items, all `in_stock`,
+all `US:::45.00 USD`, no missing required attributes, no duplicate ids, mpn on all. In the 25-item sample,
+feed price = rendered price = schema price, availability, condition, and brand all agree; no reference prices.
+One address, phone, and email across 13 site pages and the OnlineStore schema. All policy pages return 200 with
+the required return elements. Sampled images: 25/25 return 200 to Googlebot-Image, all ≥600×600.
+
+| Tier | Finding | Status |
+|---|---|---|
+| 0-A | Home and shop pages still said "Mon–Sat, 9 AM–5 PM PT" while the business is in Baton Rouge (Central) | **Fixed**: now "CT" |
+| 0-A | Below-supplier pricing with only irreversible payment rails | Outstanding: keep sourcing evidence (liquidation invoices, manifests) |
+| 0-B | `solarhomeenergybackup.com` (no www) serves a Hostinger "Parked Domain" page over HTTP and has no HTTPS; only `www.` reaches the store | Outstanding: owner DNS change (see below) |
+| 0-B | 38 items are listed as refurbished, while the owner stated all units are new and sealed | Outstanding: owner must say which is true; site and feed must match the stock |
+| 1 | Three titles carried a retailer promotion tag, "(Costco Sale)", also in their URLs | **Fixed**: removed from names and slugs; old URLs 301 to the new ones (`vercel.json`) |
+| 1 | Shipping and return policy not yet configured in Merchant Center | Outstanding: account settings |
+| 1 | No GTINs (mpn + brand sent on all items) | Accepted by owner: none available |
+| 1 | 1,201 primary images are hotlinked from a retailer CDN (images.thdstatic.com); if that host blocks Google or the link changes, those items are disapproved for missing images | Risk: self-host the same photos (no photo changes) |
+| 2 | No card, debit, or pay-on-delivery option | Outstanding |
+| 3 | 114 product URLs begin `signature-solar-` (a supplier name) | Optional: rename with redirects |
+| 3 | product_highlight on 768 of 1,996 items | Optimisation |
+| 3 | No dimensions or weight in feed | Optimisation |
+
+**Domain fix (owner, in Hostinger DNS):** change the `@` A record from `2.57.91.91` (parking) to Vercel
+(`216.198.79.1`, or the value Vercel shows), then add `solarhomeenergybackup.com` to the Vercel project with a
+redirect to `www.solarhomeenergybackup.com`. Claim the `www` domain in Merchant Center.
+
+---
+
 ## Fix run, 2026-09-26 (owner answers applied)
 
 ```

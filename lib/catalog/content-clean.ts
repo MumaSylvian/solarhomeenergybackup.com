@@ -140,6 +140,10 @@ const brandAliases: Record<string, string> = {
   Chiko: 'ChikoUSA',
 };
 
+/** Retailer promotion tags left in source titles, e.g. "(Costco Sale)". */
+const retailerTag = /\s*\((?:costco|home depot|lowe'?s|walmart|amazon|best buy|sam'?s club)\b[^)]*\)/gi;
+const retailerSlugTag = /-(?:costco|home-depot|lowes|walmart|amazon|best-buy|sams-club)-sale(?=-\d+$)/;
+
 export function cleanProductContent<T extends CatalogProduct>(product: T): T {
   const brand = brandFor(product);
   const specifications = { ...product.specifications };
@@ -147,6 +151,8 @@ export function cleanProductContent<T extends CatalogProduct>(product: T): T {
   else delete specifications.Brand;
   return {
     ...product,
+    name: product.name.replace(retailerTag, '').trim(),
+    slug: product.slug.replace(retailerSlugTag, ''),
     brand: brand ?? '',
     shortDescription: cleanCopy(product.shortDescription),
     rawSpecifications: cleanCopy(product.rawSpecifications),

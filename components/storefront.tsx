@@ -247,7 +247,7 @@ export function Storefront() {
           <CircleHelp size={19} />
           <span>
             <b>Practical support</b>
-            <small>Mon–Sat, 9 AM–5 PM PT</small>
+            <small>Mon–Sat, 9 AM–5 PM CT</small>
           </span>
         </div>
       </section>
