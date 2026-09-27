@@ -197,7 +197,7 @@ export function Storefront() {
           <button onClick={() => moveSlide(-1)} aria-label="Previous slide">
             <ChevronLeft size={19} />
           </button>
-          <div aria-label={`Slide ${activeSlide + 1} of ${slides.length}`}>
+          <div>
             {slides.map((_, index) => (
               <button
                 key={index}
@@ -406,7 +406,6 @@ export function ProductCard({
             sizes="(max-width: 850px) 310px, 33vw"
             unoptimized
             priority={priority}
-            loading="eager"
             onError={() => setImageIndex((current) => current + 1)}
           />
         ) : (
@@ -453,7 +452,7 @@ export function ProductCard({
           <a href={productHref}>
             {t('viewDetails')} <ArrowRight size={16} />
           </a>
-          {add && (
+          {add && retailPrice != null && (
             <button type="button" onClick={() => add(product)}>
               {t('addToCart')}
             </button>

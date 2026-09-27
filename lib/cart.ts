@@ -72,3 +72,23 @@ export function addToCart(product: CartProduct) {
   saveCart(cart);
   return cart;
 }
+
+/** Removes a line, reading the current cart so changes made in other tabs are kept. */
+export function removeFromCart(id: string) {
+  return setCartQuantity(id, 0);
+}
+
+let lastRaw: string | null | undefined;
+let lastCart: StoredCart = {};
+/**
+ * Snapshot for useSyncExternalStore: the same object until the stored cart
+ * changes, so React does not re-render in a loop.
+ */
+export function cartSnapshot(): StoredCart {
+  const raw = window.localStorage.getItem(cartKey);
+  if (raw !== lastRaw) {
+    lastRaw = raw;
+    lastCart = readCart();
+  }
+  return lastCart;
+}

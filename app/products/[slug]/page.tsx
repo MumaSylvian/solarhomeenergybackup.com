@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const written = copyFor(product.id)?.intro;
   const description = written
     ? written.length > 155
-      ? `${written.slice(0, 155).replace(/s+S*$/, '')}…`
+      ? `${written.slice(0, 155).replace(/\s+\S*$/, '')}…`
       : written
     : productMetaDescription(product);
   const image = product.galleryImageUrls?.[0];

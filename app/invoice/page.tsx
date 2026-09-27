@@ -1,10 +1,11 @@
 'use client';
 /* oxlint-disable react-compiler -- cart data is intentionally hydrated from browser-only storage. */
 
-import { useEffect, useState } from 'react';
+import { useState, useSyncExternalStore } from 'react';
 import { CheckCircle2, MessageCircle } from 'lucide-react';
 import { invoiceRequestSchema } from '@/lib/validations';
-import { readCart, type StoredCart } from '@/lib/cart';
+import { cartSnapshot, subscribeToCart, type StoredCart } from '@/lib/cart';
+import { usStates } from '@/lib/us-states';
 import {
   WHATSAPP_PHONE_DISPLAY,
   deliveryFeeFor,
@@ -17,10 +18,12 @@ const money = new Intl.NumberFormat('en-US', {
   currency: 'USD',
 });
 
+const emptyCart: StoredCart = {};
+
 export default function InvoicePage() {
   const [message, setMessage] = useState('');
-  const [cart, setCart] = useState<StoredCart>({});
-  useEffect(() => setCart(readCart()), []);
+  // Live cart, kept in step with other open tabs; empty until read in the browser.
+  const cart = useSyncExternalStore(subscribeToCart, cartSnapshot, () => emptyCart);
 
   async function submit(event: {
     preventDefault: () => void;
@@ -36,6 +39,7 @@ export default function InvoicePage() {
       phone: raw.phone,
       address: raw.billingAddress,
       city: raw.city,
+      state: raw.state,
       postalCode: raw.postalCode,
       company: raw.company,
       taxId: raw.taxId,
@@ -44,7 +48,7 @@ export default function InvoicePage() {
     });
     if (!request.success) {
       setMessage(
-        'Please complete the required fields with a valid email and contact number.',
+        'Please complete the required fields, including your state, with a valid email and phone number.',
       );
       return;
     }
@@ -65,7 +69,7 @@ export default function InvoicePage() {
       request.data.company ? `Company: ${request.data.company}` : '',
       `Email: ${request.data.email}`,
       `Phone: ${request.data.phone}`,
-      `Billing address: ${request.data.address}, ${request.data.city}, ${request.data.postalCode}`,
+      `Billing address: ${request.data.address}, ${request.data.city}, ${request.data.state} ${request.data.postalCode}`,
       request.data.taxId ? `Tax/VAT number: ${request.data.taxId}` : '',
       request.data.purchaseOrder
         ? `PO number: ${request.data.purchaseOrder}`
@@ -142,8 +146,21 @@ export default function InvoicePage() {
               />
             </label>
             <label>
-              Postal code *
-              <input required name="postalCode" autoComplete="postal-code" />
+              State *
+              <select required name="state" autoComplete="address-level1" defaultValue="">
+                <option value="" disabled>
+                  Choose a state
+                </option>
+                {usStates.map((state) => (
+                  <option key={state.code} value={state.code}>
+                    {state.name}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label>
+              ZIP code *
+              <input required name="postalCode" autoComplete="postal-code" inputMode="numeric" />
             </label>
             <label>
               Tax/VAT number

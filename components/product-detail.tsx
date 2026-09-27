@@ -153,10 +153,22 @@ export function ProductDetail({
               </small>
             </span>
           </div>
-          <button className="button primary" type="button" onClick={add}>
-            <ShoppingCart size={16} />
-            {t('addToCart')}
-          </button>
+          {product.retailPrice != null ? (
+            <button className="button primary" type="button" onClick={add}>
+              <ShoppingCart size={16} />
+              {t('addToCart')}
+            </button>
+          ) : (
+            // No list price: ask for a quote rather than adding a $0.00 line to the cart.
+            <a
+              className="button primary"
+              href={whatsappUrl(`Hello SolarHome Energy Backup, please send me a price for ${product.name}.`)}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Request a price on WhatsApp
+            </a>
+          )}
           <output className="added-message" key={addedCount}>
             {addedCount > 0 && (
               <>

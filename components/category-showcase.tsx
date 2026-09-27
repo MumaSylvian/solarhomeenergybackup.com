@@ -1,6 +1,7 @@
 /* oxlint-disable next/no-html-link-for-pages -- category cards provide dependable native navigation. */
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
+import { AutoCarousel } from '@/components/auto-carousel';
 import { approvedCatalog } from '@/lib/catalog/products';
 import type { CatalogProduct } from '@/lib/catalog/types';
 
@@ -126,7 +127,8 @@ export function CategoryShowcase() {
           catalog.
         </p>
       </div>
-      <div className="category-grid catalog-category-grid">
+      {/* A grid on larger screens; a swipeable row that advances on its own on phones. */}
+      <AutoCarousel className="category-grid catalog-category-grid" label="Shop by category">
         {entries.map((entry, index) => (
           <a
             href={entry.href}
@@ -152,7 +154,7 @@ export function CategoryShowcase() {
             </div>
           </a>
         ))}
-      </div>
+      </AutoCarousel>
     </section>
   );
 }

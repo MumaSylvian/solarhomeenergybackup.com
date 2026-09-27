@@ -52,7 +52,7 @@ export function ShopCatalog({ catalog }: { catalog: ShopItem[] }) {
   const [wholeHome, setWholeHome] = useState(false);
   const [voltage240, setVoltage240] = useState(false);
   const [shown, setShown] = useState(pageSize);
-  const [addedName, setAddedName] = useState('');
+  const [added, setAdded] = useState({ name: '', count: 0 });
   const sentinel = useRef<HTMLDivElement>(null);
   const brands = [
     ...new Set(catalog.map((product) => product.brand).filter(Boolean)),
@@ -66,10 +66,12 @@ export function ShopCatalog({ catalog }: { catalog: ShopItem[] }) {
     setQuery(searchParam);
     setShown(pageSize);
   }, [categoryParam, searchParam]);
+  const searchTerms = query.trim().toLowerCase().split(/\s+/).filter(Boolean);
   const products = catalog
     .filter((product) => {
       return (
-        product.searchText.includes(query.trim().toLowerCase()) &&
+        // Every word must match, in any order ("ecoflow delta", "bluetti 2000w").
+        searchTerms.every((term) => product.searchText.includes(term)) &&
         (!brand || product.brand === brand) &&
         (!category || product.category === category) &&
         (!wholeHome || product.wholeHomeCapable) &&
@@ -108,7 +110,7 @@ export function ShopCatalog({ catalog }: { catalog: ShopItem[] }) {
       sourcePrice: product.sourcePrice,
       retailPrice: product.retailPrice,
     });
-    setAddedName(product.name);
+    setAdded((last) => ({ name: product.name, count: last.count + 1 }));
   };
 
   return (
@@ -226,8 +228,9 @@ export function ShopCatalog({ catalog }: { catalog: ShopItem[] }) {
             120V / 240V
           </label>
         </aside>
-        <section className="catalog-area" aria-live="polite">
-          <p className="catalog-count">
+        <section className="catalog-area">
+          {/* Only the count is announced to screen readers, not the whole grid. */}
+          <p className="catalog-count" aria-live="polite">
             {/* Counts change as filters do; translate="no" keeps Google's translator from freezing them. */}
             Showing <span translate="no">{visibleProducts.length.toLocaleString()}</span> /{' '}
             <span translate="no">{products.length.toLocaleString()}</span> products
@@ -236,12 +239,13 @@ export function ShopCatalog({ catalog }: { catalog: ShopItem[] }) {
               {category ? ` · ${category}` : ''}
             </span>
           </p>
-          {addedName && (
-            <p className="added-message">
+          {added.name && (
+            // Keyed so each add renders fresh text (translated pages freeze text updated in place).
+            <output className="added-message" key={added.count}>
               <Check size={15} />
-              {addedName} was added to your cart.{' '}
+              {added.name} was added to your cart.{' '}
               <a href="/checkout">View cart</a>
-            </p>
+            </output>
           )}
           <div className="shop-products">
             {visibleProducts.map((product, index) => (
@@ -274,9 +278,13 @@ export function ShopCatalog({ catalog }: { catalog: ShopItem[] }) {
             </div>
           )}
           <div ref={sentinel} className="catalog-scroll-sentinel">
-            {visibleProducts.length < products.length
-              ? 'Loading more products as you scroll…'
-              : `${products.length.toLocaleString()} products shown`}
+            {visibleProducts.length < products.length ? (
+              <span key="more">Loading more products as you scroll…</span>
+            ) : (
+              <span key="done">
+                <span translate="no">{products.length.toLocaleString()}</span> products shown
+              </span>
+            )}
           </div>
         </section>
       </div>

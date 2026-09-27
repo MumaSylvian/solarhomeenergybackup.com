@@ -150,3 +150,28 @@ body{top:0!important;position:static!important}
 html.translated-ltr font,html.translated-rtl font{display:contents}
 /* Invisible bridge over the gap between "Categories" and its menu, so moving the mouse down does not leave the menu. */
 .category-nav-menu::before{content:"";position:absolute;left:0;right:0;top:-16px;height:16px}
+/* Phone menu: one panel attached under the sticky header (it used to be placed at fixed offsets, which broke when the header moved), scrolling inside itself. */
+.mobile-panel{position:absolute;top:100%;left:0;right:0;max-height:calc(100dvh - 64px);overflow-y:auto;overscroll-behavior:contain;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 18px 32px #0b2c4a1f}
+.mobile-panel .mobile-nav{position:static;top:auto;box-shadow:none;border-bottom:0;background:transparent;backdrop-filter:none}
+.mobile-panel .mobile-global-search button{flex-shrink:0}
+@media(min-width:851px){.mobile-panel{display:none}}
+/* Categories as a compact two-column grid instead of eleven full-width rows. */
+.mobile-nav-categories{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;padding:2px 0 12px}
+.mobile-nav .mobile-nav-categories a{display:flex;align-items:center;min-height:44px;padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface-soft);font-size:13px;line-height:1.25}
+/* Homepage categories on phones: one swipeable, snapping row (AutoCarousel advances it) instead of eleven stacked cards. */
+@media(max-width:640px){
+.catalog-category-grid{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:82%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none;border-top:0;margin-top:28px;padding-bottom:4px}
+.catalog-category-grid::-webkit-scrollbar{display:none}
+.catalog-category-grid .catalog-category-card{scroll-snap-align:start;min-height:280px;border:0;border-radius:18px;overflow:hidden}
+}
+/* The photo viewer opens as a modal (showModal): full screen, above everything. */
+.gallery-dialog{width:100vw;max-width:none;height:100dvh;max-height:none;margin:0;padding:0;border:0}
+.gallery-dialog::backdrop{background:#0a1c2ee8}
+/* Phones: leave room at the bottom so the floating WhatsApp button never covers the last buttons on a page. */
+@media(max-width:700px){body{padding-bottom:76px}}
+/* The page behind the open phone menu does not scroll. */
+html.menu-open{overflow:hidden}
+/* Pause button for the phone category carousel (hidden where the grid does not move). */
+.carousel-pause{display:none}
+@media(max-width:640px){.carousel-pause{display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:8px 14px;min-height:40px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);font:inherit;font-size:13px;font-weight:750}}
+.gallery-dialog:not([open]){display:none}

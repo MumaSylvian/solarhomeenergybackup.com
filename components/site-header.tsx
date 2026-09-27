@@ -56,6 +56,32 @@ export function SiteHeader() {
   );
   const [languageOpen, setLanguageOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+  function closeMobile() {
+    setMobileOpen(false);
+  }
+  // Mouse-out does not apply on phones, so only the click and Escape handling is used.
+  useDismissableMenu(headerRef, mobileOpen, closeMobile, '.mobile-menu');
+  const panelRef = useRef<HTMLDivElement>(null);
+  // Lock the page behind the open menu, and fit the menu into the space left
+  // below the header (which sits lower when the top bar or translation
+  // notice is showing), so its last links can always be scrolled to.
+  useEffect(() => {
+    document.documentElement.classList.toggle('menu-open', mobileOpen);
+    if (!mobileOpen) return;
+    const fit = () => {
+      const header = headerRef.current;
+      const panel = panelRef.current;
+      if (header && panel)
+        panel.style.maxHeight = `${window.innerHeight - header.getBoundingClientRect().bottom}px`;
+    };
+    fit();
+    window.addEventListener('resize', fit);
+    return () => {
+      window.removeEventListener('resize', fit);
+      document.documentElement.classList.remove('menu-open');
+    };
+  }, [mobileOpen]);
   const { code, setCode, t } = useLocale();
   const language = languages.find((item) => item.code === code) ?? languages[0];
   const pickerRef = useRef<HTMLDivElement>(null);
@@ -93,7 +119,7 @@ export function SiteHeader() {
         <a href="/support">Customer support</a>
         <a href="/system-finder">{t('utilityAction')}</a>
       </div>
-      <header className="site-header">
+      <header className="site-header" ref={headerRef}>
         <a
           href="/"
           className="brand brand-logo"
@@ -201,42 +227,45 @@ export function SiteHeader() {
             onClick={() => setMobileOpen((open) => !open)}
             aria-label="Toggle navigation"
             aria-expanded={mobileOpen}
+            aria-controls="mobile-panel"
           >
             <Menu size={21} />
           </button>
         </div>
+        {mobileOpen && (
+          <div className="mobile-panel" id="mobile-panel" ref={panelRef}>
+            <form className="mobile-global-search" action="/shop">
+              <Search size={17} />
+              <input
+                name="search"
+                aria-label="Search the catalog"
+                placeholder="Search the catalog"
+              />
+              <button type="submit">Search</button>
+            </form>
+            <nav
+              className="mobile-nav"
+              aria-label="Mobile navigation"
+            >
+              <a href="/shop">All products</a>
+              <strong>Categories</strong>
+              <div className="mobile-nav-categories">
+                {storefrontCategories.map((category) => (
+                  <a key={category.label} href={category.href}>
+                    {category.label}
+                  </a>
+                ))}
+              </div>
+              <a href="/blog">Backup power guides</a>
+              <strong>Help & ordering</strong>
+              <a href="/support">Customer support</a>
+              <a href="/invoice">Request an invoice</a>
+              <a href="/shipping-delivery">Shipping & delivery</a>
+              <a href="/system-finder">{t('planSystem')}</a>
+            </nav>
+          </div>
+        )}
       </header>
-      {mobileOpen && (
-        <>
-          <form className="mobile-global-search" action="/shop">
-            <Search size={17} />
-            <input
-              name="search"
-              aria-label="Search the catalog"
-              placeholder="Search the catalog"
-            />
-            <button type="submit">Search</button>
-          </form>
-          <nav
-            className="mobile-nav"
-            aria-label="Mobile navigation"
-          >
-            <a href="/shop">All products</a>
-            <strong>Categories</strong>
-            {storefrontCategories.map((category) => (
-              <a key={category.label} href={category.href}>
-                {category.label}
-              </a>
-            ))}
-            <a href="/blog">Backup power guides</a>
-            <strong>Help & ordering</strong>
-            <a href="/support">Customer support</a>
-            <a href="/invoice">Request an invoice</a>
-            <a href="/shipping-delivery">Shipping & delivery</a>
-            <a href="/system-finder">{t('planSystem')}</a>
-          </nav>
-        </>
-      )}
     </>
   );
 }

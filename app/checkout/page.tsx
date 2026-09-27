@@ -2,7 +2,7 @@
 /* oxlint-disable react-compiler -- cart data is intentionally hydrated from browser-only storage. */
 /* oxlint-disable next/no-html-link-for-pages -- checkout navigation must remain available without client routing. */
 
-import { useEffect, useMemo, useState } from 'react';
+import { useSyncExternalStore } from 'react';
 import {
   CircleHelp,
   Minus,
@@ -12,10 +12,10 @@ import {
   X,
 } from 'lucide-react';
 import {
-  readCart,
-  saveCart,
+  cartSnapshot,
+  removeFromCart,
   setCartQuantity,
-  type StoredCart,
+  subscribeToCart,
 } from '@/lib/cart';
 import {
   DELIVERY_SUMMARY,
@@ -29,26 +29,18 @@ const money = new Intl.NumberFormat('en-US', {
 });
 
 export default function CheckoutPage() {
-  const [cart, setCart] = useState<StoredCart>({});
-  useEffect(() => setCart(readCart()), []);
-  const entries = Object.values(cart);
-  const subtotal = useMemo(
-    () =>
-      entries.reduce(
-        (total, item) =>
-          total + (item.product.retailPrice ?? 0) * item.quantity,
-        0,
-      ),
-    [entries],
+  // Live cart, kept in step with other open tabs. null until the browser's
+  // saved cart has been read, so a full cart never flashes "empty".
+  const cart = useSyncExternalStore(subscribeToCart, cartSnapshot, () => null);
+  const entries = Object.values(cart ?? {});
+  const subtotal = entries.reduce(
+    (total, item) => total + (item.product.retailPrice ?? 0) * item.quantity,
+    0,
   );
-  const remove = (id: string) => {
-    const next = { ...cart };
-    delete next[id];
-    setCart(next);
-    saveCart(next);
-  };
+  const unpriced = entries.some((item) => item.product.retailPrice == null);
+  const remove = (id: string) => removeFromCart(id);
   const changeQuantity = (id: string, quantity: number) =>
-    setCart({ ...setCartQuantity(id, quantity) });
+    setCartQuantity(id, quantity);
   return (
     <main className="page-shell">
       <header>
@@ -59,7 +51,11 @@ export default function CheckoutPage() {
           confirmed before payment.
         </p>
       </header>
-      {entries.length ? (
+      {cart === null ? (
+        <section className="form-card" style={{ maxWidth: 720 }} aria-busy="true">
+          <p className="notice">Loading your cart…</p>
+        </section>
+      ) : entries.length ? (
         <div className="checkout-layout">
           <section className="form-card">
             <h2>Your cart</h2>
@@ -97,7 +93,9 @@ export default function CheckoutPage() {
                     </fieldset>
                   </div>
                   <span translate="no">
-                    {money.format((product.retailPrice ?? 0) * quantity)}{' '}
+                    {product.retailPrice == null
+                      ? 'Price confirmed at review'
+                      : money.format(product.retailPrice * quantity)}{' '}
                     <button
                       className="restart-button"
                       type="button"
@@ -130,6 +128,12 @@ export default function CheckoutPage() {
                 <dd translate="no">{money.format(subtotal + deliveryFeeFor(entries.length))}</dd>
               </div>
             </dl>
+            {unpriced && (
+              <p className="summary-note">
+                Items marked “Price confirmed at review” are not in this total;
+                we quote them before you pay.
+              </p>
+            )}
             <a href="/invoice" className="button primary">
               <ShieldCheck size={16} /> Continue with invoice
             </a>
