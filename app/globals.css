@@ -148,3 +148,5 @@ body{top:0!important;position:static!important}
 .translation-notice button:hover{background:var(--blue);color:#fff}
 /* Google wraps translated text in <font> elements; inside flex and grid rows each wrapper became its own column. Let the text flow as it does in English. */
 html.translated-ltr font,html.translated-rtl font{display:contents}
+/* Invisible bridge over the gap between "Categories" and its menu, so moving the mouse down does not leave the menu. */
+.category-nav-menu::before{content:"";position:absolute;left:0;right:0;top:-16px;height:16px}

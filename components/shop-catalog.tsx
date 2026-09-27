@@ -2,8 +2,7 @@
 /* oxlint-disable react-compiler -- URL query changes must reset the hydrated catalog controls. */
 /* oxlint-disable next/no-html-link-for-pages -- the cart link must work even if client routing is delayed. */
 
-import { useEffect, useRef, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import {
   Check,
   CircleHelp,
@@ -20,6 +19,23 @@ import { useLocale } from '@/components/locale-provider';
 
 const pageSize = 24;
 
+/**
+ * The page's query string (?category=, ?search=), read in the browser. The
+ * shop is a static page, so the server render has no query; next/navigation's
+ * useSearchParams stayed empty after hydration, and category links and header
+ * searches showed the whole catalog.
+ */
+const subscribeToLocation = (onChange: () => void) => {
+  window.addEventListener('popstate', onChange);
+  return () => window.removeEventListener('popstate', onChange);
+};
+const useQueryParam = (name: string) =>
+  useSyncExternalStore(
+    subscribeToLocation,
+    () => new URLSearchParams(window.location.search).get(name) ?? '',
+    () => '',
+  );
+
 // Browse in menu order so power equipment leads and appliances follow.
 const categoryRank = (category: string) => {
   const rank = storefrontCategories.findIndex((item) => item.label === category);
@@ -28,10 +44,11 @@ const categoryRank = (category: string) => {
 
 export function ShopCatalog({ catalog }: { catalog: ShopItem[] }) {
   const { t } = useLocale();
-  const searchParams = useSearchParams();
-  const [query, setQuery] = useState(searchParams.get('search') ?? '');
+  const categoryParam = useQueryParam('category');
+  const searchParam = useQueryParam('search');
+  const [query, setQuery] = useState(searchParam);
   const [brand, setBrand] = useState('');
-  const [category, setCategory] = useState(searchParams.get('category') ?? '');
+  const [category, setCategory] = useState(categoryParam);
   const [wholeHome, setWholeHome] = useState(false);
   const [voltage240, setVoltage240] = useState(false);
   const [shown, setShown] = useState(pageSize);
@@ -43,8 +60,6 @@ export function ShopCatalog({ catalog }: { catalog: ShopItem[] }) {
   const categories = [
     ...new Set(catalog.map((product) => product.category)),
   ].sort();
-  const categoryParam = searchParams.get('category') ?? '';
-  const searchParam = searchParams.get('search') ?? '';
 
   useEffect(() => {
     setCategory(categoryParam);
