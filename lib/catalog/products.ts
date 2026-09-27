@@ -303,12 +303,27 @@ export const uniqueCatalog = catalog
  * doubled brand ("ecoflow-ecoflow-…"). The trailing catalog number stays, so
  * slugs remain unique. Old URLs redirect in vercel.json.
  */
-export const cleanProductSlug = (slug: string) =>
-  slug
-    .replace(/^signature-solar-/, '')
+export const cleanProductSlug = (slug: string, brand = '') => {
+  const cleaned = slug
+    .replace(/^(signature-solar|current-connected)-/, '')
     .replace(/^anker-solix-anker-solix-/, 'anker-solix-')
     .replace(/^anker-solix-anker-/, 'anker-')
-    .replace(/^([a-z]+)-\1-/, '$1-');
+    .replace(/^([a-z]+-[a-z]+)-\1-/, '$1-')
+    .replace(/^([a-z]+)-\1-/, '$1-')
+    // "victron-energy-victron-cerbo-…": a two-word brand before its own short form.
+    .replace(/^([a-z]+)-(?:energy|solar|power|shield|ubli)-\1-/, '$1-');
+  // A wrong supplier brand in front of the real one ("ecoflow-bluetti-…" for a
+  // BLUETTI product): start the slug at the real brand.
+  const brandSlug = brand.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  for (const token of [brandSlug, brandSlug.split('-')[0]]) {
+    if (!token || cleaned.startsWith(`${token}-`)) return cleaned;
+    const at = cleaned.indexOf(`-${token}-`);
+    // Only a brand-like prefix (letters, e.g. "ecoflow", "victron-energy"),
+    // never a size such as "18-in".
+    if (at > 0 && at <= 16 && /^[a-z]+(-[a-z]+)?$/.test(cleaned.slice(0, at))) return cleaned.slice(at + 1);
+  }
+  return cleaned;
+};
 
 export const approvedCatalog = uniqueCatalog
   .filter((product) => product.status === 'APPROVED')
@@ -317,7 +332,7 @@ export const approvedCatalog = uniqueCatalog
   .map((product) => ({
     ...product,
     id: product.id.replace(/^csv-home-depot-/, 'item-'),
-    slug: cleanProductSlug(product.slug),
+    slug: cleanProductSlug(product.slug, product.brand),
     // The store's own warranty comes from the Warranty Policy, not import data.
     warranty: WARRANTY_TERM,
   }));

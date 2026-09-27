@@ -1,6 +1,10 @@
 /* oxlint-disable next/no-html-link-for-pages -- guide links keep native navigation for crawlers and non-JS readers. */
 import { ArrowRight } from 'lucide-react';
 import { posts } from '@/lib/blog/posts';
+import { HUB_GUIDE_SLUG } from '@/lib/blog/guide-products';
+
+// The planning hub first, marked "Start here"; the other guides build on it.
+const ordered = [...posts.filter((post) => post.slug === HUB_GUIDE_SLUG), ...posts.filter((post) => post.slug !== HUB_GUIDE_SLUG)];
 import { jsonLd, pageMetadata, siteUrl } from '@/lib/seo';
 
 export const metadata = pageMetadata({
@@ -47,10 +51,11 @@ export default function BlogIndexPage() {
         </p>
       </header>
       <ul className="blog-list">
-        {posts.map((post) => (
+        {ordered.map((post) => (
           <li key={post.slug}>
             <article>
               <p className="blog-meta">
+                {post.slug === HUB_GUIDE_SLUG && <span className="start-here">Start here</span>}
                 <time dateTime={post.updated}>
                   {dateFormat.format(new Date(post.updated))}
                 </time>

@@ -3,11 +3,13 @@ import { notFound } from 'next/navigation';
 import { ProductDetail } from '@/components/product-detail';
 import { approvedCatalog, bySlug } from '@/lib/catalog/products';
 import { storefrontCategories } from '@/lib/catalog/categories';
-import { conditionOf, schemaCondition, stockSource } from '@/lib/catalog/offer';
+import { conditionOf, isInStock, schemaCondition, stockSource } from '@/lib/catalog/offer';
 import { overviewFor, productMetaDescription } from '@/lib/catalog/overview';
 import { postsForCategory } from '@/lib/blog/posts';
 import { copyFor } from '@/lib/catalog/product-copy';
 import { FLAT_DELIVERY_FEE } from '@/lib/commerce';
+import { ProductCard } from '@/components/storefront';
+import type { CatalogProduct } from '@/lib/catalog/types';
 
 const siteUrl = 'https://www.solarhomeenergybackup.com';
 
@@ -20,6 +22,26 @@ const withoutSupplierData = <T extends { supplierOffers?: unknown }>({
 }: T) => product;
 
 export const dynamicParams = false;
+
+/**
+ * Four other products from the same category: same brand first, then the
+ * closest in price, skipping listings with the same name.
+ */
+const relatedTo = (product: CatalogProduct) => {
+  const price = product.retailPrice ?? 0;
+  const distance = (other: CatalogProduct) => Math.abs((other.retailPrice ?? 0) - price);
+  // Colour and pack variants share a base name ("… Power Station | 600W (Glacier Blue)");
+  // show at most one of each, and none of this product's own variants.
+  const base = (item: CatalogProduct) => item.name.replace(/\([^)]*\)/g, '').split(/[|,]/)[0].trim().toLowerCase();
+  const seen = new Set([base(product)]);
+  return approvedCatalog
+    .filter((other) => other.category === product.category && other.id !== product.id && other.retailPrice != null)
+    .sort((left, right) =>
+      Number(right.brand === product.brand) - Number(left.brand === product.brand) || distance(left) - distance(right),
+    )
+    .filter((other) => !seen.has(base(other)) && seen.add(base(other)))
+    .slice(0, 4);
+};
 
 /** Title and link only; the full guide text would bloat every product page. */
 const guideFor = (category: string) => {
@@ -61,6 +83,7 @@ export default async function ProductPage({ params }: Params) {
   if (!product) notFound();
 
   const url = `${siteUrl}/products/${product.slug}`;
+  const related = relatedTo(product);
   // Condition and availability come from data, never constants: a "new" or
   // "in stock" claim that contradicts the listing is a Merchant Center
   // misrepresentation risk.
@@ -154,7 +177,38 @@ export default async function ProductPage({ params }: Params) {
         overview={overviewFor(product)}
         copy={copyFor(product.id)}
         guide={guideFor(product.category)}
-      />
+      >
+        {related.length > 0 && category && (
+          <section className="related-products" aria-labelledby="related-products">
+            <h2 id="related-products">More in {category.label.toLowerCase()}</h2>
+            <div className="shop-products">
+              {related.map((other) => (
+                <ProductCard
+                  key={other.id}
+                  id={other.id}
+                  slug={other.slug}
+                  name={other.name}
+                  brand={other.brand}
+                  category={other.category}
+                  shortDescription={copyFor(other.id)?.intro ?? other.shortDescription}
+                  sourcePrice={other.sourcePrice}
+                  retailPrice={other.retailPrice}
+                  imageUrl={other.sourceImageUrl}
+                  sourceImageUrl={other.sourceDetailImageUrl}
+                  galleryImageUrls={other.galleryImageUrls}
+                  output={other.continuousOutputWatts}
+                  capacity={other.batteryCapacityWh}
+                  voltage={other.acVoltage}
+                  inStock={isInStock(other)}
+                />
+              ))}
+            </div>
+            <p>
+              <a href={category.href}>See all {category.label.toLowerCase()}</a>
+            </p>
+          </section>
+        )}
+      </ProductDetail>
     </>
   );
 }

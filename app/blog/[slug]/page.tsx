@@ -4,6 +4,10 @@ import { notFound } from 'next/navigation';
 import { ArrowRight } from 'lucide-react';
 import { BlogBlocks, RichText } from '@/components/blog-content';
 import { postBySlug, posts } from '@/lib/blog/posts';
+import { HUB_GUIDE_SLUG, productsForGuide } from '@/lib/blog/guide-products';
+import { ProductCard } from '@/components/storefront';
+import { isInStock } from '@/lib/catalog/offer';
+import { copyFor } from '@/lib/catalog/product-copy';
 import { defaultOgImage, jsonLd, pageMetadata, siteName, siteUrl } from '@/lib/seo';
 
 type Params = { params: Promise<{ slug: string }> };
@@ -44,7 +48,14 @@ export default async function BlogPostPage({ params }: Params) {
 
   const url = `${siteUrl}/blog/${post.slug}`;
   const headings = post.blocks.filter((block) => block.type === 'h2');
-  const related = posts.filter((other) => other.slug !== post.slug).slice(0, 3);
+  // Hub and spokes: the hub lists every other guide; each spoke leads with the hub.
+  const isHub = post.slug === HUB_GUIDE_SLUG;
+  const hub = posts.find((other) => other.slug === HUB_GUIDE_SLUG);
+  const others = posts.filter((other) => other.slug !== post.slug);
+  const related = isHub
+    ? others
+    : [...others.filter((other) => other.slug === HUB_GUIDE_SLUG), ...others.filter((other) => other.slug !== HUB_GUIDE_SLUG)].slice(0, 3);
+  const products = productsForGuide(post.slug);
   const plain = (text: string) => text.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
 
   const schema = [
@@ -120,6 +131,12 @@ export default async function BlogPostPage({ params }: Params) {
           </p>
         </header>
         <p className="answer-block">{post.answer}</p>
+        {!isHub && hub && (
+          <p className="guide-hub-link">
+            Part of our home backup planning guides. Start with{' '}
+            <a href={`/blog/${hub.slug}`}>{hub.title}</a>.
+          </p>
+        )}
         <nav aria-label="On this page" className="blog-toc">
           <h2>On this page</h2>
           <ol>
@@ -135,6 +152,37 @@ export default async function BlogPostPage({ params }: Params) {
         </nav>
         <div className="blog-body">
           <BlogBlocks blocks={post.blocks} />
+          {products.length > 0 && (
+            <section className="guide-products" aria-labelledby="guide-products">
+              <h2 id="guide-products">Products to consider</h2>
+              <p>
+                Examples from our catalog that fit this guide. Check each product’s specifications against
+                your own numbers before you order.
+              </p>
+              <div className="shop-products">
+                {products.map((product) => (
+                  <ProductCard
+                    key={product.id}
+                    id={product.id}
+                    slug={product.slug}
+                    name={product.name}
+                    brand={product.brand}
+                    category={product.category}
+                    shortDescription={copyFor(product.id)?.intro ?? product.shortDescription}
+                    sourcePrice={product.sourcePrice}
+                    retailPrice={product.retailPrice}
+                    imageUrl={product.sourceImageUrl}
+                    sourceImageUrl={product.sourceDetailImageUrl}
+                    galleryImageUrls={product.galleryImageUrls}
+                    output={product.continuousOutputWatts}
+                    capacity={product.batteryCapacityWh}
+                    voltage={product.acVoltage}
+                    inStock={isInStock(product)}
+                  />
+                ))}
+              </div>
+            </section>
+          )}
           <h2 id="faq">Frequently asked questions</h2>
           {post.faqs.map((faq) => (
             <section key={faq.question} className="blog-faq">
@@ -174,7 +222,7 @@ export default async function BlogPostPage({ params }: Params) {
           </ul>
         </section>
         <section aria-labelledby="more-guides">
-          <h2 id="more-guides">More guides</h2>
+          <h2 id="more-guides">{isHub ? 'Planning guides' : 'More guides'}</h2>
           <ul>
             {related.map((other) => (
               <li key={other.slug}>

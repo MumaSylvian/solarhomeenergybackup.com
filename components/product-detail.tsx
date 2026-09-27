@@ -1,7 +1,7 @@
 'use client';
 /* oxlint-disable next/no-html-link-for-pages -- native links preserve product navigation when client routing is delayed. */
 
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 import { Check, ShieldCheck, ShoppingCart } from 'lucide-react';
 import { addToCart } from '@/lib/cart';
 import { storefrontCategories } from '@/lib/catalog/categories';
@@ -37,6 +37,7 @@ export function ProductDetail({
   overview,
   copy,
   guide,
+  children,
 }: {
   product: Omit<CatalogProduct, 'supplierOffers'>;
   inStock: boolean;
@@ -47,6 +48,8 @@ export function ProductDetail({
   /** Verified rewrite for this product, when one exists (lib/catalog/product-copy.ts). */
   copy?: ProductCopy;
   guide?: { slug: string; title: string };
+  /** Server-rendered sections shown at the end of the page (related products). */
+  children?: ReactNode;
 }) {
   const { t } = useLocale();
   // Counts adds on this page so repeated clicks are visibly acknowledged.
@@ -154,6 +157,11 @@ export function ProductDetail({
               </small>
             </span>
           </div>
+          <p className="policy-links">
+            <a href="/shipping-delivery">Shipping & delivery</a>
+            <a href="/returns">30-day returns</a>
+            <a href="/warranty">Warranty</a>
+          </p>
           {product.retailPrice != null ? (
             <button className="button primary" type="button" onClick={add}>
               <ShoppingCart size={16} />
@@ -274,6 +282,7 @@ export function ProductDetail({
           </p>
         </section>
       </div>
+      {children}
     </main>
   );
 }

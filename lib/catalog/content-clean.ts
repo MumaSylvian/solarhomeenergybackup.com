@@ -113,21 +113,30 @@ const knownBrands = [
   'Hyundai', 'Sirius', 'MidNite', 'Duracell', 'GoodWe', 'Eneramp', 'Eaton', 'IMO', 'Trina',
   'SunEarth', 'NEP', 'ABB', 'ChikoUSA', 'Chiko', 'Indepwr', 'Mission', 'Lion', 'Renon',
   'Axitec', 'Burndy', 'Victron', 'EG4', 'Sol-Ark', 'Tigo', 'Fortress', 'Canadian Solar',
-  'Champion', 'Lumina', 'Peimar', 'Satic', 'SunPro', 'MNP',
+  'Champion', 'Lumina', 'Peimar', 'Satic', 'SunPro', 'MNP', 'BLUETTI',
 ].sort((a, b) => b.length - a.length);
 
 const distributorBrands = /^(signature solar|current connected|the home depot)$/i;
 
 /** Real manufacturer from the name, or null when it cannot be determined. */
 export function brandFor(product: Pick<CatalogProduct, 'brand' | 'name'>) {
-  if (!distributorBrands.test(product.brand.trim())) return product.brand;
   const name = product.name.replace(/^\s*\d+\s*[x×*]\s*/i, '').toLowerCase();
   const match = knownBrands.find(
     (brand) =>
       name.startsWith(brand.toLowerCase()) &&
       !/[a-z0-9]/.test(name.charAt(brand.length)),
   );
-  return match ? (brandAliases[match] ?? match) : null;
+  const titleBrand = match ? (brandAliases[match] ?? match) : null;
+  if (distributorBrands.test(product.brand.trim())) return titleBrand;
+  // A title that opens with a different manufacturer than the Brand field
+  // ("BLUETTI Elite 30" filed under EcoFlow) is a supplier filing error; the
+  // title wins, since a brand/title conflict is a Merchant Center
+  // misrepresentation flag. Brand families ("Anker" / "Anker SOLIX",
+  // "Victron" / "Victron Energy") are not conflicts.
+  const norm = (value: string) => value.toLowerCase().replace(/[^a-z0-9]/g, '');
+  if (titleBrand && !norm(titleBrand).startsWith(norm(product.brand)) && !norm(product.brand).startsWith(norm(titleBrand)))
+    return titleBrand;
+  return product.brand;
 }
 
 /** Short prefixes seen in names, mapped to the manufacturer's full name. */
@@ -138,6 +147,7 @@ const brandAliases: Record<string, string> = {
   Mission: 'Mission Solar',
   Lion: 'Lion Energy',
   Chiko: 'ChikoUSA',
+  Victron: 'Victron Energy',
 };
 
 /** Retailer and deal-site tags left in source titles, e.g. "(Costco Sale)", "(Slickdeals)". */
