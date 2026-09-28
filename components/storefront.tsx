@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { useLocale } from '@/components/locale-provider';
 import { addToCart } from '@/lib/cart';
+import { sizedImage } from '@/lib/image-sizes';
 import {
   SHOW_REFERENCE_PRICES,
   WARRANTY_SHORT,
@@ -370,7 +371,8 @@ export function ProductCard({
   const { t } = useLocale();
   const imageCandidates = [
     ...new Set(
-      [imageUrl, sourceImageUrl, ...(galleryImageUrls ?? [])].filter(
+      // A 480px copy first; the originals follow as fallbacks if it fails.
+      [sizedImage(imageUrl, 480), imageUrl, sourceImageUrl, ...(galleryImageUrls ?? [])].filter(
         (image): image is string => Boolean(image),
       ),
     ),

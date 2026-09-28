@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "vinext dev",
-    "build": "vinext build && node scripts/generate-sitemap.mjs && node scripts/generate-merchant-feed.mjs",
+    "build": "vinext build && node scripts/make-image-sizes.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-merchant-feed.mjs",
     "start": "wrangler dev --config dist/server/wrangler.json",
     "lint": "oxlint",
     "format": "oxfmt"
@@ -34,6 +34,7 @@
     "oxfmt": "0.61.0",
     "oxlint": "1.76.0",
     "oxlint-tsgolint": "7.0.2001",
+    "sharp": "^0.35.5",
     "tailwindcss": "4.2.1",
     "typescript": "5.9.3",
     "vite": "8.0.13"

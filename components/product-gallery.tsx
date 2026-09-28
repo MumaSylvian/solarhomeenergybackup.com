@@ -2,6 +2,7 @@
 /* oxlint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions -- tapping the photo viewer closes it; the keyboard equivalent is Escape, which the modal <dialog> handles natively. */
 
 import Image from 'next/image';
+import { sizedImage, type ImageWidth } from '@/lib/image-sizes';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
 
@@ -39,6 +40,18 @@ export function ProductGallery({ name, images = [], fallbackImage }: ProductGall
     return () => dialog.removeEventListener('cancel', onCancel);
   }, [expanded]);
   const markFailed = (image: string) => setFailedImages((current) => current.includes(image) ? current : [...current, image]);
+  // Display-sized copies (lib/image-sizes.ts); if one is missing, fall back to
+  // the original before treating the photo as failed.
+  const [sizedFailed, setSizedFailed] = useState<string[]>([]);
+  const displaySrc = (image: string, width: ImageWidth) => {
+    const sized = sizedImage(image, width) ?? image;
+    return sized === image || sizedFailed.includes(sized) ? image : sized;
+  };
+  const onDisplayError = (image: string, width: ImageWidth) => {
+    const sized = sizedImage(image, width) ?? image;
+    if (sized !== image && !sizedFailed.includes(sized)) setSizedFailed((current) => [...current, sized]);
+    else markFailed(image);
+  };
   if (!selected) return <div className="detail-art photo-pending"><span>SolarHome Energy Backup</span><strong>Product photography is being prepared</strong><small>Contact support for product-specific imagery.</small></div>;
-  return <div className="product-gallery"><div className="detail-art"><Image key={selected} src={selected} alt={`${name}, image ${Math.min(active + 1, availableGallery.length)} of ${availableGallery.length}`} fill sizes="(max-width: 850px) 100vw, 48vw" unoptimized priority onError={() => markFailed(selected)}/><button ref={zoomRef} className="gallery-zoom" type="button" onClick={() => setExpanded(true)} aria-label={`Expand image of ${name}`}><ZoomIn size={18}/></button>{availableGallery.length > 1 && <><button className="gallery-arrow previous" type="button" onClick={() => select(active - 1)} aria-label="Previous product image"><ChevronLeft size={23}/></button><button className="gallery-arrow next" type="button" onClick={() => select(active + 1)} aria-label="Next product image"><ChevronRight size={23}/></button></>}</div>{availableGallery.length > 1 && <div className="gallery-thumbnails">{availableGallery.map((image, index) => <button className={index === active ? 'active' : ''} key={image} type="button" onClick={() => select(index)} aria-label={`Show product image ${index + 1}`}><Image src={image} alt="" fill sizes="96px" unoptimized onError={() => markFailed(image)}/></button>)}</div>}{expanded && <dialog ref={dialogRef} className="gallery-dialog" aria-label={`${name} expanded image`} onClick={closeViewer}><button className="gallery-dialog-close" type="button" onClick={closeViewer}>Close</button><Image src={selected} alt={name} fill sizes="100vw" unoptimized onError={() => markFailed(selected)}/></dialog>}</div>;
+  return <div className="product-gallery"><div className="detail-art"><Image key={displaySrc(selected, 1000)} src={displaySrc(selected, 1000)} alt={`${name}, image ${Math.min(active + 1, availableGallery.length)} of ${availableGallery.length}`} fill sizes="(max-width: 850px) 100vw, 48vw" unoptimized priority onError={() => onDisplayError(selected, 1000)}/><button ref={zoomRef} className="gallery-zoom" type="button" onClick={() => setExpanded(true)} aria-label={`Expand image of ${name}`}><ZoomIn size={18}/></button>{availableGallery.length > 1 && <><button className="gallery-arrow previous" type="button" onClick={() => select(active - 1)} aria-label="Previous product image"><ChevronLeft size={23}/></button><button className="gallery-arrow next" type="button" onClick={() => select(active + 1)} aria-label="Next product image"><ChevronRight size={23}/></button></>}</div>{availableGallery.length > 1 && <div className="gallery-thumbnails">{availableGallery.map((image, index) => <button className={index === active ? 'active' : ''} key={image} type="button" onClick={() => select(index)} aria-label={`Show product image ${index + 1}`}><Image src={displaySrc(image, 480)} alt="" fill sizes="96px" unoptimized loading="lazy" onError={() => onDisplayError(image, 480)}/></button>)}</div>}{expanded && <dialog ref={dialogRef} className="gallery-dialog" aria-label={`${name} expanded image`} onClick={closeViewer}><button className="gallery-dialog-close" type="button" onClick={closeViewer}>Close</button><Image src={selected} alt={name} fill sizes="100vw" unoptimized onError={() => markFailed(selected)}/></dialog>}</div>;
 }
