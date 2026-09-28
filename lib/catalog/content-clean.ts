@@ -165,8 +165,13 @@ const channelSlugTag = /-(?:app-only|web-exclusive|subscriber-exclusive|get-free
 const cleanName = (name: string) =>
   name.replace(retailerTag, '').replace(channelTag, '').replace(freebieTag, '').trim();
 
+/** Reviewed by hand: titles that do not name the maker, filed under the wrong brand. */
+const brandCorrections: Record<string, string> = {
+  'catalog-884': 'BLUETTI', // "Elite 30 V2 Glacier Blue +100W" is a BLUETTI Elite 30 V2 bundle
+};
+
 export function cleanProductContent<T extends CatalogProduct>(product: T): T {
-  const brand = brandFor(product);
+  const brand = brandCorrections[product.id] ?? brandFor(product);
   const specifications = { ...product.specifications };
   if (brand) specifications.Brand = brand;
   else delete specifications.Brand;

@@ -315,6 +315,10 @@ export const cleanProductSlug = (slug: string, brand = '') => {
   // A wrong supplier brand in front of the real one ("ecoflow-bluetti-…" for a
   // BLUETTI product): start the slug at the real brand.
   const brandSlug = brand.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  // Items from the EcoFlow store feed carry an "ecoflow-" prefix even when
+  // they are another maker's product and the title does not name it.
+  if (brandSlug && brandSlug !== 'ecoflow' && cleaned.startsWith('ecoflow-') && !cleaned.includes(`-${brandSlug.split('-')[0]}-`))
+    return `${brandSlug}-${cleaned.slice('ecoflow-'.length)}`;
   for (const token of [brandSlug, brandSlug.split('-')[0]]) {
     if (!token || cleaned.startsWith(`${token}-`)) return cleaned;
     const at = cleaned.indexOf(`-${token}-`);

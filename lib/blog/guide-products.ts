@@ -26,7 +26,7 @@ const guideRules: Record<string, Rule[]> = {
   ],
   'portable-power-station-vs-gas-generator': [
     { category: 'Portable power', match: /power station/i, exclude: bundle, count: 3 },
-    { category: 'Whole-home backup', match: /inverter generator|dual fuel/i, count: 1 },
+    { category: 'Portable power', match: /inverter generator|dual fuel/i, count: 1 },
   ],
   'how-long-will-a-power-station-run-a-refrigerator': [
     { category: 'Portable power', match: midCapacity, exclude: bundle, count: 4 },

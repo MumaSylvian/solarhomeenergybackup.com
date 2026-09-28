@@ -3592,6 +3592,11 @@
       "source": "/products/victron-energy-victron-smartsolar-mppt-rs-450v-200a-charge-controller-253",
       "destination": "/products/victron-smartsolar-mppt-rs-450v-200a-charge-controller-253",
       "permanent": true
+    },
+    {
+      "source": "/products/ecoflow-elite-30-v2-glacier-blue-100w-884",
+      "destination": "/products/bluetti-elite-30-v2-glacier-blue-100w-884",
+      "permanent": true
     }
   ],
   "headers": [
