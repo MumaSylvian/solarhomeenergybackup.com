@@ -4,6 +4,7 @@ import { correctRatings } from './spec-fix';
 import { cleanProductContent } from './content-clean';
 import { correctCategory } from './category-fix';
 import { selfHostedImages } from './self-hosted-images.generated';
+import { selfHostedCatalogImages } from './self-hosted-catalog.generated';
 
 /**
  * Product photos are stored in Git LFS. The connected Vercel deployment
@@ -21,7 +22,11 @@ const catalogMediaBaseUrl =
  */
 const resolveCatalogImageUrl = (imageUrl: string | null | undefined) =>
   imageUrl?.startsWith('/catalog/')
-    ? `${catalogMediaBaseUrl}${imageUrl.slice('/catalog/'.length)}`
+    ? // Primary photos are copied to public/media/catalog/ (served by Vercel);
+      // other LFS photos come from GitHub's LFS media endpoint.
+      selfHostedCatalogImages.has(imageUrl.slice('/catalog/'.length))
+      ? `/media/catalog/${imageUrl.slice('/catalog/'.length)}`
+      : `${catalogMediaBaseUrl}${imageUrl.slice('/catalog/'.length)}`
     : imageUrl && selfHostedImages[imageUrl]
       ? `/media/products/${selfHostedImages[imageUrl]}`
       : (imageUrl ?? null);

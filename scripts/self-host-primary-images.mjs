@@ -26,12 +26,18 @@ const urls = [...new Set(lines.map((line) => line.split('\t')[imageColumn]).filt
 
 /** productImages/<uuid>/svn/<name>_600.jpg → <uuid>.jpg */
 export const localNameFor = (url) => {
-  const match = url.match(/productImages\/([0-9a-f-]{36})\/.*\.(jpe?g|png|webp)$/i);
+  // IDs appear with dashes (36 chars) or without (32 chars).
+  const match = url.match(/productImages\/([0-9a-f-]{32,36})\/.*\.(jpe?g|png|webp)$/i);
   return match ? `${match[1]}.${match[2].toLowerCase()}` : null;
 };
 
 fs.mkdirSync(outDir, { recursive: true });
-const done = new Map();
+// Keep earlier downloads: once a photo is hosted here it no longer appears in
+// the feed as a CDN URL, so rebuilding the list from the feed alone would drop it.
+const previous = fs.existsSync(listFile)
+  ? JSON.parse(fs.readFileSync(listFile, 'utf8').match(/= (\{[\s\S]*\});/)?.[1] ?? '{}')
+  : {};
+const done = new Map(Object.entries(previous));
 let failed = 0;
 const queue = [...urls];
 async function worker() {
@@ -66,4 +72,4 @@ fs.writeFileSync(
     `/** Supplier-CDN primary photo URL → file in public/media/products/. */\n` +
     `export const selfHostedImages: Record<string, string> = ${JSON.stringify(Object.fromEntries(entries), null, 1)};\n`,
 );
-console.log(`Self-hosted ${done.size} of ${urls.length} primary images; ${failed} failed.`);
+console.log(`Self-hosted ${done.size} primary images in total (${urls.length} still on the CDN before this run); ${failed} failed.`);
