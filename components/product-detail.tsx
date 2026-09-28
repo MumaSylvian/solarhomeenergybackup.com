@@ -37,6 +37,7 @@ export function ProductDetail({
   overview,
   copy,
   guide,
+  brandHref,
   children,
 }: {
   product: Omit<CatalogProduct, 'supplierOffers'>;
@@ -48,6 +49,8 @@ export function ProductDetail({
   /** Verified rewrite for this product, when one exists (lib/catalog/product-copy.ts). */
   copy?: ProductCopy;
   guide?: { slug: string; title: string };
+  /** Brand page, when the brand has one (lib/catalog/brands.ts). */
+  brandHref?: string | null;
   /** Server-rendered sections shown at the end of the page (related products). */
   children?: ReactNode;
 }) {
@@ -111,7 +114,11 @@ export function ProductDetail({
               </p>
             )}
           </div>
-          {product.brand && <p className="product-brand">{product.brand}</p>}
+          {product.brand && (
+            <p className="product-brand">
+              {brandHref ? <a href={brandHref}>{product.brand}</a> : product.brand}
+            </p>
+          )}
           <h1>{product.name}</h1>
           <div className="detail-price">
             <strong>

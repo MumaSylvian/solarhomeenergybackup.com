@@ -1,13 +1,12 @@
 /* oxlint-disable react-compiler -- server-rendered route content is passed through shared navigation components. */
 /* oxlint-disable next/no-html-link-for-pages -- browsing links must work before client routing is available. */
-import { ArrowLeft, ArrowRight, CircleHelp, ShieldCheck } from 'lucide-react';
-import { ProductCard } from '@/components/storefront';
+import { ArrowRight, CircleHelp, ShieldCheck } from 'lucide-react';
+import { ProductListing } from '@/components/product-listing';
 import { approvedCatalog } from '@/lib/catalog/products';
 import { postsForCategory } from '@/lib/blog/posts';
-import { isInStock } from '@/lib/catalog/offer';
-import { copyFor } from '@/lib/catalog/product-copy';
 import { CATEGORY_PAGE_SIZE, categoryGroups, type StorefrontCategory } from '@/lib/catalog/categories';
 import { jsonLd, siteUrl } from '@/lib/seo';
+import { topBrandsInCategory } from '@/lib/catalog/brands';
 
 /** Products in a category, in a stable browse order (brand, then name). */
 export const productsInCategory = (label: string) =>
@@ -148,55 +147,28 @@ export function CategoryPage({ category, page = 1 }: { category: StorefrontCateg
             Search all products <ArrowRight size={15} />
           </a>
         </div>
-        <div className="shop-products">
-          {onPage.map((product, index) => (
-            <ProductCard
-              key={product.id}
-              id={product.id}
-              slug={product.slug}
-              name={product.name}
-              brand={product.brand}
-              category={product.category}
-              shortDescription={copyFor(product.id)?.intro ?? product.shortDescription}
-              sourcePrice={product.sourcePrice}
-              retailPrice={product.retailPrice}
-              imageUrl={product.sourceImageUrl}
-              sourceImageUrl={product.sourceDetailImageUrl}
-              galleryImageUrls={product.galleryImageUrls}
-              output={product.continuousOutputWatts}
-              capacity={product.batteryCapacityWh}
-              voltage={product.acVoltage}
-              priority={index < 3}
-              inStock={isInStock(product)}
-            />
-          ))}
-        </div>
-        {pages > 1 && (
-          <nav className="pagination" aria-label={`${category.label} pages`}>
-            {page > 1 && (
-              <a href={categoryPageHref(category, page - 1)} rel="prev">
-                <ArrowLeft size={15} /> Previous
-              </a>
-            )}
-            <ol>
-              {Array.from({ length: pages }, (_, index) => index + 1).map((number) => (
-                <li key={number}>
-                  {number === page ? (
-                    <span aria-current="page">{number}</span>
-                  ) : (
-                    <a href={categoryPageHref(category, number)}>{number}</a>
-                  )}
-                </li>
-              ))}
-            </ol>
-            {page < pages && (
-              <a href={categoryPageHref(category, page + 1)} rel="next">
-                Next <ArrowRight size={15} />
-              </a>
-            )}
-          </nav>
-        )}
+        <ProductListing
+          products={onPage}
+          page={page}
+          pages={pages}
+          hrefFor={(number) => categoryPageHref(category, number)}
+          label={`${category.label} pages`}
+        />
       </section>
+      {topBrandsInCategory(category.label).length > 0 && (
+        <section className="category-guides" aria-labelledby="category-brands">
+          <h2 id="category-brands">Top brands in {category.label.toLowerCase()}</h2>
+          <ul className="brand-list">
+            {topBrandsInCategory(category.label).map(({ brand, count }) => (
+              <li key={brand.slug}>
+                <a href={brand.href!}>
+                  {brand.name} <span className="brand-count">{count}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
       <section className="category-guides" aria-labelledby="related-categories">
         <h2 id="related-categories">More in {category.group.toLowerCase()}</h2>
         <ul className="related-categories">

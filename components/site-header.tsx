@@ -266,6 +266,7 @@ export function SiteHeader() {
                   </div>
                 </div>
               ))}
+              <a href="/brands">Shop by brand</a>
               <a href="/blog">Backup power guides</a>
               <a href="/system-finder">{t('planSystem')}</a>
               <strong>Help & ordering</strong>

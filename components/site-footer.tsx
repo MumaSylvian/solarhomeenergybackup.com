@@ -22,6 +22,7 @@ export function SiteFooter() {
         <h3>{group}</h3>
         {categories.map((category) => <a key={category.slug} href={category.href}>{category.label}</a>)}
         {group === 'Backup power' && <a href="/shop">Shop all products</a>}
+        {group === 'Home appliances' && <a href="/brands">Shop by brand</a>}
       </div>
     ))}
     <div><h3>Help</h3><a href="/support">Customer support</a><a href="/system-finder">System Finder</a><a href="/blog">Backup power guides</a><a href="/shipping-delivery">Shipping & delivery</a><a href="/returns">Returns & refunds</a><a href="/warranty">Warranty</a><a href="/payment-options">Payment & billing</a><a href="/invoice">Request an invoice</a></div>

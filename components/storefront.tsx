@@ -258,8 +258,9 @@ export function Storefront() {
         <div>
           <b>Recognized energy brands</b>
           <p>
-            Shop EcoFlow, BLUETTI, Victron Energy, Anker SOLIX, EG4, and more
-            across the current catalog.
+            Shop <a href="/brands/ecoflow">EcoFlow</a>, <a href="/brands/bluetti">BLUETTI</a>,{' '}
+            <a href="/brands/victron-energy">Victron Energy</a>, <a href="/brands/anker-solix">Anker SOLIX</a>,{' '}
+            <a href="/brands/eg4">EG4</a>, and <a href="/brands">every brand we carry</a>.
           </p>
         </div>
       </section>

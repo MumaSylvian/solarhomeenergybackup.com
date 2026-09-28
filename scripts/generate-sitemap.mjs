@@ -17,7 +17,7 @@ const categories = [
   ['accessories', 'Accessories'], ['refrigerators', 'Refrigerators'], ['freezers', 'Freezers'],
   ['dishwashers', 'Dishwashers'], ['washers-dryers', 'Washers & dryers'],
 ];
-const pages = ['/', '/shop', '/blog', ...categories.map(([slug]) => `/${slug}`), '/about', '/system-finder', '/shipping-delivery', '/returns', '/warranty', '/privacy', '/terms', '/payment-options', '/cookies', '/support'];
+const pages = ['/', '/shop', '/blog', ...categories.map(([slug]) => `/${slug}`), '/about', '/brands', '/system-finder', '/shipping-delivery', '/returns', '/warranty', '/privacy', '/terms', '/payment-options', '/cookies', '/support'];
 
 const htmlFiles = (dir) => {
   const url = new URL(dir, dist);
@@ -45,6 +45,17 @@ const categoryPagePaths = categories.flatMap(([slug]) =>
     .sort((a, b) => a - b)
     .map((number) => `/${slug}/page/${number}`),
 );
+// Brand pages and their pages 2+, as emitted by the build.
+const brandPaths = htmlFiles('brands/').flatMap((file) => {
+  const slug = file.slice(0, -'.html'.length);
+  return [
+    `/brands/${slug}`,
+    ...htmlFiles(`brands/${slug}/page/`)
+      .map((page) => Number(page.slice(0, -'.html'.length)))
+      .sort((a, b) => a - b)
+      .map((number) => `/brands/${slug}/page/${number}`),
+  ];
+});
 const productPaths = htmlFiles('products/').map((file) => `/products/${file.slice(0, -'.html'.length)}`);
 
 // --- sitemap.xml -----------------------------------------------------------
@@ -52,6 +63,7 @@ const escape = (value) => value.replace(/&/g, '&amp;').replace(/</g, '&lt;').rep
 const entries = [
   ...pages.map((path) => ({ path })),
   ...categoryPagePaths.map((path) => ({ path })),
+  ...brandPaths.map((path) => ({ path })),
   ...guides.map(({ path, lastmod }) => ({ path, lastmod })),
   ...productPaths.map((path) => ({ path })),
 ];
@@ -80,6 +92,7 @@ ${[
   ['/shop', 'Shop all products'],
   ...categories.map(([slug, title]) => [`/${slug}`, title]),
   ['/system-finder', 'System Finder'],
+  ['/brands', 'Shop by brand'],
   ['/about', 'About us'],
 ].map(([path, title]) => link(path, title)).join('\n')}
 

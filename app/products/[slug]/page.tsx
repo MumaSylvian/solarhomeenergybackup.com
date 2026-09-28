@@ -10,6 +10,7 @@ import { copyFor } from '@/lib/catalog/product-copy';
 import { FLAT_DELIVERY_FEE } from '@/lib/commerce';
 import { ProductCard } from '@/components/storefront';
 import type { CatalogProduct } from '@/lib/catalog/types';
+import { brandHrefFor } from '@/lib/catalog/brands';
 
 const siteUrl = 'https://www.solarhomeenergybackup.com';
 
@@ -177,6 +178,7 @@ export default async function ProductPage({ params }: Params) {
         overview={overviewFor(product)}
         copy={copyFor(product.id)}
         guide={guideFor(product.category)}
+        brandHref={brandHrefFor(product.brand)}
       >
         {related.length > 0 && category && (
           <section className="related-products" aria-labelledby="related-products">
