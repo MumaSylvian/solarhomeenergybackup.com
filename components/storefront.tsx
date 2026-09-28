@@ -17,6 +17,7 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 import { useLocale } from '@/components/locale-provider';
+import { addToCart } from '@/lib/cart';
 import {
   SHOW_REFERENCE_PRICES,
   WARRANTY_SHORT,
@@ -396,6 +397,19 @@ export function ProductCard({
   };
   const productHref = `/products/${encodeURIComponent(slug)}`;
   const discount = discountPercentFor(sourcePrice);
+  // Every card can add to the cart. Pages with their own handler (the shop's
+  // "added" message) pass `add`; elsewhere the card adds directly. The button
+  // confirms for two seconds either way.
+  const [justAdded, setJustAdded] = useState(false);
+  const addedTimer = useRef<number | undefined>(undefined);
+  useEffect(() => () => window.clearTimeout(addedTimer.current), []);
+  const addThis = () => {
+    if (add) add(product);
+    else addToCart({ id, slug, name, brand, category, sourcePrice, retailPrice });
+    setJustAdded(true);
+    window.clearTimeout(addedTimer.current);
+    addedTimer.current = window.setTimeout(() => setJustAdded(false), 2000);
+  };
   return (
     <article className="product-card">
       <a href={productHref} className="product-art" aria-label={`View ${name}`}>
@@ -453,9 +467,15 @@ export function ProductCard({
           <a href={productHref}>
             {t('viewDetails')} <ArrowRight size={16} />
           </a>
-          {add && retailPrice != null && (
-            <button type="button" onClick={() => add(product)}>
-              {t('addToCart')}
+          {retailPrice != null && (
+            <button
+              type="button"
+              onClick={addThis}
+              className={justAdded ? 'added' : undefined}
+              aria-label={justAdded ? `${name} added to cart` : `Add ${name} to cart`}
+            >
+              {/* Keyed: translated pages freeze text that changes in place. */}
+              <span key={justAdded ? 'added' : 'add'}>{justAdded ? 'Added ✓' : t('addToCart')}</span>
             </button>
           )}
         </div>

@@ -244,3 +244,4 @@ footer{grid-template-columns:1.6fr repeat(4,1fr);gap:32px}
 .shop-products .product-bottom button{width:100%;min-height:40px;padding:8px 6px;font-size:12px}
 .shop-products .product-bottom a{justify-content:center;min-height:36px;font-size:12px}
 }
+.product-bottom button.added{background:#067948}
