@@ -11,6 +11,9 @@ type Category = CatalogProduct['category'];
 const appliances = new Set<Category>(['Dishwashers', 'Freezers', 'Refrigerators', 'Washers & Dryers']);
 
 const rules: [RegExp, Category][] = [
+  // Cables and wire ("4/0 AWG Battery to Inverter Cables") are accessories,
+  // whatever they connect; bundles that merely include a cable are not.
+  [/^(?!.*\+).*(\bawg\b.*\bcables?\b|\bcables?\b.*\bawg\b|\bbattery cables?\b|\binverter cables?\b)/i, 'Accessories'],
   // Parts made *for* a product (pads, covers, brackets) are accessories.
   [/\bmounting pad\b|\bcover\b|\bbracket\b/i, 'Accessories'],
   // A power station, alone or bundled with panels/batteries, is portable power.

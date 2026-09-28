@@ -223,3 +223,24 @@ footer{grid-template-columns:1.6fr repeat(4,1fr);gap:32px}
 .product-brand a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
 .brands-strip p a{color:var(--blue);font-weight:750}
 @media(max-width:520px){.brand-list{grid-template-columns:1fr 1fr}}
+/* Phones: product grids in two columns with a compact card (shop, category, brand, guide, and related rows). */
+@media(max-width:520px){
+.shop-products{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.shop-products .product-card{border-radius:12px}
+.shop-products .product-card:hover{transform:none}
+.shop-products .product-art{height:150px}
+.shop-products .product-art>img{padding:10px}
+.shop-products .product-content{padding:10px 10px 12px}
+.shop-products .product-meta{gap:2px}
+.shop-products .product-category,.shop-products .product-summary{display:none}
+.shop-products .availability-line{font-size:11px}
+.shop-products .product-brand{margin:4px 0 3px;font-size:10px;letter-spacing:.08em}
+.shop-products .product-content h3{font-size:14px;line-height:1.2;letter-spacing:-.02em;-webkit-line-clamp:3}
+.shop-products .product-price{margin-top:8px;gap:4px}
+.shop-products .product-price span{font-size:17px}
+.shop-products .product-price.unavailable span{font-size:13px}
+.shop-products .product-price small{font-size:11px}
+.shop-products .product-bottom{flex-direction:column-reverse;align-items:stretch;gap:4px;margin-top:10px;padding-top:10px}
+.shop-products .product-bottom button{width:100%;min-height:40px;padding:8px 6px;font-size:12px}
+.shop-products .product-bottom a{justify-content:center;min-height:36px;font-size:12px}
+}
