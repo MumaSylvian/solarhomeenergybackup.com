@@ -1,5 +1,23 @@
 # Google Merchant Center readiness: solarhomeenergybackup.com
 
+## Live check, 2026-09-28 (after site structure, brand, and category work)
+
+```
+MERCHANT CENTER READINESS: NOT READY (one blocker, account-side)
+
+Site: feed 1,970 items, all new, all US:::45.00 USD, no missing required
+attributes, no duplicate ids, no promotional titles; 22/22 sampled items
+match feed = page = schema (price, stock, condition, brand); one address,
+phone, and email sitewide; every feed image_link served from this domain.
+Blocker: solarhomeenergybackup.com (no www) resolves to Hostinger parking
+(2.57.91.91) and shows a parked page.
+```
+
+Since the last run: 11 category pages and 39 brand pages list every product; 630 product
+URLs lost supplier/brand artefacts (700 one-hop redirects); 7 brand/title conflicts fixed;
+150 listings moved to the correct category; all 1,970 primary photos served by Vercel
+instead of a retailer CDN or GitHub LFS media.
+
 ## Fix run, 2026-09-27 (owner answers: refurbished listings, photos)
 
 - **Condition:** the owner confirmed the 38 "(Refurbished)" listings are new, sealed units. 19 were relabelled
