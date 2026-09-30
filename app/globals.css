@@ -158,12 +158,6 @@ html.translated-ltr font,html.translated-rtl font{display:contents}
 /* Categories as a compact two-column grid instead of eleven full-width rows. */
 .mobile-nav-categories{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;padding:2px 0 12px}
 .mobile-nav .mobile-nav-categories a{display:flex;align-items:center;min-height:44px;padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface-soft);font-size:13px;line-height:1.25}
-/* Homepage categories on phones: one swipeable, snapping row (AutoCarousel advances it) instead of eleven stacked cards. */
-@media(max-width:640px){
-.catalog-category-grid{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:82%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none;border-top:0;margin-top:28px;padding-bottom:4px}
-.catalog-category-grid::-webkit-scrollbar{display:none}
-.catalog-category-grid .catalog-category-card{scroll-snap-align:start;min-height:280px;border:0;border-radius:18px;overflow:hidden}
-}
 /* The photo viewer opens as a modal (showModal): full screen, above everything. */
 .gallery-dialog{width:100vw;max-width:none;height:100dvh;max-height:none;margin:0;padding:0;border:0}
 .gallery-dialog::backdrop{background:#0a1c2ee8}
@@ -171,9 +165,6 @@ html.translated-ltr font,html.translated-rtl font{display:contents}
 @media(max-width:700px){body{padding-bottom:76px}}
 /* The page behind the open phone menu does not scroll. */
 html.menu-open{overflow:hidden}
-/* Pause button for the phone category carousel (hidden where the grid does not move). */
-.carousel-pause{display:none}
-@media(max-width:640px){.carousel-pause{display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:8px 14px;min-height:40px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);font:inherit;font-size:13px;font-weight:750}}
 .gallery-dialog:not([open]){display:none}
 /* Category pages (app/[category]): breadcrumb above the hero, shorter header on pages 2+, page numbers, related categories. */
 .category-breadcrumb{max-width:1240px;margin:0 auto;padding:6px 24px 0}
@@ -245,3 +236,149 @@ footer{grid-template-columns:1.6fr repeat(4,1fr);gap:32px}
 .shop-products .product-bottom a{justify-content:center;min-height:36px;font-size:12px}
 }
 .product-bottom button.added{background:#067948}
+
+/* =====================================================================
+   Typography and spacing system (2026-09-30)
+   Headings: Plus Jakarta Sans. Text: Inter. One type scale and one vertical
+   rhythm for every page; replaces the oversized, tightly-tracked headings.
+   Scale (desktop / phone):
+     hero title   42 / 30     page title (h1)   40 / 28
+     section h2   32 / 24     sub-section h2    24 / 20
+     card title   17 / 15     body text         16 / 16
+     label        12 uppercase
+   ===================================================================== */
+:root{
+  --font-heading:'Plus Jakarta Sans Variable','Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-body:'Inter Variable','Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:24px;--space-6:32px;--space-7:48px;--space-8:72px;
+}
+body{font-family:var(--font-body);font-size:16px;line-height:1.6;letter-spacing:0;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-heading);font-weight:700;letter-spacing:-.02em;text-wrap:balance}
+p{text-wrap:pretty}
+
+/* Labels above headings */
+.eyebrow{margin:0 0 var(--space-3);font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:.1em}
+
+/* Hero */
+.hero-copy h1{font-size:clamp(30px,3.4vw,42px);line-height:1.12;letter-spacing:-.025em}
+.hero-copy p{font-size:17px;line-height:1.55}
+
+/* Page titles */
+.page-shell>h1,.page-shell header h1,.finder h1,.hub-hero h1,.category-hero h1,.blog-index h1,.blog-header h1{font-size:clamp(28px,3vw,40px);line-height:1.15;letter-spacing:-.02em}
+.page-shell header h1+p,.hub-hero h1+p,.category-hero h1+p,.finder h1+p{margin-top:var(--space-3)}
+.category-hero-compact h1{font-size:clamp(24px,2.4vw,32px);line-height:1.2}
+.detail-info h1{font-size:clamp(22px,2vw,28px);line-height:1.25;letter-spacing:-.015em}
+
+/* Section headings */
+.section h2,.category-content h2,.featured-head h2,.planning-panel h2{font-size:clamp(24px,2.4vw,32px);line-height:1.2;letter-spacing:-.02em}
+.section-intro,.featured-head>p{font-size:16px;line-height:1.6}
+.section-heading h2+p,.featured-head h2+p{margin-top:var(--space-3)}
+
+/* Sub-section headings */
+.category-section-head h2,.related-products h2,.category-guides h2,.brand-group h2,.blog-body h2,.trust-section h2,.detail-sections h2,.finder-card h2,.form-card h2,.aside-card h2,.cart-head h2,.blog-list h2{font-size:clamp(20px,1.8vw,24px);line-height:1.3;letter-spacing:-.015em}
+.blog-body h3{font-size:18px;line-height:1.35}
+
+/* Card titles */
+.category-card h3,.resource-grid h3{font-size:17px;line-height:1.3;letter-spacing:-.01em}
+.product-content h3{font-size:16px;line-height:1.3;letter-spacing:-.01em}
+.product-price span{font-family:var(--font-heading);font-size:20px;letter-spacing:-.01em}
+.detail-price strong{font-family:var(--font-heading)}
+
+/* Section rhythm */
+.section{padding-top:var(--space-8);padding-bottom:var(--space-8)}
+.featured{padding-top:var(--space-8);padding-bottom:var(--space-8)}
+.featured-head{padding-bottom:var(--space-6)}
+.category-grid{margin-top:var(--space-6)}
+.resource-grid{margin-top:var(--space-5)}
+
+/* Homepage cards: smaller and consistent */
+.catalog-category-card{min-height:240px;border-radius:16px}
+.catalog-category-card .category-card-content{padding:var(--space-5)}
+.category-card p{font-size:14px;line-height:1.5}
+.product-row{grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--space-4);overflow:visible;padding-bottom:0}
+.product-row .product-art{height:200px}
+.product-row .product-summary{min-height:0}
+
+@media(max-width:1000px){
+  .product-row{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:850px){
+  .catalog-category-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-3);border-top:0}
+  .catalog-category-grid .catalog-category-card{border:0;border-radius:14px;overflow:hidden}
+}
+@media(max-width:640px){
+  .section{padding:var(--space-7) var(--space-4)}
+  .featured{padding:var(--space-7) var(--space-4)}
+  .section h2,.category-content h2,.featured-head h2,.planning-panel h2{font-size:24px}
+  .hero-copy h1{font-size:30px}
+  .hero-copy p{font-size:16px}
+  .page-shell>h1,.page-shell header h1,.finder h1,.hub-hero h1,.category-hero h1,.blog-index h1,.blog-header h1{font-size:28px}
+  .category-section-head h2,.related-products h2,.category-guides h2,.brand-group h2,.blog-body h2,.trust-section h2,.detail-sections h2,.finder-card h2,.form-card h2,.aside-card h2,.cart-head h2,.blog-list h2{font-size:20px}
+  .section-heading{display:block}
+  .section-intro{max-width:none;margin:var(--space-3) 0 0}
+  /* Planning panel: inset from the screen edges instead of running edge to edge. */
+  .planning-panel{margin:var(--space-5) var(--space-4) 0;padding:var(--space-6) var(--space-5);border-radius:18px}
+  .brands-strip{margin:var(--space-5) var(--space-4) 0}
+  .trust-strip{padding:var(--space-4)}
+  /* Category cards: compact, two per row. */
+  .catalog-category-grid .catalog-category-card{min-height:170px}
+  .catalog-category-card .category-card-content{padding:var(--space-3)}
+  .catalog-category-card .category-number{font-size:10px;letter-spacing:.06em}
+  .catalog-category-card h3{margin:0 0 var(--space-1);font-size:15px}
+  .catalog-category-card p{display:none}
+  .catalog-category-card b{margin-top:var(--space-2);font-size:12px}
+  .catalog-category-card>img{padding:var(--space-3)}
+  /* Featured products: the same compact two-column card as product grids. */
+  .product-row{gap:10px}
+  .product-row .product-card{border-radius:12px}
+  .product-row .product-art{height:150px}
+  .product-row .product-art>img{padding:10px}
+  .product-row .product-content{padding:10px 10px 12px}
+  .product-row .product-category,.product-row .product-summary{display:none}
+  .product-row .availability-line{font-size:11px}
+  .product-row .product-brand{margin:4px 0 3px;font-size:10px;letter-spacing:.08em}
+  .product-row .product-content h3{font-size:14px;line-height:1.25;-webkit-line-clamp:3}
+  .product-row .product-price{margin-top:8px}
+  .product-row .product-price span{font-size:17px}
+  .product-row .product-bottom{flex-direction:column-reverse;align-items:stretch;gap:4px;margin-top:10px;padding-top:10px}
+  .product-row .product-bottom button{width:100%;min-height:40px;font-size:12px}
+  .product-row .product-bottom a{justify-content:center;min-height:36px;font-size:12px}
+  .shop-products .product-content h3{font-size:14px}
+  .shop-products .product-price span{font-size:17px}
+  .resource-grid article{padding:var(--space-5) 0}
+}
+
+/* Homepage category cards: light card, photo on top, name and count below
+   (replaces the dark photo-under-overlay card). */
+.catalog-category-grid{border-top:0;gap:var(--space-4)}
+.catalog-category-grid .catalog-category-card{display:flex;flex-direction:column;min-height:0;padding:0;overflow:hidden;border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--ink);box-shadow:0 6px 18px #0e5da90d;transition:border-color .2s,box-shadow .2s,transform .2s}
+.catalog-category-grid .catalog-category-card:after{display:none}
+.catalog-category-grid .catalog-category-card:hover{background:#fff;color:var(--ink);border-color:#a8d5ff;box-shadow:0 12px 28px #0e5da91f;transform:translateY(-2px)}
+.category-card-art{position:relative;display:block;height:150px;background:linear-gradient(145deg,var(--surface-soft),#e9f5ff)}
+.category-card-art>img{object-fit:contain;padding:14px;filter:none!important;transform:none!important}
+.catalog-category-grid .category-card-content{display:flex;flex-direction:column;align-items:flex-start;height:auto;padding:var(--space-4) var(--space-4) var(--space-5);justify-content:flex-start}
+.catalog-category-grid .catalog-category-card h3{margin:0;color:var(--ink);font-size:17px}
+.catalog-category-grid .category-number{margin:var(--space-1) 0 0;color:var(--muted);font-size:13px;font-weight:600;letter-spacing:0;text-transform:none}
+.catalog-category-grid .catalog-category-card p{margin:var(--space-2) 0 0;color:var(--muted);font-size:14px;line-height:1.5}
+.catalog-category-grid .catalog-category-card b{position:static;margin-top:var(--space-3);color:var(--blue);font-size:13px}
+.catalog-category-grid .catalog-category-card:hover p,.catalog-category-grid .catalog-category-card:hover .category-number{color:var(--muted)}
+.catalog-category-grid .catalog-category-card:hover b{color:var(--blue)}
+@media(min-width:851px){.catalog-category-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:640px){
+  .catalog-category-grid{gap:var(--space-3)}
+  .category-card-art{height:110px}
+  .category-card-art>img{padding:10px}
+  .catalog-category-grid .category-card-content{padding:var(--space-3) var(--space-3) var(--space-4)}
+  .catalog-category-grid .catalog-category-card h3{font-size:15px}
+  .catalog-category-grid .category-number{font-size:12px}
+  .catalog-category-grid .catalog-category-card p{display:none}
+  .catalog-category-grid .catalog-category-card b{margin-top:var(--space-2);font-size:12px}
+}
+/* Phone hero: shorter, and room at the bottom so the checklist never runs into the slide controls. */
+@media(max-width:640px){
+  .hero-slider{min-height:0;padding:var(--space-8) var(--space-4) 104px}
+  .hero-controls{left:var(--space-4);bottom:var(--space-5)}
+}
+/* Paragraph rhythm: consecutive paragraphs never run together. */
+.page-shell header p+p,.trust-section p+p,.category-hero p+p,.detail-sections p+p{margin-top:var(--space-3)}
+.trust-section h2+p,.trust-section h2+ul{margin-top:var(--space-2)}

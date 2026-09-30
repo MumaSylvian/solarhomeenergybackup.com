@@ -25,7 +25,7 @@ export function HomeFeatured() {
         product.retailPrice &&
         !picks.includes(product),
     ),
-  ].slice(0, 3);
+  ].slice(0, 4);
   return (
     <section className="featured">
       <div className="section featured-head">

@@ -1,8 +1,8 @@
 /* oxlint-disable next/no-html-link-for-pages -- category cards provide dependable native navigation. */
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
-import { AutoCarousel } from '@/components/auto-carousel';
 import { approvedCatalog } from '@/lib/catalog/products';
+import { sizedImage } from '@/lib/image-sizes';
 import type { CatalogProduct } from '@/lib/catalog/types';
 
 type CategorySpotlight = {
@@ -127,26 +127,25 @@ export function CategoryShowcase() {
           catalog.
         </p>
       </div>
-      {/* A grid on larger screens; a swipeable row that advances on its own on phones. */}
-      <AutoCarousel className="category-grid catalog-category-grid" label="Shop by category">
-        {entries.map((entry, index) => (
+      <div className="category-grid catalog-category-grid">
+        {entries.map((entry) => (
           <a
             href={entry.href}
             className="category-card catalog-category-card"
             key={entry.title}
           >
-            <Image
-              src={entry.product!.sourceImageUrl!}
-              alt={entry.product!.name}
-              fill
-              sizes="(max-width: 520px) 100vw, (max-width: 850px) 50vw, 33vw"
-              unoptimized
-            />
+            <span className="category-card-art">
+              <Image
+                src={sizedImage(entry.product!.sourceImageUrl, 480)!}
+                alt=""
+                fill
+                sizes="(max-width: 850px) 50vw, 33vw"
+                unoptimized
+              />
+            </span>
             <div className="category-card-content">
-              <span className="category-number">
-                {String(index + 1).padStart(2, '0')} · {entry.count} products
-              </span>
               <h3>{entry.title}</h3>
+              <span className="category-number">{entry.count} products</span>
               <p>{entry.copy}</p>
               <b>
                 Explore <ArrowRight size={15} />
@@ -154,7 +153,7 @@ export function CategoryShowcase() {
             </div>
           </a>
         ))}
-      </AutoCarousel>
+      </div>
     </section>
   );
 }

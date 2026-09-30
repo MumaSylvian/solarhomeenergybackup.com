@@ -1,4 +1,8 @@
 import type { Metadata } from 'next';
+// Self-hosted variable fonts (no request to Google Fonts): Inter for text,
+// Plus Jakarta Sans for headings. Families are applied in globals.css.
+import '@fontsource-variable/inter/wght.css';
+import '@fontsource-variable/plus-jakarta-sans/wght.css';
 import './globals.css';
 import { SiteHeader } from '@/components/site-header';
 import { StoreUpdates } from '@/components/store-updates';
