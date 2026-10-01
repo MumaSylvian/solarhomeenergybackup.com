@@ -1,3 +1,4 @@
+import crypto from 'node:crypto';
 import fs from 'node:fs';
 
 /**
@@ -101,6 +102,16 @@ const conditionName = (url = '') =>
   url.endsWith('RefurbishedCondition') ? 'refurbished' : url.endsWith('UsedCondition') ? 'used' : 'new';
 const clean = (value) => String(value ?? '').replace(/[\t\r\n]+/g, ' ').replace(/\s{2,}/g, ' ').trim();
 
+// Google Merchant Center limits the item ID attribute to 50 characters. Keep
+// short slugs readable, and shorten longer slugs with a deterministic suffix
+// so IDs remain stable across feed rebuilds and unique across the catalog.
+const merchantIdFor = (slug) => {
+  const normalized = clean(slug);
+  if (normalized.length <= 50) return normalized;
+  const suffix = crypto.createHash('sha256').update(normalized).digest('hex').slice(0, 10);
+  return `${normalized.slice(0, 39)}-${suffix}`;
+};
+
 const columns = ['id', 'title', 'description', 'link', 'image_link', 'additional_image_link', 'availability', 'price', 'brand', 'mpn', 'identifier_exists', 'condition', 'product_type', 'google_product_category', 'product_highlight', 'shipping'];
 const rows = [];
 const excluded = { noPrice: 0, noImage: 0, notInStock: 0, noBrand: 0, noProduct: 0 };
@@ -120,7 +131,7 @@ for (const file of fs.readdirSync(productDir).filter((name) => name.endsWith('.h
 
   const mpn = clean(product.mpn);
   rows.push([
-    slug,
+    merchantIdFor(slug),
     clean(product.name).slice(0, 150),
     clean(product.description || product.name).slice(0, 5000),
     `${siteUrl}/products/${slug}`,
