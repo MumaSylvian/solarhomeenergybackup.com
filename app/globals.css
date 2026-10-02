@@ -382,3 +382,6 @@ p{text-wrap:pretty}
 /* Paragraph rhythm: consecutive paragraphs never run together. */
 .page-shell header p+p,.trust-section p+p,.category-hero p+p,.detail-sections p+p{margin-top:var(--space-3)}
 .trust-section h2+p,.trust-section h2+ul{margin-top:var(--space-2)}
+
+/* Keep the full hero artwork visible instead of cropping its edges. */
+.hero-photo{object-fit:contain;object-position:center}
