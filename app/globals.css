@@ -384,4 +384,4 @@ p{text-wrap:pretty}
 .trust-section h2+p,.trust-section h2+ul{margin-top:var(--space-2)}
 
 /* Keep the full hero artwork visible instead of cropping its edges. */
-.hero-photo{object-fit:contain;object-position:center}
+.hero-slider .hero-photo{object-fit:contain!important;object-position:center!important}
