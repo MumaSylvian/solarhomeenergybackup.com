@@ -166,7 +166,7 @@ export function Storefront() {
         <Image
           className="hero-photo"
           src={slide.image}
-          style={{ objectFit: "contain", objectPosition: slide.focus }}
+          style={{ objectPosition: slide.focus }}
           alt={slide.alt}
           fill
           priority={activeSlide === 0}
