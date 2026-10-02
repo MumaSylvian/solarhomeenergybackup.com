@@ -1,0 +1,29 @@
+{
+  "summary": {
+    "health_score": 76,
+    "business_type": "E-commerce store for solar, battery, backup-power, EV, and appliance products",
+    "top_findings": [
+      "Apex domain is not reliably reachable; canonical www host works.",
+      "Security hardening headers are incomplete.",
+      "Several important title tags are longer than search display guidance.",
+      "Core Web Vitals require a later PageSpeed/CrUX run because the endpoint returned 429."
+    ],
+    "quick_wins": [
+      "Submit https://www.solarhomeenergybackup.com/sitemap.xml in Search Console.",
+      "Shorten shop, product, and guide title templates.",
+      "Add tested X-Content-Type-Options and Referrer-Policy headers.",
+      "Add BreadcrumbList schema."
+    ]
+  },
+  "categories": [
+    {"name":"Technical SEO","score":78,"findings":[{"title":"Apex host reliability","severity":"Critical","description":"The canonical www host returns 200, but the apex HTTPS host timed out in the audit.","recommendation":"Fix DNS/deployment routing and permanently redirect apex HTTP/HTTPS to the canonical www host."},{"title":"Incomplete security headers","severity":"High","description":"HSTS is present; X-Content-Type-Options, Referrer-Policy, and CSP were absent in sampled responses.","recommendation":"Add and test these headers without breaking commerce assets or support links."}]},
+    {"name":"Content Quality","score":78,"findings":[{"title":"Authority signals can grow","severity":"Medium","description":"Guides are substantial, but visible authorship, credentials, and primary-source citations are limited in sampled pages.","recommendation":"Add human editor attribution, update dates, and cited first-party/manufacturer guidance."}]},
+    {"name":"On-Page SEO","score":74,"findings":[{"title":"Long title tags","severity":"Medium","description":"Sampled /shop, product, and guide titles measured 74, 66, and 75 characters.","recommendation":"Tighten title templates while retaining product model and category intent."}]},
+    {"name":"Schema","score":80,"findings":[{"title":"Breadcrumb schema opportunity","severity":"Medium","description":"OnlineStore and Product/Offer markup were detected; BreadcrumbList was not detected in sampled pages.","recommendation":"Add valid BreadcrumbList JSON-LD matching visible navigation."}]},
+    {"name":"Performance","score":55,"findings":[{"title":"CWV not measured","severity":"Medium","description":"PageSpeed Insights returned HTTP 429 during the audit.","recommendation":"Repeat mobile PSI/Lighthouse and record LCP, INP, and CLS after rate limits clear."}]},
+    {"name":"AI Search Readiness","score":85,"findings":[{"title":"Strong crawler foundation","severity":"Info","description":"SSR pages, llms.txt, structured data, and explicit AI crawler access are present.","recommendation":"Invest in original expertise, citations, and legitimate brand authority rather than AI-specific gimmicks."}]},
+    {"name":"Images","score":86,"findings":[{"title":"Sampled alt coverage passes","severity":"Info","description":"All sampled image elements had alt attributes and product pages exposed galleries.","recommendation":"Continue monitoring image dimensions, format, and gallery URL availability."}]}
+  ],
+  "action_plan": {"phases":[{"name":"Phase 1: Critical Fixes","timeframe":"Week 1","items":["Fix apex DNS and canonical redirect","Add tested security headers","Tighten important title tags"]},{"name":"Phase 2: High-Impact Improvements","timeframe":"Weeks 2-3","items":["Add BreadcrumbList schema","Run mobile CWV tests","Submit and monitor sitemap in Search Console"]},{"name":"Phase 3: Content & Authority","timeframe":"Month 2","items":["Add human authorship and citations","Build guide-to-category internal links","Develop legitimate industry authority"]},{"name":"Phase 4: Monitoring & Iteration","timeframe":"Ongoing","items":["Weekly GSC monitoring","Monthly sitemap/canonical checks","Monthly CWV monitoring"]}]},
+  "artifacts": {"findings_dir":"solarhomeenergybackup-com-audit/","screenshots_dir":"not generated; browser screenshot automation was unavailable"}
+}
