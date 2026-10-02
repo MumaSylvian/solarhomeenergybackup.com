@@ -8,7 +8,7 @@ The production sitemap is ready to submit in Google Search Console:
 
 - Sitemap URL: `https://www.solarhomeenergybackup.com/sitemap.xml`
 - HTTP response: 200
-- URLs: 2,108
+- URLs: 2,108 total, including **1,983 product URLs** and 125 category, brand, guide, and policy URLs
 - Duplicate URLs: 0
 - Non-HTTPS or wrong-host URLs: 0
 - Deprecated `<priority>` / `<changefreq>` tags: none
