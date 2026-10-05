@@ -50,6 +50,26 @@ const guideFor = (category: string) => {
   return post ? { slug: post.slug, title: post.title } : undefined;
 };
 
+/**
+ * Keep product structured data useful for imported listings as well as
+ * hand-written products. The imported refrigerator copy is often a short
+ * teaser, while rawSpecifications contains the manufacturer detail Google
+ * needs to understand the appliance.
+ */
+const catalogDescriptionFor = (product: CatalogProduct) => {
+  const written = copyFor(product.id)?.intro;
+  if (written) return written;
+  const details = product.rawSpecifications?.trim() || product.shortDescription?.trim() || '';
+  const specs = Object.entries(product.specifications ?? {})
+    .filter(([, value]) => value != null && String(value).trim())
+    .map(([key, value]) => `${key}: ${String(value).trim()}`)
+    .join('; ');
+  return [overviewFor(product), details, specs ? `Specifications: ${specs}` : '']
+    .filter(Boolean)
+    .join(' ')
+    .trim();
+};
+
 export function generateStaticParams() {
   return approvedCatalog.map((product) => ({ slug: product.slug }));
 }
@@ -99,7 +119,11 @@ export default async function ProductPage({ params }: Params) {
       '@context': 'https://schema.org',
       '@type': 'Product',
       name: product.name,
-      description: copyFor(product.id)?.intro ?? overviewFor(product),
+      // Give Google the same useful product summary shoppers see on the page.
+      // Imported appliance listings do not have hand-written copy entries, so
+      // falling back to the catalog description avoids sending a bare
+      // "listed in our category" sentence to Merchant Center.
+      description: catalogDescriptionFor(product),
       // Self-hosted photos are site-relative; structured data needs absolute URLs.
       image: product.galleryImageUrls?.length
         ? product.galleryImageUrls.map((image) => new URL(image, siteUrl).href)

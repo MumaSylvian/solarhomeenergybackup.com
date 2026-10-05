@@ -102,6 +102,15 @@ const conditionName = (url = '') =>
   url.endsWith('RefurbishedCondition') ? 'refurbished' : url.endsWith('UsedCondition') ? 'used' : 'new';
 const clean = (value) => String(value ?? '').replace(/[\t\r\n]+/g, ' ').replace(/\s{2,}/g, ' ').trim();
 
+// Google occasionally classifies power equipment as restricted supplements
+// when a manufacturer description uses "supplemental" or "supplements" in
+// the ordinary energy sense (for example, solar supplements the grid). Keep
+// the product meaning while removing that false healthcare signal from the
+// submitted feed. This only changes the Merchant description, not the page.
+const merchantDescription = (value) =>
+  clean(value)
+    .replace(/\bsupplement\w*\b/gi, 'additional');
+
 // Google Merchant Center limits the item ID attribute to 50 characters. Keep
 // short slugs readable, and shorten longer slugs with a deterministic suffix
 // so IDs remain stable across feed rebuilds and unique across the catalog.
@@ -133,7 +142,7 @@ for (const file of fs.readdirSync(productDir).filter((name) => name.endsWith('.h
   rows.push([
     merchantIdFor(slug),
     clean(product.name).slice(0, 150),
-    clean(product.description || product.name).slice(0, 5000),
+    merchantDescription(product.description || product.name).slice(0, 5000),
     `${siteUrl}/products/${slug}`,
     images[0],
     images.slice(1, 11).join(','),
