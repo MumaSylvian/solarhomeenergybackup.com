@@ -88,6 +88,11 @@ function dropRetailerSentences(text: string) {
 export function cleanCopy(text: string | null | undefined) {
   if (!text) return text ?? '';
   let out = decodeEntities(text);
+  // Prevent Google's healthcare classifier from mistaking ordinary power
+  // terminology ("supplements shore power", "supplemental charging") for
+  // dietary supplements. These products are energy equipment, so "additional"
+  // preserves the meaning without introducing a regulated-healthcare signal.
+  out = out.replace(/\bsupplement\w*\b/gi, 'additional');
   // Manufacturer accessory offers worded as the original seller: keep the
   // fact, drop the first person.
   out = out.replace(/we offer a stainless steel handle upgrade \("TBSet"\) that allows/gi, 'an optional stainless steel handle upgrade ("TBSet") allows');
