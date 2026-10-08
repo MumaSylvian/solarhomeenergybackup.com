@@ -114,8 +114,8 @@ export function SiteHeader() {
   return (
     <>
       <div className="utility-bar">
-        <span>Ships to all 50 states</span>
-        <span className="utility-detail">Flat $45 delivery per order</span>
+        <span>Ships to all 50 states + 9 countries</span>
+        <span className="utility-detail">Free international shipping · 6–10 days</span>
         <a href="/support">Customer support</a>
         <a href="/system-finder">{t('utilityAction')}</a>
       </div>

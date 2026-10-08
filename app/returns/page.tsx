@@ -9,13 +9,13 @@ export const metadata = pageMetadata({
   path: '/returns',
 });
 
-// Text supplied by the business (effective September 26, 2026). Edit wording
+// Text supplied by the business (effective October 8, 2026). Edit wording
 // only with the owner's approval; update "Last Updated" whenever it changes.
 export default function ReturnsPage() {
   const contactLines = [`Email: ${business.email}`, `Phone: ${business.phoneDisplay}`];
   return (
     <TrustPage
-      eyebrow="Return & refund policy · Effective Date: September 26, 2026 · Last Updated: September 26, 2026"
+      eyebrow="Return & refund policy · Effective Date: October 8, 2026 · Last Updated: October 8, 2026"
       title="Return & Refund Policy"
       intro={`This Return & Refund Policy applies to eligible purchases from ${business.legalName}, trading as ${business.tradingName}.`}
       sections={[
@@ -48,7 +48,8 @@ export default function ReturnsPage() {
         {
           title: '5. Return shipping',
           body: [
-            'For standard returns, the customer is responsible for return shipping or freight costs.',
+            'This policy applies to U.S. and international orders. International returns must be sent back to our originating warehouse in Baton Rouge, Louisiana, using the return instructions we provide.',
+            'For standard returns, the customer is responsible for return shipping or freight costs, including international return freight.',
             'For a verified damaged, defective, or incorrect product, Solar Home Energy Backup will cover reasonable return transportation costs.',
           ],
         },

@@ -5,7 +5,7 @@ import { pageMetadata } from '@/lib/seo';
 export const metadata = pageMetadata({
   title: 'Shipping & Delivery Policy',
   description:
-    'We ship to all 50 states by freight. Orders process in 1–3 business days after payment; typical delivery is 5–7 business days after dispatch.',
+    'We ship to all 50 states and nine international destinations. U.S. delivery is $45 per order; international shipping is free with delivery in about 6–10 business days after dispatch.',
   path: '/shipping-delivery',
 });
 
@@ -15,7 +15,7 @@ export const metadata = pageMetadata({
 export default function ShippingDeliveryPage() {
   return (
     <TrustPage
-      eyebrow="Shipping & delivery policy · Effective Date: September 26, 2026 · Last Updated: September 26, 2026"
+      eyebrow="Shipping & delivery policy · Effective Date: October 8, 2026 · Last Updated: October 8, 2026"
       title="Shipping & Delivery Policy"
       intro={[
         'This Shipping & Delivery Policy explains how Solar Home Energy Backup processes and delivers customer orders.',
@@ -32,8 +32,8 @@ export default function ShippingDeliveryPage() {
         {
           title: '2. International shipping',
           body: [
-            'International shipping may be available to destinations where appropriate freight service can be arranged.',
-            'Customers should contact Solar Home Energy Backup if they require international delivery.',
+            'We currently ship to the United Kingdom, Australia, Germany, Italy, Kuwait, Netherlands, Poland, Saudi Arabia, and United Arab Emirates.',
+            'International shipping is free. Typical delivery is approximately 6–10 business days after dispatch, subject to customs clearance and carrier availability.',
             'International customers are responsible for applicable:',
           ],
           items: ['Customs duties.', 'Import taxes.', 'Brokerage charges.', 'Government assessments.', 'Other destination-country import charges.'],
@@ -52,10 +52,9 @@ export default function ShippingDeliveryPage() {
           title: '4. Delivery fees',
           body: [
             'Delivery within the United States is a flat $45 per order.',
-            'International delivery charges are calculated based on the destination and disclosed before the customer completes payment.',
-            'Factors affecting international delivery charges may include:',
+            'Shipping to the nine international destinations listed in this policy is free.',
+            'Any customs, tax, brokerage, or government charges are separate from shipping and are paid by the customer.',
           ],
-          items: ['Destination.', 'Product size.', 'Product weight.', 'Freight requirements.', 'Accessibility.', 'International transportation requirements.'],
         },
         {
           title: '5. Order processing',
@@ -66,7 +65,8 @@ export default function ShippingDeliveryPage() {
         {
           title: '6. Delivery estimates',
           body: [
-            'Typical delivery is approximately 5–7 business days after dispatch.',
+            'U.S. delivery is typically approximately 5–7 business days after dispatch.',
+            'International delivery is typically approximately 6–10 business days after dispatch.',
             'Delivery estimates are not guaranteed arrival dates unless Solar Home Energy Backup expressly provides a guaranteed delivery commitment in writing.',
           ],
         },

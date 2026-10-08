@@ -7,7 +7,7 @@ import { conditionOf, isInStock, schemaCondition, stockSource } from '@/lib/cata
 import { overviewFor, productMetaDescription } from '@/lib/catalog/overview';
 import { postsForCategory } from '@/lib/blog/posts';
 import { copyFor } from '@/lib/catalog/product-copy';
-import { FLAT_DELIVERY_FEE } from '@/lib/commerce';
+import { FLAT_DELIVERY_FEE, INTERNATIONAL_COUNTRY_CODES } from '@/lib/commerce';
 import { ProductCard } from '@/components/storefront';
 import type { CatalogProduct } from '@/lib/catalog/types';
 import { brandHrefFor } from '@/lib/catalog/brands';
@@ -145,24 +145,30 @@ export default async function ProductPage({ params }: Params) {
               availability: inStock ? 'https://schema.org/InStock' : undefined,
               itemCondition: condition,
               seller: { '@id': `${siteUrl}/#organization` },
-              // From the Shipping & Delivery Policy and the owner's flat US rate.
-              shippingDetails: {
-                '@type': 'OfferShippingDetails',
-                shippingRate: {
-                  '@type': 'MonetaryAmount',
-                  value: FLAT_DELIVERY_FEE.toFixed(2),
-                  currency: 'USD',
+              // From the Shipping & Delivery Policy: flat US delivery and
+              // free delivery to the nine confirmed international markets.
+              shippingDetails: [
+                {
+                  '@type': 'OfferShippingDetails',
+                  shippingRate: { '@type': 'MonetaryAmount', value: FLAT_DELIVERY_FEE.toFixed(2), currency: 'USD' },
+                  shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'US' },
+                  deliveryTime: {
+                    '@type': 'ShippingDeliveryTime',
+                    handlingTime: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 3, unitCode: 'DAY' },
+                    transitTime: { '@type': 'QuantitativeValue', minValue: 5, maxValue: 7, unitCode: 'DAY' },
+                  },
                 },
-                shippingDestination: {
-                  '@type': 'DefinedRegion',
-                  addressCountry: 'US',
-                },
-                deliveryTime: {
-                  '@type': 'ShippingDeliveryTime',
-                  handlingTime: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 3, unitCode: 'DAY' },
-                  transitTime: { '@type': 'QuantitativeValue', minValue: 5, maxValue: 7, unitCode: 'DAY' },
-                },
-              },
+                ...INTERNATIONAL_COUNTRY_CODES.map((addressCountry) => ({
+                  '@type': 'OfferShippingDetails',
+                  shippingRate: { '@type': 'MonetaryAmount', value: '0', currency: 'USD' },
+                  shippingDestination: { '@type': 'DefinedRegion', addressCountry },
+                  deliveryTime: {
+                    '@type': 'ShippingDeliveryTime',
+                    handlingTime: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 3, unitCode: 'DAY' },
+                    transitTime: { '@type': 'QuantitativeValue', minValue: 6, maxValue: 10, unitCode: 'DAY' },
+                  },
+                })),
+              ],
               hasMerchantReturnPolicy: { '@id': `${siteUrl}/#return-policy` },
             }
           : undefined,

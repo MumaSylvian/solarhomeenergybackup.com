@@ -79,7 +79,7 @@ export function BrandPage({ brand, page = 1 }: { brand: BrandSummary; page?: num
             <p>
               We list {products.length} {brand.name} products:{' '}
               {brand.categories.map((category) => `${category.label.toLowerCase()} (${category.count})`).join(', ')}.
-              Delivery within the United States is a flat $45 per order.
+              U.S. delivery is a flat $45 per order; shipping to nine international destinations is free.
             </p>
           )}
         </div>

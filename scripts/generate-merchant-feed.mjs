@@ -17,6 +17,14 @@ import fs from 'node:fs';
  * after the readiness verdict in docs/merchant-center-readiness.md is READY.
  */
 const siteUrl = 'https://www.solarhomeenergybackup.com';
+// Account shipping policy: $45 flat delivery in the US; free delivery to the
+// international destinations the owner confirmed on October 8, 2026.
+const merchantShipping = [
+  'US:::45.00 USD',
+  'GB:::0 USD', 'AU:::0 USD', 'DE:::0 USD', 'IT:::0 USD', 'KW:::0 USD',
+  'NL:::0 USD', 'PL:::0 USD', 'SA:::0 USD', 'AE:::0 USD',
+].join(',');
+const merchantAdditionalCountries = ['GB', 'AU', 'DE', 'IT', 'KW', 'NL', 'PL', 'SA', 'AE'].join(',');
 const productDir = new URL('../dist/client/products/', import.meta.url);
 const outDir = new URL('../dist/client/feeds/', import.meta.url);
 
@@ -121,7 +129,7 @@ const merchantIdFor = (slug) => {
   return `${normalized.slice(0, 39)}-${suffix}`;
 };
 
-const columns = ['id', 'title', 'description', 'link', 'image_link', 'additional_image_link', 'availability', 'price', 'brand', 'mpn', 'identifier_exists', 'condition', 'product_type', 'google_product_category', 'product_highlight', 'shipping'];
+const columns = ['id', 'title', 'description', 'link', 'image_link', 'additional_image_link', 'availability', 'price', 'brand', 'mpn', 'identifier_exists', 'condition', 'product_type', 'google_product_category', 'product_highlight', 'shipping', 'shopping_ads_additional_country'];
 const rows = [];
 const excluded = { noPrice: 0, noImage: 0, notInStock: 0, noBrand: 0, noProduct: 0 };
 
@@ -158,8 +166,11 @@ for (const file of fs.readdirSync(productDir).filter((name) => name.endsWith('.h
     String(googleCategoryFor(product.name, product.category)),
     // Multiple highlights are comma-separated; commas inside one become semicolons.
     highlightsFrom(html).map((item) => item.replace(/,/g, ';')).join(','),
-    // Flat US delivery from the Offer's shippingDetails (country:region:service:price).
-    offer.shippingDetails?.shippingRate?.value ? `US:::${offer.shippingDetails.shippingRate.value} USD` : '',
+    // Country-level delivery values (country:region:service:price). Prices
+    // remain in USD; Merchant Center can display converted currency per
+    // destination when the corresponding country is enabled in the feed.
+    merchantShipping,
+    merchantAdditionalCountries,
   ].map(clean).join('\t'));
 }
 
