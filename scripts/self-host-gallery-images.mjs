@@ -54,7 +54,7 @@ const queue = urls.filter((url) => !done.has(url)).sort((a, b) => {
   return mediaA - mediaB || a.localeCompare(b);
 });
 let failed = 0;
-const workers = Array.from({ length: 24 }, async () => {
+const workers = Array.from({ length: Number(process.env.GALLERY_CONCURRENCY ?? 24) }, async () => {
   while (queue.length) {
     const url = queue.shift();
     if (!url) return;
