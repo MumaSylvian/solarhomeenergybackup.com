@@ -24,7 +24,6 @@ const merchantShipping = [
   'GB:::0 USD', 'AU:::0 USD', 'DE:::0 USD', 'IT:::0 USD', 'KW:::0 USD',
   'NL:::0 USD', 'PL:::0 USD', 'SA:::0 USD', 'AE:::0 USD',
 ].join(',');
-const merchantAdditionalCountries = ['GB', 'AU', 'DE', 'IT', 'KW', 'NL', 'PL', 'SA', 'AE'].join(',');
 const productDir = new URL('../dist/client/products/', import.meta.url);
 const outDir = new URL('../dist/client/feeds/', import.meta.url);
 
@@ -129,7 +128,7 @@ const merchantIdFor = (slug) => {
   return `${normalized.slice(0, 39)}-${suffix}`;
 };
 
-const columns = ['id', 'title', 'description', 'link', 'image_link', 'additional_image_link', 'availability', 'price', 'brand', 'mpn', 'identifier_exists', 'condition', 'product_type', 'google_product_category', 'product_highlight', 'shipping', 'shopping_ads_additional_country'];
+const columns = ['id', 'title', 'description', 'link', 'image_link', 'additional_image_link', 'availability', 'price', 'brand', 'mpn', 'identifier_exists', 'condition', 'product_type', 'google_product_category', 'product_highlight', 'shipping'];
 const rows = [];
 const excluded = { noPrice: 0, noImage: 0, notInStock: 0, noBrand: 0, noProduct: 0 };
 
@@ -170,7 +169,6 @@ for (const file of fs.readdirSync(productDir).filter((name) => name.endsWith('.h
     // remain in USD; Merchant Center can display converted currency per
     // destination when the corresponding country is enabled in the feed.
     merchantShipping,
-    merchantAdditionalCountries,
   ].map(clean).join('\t'));
 }
 
