@@ -160,7 +160,10 @@ for (const file of fs.readdirSync(productDir).filter((name) => name.endsWith('.h
     description: merchantDescription(product.description || product.name).slice(0, 5000),
     link: `${siteUrl}/products/${slug}`,
     imageLink: images[0],
-    additionalImageLink: images.slice(1, 11).join(','),
+    // Only submit first-party gallery assets. External supplier URLs can be
+    // blocked or change without notice and are a common Merchant image issue;
+    // failed mirrors are intentionally omitted until they are self-hosted.
+    additionalImageLink: images.slice(1, 11).filter((image) => image.startsWith(siteUrl)).join(','),
     availability: 'in_stock',
     price: Number(offer.price),
     brand: clean(product.brand?.name),
