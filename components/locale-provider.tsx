@@ -2,10 +2,13 @@
 
 import { createContext, useContext, useEffect, useState } from 'react';
 import { googleLanguage, setTranslationCookie, startTranslation } from '@/lib/translate';
+import { defaultMarket, formatMarketPrice, marketFor, type MarketCode, markets } from '@/lib/market';
 
 export const languages = [
-  { code: 'en', label: 'English' }, { code: 'fr', label: 'Français' }, { code: 'es', label: 'Español' },
-  { code: 'zh', label: '中文' }, { code: 'tl', label: 'Tagalog' }, { code: 'vi', label: 'Tiếng Việt' },
+  { code: 'en', label: 'English' }, { code: 'de', label: 'Deutsch' }, { code: 'it', label: 'Italiano' },
+  { code: 'ar', label: 'العربية' }, { code: 'nl', label: 'Nederlands' }, { code: 'pl', label: 'Polski' },
+  { code: 'fr', label: 'Français' }, { code: 'es', label: 'Español' }, { code: 'zh', label: '中文' },
+  { code: 'tl', label: 'Tagalog' }, { code: 'vi', label: 'Tiếng Việt' },
 ] as const;
 
 export type LanguageCode = (typeof languages)[number]['code'];
@@ -22,6 +25,11 @@ const copy = {
 
 /** Shown while a machine translation is active; written in each language so it reads before Google translates. */
 const translationNotice: Record<Exclude<LanguageCode, 'en'>, { text: string; action: string }> = {
+  de: { text: 'Diese Seite wird automatisch von Google übersetzt und kann Fehler enthalten. Für Preise, Produktinformationen und Richtlinien ist die englische Version maßgeblich.', action: 'Auf Englisch ansehen' },
+  it: { text: 'Questa pagina è tradotta automaticamente da Google e può contenere errori. Per prezzi, prodotti e condizioni fa fede la versione inglese.', action: 'Vedi in inglese' },
+  ar: { text: 'تتم ترجمة هذه الصفحة تلقائياً بواسطة Google وقد تحتوي على أخطاء. النسخة الإنجليزية هي المرجع للأسعار ومعلومات المنتجات والسياسات.', action: 'عرض باللغة الإنجليزية' },
+  nl: { text: 'Deze pagina wordt automatisch door Google vertaald en kan fouten bevatten. De Engelse versie geldt voor prijzen, productinformatie en beleid.', action: 'Bekijk in het Engels' },
+  pl: { text: 'Ta strona jest automatycznie tłumaczona przez Google i może zawierać błędy. W sprawach cen, produktów i zasad obowiązuje wersja angielska.', action: 'Zobacz po angielsku' },
   fr: { text: 'Cette page est traduite automatiquement par Google et peut contenir des erreurs. La version anglaise fait foi pour les prix, les informations produit et nos politiques.', action: 'Voir en anglais' },
   es: { text: 'Esta página se traduce automáticamente con Google y puede contener errores. La versión en inglés prevalece para precios, información de productos y nuestras políticas.', action: 'Ver en inglés' },
   zh: { text: '本页面由 Google 自动翻译，可能存在错误。价格、产品信息和我们的政策以英文版本为准。', action: '查看英文版' },
@@ -30,6 +38,7 @@ const translationNotice: Record<Exclude<LanguageCode, 'en'>, { text: string; act
 };
 
 const STORAGE_KEY = 'solarhome-language';
+const MARKET_STORAGE_KEY = 'solarhome-market';
 const isLanguage = (value: string | null | undefined): value is LanguageCode =>
   languages.some((language) => language.code === value);
 /** Where storage is blocked (some private modes), the translator's own cookie still carries the choice. */
@@ -47,21 +56,39 @@ const readSaved = (): LanguageCode | null => {
   }
 };
 
-type LocaleContextValue = { code: LanguageCode; setCode: (code: LanguageCode) => void; t: (key: TranslationKey) => string };
+type LocaleContextValue = {
+  code: LanguageCode;
+  setCode: (code: LanguageCode) => void;
+  market: ReturnType<typeof marketFor>;
+  setMarket: (code: MarketCode) => void;
+  formatPrice: (amount: number) => string;
+  t: (key: TranslationKey) => string;
+};
 const LocaleContext = createContext<LocaleContextValue | null>(null);
 
 export function LocaleProvider({ children }: { children: React.ReactNode }) {
   const [code, setCode] = useState<LanguageCode>('en');
+  const [marketCode, setMarketCode] = useState<MarketCode>(defaultMarket);
   useEffect(() => {
     const saved = readSaved() ?? 'en';
-    if (saved === 'en') {
-      // A leftover cookie would translate the page if the script ever loaded.
-      setTranslationCookie('en');
-      return;
-    }
+    const savedMarket = window.localStorage.getItem(MARKET_STORAGE_KEY) as MarketCode | null;
+    const queryMarket = new URLSearchParams(window.location.search).get('market') as MarketCode | null;
+    const browserLanguage = (navigator.language ?? '').toLowerCase();
+    const browserMarket = markets.find((market) => browserLanguage === market.locale.toLowerCase())
+      ?? markets.find((market) => browserLanguage.startsWith(`${market.language}-`));
+    const validQueryMarket = queryMarket && markets.some((market) => market.code === queryMarket) ? queryMarket : null;
+    const validSavedMarket = savedMarket && markets.some((market) => market.code === savedMarket) ? savedMarket : null;
+    const selectedMarket = validQueryMarket ?? validSavedMarket ?? browserMarket?.code ?? defaultMarket;
+    const selectedLanguage = validQueryMarket ? marketFor(selectedMarket).language as LanguageCode : saved;
     const timer = window.setTimeout(() => {
-      setCode(saved);
-      startTranslation(saved);
+      setMarketCode(selectedMarket);
+      if (selectedLanguage === 'en') {
+        // A leftover cookie would translate the page if the script ever loaded.
+        setTranslationCookie('en');
+      } else {
+        setCode(selectedLanguage);
+        startTranslation(selectedLanguage);
+      }
     }, 0);
     return () => window.clearTimeout(timer);
   }, []);
@@ -79,7 +106,22 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
     setTranslationCookie(nextCode);
     window.location.reload();
   };
-  const value = { code, setCode: chooseCode, t: (key: TranslationKey) => copy[key] };
+  const chooseMarket = (nextMarket: MarketCode) => {
+    try {
+      window.localStorage.setItem(MARKET_STORAGE_KEY, nextMarket);
+    } catch {
+      // The in-memory choice still applies for this render.
+    }
+    setMarketCode(nextMarket);
+    const nextLanguage = marketFor(nextMarket).language as LanguageCode;
+    if (nextLanguage !== code) {
+      try { window.localStorage.setItem(STORAGE_KEY, nextLanguage); } catch { /* cookie remains authoritative */ }
+      setTranslationCookie(nextLanguage);
+    }
+    window.location.reload();
+  };
+  const market = marketFor(marketCode);
+  const value = { code, setCode: chooseCode, market, setMarket: chooseMarket, formatPrice: (amount: number) => formatMarketPrice(amount, market), t: (key: TranslationKey) => copy[key] };
   const notice = code === 'en' ? null : translationNotice[code];
   return (
     <LocaleContext.Provider value={value}>

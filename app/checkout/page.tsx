@@ -22,13 +22,10 @@ import {
   PAYMENT_METHODS,
   deliveryFeeFor,
 } from '@/lib/commerce';
-
-const money = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD',
-});
+import { useLocale } from '@/components/locale-provider';
 
 export default function CheckoutPage() {
+  const { market, formatPrice } = useLocale();
   // Live cart, kept in step with other open tabs. null until the browser's
   // saved cart has been read, so a full cart never flashes "empty".
   const cart = useSyncExternalStore(subscribeToCart, cartSnapshot, () => null);
@@ -95,7 +92,7 @@ export default function CheckoutPage() {
                   <span translate="no">
                     {product.retailPrice == null
                       ? 'Price confirmed at review'
-                      : money.format(product.retailPrice * quantity)}{' '}
+                    : formatPrice(product.retailPrice * quantity)}{' '}
                     <button
                       className="restart-button"
                       type="button"
@@ -117,15 +114,15 @@ export default function CheckoutPage() {
             <dl>
               <div>
                 <dt>Items subtotal</dt>
-                <dd translate="no">{money.format(subtotal)}</dd>
+                <dd translate="no">{formatPrice(subtotal)}</dd>
               </div>
               <div>
                 <dt>Delivery</dt>
-                <dd translate="no">{money.format(deliveryFeeFor(entries.length))}</dd>
+                <dd translate="no">{formatPrice(deliveryFeeFor(entries.length, market.country))}</dd>
               </div>
               <div className="total">
                 <dt>Total before tax</dt>
-                <dd translate="no">{money.format(subtotal + deliveryFeeFor(entries.length))}</dd>
+                <dd translate="no">{formatPrice(subtotal + deliveryFeeFor(entries.length, market.country))}</dd>
               </div>
             </dl>
             {unpriced && (

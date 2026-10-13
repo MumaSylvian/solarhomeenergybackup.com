@@ -400,3 +400,4 @@ p{text-wrap:pretty}
   .planning-panel>div>p:not(.eyebrow){font-size:16px;line-height:1.5}
   .resource-grid p{font-size:15px;line-height:1.5}
 }
+.language-menu-heading{padding:8px 13px 5px;color:#6f8499;font-size:10px;font-weight:850;letter-spacing:.08em;text-transform:uppercase;border-top:1px solid var(--line)}.language-menu-heading:first-child{border-top:0}

@@ -12,15 +12,12 @@ import {
   DELIVERY_SUMMARY,
   whatsappUrl,
 } from '@/lib/commerce';
-
-const money = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD',
-});
+import { useLocale } from '@/components/locale-provider';
 
 const emptyCart: StoredCart = {};
 
 export default function InvoicePage() {
+  const { market, formatPrice } = useLocale();
   const [message, setMessage] = useState('');
   // Live cart, kept in step with other open tabs; empty until read in the browser.
   const cart = useSyncExternalStore(subscribeToCart, cartSnapshot, () => emptyCart);
@@ -60,7 +57,7 @@ export default function InvoicePage() {
     );
     const items = cartItems.map(
       ({ product, quantity }) =>
-        `• ${product.name} (${product.brand}) × ${quantity}${product.retailPrice ? ` — $${product.retailPrice.toFixed(2)} each` : ''}`,
+        `• ${product.name} (${product.brand}) × ${quantity}${product.retailPrice ? ` — ${formatPrice(product.retailPrice)} each` : ''}`,
     );
     const details = [
       'Hello SolarHome Energy Backup, I would like to request an invoice.',
@@ -83,9 +80,9 @@ export default function InvoicePage() {
       ...(items.length
         ? [
             '',
-            `Merchandise subtotal: ${money.format(subtotal)}`,
-            `Delivery (flat, US): ${money.format(deliveryFeeFor(cartItems.length))}`,
-            `Total before tax: ${money.format(subtotal + deliveryFeeFor(cartItems.length))}`,
+            `Merchandise subtotal: ${formatPrice(subtotal)}`,
+            `Delivery (${market.label}): ${formatPrice(deliveryFeeFor(cartItems.length, market.country))}`,
+            `Total before tax: ${formatPrice(subtotal + deliveryFeeFor(cartItems.length, market.country))}`,
           ]
         : []),
     ]
@@ -204,15 +201,15 @@ export default function InvoicePage() {
               <dl className="invoice-summary">
                 <div>
                   <dt>Items subtotal</dt>
-                  <dd translate="no">{money.format(subtotal)}</dd>
+                  <dd translate="no">{formatPrice(subtotal)}</dd>
                 </div>
                 <div>
                   <dt>Delivery</dt>
-                  <dd translate="no">{money.format(deliveryFeeFor(items.length))}</dd>
+                  <dd translate="no">{formatPrice(deliveryFeeFor(items.length, market.country))}</dd>
                 </div>
                 <div className="total">
                   <dt>Total before tax</dt>
-                  <dd translate="no">{money.format(subtotal + deliveryFeeFor(items.length))}</dd>
+                  <dd translate="no">{formatPrice(subtotal + deliveryFeeFor(items.length, market.country))}</dd>
                 </div>
               </dl>
               <p className="notice">{DELIVERY_SUMMARY}</p>

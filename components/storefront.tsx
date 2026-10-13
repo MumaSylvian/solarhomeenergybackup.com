@@ -25,11 +25,6 @@ import {
   discountPercentFor,
 } from '@/lib/commerce';
 
-const money = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD',
-});
-
 export type ProductPreview = {
   id: string;
   slug: string;
@@ -368,7 +363,7 @@ export function ProductCard({
   inStock?: boolean;
   add?: (product: ProductPreview) => void;
 }) {
-  const { t } = useLocale();
+  const { t, formatPrice } = useLocale();
   const imageCandidates = [
     ...new Set(
       // A 480px copy first; the originals follow as fallbacks if it fails.
@@ -451,10 +446,10 @@ export function ProductCard({
         )}
         {retailPrice !== null && retailPrice !== undefined ? (
           <p className="product-price">
-            <span>{money.format(retailPrice)}</span>
+            <span>{formatPrice(retailPrice)}</span>
             {SHOW_REFERENCE_PRICES &&
               sourcePrice !== null &&
-              sourcePrice !== undefined && <del>{money.format(sourcePrice)}</del>}
+              sourcePrice !== undefined && <del>{formatPrice(sourcePrice)}</del>}
             {SHOW_REFERENCE_PRICES && discount > 0 && (
               <small>Save {discount}%</small>
             )}

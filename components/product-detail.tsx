@@ -21,11 +21,6 @@ import {
   whatsappUrl,
 } from '@/lib/commerce';
 
-const money = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD',
-});
-
 /**
  * Receives the product without supplier records (they would be serialized
  * into the page); stock status is computed on the server and passed in.
@@ -54,7 +49,7 @@ export function ProductDetail({
   /** Server-rendered sections shown at the end of the page (related products). */
   children?: ReactNode;
 }) {
-  const { t } = useLocale();
+  const { t, formatPrice } = useLocale();
   // Counts adds on this page so repeated clicks are visibly acknowledged.
   const [addedCount, setAddedCount] = useState(0);
   const add = () => {
@@ -123,13 +118,13 @@ export function ProductDetail({
           <div className="detail-price">
             <strong>
               {product.retailPrice !== null && product.retailPrice !== undefined
-                ? money.format(product.retailPrice)
+                ? formatPrice(product.retailPrice)
                 : t('requestPricing')}
             </strong>
             {SHOW_REFERENCE_PRICES &&
               product.sourcePrice !== null &&
               product.sourcePrice !== undefined && (
-                <del>{money.format(product.sourcePrice)}</del>
+                <del>{formatPrice(product.sourcePrice)}</del>
               )}
             {SHOW_REFERENCE_PRICES && discount > 0 && (
               <small>Save {discount}%</small>
@@ -158,7 +153,7 @@ export function ProductDetail({
             </span>
             <span>
               <ShoppingCart size={16} />
-              <b>Flat ${FLAT_DELIVERY_FEE} US delivery</b>
+              <b>US delivery {formatPrice(FLAT_DELIVERY_FEE)}</b>
               <small>
                 Processing {PROCESSING_TIME}; delivery {DELIVERY_ESTIMATE}
               </small>

@@ -43,7 +43,7 @@ const categoryRank = (category: string) => {
 };
 
 export function ShopCatalog({ catalog }: { catalog: ShopItem[] }) {
-  const { t } = useLocale();
+  const { t, market } = useLocale();
   const categoryParam = useQueryParam('category');
   const searchParam = useQueryParam('search');
   const [query, setQuery] = useState(searchParam);
@@ -122,7 +122,7 @@ export function ShopCatalog({ catalog }: { catalog: ShopItem[] }) {
           <p>
             Browse {catalog.length.toLocaleString()} products from{' '}
             {brands.length} recognized brands, with specifications and
-            prices shown in US dollars.
+            prices shown in {market.currency} for {market.label.split(' · ')[0]}.
           </p>
         </div>
         <div className="hub-stats" aria-label="Catalog commitments">
