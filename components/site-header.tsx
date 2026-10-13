@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useEffect, useRef, useState, useSyncExternalStore, type RefObject } from 'react';
 import { ChevronDown, Globe2, Menu, Search, ShoppingCart } from 'lucide-react';
 import { languages, useLocale } from '@/components/locale-provider';
+import { markets } from '@/lib/market';
 import { cartItemCount, subscribeToCart } from '@/lib/cart';
 import { categoryGroups } from '@/lib/catalog/categories';
 
@@ -82,7 +83,7 @@ export function SiteHeader() {
       document.documentElement.classList.remove('menu-open');
     };
   }, [mobileOpen]);
-  const { code, setCode, t } = useLocale();
+  const { code, setCode, market, setMarket, t } = useLocale();
   const language = languages.find((item) => item.code === code) ?? languages[0];
   const pickerRef = useRef<HTMLDivElement>(null);
   const categoriesRef = useRef<HTMLDetailsElement>(null);
@@ -213,6 +214,19 @@ export function SiteHeader() {
             </button>
             {languageOpen && (
               <div className="language-menu" role="menu">
+                <small className="language-menu-heading">Market and currency</small>
+                {markets.map((item) => (
+                  <button
+                    key={item.code}
+                    type="button"
+                    role="menuitem"
+                    className={item.code === market.code ? 'selected' : ''}
+                    onClick={() => setMarket(item.code)}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+                <small className="language-menu-heading">Language</small>
                 {languages.map((item) => (
                   <button
                     key={item.code}

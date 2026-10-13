@@ -15,7 +15,10 @@ declare global {
 }
 
 /** Site language code → Google Translate code. */
-export const googleLanguage = { en: 'en', fr: 'fr', es: 'es', zh: 'zh-CN', tl: 'tl', vi: 'vi' } as const;
+export const googleLanguage = {
+  en: 'en', de: 'de', it: 'it', ar: 'ar', nl: 'nl', pl: 'pl',
+  fr: 'fr', es: 'es', zh: 'zh-CN', tl: 'tl', vi: 'vi',
+} as const;
 type SiteLanguage = keyof typeof googleLanguage;
 
 const cookieDomains = () => {

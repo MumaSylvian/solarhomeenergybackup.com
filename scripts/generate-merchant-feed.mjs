@@ -17,13 +17,21 @@ import fs from 'node:fs';
  * after the readiness verdict in docs/merchant-center-readiness.md is READY.
  */
 const siteUrl = 'https://www.solarhomeenergybackup.com';
-// Account shipping policy: $45 flat delivery in the US; free delivery to the
-// international destinations the owner confirmed on October 8, 2026.
-const merchantShipping = [
-  'US:::45.00 USD',
-  'GB:::0 USD', 'AU:::0 USD', 'DE:::0 USD', 'IT:::0 USD', 'KW:::0 USD',
-  'NL:::0 USD', 'PL:::0 USD', 'SA:::0 USD', 'AE:::0 USD',
-].join(',');
+// Feed markets. Source catalog prices are USD; these fixed, versioned rates
+// match the storefront market selector and are refreshed before a commercial
+// price update. Gulf currencies follow their USD pegs.
+const markets = [
+  { code: 'US', language: 'en', locale: 'en-US', currency: 'USD', rate: 1, shipping: 'US:::45.00 USD', label: 'United States' },
+  { code: 'GB', language: 'en', locale: 'en-GB', currency: 'GBP', rate: 0.7555, shipping: 'GB:::0 GBP', label: 'United Kingdom' },
+  { code: 'AU', language: 'en', locale: 'en-AU', currency: 'AUD', rate: 1.4328, shipping: 'AU:::0 AUD', label: 'Australia' },
+  { code: 'DE', language: 'de', locale: 'de-DE', currency: 'EUR', rate: 0.8944, shipping: 'DE:::0 EUR', label: 'Germany' },
+  { code: 'IT', language: 'it', locale: 'it-IT', currency: 'EUR', rate: 0.8944, shipping: 'IT:::0 EUR', label: 'Italy' },
+  { code: 'KW', language: 'ar', locale: 'ar-KW', currency: 'KWD', rate: 0.3067, shipping: 'KW:::0 KWD', label: 'الكويت' },
+  { code: 'NL', language: 'nl', locale: 'nl-NL', currency: 'EUR', rate: 0.8944, shipping: 'NL:::0 EUR', label: 'Netherlands' },
+  { code: 'PL', language: 'pl', locale: 'pl-PL', currency: 'PLN', rate: 3.9200, shipping: 'PL:::0 PLN', label: 'Polska' },
+  { code: 'SA', language: 'ar', locale: 'ar-SA', currency: 'SAR', rate: 3.75, shipping: 'SA:::0 SAR', label: 'السعودية' },
+  { code: 'AE', language: 'ar', locale: 'ar-AE', currency: 'AED', rate: 3.6725, shipping: 'AE:::0 AED', label: 'الإمارات العربية المتحدة' },
+];
 const productDir = new URL('../dist/client/products/', import.meta.url);
 const outDir = new URL('../dist/client/feeds/', import.meta.url);
 
@@ -146,32 +154,50 @@ for (const file of fs.readdirSync(productDir).filter((name) => name.endsWith('.h
   if (!product.brand?.name) { excluded.noBrand++; continue; }
 
   const mpn = clean(product.mpn);
-  rows.push([
-    merchantIdFor(slug),
-    clean(product.name).slice(0, 150),
-    merchantDescription(product.description || product.name).slice(0, 5000),
-    `${siteUrl}/products/${slug}`,
-    images[0],
-    images.slice(1, 11).join(','),
-    'in_stock',
-    `${offer.price} ${offer.priceCurrency}`,
-    clean(product.brand?.name),
+  rows.push({
+    id: merchantIdFor(slug),
+    title: clean(product.name).slice(0, 150),
+    description: merchantDescription(product.description || product.name).slice(0, 5000),
+    link: `${siteUrl}/products/${slug}`,
+    imageLink: images[0],
+    additionalImageLink: images.slice(1, 11).join(','),
+    availability: 'in_stock',
+    price: Number(offer.price),
+    brand: clean(product.brand?.name),
     mpn,
     // No GTINs in the catalog. brand + mpn identify the item; if neither
     // exists, say so rather than inventing one.
-    mpn && product.brand?.name ? '' : 'no',
-    conditionName(offer.itemCondition || product.itemCondition),
-    clean(product.category),
-    String(googleCategoryFor(product.name, product.category)),
+    identifierExists: mpn && product.brand?.name ? '' : 'no',
+    condition: conditionName(offer.itemCondition || product.itemCondition),
+    productType: clean(product.category),
+    googleProductCategory: String(googleCategoryFor(product.name, product.category)),
     // Multiple highlights are comma-separated; commas inside one become semicolons.
-    highlightsFrom(html).map((item) => item.replace(/,/g, ';')).join(','),
+    productHighlight: highlightsFrom(html).map((item) => item.replace(/,/g, ';')).join(','),
     // Country-level delivery values (country:region:service:price). Prices
     // remain in USD; Merchant Center can display converted currency per
     // destination when the corresponding country is enabled in the feed.
-    merchantShipping,
-  ].map(clean).join('\t'));
+  });
 }
 
 fs.mkdirSync(outDir, { recursive: true });
-fs.writeFileSync(new URL('google-merchant-products.tsv', outDir), [columns.join('\t'), ...rows].join('\n') + '\n');
-console.log(`Merchant Center feed: ${rows.length} items; excluded ${JSON.stringify(excluded)}.`);
+const convert = (amount, rate) => Math.round(amount * rate * 100) / 100;
+const localizedDescription = (description, market) => {
+  const prefix = market.language === 'ar'
+    ? `منتج من SolarHome Energy Backup في فئة الطاقة والمعدات. ${description}`
+    : description;
+  return clean(prefix).slice(0, 5000);
+};
+const renderRows = (market) => rows.map((row) => [
+  row.id, row.title, localizedDescription(row.description, market), `${row.link}?market=${market.code}`,
+  row.imageLink, row.additionalImageLink, row.availability, `${convert(row.price, market.rate).toFixed(2)} ${market.currency}`,
+  row.brand, row.mpn, row.identifierExists, row.condition, row.productType, row.googleProductCategory, row.productHighlight, market.shipping,
+].map(clean).join('\t'));
+for (const market of markets) {
+  const filename = `google-merchant-products-${market.code.toLowerCase()}.tsv`;
+  fs.writeFileSync(new URL(filename, outDir), [columns.join('\t'), ...renderRows(market)].join('\n') + '\n');
+}
+// Keep the historical URL as the US source so existing integrations do not
+// break while each country is migrated to its own source in Merchant Center.
+fs.writeFileSync(new URL('google-merchant-products.tsv', outDir), [columns.join('\t'), ...renderRows(markets[0])].join('\n') + '\n');
+fs.writeFileSync(new URL('google-merchant-feed-manifest.json', outDir), JSON.stringify({ generatedAt: new Date().toISOString(), sourceCurrency: 'USD', products: rows.length, markets: markets.map(({ code, language, currency, label }) => ({ code, language, currency, label, file: `google-merchant-products-${code.toLowerCase()}.tsv` })) }, null, 2) + '\n');
+console.log(`Merchant Center feeds: ${rows.length} items × ${markets.length} markets; excluded ${JSON.stringify(excluded)}.`);
