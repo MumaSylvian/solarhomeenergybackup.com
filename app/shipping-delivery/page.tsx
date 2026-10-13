@@ -5,7 +5,7 @@ import { pageMetadata } from '@/lib/seo';
 export const metadata = pageMetadata({
   title: 'Shipping & Delivery Policy',
   description:
-    'We ship to all 50 states and nine international destinations. U.S. delivery is $45 per order; international shipping is free with delivery in about 6–10 business days after dispatch.',
+    'We ship to all 50 states and nine international destinations. Orders are generally processed in 1–3 business days before dispatch; international carrier transit is free and typically takes 6–10 business days after dispatch.',
   path: '/shipping-delivery',
 });
 
@@ -33,7 +33,7 @@ export default function ShippingDeliveryPage() {
           title: '2. International shipping',
           body: [
             'We currently ship to the United Kingdom, Australia, Germany, Italy, Kuwait, Netherlands, Poland, Saudi Arabia, and United Arab Emirates.',
-            'International shipping is free. Typical delivery is approximately 6–10 business days after dispatch, subject to customs clearance and carrier availability.',
+            'International shipping is free. Orders are generally processed in 1–3 business days before dispatch, then carrier transit typically takes approximately 6–10 business days after dispatch, subject to customs clearance and carrier availability.',
             'International customers are responsible for applicable:',
           ],
           items: ['Customs duties.', 'Import taxes.', 'Brokerage charges.', 'Government assessments.', 'Other destination-country import charges.'],
@@ -66,7 +66,7 @@ export default function ShippingDeliveryPage() {
           title: '6. Delivery estimates',
           body: [
             'U.S. delivery is typically approximately 5–7 business days after dispatch.',
-            'International delivery is typically approximately 6–10 business days after dispatch.',
+            'International carrier transit is typically approximately 6–10 business days after dispatch. Including the normal 1–3 business-day processing period before dispatch, the overall order-to-delivery estimate is approximately 7–13 business days.',
             'Delivery estimates are not guaranteed arrival dates unless Solar Home Energy Backup expressly provides a guaranteed delivery commitment in writing.',
           ],
         },

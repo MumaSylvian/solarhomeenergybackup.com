@@ -4,6 +4,7 @@ import { correctRatings } from './spec-fix';
 import { cleanProductContent } from './content-clean';
 import { correctCategory } from './category-fix';
 import { selfHostedImages } from './self-hosted-images.generated';
+import { selfHostedGalleryImages } from './self-hosted-gallery.generated';
 import { selfHostedCatalogImages } from './self-hosted-catalog.generated';
 
 /**
@@ -26,8 +27,12 @@ const resolveCatalogImageUrl = (imageUrl: string | null | undefined) =>
       // other LFS photos come from GitHub's LFS media endpoint.
       selfHostedCatalogImages.has(imageUrl.slice('/catalog/'.length))
       ? `/media/catalog/${imageUrl.slice('/catalog/'.length)}`
+      : selfHostedGalleryImages[catalogMediaBaseUrl + imageUrl.slice('/catalog/'.length)]
+        ? `/media/gallery/${selfHostedGalleryImages[catalogMediaBaseUrl + imageUrl.slice('/catalog/'.length)]}`
       : `${catalogMediaBaseUrl}${imageUrl.slice('/catalog/'.length)}`
-    : imageUrl && selfHostedImages[imageUrl]
+    : imageUrl && selfHostedGalleryImages[imageUrl]
+      ? `/media/gallery/${selfHostedGalleryImages[imageUrl]}`
+      : imageUrl && selfHostedImages[imageUrl]
       ? `/media/products/${selfHostedImages[imageUrl]}`
       : (imageUrl ?? null);
 
