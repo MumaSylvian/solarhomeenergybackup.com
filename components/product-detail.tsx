@@ -12,7 +12,6 @@ import { useLocale } from '@/components/locale-provider';
 import { ProductGallery } from '@/components/product-gallery';
 import {
   DELIVERY_ESTIMATE,
-  FLAT_DELIVERY_FEE,
   SHOW_REFERENCE_PRICES,
   PROCESSING_TIME,
   WARRANTY_SHORT,
@@ -153,7 +152,7 @@ export function ProductDetail({
             </span>
             <span>
               <ShoppingCart size={16} />
-              <b>US delivery {formatPrice(FLAT_DELIVERY_FEE)}</b>
+              <b>Free shipping</b>
               <small>
                 Processing {PROCESSING_TIME}; delivery {DELIVERY_ESTIMATE}
               </small>
@@ -163,6 +162,9 @@ export function ProductDetail({
             <a href="/shipping-delivery">Shipping & delivery</a>
             <a href="/returns">30-day returns</a>
             <a href="/warranty">Warranty</a>
+          </p>
+          <p className="product-compliance-note">
+            Check local voltage, plug, installation, and product-certification requirements before ordering. We confirm compatibility and availability for your destination before payment.
           </p>
           {product.retailPrice != null ? (
             <button className="button primary" type="button" onClick={add}>

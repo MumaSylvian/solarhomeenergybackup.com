@@ -89,15 +89,15 @@ export default function TermsPage() {
         {
           title: '9. Delivery fees',
           body: [
-            'Delivery within the United States is a flat $45 per order.',
-            'International delivery charges are calculated based on the destination and will be disclosed before payment.',
+            'Shipping is free to the United States, United Kingdom, Canada, Australia, and France.',
+            'Customers are responsible for applicable VAT, customs duties, and import charges in the destination country.',
           ],
         },
         {
           title: '10. Shipping',
           body: [
-            'Orders are generally processed within 1–3 business days after payment.',
-            'Typical delivery is approximately 5–7 business days after dispatch.',
+            'Orders are generally handled within 1 business day after payment.',
+            'Typical delivery is approximately 2–7 business days after dispatch.',
             'Shipping and delivery are governed by our Shipping & Delivery Policy.',
           ],
         },

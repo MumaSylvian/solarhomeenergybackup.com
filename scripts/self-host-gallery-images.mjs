@@ -20,6 +20,12 @@ const previous = fs.existsSync(mapFile)
   ? JSON.parse(fs.readFileSync(mapFile, 'utf8').match(/= (\{[\s\S]*\});/)?.[1] ?? '{}')
   : {};
 const done = new Map(Object.entries(previous));
+// `--repair-all` repairs files that were mapped by an earlier interrupted run
+// but never made it into the checkout. This is intentionally opt-in so normal
+// builds only mirror the active Merchant feed.
+const allUrls = process.argv.includes('--repair-all')
+  ? [...new Set([...urls, ...Object.keys(previous)])].sort()
+  : urls;
 fs.mkdirSync(outDir, { recursive: true });
 
 const extensionFor = (url, type) => {
@@ -32,8 +38,12 @@ const extensionFor = (url, type) => {
 };
 const fileFor = (url, type) => `${crypto.createHash('sha256').update(url).digest('hex').slice(0, 24)}${extensionFor(url, type)}`;
 // Recover successful downloads if a long run is interrupted before its map is written.
-for (const url of urls) {
-  if (done.has(url)) continue;
+for (const url of allUrls) {
+  if (done.has(url)) {
+    const mapped = done.get(url);
+    if (mapped && fs.existsSync(new URL(mapped, outDir)) && fs.statSync(new URL(mapped, outDir)).size > 1000) continue;
+    done.delete(url);
+  }
   for (const ext of ['.jpg', '.png', '.webp', '.gif', '.bmp', '.tiff']) {
     const name = `${crypto.createHash('sha256').update(url).digest('hex').slice(0, 24)}${ext}`;
     if (fs.existsSync(new URL(name, outDir)) && fs.statSync(new URL(name, outDir)).size > 1000) {
@@ -48,7 +58,7 @@ if (process.argv.includes('--map-only')) {
   console.log(`Mapped ${done.size}/${urls.length} already-downloaded gallery images.`);
   process.exit(0);
 }
-const queue = urls.filter((url) => !done.has(url)).sort((a, b) => {
+const queue = allUrls.filter((url) => !done.has(url)).sort((a, b) => {
   const mediaA = a.includes('media.githubusercontent.com') ? 0 : 1;
   const mediaB = b.includes('media.githubusercontent.com') ? 0 : 1;
   return mediaA - mediaB || a.localeCompare(b);
@@ -87,4 +97,4 @@ fs.writeFileSync(
     `/** Supplier gallery URL → first-party file in public/media/gallery/. */\n` +
     `export const selfHostedGalleryImages: Record<string, string> = ${JSON.stringify(entries, null, 1)};\n`,
 );
-console.log(`Self-hosted ${done.size}/${urls.length} gallery images; ${failed} failed.`);
+console.log(`Self-hosted ${done.size}/${allUrls.length} gallery images; ${failed} failed.`);

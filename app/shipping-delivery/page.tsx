@@ -5,7 +5,7 @@ import { pageMetadata } from '@/lib/seo';
 export const metadata = pageMetadata({
   title: 'Shipping & Delivery Policy',
   description:
-    'We ship to all 50 states and nine international destinations. Orders are generally processed in 1–3 business days before dispatch; international carrier transit is free and typically takes 6–10 business days after dispatch.',
+    'We ship to all 50 states and the United Kingdom, Canada, Australia, and France. Orders are handled within 1 business day before dispatch; carrier transit is free and typically takes 2–7 business days after dispatch.',
   path: '/shipping-delivery',
 });
 
@@ -32,8 +32,8 @@ export default function ShippingDeliveryPage() {
         {
           title: '2. International shipping',
           body: [
-            'We currently ship to the United Kingdom, Australia, Germany, Italy, Kuwait, Netherlands, Poland, Saudi Arabia, and United Arab Emirates.',
-            'International shipping is free. Orders are generally processed in 1–3 business days before dispatch, then carrier transit typically takes approximately 6–10 business days after dispatch, subject to customs clearance and carrier availability.',
+            'We currently ship to the United Kingdom, Canada, Australia, and France.',
+            'Shipping is free. Orders are handled within 1 business day before dispatch, then carrier transit typically takes 2–7 business days after dispatch, subject to customs clearance and carrier availability.',
             'International customers are responsible for applicable:',
           ],
           items: ['Customs duties.', 'Import taxes.', 'Brokerage charges.', 'Government assessments.', 'Other destination-country import charges.'],
@@ -51,22 +51,20 @@ export default function ShippingDeliveryPage() {
         {
           title: '4. Delivery fees',
           body: [
-            'Delivery within the United States is a flat $45 per order.',
-            'Shipping to the nine international destinations listed in this policy is free.',
+            'Shipping to the United States, United Kingdom, Canada, Australia, and France is free.',
             'Any customs, tax, brokerage, or government charges are separate from shipping and are paid by the customer.',
           ],
         },
         {
           title: '5. Order processing',
-          body: ['Orders are generally processed within 1–3 business days after payment has been received.', 'Processing may include:'],
+          body: ['Orders are generally handled within 1 business day after payment has been received.', 'Processing may include:'],
           items: ['Payment confirmation.', 'Order verification.', 'Product preparation.', 'Freight coordination.', 'Shipping documentation.', 'Dispatch scheduling.'],
           after: 'Weekends and recognized holidays may affect processing times.',
         },
         {
           title: '6. Delivery estimates',
           body: [
-            'U.S. delivery is typically approximately 5–7 business days after dispatch.',
-            'International carrier transit is typically approximately 6–10 business days after dispatch. Including the normal 1–3 business-day processing period before dispatch, the overall order-to-delivery estimate is approximately 7–13 business days.',
+            'Carrier transit to all supported markets is typically approximately 2–7 business days after dispatch. Including the normal 1 business-day handling period before dispatch, the overall order-to-delivery estimate is approximately 3–8 business days.',
             'Delivery estimates are not guaranteed arrival dates unless Solar Home Energy Backup expressly provides a guaranteed delivery commitment in writing.',
           ],
         },

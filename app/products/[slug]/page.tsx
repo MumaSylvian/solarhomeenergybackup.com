@@ -145,8 +145,8 @@ export default async function ProductPage({ params }: Params) {
               availability: inStock ? 'https://schema.org/InStock' : undefined,
               itemCondition: condition,
               seller: { '@id': `${siteUrl}/#organization` },
-              // From the Shipping & Delivery Policy: flat US delivery and
-              // free delivery to the nine confirmed international markets.
+              // From the Shipping & Delivery Policy: free delivery to every
+              // supported market, with one-day handling and 2–7-day transit.
               shippingDetails: [
                 {
                   '@type': 'OfferShippingDetails',
@@ -154,8 +154,8 @@ export default async function ProductPage({ params }: Params) {
                   shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'US' },
                   deliveryTime: {
                     '@type': 'ShippingDeliveryTime',
-                    handlingTime: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 3, unitCode: 'DAY' },
-                    transitTime: { '@type': 'QuantitativeValue', minValue: 5, maxValue: 7, unitCode: 'DAY' },
+                    handlingTime: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 1, unitCode: 'DAY' },
+                    transitTime: { '@type': 'QuantitativeValue', minValue: 2, maxValue: 7, unitCode: 'DAY' },
                   },
                 },
                 ...INTERNATIONAL_COUNTRY_CODES.map((addressCountry) => ({
@@ -164,8 +164,8 @@ export default async function ProductPage({ params }: Params) {
                   shippingDestination: { '@type': 'DefinedRegion', addressCountry },
                   deliveryTime: {
                     '@type': 'ShippingDeliveryTime',
-                    handlingTime: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 3, unitCode: 'DAY' },
-                    transitTime: { '@type': 'QuantitativeValue', minValue: 6, maxValue: 10, unitCode: 'DAY' },
+                    handlingTime: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 1, unitCode: 'DAY' },
+                    transitTime: { '@type': 'QuantitativeValue', minValue: 2, maxValue: 7, unitCode: 'DAY' },
                   },
                 })),
               ],

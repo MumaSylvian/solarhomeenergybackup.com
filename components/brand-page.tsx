@@ -79,7 +79,7 @@ export function BrandPage({ brand, page = 1 }: { brand: BrandSummary; page?: num
             <p>
               We list {products.length} {brand.name} products:{' '}
               {brand.categories.map((category) => `${category.label.toLowerCase()} (${category.count})`).join(', ')}.
-              U.S. delivery is a flat $45 per order; shipping to nine international destinations is free.
+              Shipping is free to the United States, United Kingdom, Canada, Australia, and France. Orders are handled within 1 business day and usually arrive 2–7 business days after dispatch.
             </p>
           )}
         </div>

@@ -15,19 +15,18 @@ export function whatsappUrl(message: string) {
  * 2026). Checkout, invoice, product pages, and the header read these, so they
  * always match the published policy.
  */
-export const PROCESSING_TIME = '1–3 business days after payment';
-export const DELIVERY_ESTIMATE = 'about 5–7 business days after dispatch within the United States';
-export const INTERNATIONAL_DELIVERY_ESTIMATE = 'about 6–10 business days after dispatch';
-/** Owner-confirmed on 2026-09-26: flat $45 delivery per order within the United States. */
-export const FLAT_DELIVERY_FEE = 45;
+export const PROCESSING_TIME = '1 business day after payment';
+export const DELIVERY_ESTIMATE = 'about 2–7 business days after dispatch';
+export const INTERNATIONAL_DELIVERY_ESTIMATE = 'about 2–7 business days after dispatch';
+/** Owner-confirmed: shipping is free for the supported storefront markets. */
+export const FLAT_DELIVERY_FEE = 0;
 export const INTERNATIONAL_DELIVERY_FEE = 0;
-export const INTERNATIONAL_COUNTRY_CODES = ['GB', 'AU', 'DE', 'IT', 'KW', 'NL', 'PL', 'SA', 'AE'] as const;
+export const INTERNATIONAL_COUNTRY_CODES = ['GB', 'CA', 'AU', 'FR'] as const;
 export const INTERNATIONAL_COUNTRY_NAMES = {
-  GB: 'United Kingdom', AU: 'Australia', DE: 'Germany', IT: 'Italy', KW: 'Kuwait',
-  NL: 'Netherlands', PL: 'Poland', SA: 'Saudi Arabia', AE: 'United Arab Emirates',
+  GB: 'United Kingdom', CA: 'Canada', AU: 'Australia', FR: 'France',
 } as const;
 export const DELIVERY_FEE_POLICY =
-  'Delivery within the United States is a flat $45 per order. Shipping to the United Kingdom, Australia, Germany, Italy, Kuwait, Netherlands, Poland, Saudi Arabia, and United Arab Emirates is free.';
+  'Shipping is free to the United States, United Kingdom, Canada, Australia, and France. Orders are handled within 1 business day and usually arrive 2–7 business days after dispatch.';
 
 /** Delivery charge by destination; international destinations ship free. */
 export const deliveryFeeFor = (itemCount: number, country = 'US') =>

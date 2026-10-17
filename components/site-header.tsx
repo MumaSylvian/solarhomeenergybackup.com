@@ -115,8 +115,8 @@ export function SiteHeader() {
   return (
     <>
       <div className="utility-bar">
-        <span>Ships to all 50 states + 9 countries</span>
-        <span className="utility-detail">Free international shipping · 6–10 days</span>
+        <span>Ships to all 50 states + United Kingdom, Canada, Australia & France</span>
+        <span className="utility-detail">Free shipping · 1-day handling · 2–7 days after dispatch</span>
         <a href="/support">Customer support</a>
         <a href="/system-finder">{t('utilityAction')}</a>
       </div>

@@ -21,16 +21,15 @@ const siteUrl = 'https://www.solarhomeenergybackup.com';
 // match the storefront market selector and are refreshed before a commercial
 // price update. Gulf currencies follow their USD pegs.
 const markets = [
-  { code: 'US', language: 'en', locale: 'en-US', currency: 'USD', rate: 1, shipping: 'US:::45.00 USD', label: 'United States' },
+  { code: 'US', language: 'en', locale: 'en-US', currency: 'USD', rate: 1, shipping: 'US:::0 USD', label: 'United States' },
   { code: 'GB', language: 'en', locale: 'en-GB', currency: 'GBP', rate: 0.7555, shipping: 'GB:::0 GBP', label: 'United Kingdom' },
+  { code: 'CA', language: 'en', locale: 'en-CA', currency: 'CAD', rate: 1.3650, shipping: 'CA:::0 CAD', label: 'Canada' },
   { code: 'AU', language: 'en', locale: 'en-AU', currency: 'AUD', rate: 1.4328, shipping: 'AU:::0 AUD', label: 'Australia' },
-  { code: 'DE', language: 'de', locale: 'de-DE', currency: 'EUR', rate: 0.8944, shipping: 'DE:::0 EUR', label: 'Germany' },
-  { code: 'IT', language: 'it', locale: 'it-IT', currency: 'EUR', rate: 0.8944, shipping: 'IT:::0 EUR', label: 'Italy' },
-  { code: 'KW', language: 'ar', locale: 'ar-KW', currency: 'KWD', rate: 0.3067, shipping: 'KW:::0 KWD', label: 'الكويت' },
-  { code: 'NL', language: 'nl', locale: 'nl-NL', currency: 'EUR', rate: 0.8944, shipping: 'NL:::0 EUR', label: 'Netherlands' },
-  { code: 'PL', language: 'pl', locale: 'pl-PL', currency: 'PLN', rate: 3.9200, shipping: 'PL:::0 PLN', label: 'Polska' },
-  { code: 'SA', language: 'ar', locale: 'ar-SA', currency: 'SAR', rate: 3.75, shipping: 'SA:::0 SAR', label: 'السعودية' },
-  { code: 'AE', language: 'ar', locale: 'ar-AE', currency: 'AED', rate: 3.6725, shipping: 'AE:::0 AED', label: 'الإمارات العربية المتحدة' },
+  // Keep the feed language English until every product description has been
+  // professionally reviewed in French. A mixed-language feed would be a
+  // Merchant Center language-mismatch risk; the storefront can still offer
+  // French UI translation separately.
+  { code: 'FR', language: 'en', locale: 'fr-FR', currency: 'EUR', rate: 0.8944, shipping: 'FR:::0 EUR', label: 'France' },
 ];
 const productDir = new URL('../dist/client/products/', import.meta.url);
 const outDir = new URL('../dist/client/feeds/', import.meta.url);
@@ -185,10 +184,7 @@ for (const file of fs.readdirSync(productDir).filter((name) => name.endsWith('.h
 fs.mkdirSync(outDir, { recursive: true });
 const convert = (amount, rate) => Math.round(amount * rate * 100) / 100;
 const localizedDescription = (description, market) => {
-  const prefix = market.language === 'ar'
-    ? `منتج من SolarHome Energy Backup في فئة الطاقة والمعدات. ${description}`
-    : description;
-  return clean(prefix).slice(0, 5000);
+  return clean(description).slice(0, 5000);
 };
 const renderRows = (market) => rows.map((row) => [
   row.id, row.title, localizedDescription(row.description, market), `${row.link}?market=${market.code}`,

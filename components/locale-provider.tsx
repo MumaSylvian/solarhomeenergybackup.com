@@ -5,10 +5,7 @@ import { googleLanguage, setTranslationCookie, startTranslation } from '@/lib/tr
 import { defaultMarket, formatMarketPrice, marketFor, type MarketCode, markets } from '@/lib/market';
 
 export const languages = [
-  { code: 'en', label: 'English' }, { code: 'de', label: 'Deutsch' }, { code: 'it', label: 'Italiano' },
-  { code: 'ar', label: 'العربية' }, { code: 'nl', label: 'Nederlands' }, { code: 'pl', label: 'Polski' },
-  { code: 'fr', label: 'Français' }, { code: 'es', label: 'Español' }, { code: 'zh', label: '中文' },
-  { code: 'tl', label: 'Tagalog' }, { code: 'vi', label: 'Tiếng Việt' },
+  { code: 'en', label: 'English' }, { code: 'fr', label: 'Français' },
 ] as const;
 
 export type LanguageCode = (typeof languages)[number]['code'];
@@ -24,7 +21,7 @@ const copy = {
 } as const;
 
 /** Shown while a machine translation is active; written in each language so it reads before Google translates. */
-const translationNotice: Record<Exclude<LanguageCode, 'en'>, { text: string; action: string }> = {
+const translationNotice: Record<string, { text: string; action: string }> = {
   de: { text: 'Diese Seite wird automatisch von Google übersetzt und kann Fehler enthalten. Für Preise, Produktinformationen und Richtlinien ist die englische Version maßgeblich.', action: 'Auf Englisch ansehen' },
   it: { text: 'Questa pagina è tradotta automaticamente da Google e può contenere errori. Per prezzi, prodotti e condizioni fa fede la versione inglese.', action: 'Vedi in inglese' },
   ar: { text: 'تتم ترجمة هذه الصفحة تلقائياً بواسطة Google وقد تحتوي على أخطاء. النسخة الإنجليزية هي المرجع للأسعار ومعلومات المنتجات والسياسات.', action: 'عرض باللغة الإنجليزية' },
