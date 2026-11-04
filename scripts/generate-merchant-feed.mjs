@@ -17,6 +17,9 @@ import fs from 'node:fs';
  * after the readiness verdict in docs/merchant-center-readiness.md is READY.
  */
 const siteUrl = 'https://www.solarhomeenergybackup.com';
+const frenchCopyFile = new URL('../lib/catalog/french-feed-copy.generated.json', import.meta.url);
+let frenchCopy = {};
+try { frenchCopy = JSON.parse(fs.readFileSync(frenchCopyFile, 'utf8')); } catch { /* generated on demand */ }
 // Feed markets. Source catalog prices are USD; these fixed, versioned rates
 // match the storefront market selector and are refreshed before a commercial
 // price update. Gulf currencies follow their USD pegs.
@@ -25,11 +28,7 @@ const markets = [
   { code: 'GB', language: 'en', locale: 'en-GB', currency: 'GBP', rate: 0.7555, shipping: 'GB:::0 GBP', label: 'United Kingdom' },
   { code: 'CA', language: 'en', locale: 'en-CA', currency: 'CAD', rate: 1.3650, shipping: 'CA:::0 CAD', label: 'Canada' },
   { code: 'AU', language: 'en', locale: 'en-AU', currency: 'AUD', rate: 1.4328, shipping: 'AU:::0 AUD', label: 'Australia' },
-  // Keep the feed language English until every product description has been
-  // professionally reviewed in French. A mixed-language feed would be a
-  // Merchant Center language-mismatch risk; the storefront can still offer
-  // French UI translation separately.
-  { code: 'FR', language: 'en', locale: 'fr-FR', currency: 'EUR', rate: 0.8944, shipping: 'FR:::0 EUR', label: 'France' },
+  { code: 'FR', language: 'fr', locale: 'fr-FR', currency: 'EUR', rate: 0.8944, shipping: 'FR:::0 EUR', label: 'France' },
 ];
 const productDir = new URL('../dist/client/products/', import.meta.url);
 const outDir = new URL('../dist/client/feeds/', import.meta.url);
@@ -154,6 +153,7 @@ for (const file of fs.readdirSync(productDir).filter((name) => name.endsWith('.h
 
   const mpn = clean(product.mpn);
   rows.push({
+    slug,
     id: merchantIdFor(slug),
     title: clean(product.name).slice(0, 150),
     description: merchantDescription(product.description || product.name).slice(0, 5000),
@@ -183,11 +183,15 @@ for (const file of fs.readdirSync(productDir).filter((name) => name.endsWith('.h
 
 fs.mkdirSync(outDir, { recursive: true });
 const convert = (amount, rate) => Math.round(amount * rate * 100) / 100;
-const localizedDescription = (description, market) => {
+const localizedDescription = (description, _market) => {
   return clean(description).slice(0, 5000);
 };
 const renderRows = (market) => rows.map((row) => [
-  row.id, row.title, localizedDescription(row.description, market), `${row.link}?market=${market.code}`,
+  row.id,
+  market.code === 'FR' && frenchCopy[row.slug]?.name ? clean(frenchCopy[row.slug].name).slice(0, 150) : row.title,
+  market.code === 'FR' && frenchCopy[row.slug]?.description
+    ? clean(frenchCopy[row.slug].description).slice(0, 5000)
+    : localizedDescription(row.description, market), `${row.link}?market=${market.code}`,
   row.imageLink, row.additionalImageLink, row.availability, `${convert(row.price, market.rate).toFixed(2)} ${market.currency}`,
   row.brand, row.mpn, row.identifierExists, row.condition, row.productType, row.googleProductCategory, row.productHighlight, market.shipping,
 ].map(clean).join('\t'));

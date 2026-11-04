@@ -164,7 +164,7 @@ export function ProductDetail({
             <a href="/warranty">Warranty</a>
           </p>
           <p className="product-compliance-note">
-            Check local voltage, plug, installation, and product-certification requirements before ordering. We confirm compatibility and availability for your destination before payment.
+            Check local voltage, plug, installation, and product-certification requirements before ordering. We confirm compatibility and availability for your destination before payment. <a href="/compliance">See our document process.</a>
           </p>
           {product.retailPrice != null ? (
             <button className="button primary" type="button" onClick={add}>

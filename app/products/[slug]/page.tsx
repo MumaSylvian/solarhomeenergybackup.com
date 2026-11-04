@@ -83,7 +83,12 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
       ? `${written.slice(0, 155).replace(/\s+\S*$/, '')}…`
       : written
     : productMetaDescription(product);
+  // Keep metadata self-contained during static export. A supplier-hosted
+  // fallback can be unavailable to the prerender worker even when the
+  // storefront has a self-hosted gallery; structured data below still lists
+  // every resolved gallery image.
   const image = product.galleryImageUrls?.[0];
+  const metadataImage = image?.startsWith('/') ? image : undefined;
   return {
     title: product.name,
     description,
@@ -93,7 +98,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
       url: `${siteUrl}/products/${product.slug}`,
       title: product.name,
       description,
-      images: image ? [{ url: image, alt: product.name }] : undefined,
+      images: metadataImage ? [{ url: metadataImage, alt: product.name }] : undefined,
     },
     twitter: { card: 'summary_large_image', title: product.name, description },
   };
