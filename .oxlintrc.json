@@ -29,7 +29,12 @@
     "build/**",
     "dist/**",
     "coverage/**",
-    "next-env.d.ts"
+    "next-env.d.ts",
+    "components/ui/**",
+    "db/**",
+    "drizzle.config.ts",
+    "lib/catalog/catalog.generated.ts",
+    "scripts/self-host-catalog-primaries.mjs"
   ],
   "rules": {
     "no-array-constructor": "error",
