@@ -3,6 +3,14 @@
   "buildCommand": "pnpm build",
   "outputDirectory": "dist/client",
   "cleanUrls": true,
+  "rewrites": {
+    "beforeFiles": [
+      {
+        "source": "/media/gallery/:path*",
+        "destination": "https://media.githubusercontent.com/media/MumaSylvian/solarhomeenergybackup.com/main/public/media/gallery/:path*"
+      }
+    ]
+  },
   "functions": {
     "api/order-request.ts": {
       "maxDuration": 10
