@@ -6,7 +6,7 @@
   "rewrites": {
     "beforeFiles": [
       {
-        "source": "/media/gallery/:path*",
+        "source": "/gallery-cdn/:path*",
         "destination": "https://media.githubusercontent.com/media/MumaSylvian/solarhomeenergybackup.com/main/public/media/gallery/:path*"
       }
     ]

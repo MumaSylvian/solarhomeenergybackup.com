@@ -28,10 +28,10 @@ const resolveCatalogImageUrl = (imageUrl: string | null | undefined) =>
       selfHostedCatalogImages.has(imageUrl.slice('/catalog/'.length))
       ? `/media/catalog/${imageUrl.slice('/catalog/'.length)}`
       : selfHostedGalleryImages[catalogMediaBaseUrl + imageUrl.slice('/catalog/'.length)]
-        ? `/media/gallery/${selfHostedGalleryImages[catalogMediaBaseUrl + imageUrl.slice('/catalog/'.length)]}`
+        ? `/gallery-cdn/${selfHostedGalleryImages[catalogMediaBaseUrl + imageUrl.slice('/catalog/'.length)]}`
       : `${catalogMediaBaseUrl}${imageUrl.slice('/catalog/'.length)}`
     : imageUrl && selfHostedGalleryImages[imageUrl]
-      ? `/media/gallery/${selfHostedGalleryImages[imageUrl]}`
+      ? `/gallery-cdn/${selfHostedGalleryImages[imageUrl]}`
       : imageUrl && selfHostedImages[imageUrl]
       ? `/media/products/${selfHostedImages[imageUrl]}`
       : (imageUrl ?? null);
