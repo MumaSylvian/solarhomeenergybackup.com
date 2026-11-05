@@ -12,7 +12,7 @@ import { ProductCard } from '@/components/storefront';
 import type { CatalogProduct } from '@/lib/catalog/types';
 import { brandHrefFor } from '@/lib/catalog/brands';
 
-const siteUrl = 'https://www.solarhomeenergybackup.com';
+const siteUrl = 'https://www.solarhomenergybackup.com';
 
 type Params = { params: Promise<{ slug: string }> };
 

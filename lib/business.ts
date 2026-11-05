@@ -12,7 +12,7 @@ export const business = {
   postalCode: '70807',
   country: 'US',
   countryName: 'United States',
-  email: 'info@solarhomeenergybackup.com',
+  email: 'info@solarhomenergybackup.com',
   phoneDisplay: '+1 (938) 263-4728',
   phoneE164: '+1-938-263-4728',
   /** Confirmed by the owner on 2026-09-26: orders ship from Baton Rouge, LA. */

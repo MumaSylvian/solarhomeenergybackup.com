@@ -18,14 +18,14 @@ export default function TermsPage() {
     ...addressLines,
     `Email: ${business.email}`,
     `Phone: ${business.phoneDisplay}`,
-    'Website: https://www.solarhomeenergybackup.com/',
+    'Website: https://www.solarhomenergybackup.com/',
   ];
   return (
     <TrustPage
       eyebrow="Terms & conditions · Effective Date: September 26, 2026 · Last Updated: September 26, 2026"
       title="Terms & Conditions"
       intro={[
-        `These Terms & Conditions govern the use of https://www.solarhomeenergybackup.com/ and purchases from ${business.legalName}, trading as ${business.tradingName}.`,
+        `These Terms & Conditions govern the use of https://www.solarhomenergybackup.com/ and purchases from ${business.legalName}, trading as ${business.tradingName}.`,
         'By using our website or completing a purchase, you agree to these Terms to the extent permitted by applicable law.',
       ]}
       sections={[
@@ -37,7 +37,7 @@ export default function TermsPage() {
             `Address: ${addressLines.join(', ')}`,
             `Email: ${business.email}`,
             `Phone: ${business.phoneDisplay}`,
-            'Website: https://www.solarhomeenergybackup.com/',
+            'Website: https://www.solarhomenergybackup.com/',
           ],
         },
         {

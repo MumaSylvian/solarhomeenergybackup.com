@@ -8,7 +8,7 @@ import fs from 'node:fs';
  * Both are written to dist/client for deployment and to public/ so the repo
  * copy stays current.
  */
-const siteUrl = 'https://www.solarhomeenergybackup.com';
+const siteUrl = 'https://www.solarhomenergybackup.com';
 const dist = new URL('../dist/client/', import.meta.url);
 // Category pages (keep in step with lib/catalog/categories.ts).
 const categories = [

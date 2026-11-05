@@ -17,7 +17,7 @@ export default function PrivacyPage() {
       eyebrow="Privacy policy · Effective Date: September 26, 2026 · Last Updated: September 26, 2026"
       title="Privacy Policy"
       intro={[
-        `${business.legalName}, doing business as ${business.tradingName} ("${business.tradingName}," "we," "us," or "our"), operates https://www.solarhomeenergybackup.com/.`,
+        `${business.legalName}, doing business as ${business.tradingName} ("${business.tradingName}," "we," "us," or "our"), operates https://www.solarhomenergybackup.com/.`,
         'This Privacy Policy explains what personal information we collect, how we use it, when it may be disclosed, how it is protected, and the choices that may be available to you.',
       ]}
       sections={[
@@ -125,7 +125,7 @@ export default function PrivacyPage() {
             ...addressLines,
             `Email: ${business.email}`,
             `Phone: ${business.phoneDisplay}`,
-            'Website: https://www.solarhomeenergybackup.com/',
+            'Website: https://www.solarhomenergybackup.com/',
           ],
         },
       ]}

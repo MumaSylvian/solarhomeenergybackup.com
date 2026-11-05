@@ -16,7 +16,7 @@ import fs from 'node:fs';
  * Not submitted anywhere automatically. Register it in Merchant Center only
  * after the readiness verdict in docs/merchant-center-readiness.md is READY.
  */
-const siteUrl = 'https://www.solarhomeenergybackup.com';
+const siteUrl = 'https://www.solarhomenergybackup.com';
 const frenchCopyFile = new URL('../lib/catalog/french-feed-copy.generated.json', import.meta.url);
 let frenchCopy = {};
 try { frenchCopy = JSON.parse(fs.readFileSync(frenchCopyFile, 'utf8')); } catch { /* generated on demand */ }

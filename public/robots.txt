@@ -1,4 +1,4 @@
-# robots.txt for www.solarhomeenergybackup.com
+# robots.txt for www.solarhomenergybackup.com
 #
 # Search engines and AI answer engines may crawl all public content.
 # Allowing AI crawlers lets the catalog and guides be cited in ChatGPT,
@@ -22,4 +22,4 @@ User-agent: CCBot
 Allow: /
 Disallow: /admin
 
-Sitemap: https://www.solarhomeenergybackup.com/sitemap.xml
+Sitemap: https://www.solarhomenergybackup.com/sitemap.xml

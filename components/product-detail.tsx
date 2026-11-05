@@ -135,14 +135,12 @@ export function ProductDetail({
               <b>
                 {stock === 'warehouse'
                   ? 'In stock'
-                  : stock === 'supplier'
-                    ? 'In stock at supplier'
-                    : 'Availability'}
+                  : 'In stock'}
               </b>
               <small>
                 {stock === 'warehouse'
                   ? `Ships from ${business.shipsFrom}`
-                  : 'Confirmed at order review, before payment'}
+                  : `Ships from ${business.shipsFrom}`}
               </small>
             </span>
             <span>

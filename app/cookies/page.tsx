@@ -16,7 +16,7 @@ export default function CookiesPage() {
     <TrustPage
       eyebrow="Cookie & tracking notice · Effective Date: September 26, 2026 · Last Updated: September 27, 2026"
       title="Cookie & Tracking Notice"
-      intro="This Cookie & Tracking Notice explains the current use of cookies and similar technologies on https://www.solarhomeenergybackup.com/."
+      intro="This Cookie & Tracking Notice explains the current use of cookies and similar technologies on https://www.solarhomenergybackup.com/."
       sections={[
         {
           title: '1. Current tracking practices',
@@ -71,7 +71,7 @@ export default function CookiesPage() {
             ...addressLines,
             `Email: ${business.email}`,
             `Phone: ${business.phoneDisplay}`,
-            'Website: https://www.solarhomeenergybackup.com/',
+            'Website: https://www.solarhomenergybackup.com/',
           ],
         },
       ]}

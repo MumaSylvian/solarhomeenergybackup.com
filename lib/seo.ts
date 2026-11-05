@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { business } from './business';
 
-export const siteUrl = 'https://www.solarhomeenergybackup.com';
+export const siteUrl = 'https://www.solarhomenergybackup.com';
 export const siteName = 'SolarHome Energy Backup';
 export const defaultOgImage = {
   url: '/og-default.jpg',

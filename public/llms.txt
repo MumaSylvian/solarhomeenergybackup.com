@@ -4,40 +4,40 @@
 
 ## Guides
 
-- [How to charge a portable power station with solar panels](https://www.solarhomeenergybackup.com/blog/charge-a-power-station-with-solar-panels): Match solar panels to your power station’s input limits, wire them safely in series or parallel, and estimate how long a full solar recharge will take.
-- [How long will a portable power station run a refrigerator?](https://www.solarhomeenergybackup.com/blog/how-long-will-a-power-station-run-a-refrigerator): Estimate how many hours a portable power station can run your refrigerator using its EnergyGuide label, with runtimes for 1,152 Wh, 2,000 Wh, and 3,840 Wh units.
-- [How to size a battery backup system for your home](https://www.solarhomeenergybackup.com/blog/how-to-size-a-home-battery-backup): Work out the inverter watts and battery watt-hours your home needs during an outage, with a worked example you can copy for your own appliances.
-- [LiFePO4 vs. NMC batteries: which chemistry is better for backup power?](https://www.solarhomeenergybackup.com/blog/lifepo4-vs-nmc-batteries-for-backup-power): LiFePO4 and NMC lithium batteries differ in cycle life, weight, and heat tolerance. Learn which chemistry fits home backup, portable power, and travel use.
-- [Portable power station vs. gas generator for home backup](https://www.solarhomeenergybackup.com/blog/portable-power-station-vs-gas-generator): Battery power station or gas generator? See how they differ on indoor safety and runtime, and which one fits your home outage plan.
+- [How to charge a portable power station with solar panels](https://www.solarhomenergybackup.com/blog/charge-a-power-station-with-solar-panels): Match solar panels to your power station’s input limits, wire them safely in series or parallel, and estimate how long a full solar recharge will take.
+- [How long will a portable power station run a refrigerator?](https://www.solarhomenergybackup.com/blog/how-long-will-a-power-station-run-a-refrigerator): Estimate how many hours a portable power station can run your refrigerator using its EnergyGuide label, with runtimes for 1,152 Wh, 2,000 Wh, and 3,840 Wh units.
+- [How to size a battery backup system for your home](https://www.solarhomenergybackup.com/blog/how-to-size-a-home-battery-backup): Work out the inverter watts and battery watt-hours your home needs during an outage, with a worked example you can copy for your own appliances.
+- [LiFePO4 vs. NMC batteries: which chemistry is better for backup power?](https://www.solarhomenergybackup.com/blog/lifepo4-vs-nmc-batteries-for-backup-power): LiFePO4 and NMC lithium batteries differ in cycle life, weight, and heat tolerance. Learn which chemistry fits home backup, portable power, and travel use.
+- [Portable power station vs. gas generator for home backup](https://www.solarhomenergybackup.com/blog/portable-power-station-vs-gas-generator): Battery power station or gas generator? See how they differ on indoor safety and runtime, and which one fits your home outage plan.
 
 ## Shop
 
-- [Shop solar, battery & backup power equipment](https://www.solarhomeenergybackup.com/shop): Browse portable power stations, batteries, solar panels, inverters, and whole-home backup equipment with clear specifications and US dollar pricing.
-- [Whole-Home Backup Power Systems](https://www.solarhomeenergybackup.com/whole-home-backup): Compare whole-home backup systems: inverters, battery banks, and power kits sized for essential circuits or full-home coverage during outages.
-- [Portable Power Stations](https://www.solarhomeenergybackup.com/portable-power): Portable power stations from EcoFlow, Anker SOLIX, BLUETTI, and more for outages, RVs, job sites, and camping. Compare capacity and output.
-- [Home Batteries & Expansion Batteries](https://www.solarhomeenergybackup.com/batteries): LiFePO4 home batteries, rack batteries, and expansion packs for power stations and hybrid inverters. Compare capacity and voltage.
-- [Solar Panels for Home & Portable Power](https://www.solarhomeenergybackup.com/solar-panels): Solar panels and charging equipment for portable power stations, home battery storage, and fixed rooftop or ground-mount solar systems.
-- [Transfer Switches, Smart Panels & Home Integration](https://www.solarhomeenergybackup.com/home-integration): Transfer switches, smart home panels, inlet boxes, and load controllers for connecting backup power to your home safely.
-- [Home EV Chargers (Level 2)](https://www.solarhomeenergybackup.com/ev-chargers): Level 2 home EV chargers and compatible home-energy equipment, with guidance on circuits, installation, and pairing with solar and batteries.
-- [Solar & Backup Power Accessories](https://www.solarhomeenergybackup.com/accessories): Cables, connectors, mounts, covers, and system accessories for solar and backup power setups.
-- [Refrigerators](https://www.solarhomeenergybackup.com/refrigerators): French-door, side-by-side, top- and bottom-freezer, and compact refrigerators from leading brands, with flat $45 US delivery.
-- [Chest & Upright Freezers](https://www.solarhomeenergybackup.com/freezers): Chest, upright, and portable freezers for dependable cold storage, with flat $45 US delivery.
-- [Dishwashers](https://www.solarhomeenergybackup.com/dishwashers): Built-in, panel-ready, portable, and compact dishwashers from leading brands, with flat $45 US delivery.
-- [Washers & Dryers](https://www.solarhomeenergybackup.com/washers-dryers): Top-load and front-load washers, electric and gas dryers, and laundry centers, with flat $45 US delivery.
-- [Backup Power System Finder](https://www.solarhomeenergybackup.com/system-finder): Answer a few questions about your outage needs, loads, and solar goals to get a starting checklist for a backup power system.
-- [Shop by Brand](https://www.solarhomeenergybackup.com/brands): Every brand we carry, from EcoFlow, BLUETTI, Anker SOLIX, and Victron Energy to GE, Whirlpool, LG, and Samsung appliances.
-- [About Us](https://www.solarhomeenergybackup.com/about): SolarHome Energy Backup LLC sells backup power equipment and home appliances from its warehouse in Baton Rouge, Louisiana, shipping to all 50 states.
+- [Shop solar, battery & backup power equipment](https://www.solarhomenergybackup.com/shop): Browse portable power stations, batteries, solar panels, inverters, and whole-home backup equipment with clear specifications and US dollar pricing.
+- [Whole-Home Backup Power Systems](https://www.solarhomenergybackup.com/whole-home-backup): Compare whole-home backup systems: inverters, battery banks, and power kits sized for essential circuits or full-home coverage during outages.
+- [Portable Power Stations](https://www.solarhomenergybackup.com/portable-power): Portable power stations from EcoFlow, Anker SOLIX, BLUETTI, and more for outages, RVs, job sites, and camping. Compare capacity and output.
+- [Home Batteries & Expansion Batteries](https://www.solarhomenergybackup.com/batteries): LiFePO4 home batteries, rack batteries, and expansion packs for power stations and hybrid inverters. Compare capacity and voltage.
+- [Solar Panels for Home & Portable Power](https://www.solarhomenergybackup.com/solar-panels): Solar panels and charging equipment for portable power stations, home battery storage, and fixed rooftop or ground-mount solar systems.
+- [Transfer Switches, Smart Panels & Home Integration](https://www.solarhomenergybackup.com/home-integration): Transfer switches, smart home panels, inlet boxes, and load controllers for connecting backup power to your home safely.
+- [Home EV Chargers (Level 2)](https://www.solarhomenergybackup.com/ev-chargers): Level 2 home EV chargers and compatible home-energy equipment, with guidance on circuits, installation, and pairing with solar and batteries.
+- [Solar & Backup Power Accessories](https://www.solarhomenergybackup.com/accessories): Cables, connectors, mounts, covers, and system accessories for solar and backup power setups.
+- [Refrigerators](https://www.solarhomenergybackup.com/refrigerators): French-door, side-by-side, top- and bottom-freezer, and compact refrigerators from leading brands, with flat $45 US delivery.
+- [Chest & Upright Freezers](https://www.solarhomenergybackup.com/freezers): Chest, upright, and portable freezers for dependable cold storage, with flat $45 US delivery.
+- [Dishwashers](https://www.solarhomenergybackup.com/dishwashers): Built-in, panel-ready, portable, and compact dishwashers from leading brands, with flat $45 US delivery.
+- [Washers & Dryers](https://www.solarhomenergybackup.com/washers-dryers): Top-load and front-load washers, electric and gas dryers, and laundry centers, with flat $45 US delivery.
+- [Backup Power System Finder](https://www.solarhomenergybackup.com/system-finder): Answer a few questions about your outage needs, loads, and solar goals to get a starting checklist for a backup power system.
+- [Shop by Brand](https://www.solarhomenergybackup.com/brands): Every brand we carry, from EcoFlow, BLUETTI, Anker SOLIX, and Victron Energy to GE, Whirlpool, LG, and Samsung appliances.
+- [About Us](https://www.solarhomenergybackup.com/about): SolarHome Energy Backup LLC sells backup power equipment and home appliances from its warehouse in Baton Rouge, Louisiana, shipping to all 50 states.
 
 ## Policies
 
-- [Shipping & Delivery Policy](https://www.solarhomeenergybackup.com/shipping-delivery): We ship to all 50 states and the United Kingdom, Canada, Australia, and France. Orders are handled within 1 business day before dispatch; carrier transit is free and typically takes 2–7 business days after dispatch.
-- [Return & Refund Policy](https://www.solarhomeenergybackup.com/returns): Return eligible products within 30 days of delivery. No restocking fee, refunds processed in 1–7 business days after inspection, and how to request a return.
-- [Warranty Policy](https://www.solarhomeenergybackup.com/warranty): Our 30-day limited warranty from delivery covers qualifying defects in materials or workmanship; manufacturer warranties may continue after it.
-- [Payment & Billing Policy](https://www.solarhomeenergybackup.com/payment-options): Accepted payment methods (bank or wire transfer, Zelle, Cash App, Chime, Apple Pay, Bitcoin), payment verification, delivery fees, and taxes.
-- [Privacy Policy](https://www.solarhomeenergybackup.com/privacy): What personal information Solar Home Energy Backup collects, how it is used and shared, how it is protected, and the privacy choices available to you.
-- [Terms & Conditions](https://www.solarhomeenergybackup.com/terms): Terms governing use of our website and purchases from SolarHome Energy Backup LLC: orders, payment, delivery, returns, warranties, and governing law.
-- [Customer Support](https://www.solarhomeenergybackup.com/support): Get help with product compatibility, orders, delivery, returns, and warranty claims. Contact our team by email, phone, or WhatsApp.
+- [Shipping & Delivery Policy](https://www.solarhomenergybackup.com/shipping-delivery): We ship to all 50 states and the United Kingdom, Canada, Australia, and France. Orders are handled within 1 business day before dispatch; carrier transit is free and typically takes 2–7 business days after dispatch.
+- [Return & Refund Policy](https://www.solarhomenergybackup.com/returns): Return eligible products within 30 days of delivery. No restocking fee, refunds processed in 1–7 business days after inspection, and how to request a return.
+- [Warranty Policy](https://www.solarhomenergybackup.com/warranty): Our 30-day limited warranty from delivery covers qualifying defects in materials or workmanship; manufacturer warranties may continue after it.
+- [Payment & Billing Policy](https://www.solarhomenergybackup.com/payment-options): Accepted payment methods (bank or wire transfer, Zelle, Cash App, Chime, Apple Pay, Bitcoin), payment verification, delivery fees, and taxes.
+- [Privacy Policy](https://www.solarhomenergybackup.com/privacy): What personal information Solar Home Energy Backup collects, how it is used and shared, how it is protected, and the privacy choices available to you.
+- [Terms & Conditions](https://www.solarhomenergybackup.com/terms): Terms governing use of our website and purchases from SolarHome Energy Backup LLC: orders, payment, delivery, returns, warranties, and governing law.
+- [Customer Support](https://www.solarhomenergybackup.com/support): Get help with product compatibility, orders, delivery, returns, and warranty claims. Contact our team by email, phone, or WhatsApp.
 
 ## Optional
 
-- [Sitemap](https://www.solarhomeenergybackup.com/sitemap.xml): every product page
+- [Sitemap](https://www.solarhomenergybackup.com/sitemap.xml): every product page

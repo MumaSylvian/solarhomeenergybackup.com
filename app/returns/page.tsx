@@ -121,7 +121,7 @@ export default function ReturnsPage() {
             `Trading as ${business.tradingName}`,
             ...addressLines,
             ...contactLines,
-            'Website: https://www.solarhomeenergybackup.com/',
+            'Website: https://www.solarhomenergybackup.com/',
           ],
         },
       ]}

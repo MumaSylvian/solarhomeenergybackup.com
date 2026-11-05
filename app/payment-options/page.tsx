@@ -99,7 +99,7 @@ export default function PaymentOptionsPage() {
             ...addressLines,
             `Email: ${business.email}`,
             `Phone: ${business.phoneDisplay}`,
-            'Website: https://www.solarhomeenergybackup.com/',
+            'Website: https://www.solarhomenergybackup.com/',
           ],
         },
       ]}
